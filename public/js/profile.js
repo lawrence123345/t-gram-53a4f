@@ -1,6 +1,7 @@
 const avatars = ["😀","😎","🤓","🧙‍♂️","🦸‍♀️","👨‍💻","👩‍🎓","🦄","🐱","🚀"];
 
-function renderProfile(){
+// Make functions global so they can be called from HTML
+window.renderProfile = function(){
   let scores = JSON.parse(localStorage.getItem('scores')) || [];
   let userScore = scores.find(s => s.user === currentUser.username)?.score || 0;
   let totalGames = currentUser.totalGames || 0;
@@ -54,12 +55,14 @@ ${achievementsHTML}
 </div>`;
 }
 
-function selectAvatar(a){ 
+// Make functions global so they can be called from HTML
+window.selectAvatar = function(a){ 
   currentUser.avatar = a; 
   renderProfile(); 
 }
 
-function saveProfile(){
+// Make functions global so they can be called from HTML
+window.saveProfile = function(){
   currentUser.username = document.getElementById('edit-user').value;
   currentUser.age = document.getElementById('edit-age').value;
   currentUser.lastLogin = new Date().toLocaleDateString();
@@ -92,11 +95,13 @@ function getMotivationalMessage(){
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
-function shareAchievements(){
+// Make functions global so they can be called from HTML
+window.shareAchievements = function(){
   alert('Sharing achievements feature coming soon!');
 }
 
-function updatePassword(){
+// Make functions global so they can be called from HTML
+window.updatePassword = function(){
   let newPass = prompt('Enter new password:');
   if(newPass) {
     currentUser.password = newPass;

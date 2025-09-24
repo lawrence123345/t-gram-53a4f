@@ -5,6 +5,34 @@
   box-sizing: border-box;
 }
 
+/* ===== Performance Optimizations ===== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.lazy.loaded {
+  opacity: 1;
+}
+
+/* ===== Critical CSS Above the Fold ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  color: #222;
+  background: linear-gradient(135deg, #008080 0%, #FF7F50 50%, #9370DB 100%);
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -441,13 +469,14 @@ main {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  backdrop-filter: blur(5px);
 }
 
 .modal.show {
@@ -456,15 +485,51 @@ main {
 }
 
 .modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
   text-align: center;
   color: #333;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+  max-width: 500px;
+  width: 90%;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #008080;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .modal-content button {
   margin: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #FF7F50, #9370DB);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 1rem;
+}
+
+.modal-content button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.modal-content button:active {
+  transform: translateY(0);
+}
+
+@keyframes modalSlideIn {
+  from { transform: translateY(-50px) scale(0.9); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 /* ===== Animations ===== */
@@ -474,8 +539,96 @@ main {
 }
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Offline PvP Enhancements ===== */
+.player-avatars {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.avatar-container.active {
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+}
+
+.avatar-container .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.timer-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.timer-bar .progress {
+  height: 100%;
+  background: linear-gradient(90deg, #FF7F50, #9370DB);
+  transition: width 0.5s ease;
+}
+
+.mini-leaderboard, .move-history {
+  background: rgba(255,255,255,0.9);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+.mini-leaderboard h3, .move-history h3 {
+  color: #008080;
+  margin-bottom: 0.5rem;
+}
+
+.move-history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.move-history li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.3s ease;
+}
+
+.cell:hover::before {
+  left: 100%;
 }
 
 @keyframes spin {
@@ -641,4 +794,117 @@ body.dark .cell { background: rgba(255,255,255,0.15); color: #fff; }
 .card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== Enhanced Leaderboard Styles ===== */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.player-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-info h3 {
+  margin: 0;
+  color: #008080;
+  font-size: 1.2rem;
+}
+
+.stats {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.stats p {
+  margin: 0.25rem 0;
+}
+
+.progress-bar {
+  width: 100px;
+  height: 8px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #008080, #FF7F50);
+  transition: width 0.5s ease;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: linear-gradient(135deg, #9370DB, #FF7F50);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.95);
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  color: #333;
+  opacity: 0;
+  animation: fadeInContent 1s forwards;
+}
+
+.profile .avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.profile p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

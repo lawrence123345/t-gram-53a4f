@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T-Gram</title>
+    <title>About T-Gram</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/config.js"></script>
@@ -16,14 +16,20 @@
             <div class="dropdown">
                 <button onclick="toggleDropdown()" class="dropbtn">Home <i class="fas fa-chevron-down"></i></button>
                 <div id="home-dropdown" class="dropdown-content">
-                    <a href="#" onclick="renderHome()">Home</a>
+                    <a href="index.html" onclick="renderHome()">Home</a>
                     <a href="#" onclick="renderAbout()">About Us</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div id="app"></div>
+    <div id="app">
+        <div class="container">
+            <h1>About T-Gram</h1>
+            <p>T-Gram is a gamified learning platform for rural education.</p>
+            <p>Features: Interactive games, progress tracking, achievements.</p>
+        </div>
+    </div>
 
     <!-- Modal Timer -->
     <div id="timerModal" class="modal">

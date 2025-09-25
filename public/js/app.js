@@ -2,8 +2,8 @@
 window.selectedDifficulty = null;
 window.currentUser = null;
 window.users = JSON.parse(localStorage.getItem('users')) || [
-    {username:"Lawrence", email:"lawrence@gmail.com", password:"123456", avatar:"😀"},
-    {username:"Unknown", email:"unknown@gmail.com", password:"123456", avatar:"😎"}
+    {username:"Lawrence", email:"lawrence@gmail.com", password:"SecurePass456!", avatar:"😀"},
+    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
 ];
 window.auth = null; // This will be set when Firebase is initialized
 window.questions = null;

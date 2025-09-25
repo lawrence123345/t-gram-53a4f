@@ -29,7 +29,7 @@ window.updateNav = function(auth){
 
 // ===== Home Page =====
 window.renderHome = function(){
-  selectedDifficulty = null;
+  window.selectedDifficulty = null;
   document.getElementById('app').innerHTML = `<main>
 <div class="hero"><h1>Welcome to T-Gram</h1>
 <p>Your space for fun, learning, and growth. Discover interactive games, track your progress, and challenge yourself with every play.</p></div>
@@ -61,7 +61,7 @@ window.renderHome = function(){
 
 // ===== Difficulty Selection =====
 window.selectDifficulty = function(diff){
-  selectedDifficulty = diff;
+  window.selectedDifficulty = diff;
   document.getElementById('mode-selection').style.display = 'block';
   document.querySelector('h3').scrollIntoView({ behavior: 'smooth' });
 }
@@ -155,6 +155,15 @@ window.getTimerDuration = function() {
 };
 
 // ===== Offline PvP =====
+window.board = Array(9).fill(null);
+window.currentPlayer = 'X';
+window.currentQuestionIndex = 0;
+window.gameQuestions = [];
+window.wrongAnswers = [];
+window.streak = 0;
+window.score = 0;
+window.timerDuration = 0;
+
 window.startOfflinePvP = async function() {
   if (!window.selectedDifficulty) {
     alert("Please select a difficulty first!");
@@ -162,14 +171,26 @@ window.startOfflinePvP = async function() {
   }
 
   await loadQuestions();
+  setDifficultySettings();
+  renderOfflineInterface();
+  renderBoard();
+}
 
-  // Set timer duration based on difficulty
-  const timerDuration = getTimerDuration();
+window.setDifficultySettings = function() {
+  const diff = window.selectedDifficulty;
+  if (diff === 'Beginner') {
+    window.timerDuration = 30000;
+  } else if (diff === 'Intermediate') {
+    window.timerDuration = 22500;
+  } else {
+    window.timerDuration = 17500;
+  }
+}
 
-  // Render Offline PvP interface with question modal support
+window.renderOfflineInterface = function() {
   document.getElementById('app').innerHTML = `
   <div class="board-container">
-    <h2>Offline PvP - ${selectedDifficulty} Grammar Challenge</h2>
+    <h2>Offline PvP - ${window.selectedDifficulty} Grammar Challenge</h2>
     <div class="player-avatars">
       <div class="avatar-container active">
         <div class="avatar">😀</div>
@@ -181,6 +202,7 @@ window.startOfflinePvP = async function() {
       </div>
     </div>
     <div class="timer-bar"><div class="progress" style="width:0%"></div></div>
+    <div class="streak">Streak: <span id="streak-count">0</span></div>
     <div class="board"></div>
     <div id="question-modal" class="modal" style="display:none;">
       <div class="modal-content">
@@ -195,14 +217,8 @@ window.startOfflinePvP = async function() {
     <button class="btn" onclick="showReview()" style="display:none;" id="review-btn">Review Mistakes</button>
   </div>
   `;
-
-  window.board = Array(9).fill(null);
-  renderBoard();
-  window.currentPlayer = 'X';
-  // Don't show question immediately; wait for first move
 }
 
-// ===== Render Tic-Tac-Toe Board =====
 window.renderBoard = function() {
   const boardEl = document.querySelector('.board');
   boardEl.innerHTML = '';
@@ -219,7 +235,6 @@ window.renderBoard = function() {
   }
 };
 
-// ===== Attempt Move (Integrates Question) =====
 window.attemptMove = function(index) {
   if (window.board[index] !== null) return;
 
@@ -228,80 +243,6 @@ window.attemptMove = function(index) {
   showNextQuestion();
 };
 
-// After correct answer, place the move
-window.placeMove = function() {
-  const index = window.currentMoveIndex;
-  const player = window.currentPlayer;
-  window.board[index] = player;
-  const cells = document.querySelectorAll('.cell');
-  const cell = cells[index];
-  cell.textContent = player;
-  cell.classList.add(player);
-
-  // Switch player
-  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
-  updatePlayerAvatars();
-
-  // Check winner
-  const winner = checkWinner(window.board);
-  if (winner) {
-    highlightWinner(winner, window.board);
-    awardBadge('victory');
-    setTimeout(() => alert(`${winner} wins the game!`), 100);
-    saveOfflineProgress();
-    return;
-  }
-
-  // Check draw
-  if (window.board.every(cell => cell !== null)) {
-    alert("It's a draw!");
-    awardBadge('draw');
-    saveOfflineProgress();
-    return;
-  }
-
-  // Prepare next question if more questions
-  window.currentQuestionIndex++;
-  if (window.currentQuestionIndex < window.gameQuestions.length) {
-    setTimeout(() => showNextQuestion(), 500); // Brief pause
-  } else {
-    // No more questions, but game can continue or end
-    alert("Questions exhausted! Game continues without questions.");
-  }
-};
-
-// ===== Check Winner =====
-function checkWinner(cells) {
-  const combos = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
-  ];
-  for (const [a,b,c] of combos) {
-    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) return cells[a];
-  }
-  return null;
-}
-
-// ===== Highlight Winner =====
-function highlightWinner(winner, cells) {
-  const boardCells = document.querySelectorAll('.cell');
-  const combos = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
-  ];
-  for (const [a,b,c] of combos) {
-    if (cells[a] === winner && cells[b] === winner && cells[c] === winner) {
-      boardCells[a].classList.add('win');
-      boardCells[b].classList.add('win');
-      boardCells[c].classList.add('win');
-      break;
-    }
-  }
-}
-
-// ===== Show Next Question =====
 window.showNextQuestion = function() {
   if (window.currentQuestionIndex >= window.gameQuestions.length) {
     alert("No more questions! Game over.");
@@ -353,12 +294,10 @@ window.showNextQuestion = function() {
   startTimer();
 };
 
-// ===== Select Option =====
 window.selectOption = function(idx) {
   window.selectedAnswer = window.currentQuestion.options[idx];
 };
 
-// ===== Submit Answer =====
 window.submitAnswer = function() {
   let userAnswer = '';
   if (window.currentQuestion.type === 'multiple_choice') {
@@ -376,25 +315,97 @@ window.submitAnswer = function() {
   const correct = userAnswer.toLowerCase() === window.currentQuestion.answer.toLowerCase();
   if (!correct) {
     window.wrongAnswers.push(window.currentQuestion);
+    window.streak = 0;
+    updateStreak();
     // Penalty: skip turn
     window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
     updatePlayerAvatars();
     alert("Wrong answer! Turn skipped.");
   } else {
+    window.streak++;
+    updateStreak();
     placeMove();
   }
 
   closeQuestion();
 };
 
-// ===== Close Question =====
 window.closeQuestion = function() {
   document.getElementById('question-modal').style.display = 'none';
   stopTimer();
   // Penalty for skipping: maybe skip turn or something, but for now just proceed
 };
 
-// ===== Show Review =====
+window.placeMove = function() {
+  const index = window.currentMoveIndex;
+  const player = window.currentPlayer;
+  window.board[index] = player;
+  const cells = document.querySelectorAll('.cell');
+  const cell = cells[index];
+  cell.textContent = player;
+  cell.classList.add(player);
+
+  // Switch player
+  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
+  updatePlayerAvatars();
+
+  // Check winner
+  const winner = checkWinner(window.board);
+  if (winner) {
+    highlightWinner(winner, window.board);
+    awardBadge('victory');
+    setTimeout(() => alert(`${winner} wins the game!`), 100);
+    saveOfflineProgress();
+    return;
+  }
+
+  // Check draw
+  if (window.board.every(cell => cell !== null)) {
+    alert("It's a draw!");
+    awardBadge('draw');
+    saveOfflineProgress();
+    return;
+  }
+
+  // Prepare next question if more questions
+  window.currentQuestionIndex++;
+  if (window.currentQuestionIndex < window.gameQuestions.length) {
+    setTimeout(() => showNextQuestion(), 500); // Brief pause
+  } else {
+    // No more questions, but game can continue or end
+    alert("Questions exhausted! Game continues without questions.");
+  }
+};
+
+function checkWinner(cells) {
+  const combos = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+  for (const [a,b,c] of combos) {
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) return cells[a];
+  }
+  return null;
+}
+
+function highlightWinner(winner, cells) {
+  const boardCells = document.querySelectorAll('.cell');
+  const combos = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+  for (const [a,b,c] of combos) {
+    if (cells[a] === winner && cells[b] === winner && cells[c] === winner) {
+      boardCells[a].classList.add('win');
+      boardCells[b].classList.add('win');
+      boardCells[c].classList.add('win');
+      break;
+    }
+  }
+}
+
 window.showReview = function() {
   if (window.wrongAnswers.length === 0) {
     alert("Great! No mistakes.");
@@ -411,11 +422,10 @@ window.showReview = function() {
   document.getElementById('app').innerHTML = `<main>${reviewHTML}</main>`;
 };
 
-// ===== Timer Logic =====
 let timerInterval;
 function startTimer() {
   const progress = document.querySelector('.progress');
-  const duration = getTimerDuration();
+  const duration = window.timerDuration;
   const interval = duration / 100; // Update every 1% of duration
   let width = 0;
   progress.style.width = '0%';
@@ -438,6 +448,10 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(timerInterval);
+}
+
+window.updateStreak = function() {
+  document.getElementById('streak-count').textContent = window.streak;
 }
 
 // ===== Initialize Dark Mode =====
@@ -476,6 +490,8 @@ window.saveOfflineProgress = function() {
   const progress = {
     difficulty: window.selectedDifficulty,
     wrongAnswers: window.wrongAnswers.length,
+    score: window.score,
+    streak: window.streak,
     date: new Date().toISOString()
   };
   const offlineProgress = JSON.parse(localStorage.getItem('offlineProgress')) || [];

@@ -14,13 +14,44 @@
     {
       "type": "error_identification",
       "question": "Identify the error: He go to the store yesterday.",
-      "error": "go",
-      "correction": "went"
+      "answer": "go"
     },
     {
       "type": "sentence_completion",
       "question": "Complete the sentence: The book is ___ the table.",
       "answer": "on"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is a noun?",
+      "options": ["Action word", "Naming word", "Describing word", "How word"],
+      "answer": "Naming word"
+    },
+    {
+      "type": "fill_blank",
+      "question": "He ___ a book. (present simple)",
+      "answer": "reads"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She like pizza.",
+      "answer": "like"
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The cat is ___ the box.",
+      "answer": "in"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is an adjective?",
+      "options": ["Action word", "Naming word", "Describing word", "How word"],
+      "answer": "Describing word"
+    },
+    {
+      "type": "fill_blank",
+      "question": "They ___ playing. (present continuous)",
+      "answer": "are"
     }
   ],
   "intermediate": [
@@ -38,13 +69,44 @@
     {
       "type": "error_identification",
       "question": "Identify the error: He don't like apples.",
-      "error": "don't",
-      "correction": "doesn't"
+      "answer": "don't"
     },
     {
       "type": "sentence_completion",
       "question": "Complete: I have been waiting ___ an hour.",
       "answer": "for"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past tense of 'go'?",
+      "options": ["went", "gone", "going", "goes"],
+      "answer": "went"
+    },
+    {
+      "type": "fill_blank",
+      "question": "If I ___ rich, I would travel. (conditional)",
+      "answer": "were"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She have a car.",
+      "answer": "have"
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: He is good ___ math.",
+      "answer": "at"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which is a superlative: faster, fast, fastest?",
+      "options": ["fast", "faster", "fastest"],
+      "answer": "fastest"
+    },
+    {
+      "type": "fill_blank",
+      "question": "They have ___ here for two hours.",
+      "answer": "been"
     }
   ],
   "advanced": [
@@ -62,13 +124,44 @@
     {
       "type": "error_identification",
       "question": "Identify the error: She said me that she was tired.",
-      "error": "said me",
-      "correction": "told me"
+      "answer": "said me"
     },
     {
       "type": "paragraph_correction",
-      "question": "Correct: The man which car is red is my friend. ->",
+      "question": "Correct: The man which car is red is my friend.",
       "answer": "The man whose car is red is my friend."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is reported speech for 'He said, \"I am tired.\"'?",
+      "options": ["He said that he was tired.", "He said that I am tired.", "He says that he is tired.", "He said that he is tired."],
+      "answer": "He said that he was tired."
+    },
+    {
+      "type": "fill_blank",
+      "question": "By the time she arrives, we ___ dinner. (future perfect)",
+      "answer": "will have finished"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: I wish I can fly.",
+      "answer": "can"
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: She don't know the answer, which is surprising.",
+      "answer": "She doesn't know the answer, which is surprising."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Identify the idiom: 'Break a leg'",
+      "options": ["Good luck", "Injury", "Run fast", "Be careful"],
+      "answer": "Good luck"
+    },
+    {
+      "type": "fill_blank",
+      "question": "The meeting was postponed ___ the bad weather.",
+      "answer": "because of"
     }
   ]
 }

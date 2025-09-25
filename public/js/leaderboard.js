@@ -53,75 +53,39 @@ function addScore(username, correct, total, time, categoryScores = {}){
 // Make functions global so they can be called from HTML
 window.renderLeaderboard = function(){
   let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  let sortBy = document.getElementById('sort-select')?.value || 'wins';
-  let filter = document.getElementById('filter-select')?.value || 'all';
-  let search = document.getElementById('search-input')?.value.toLowerCase() || '';
-  scores.sort((a,b) => b[sortBy] - a[sortBy]);
-  if(filter === 'friends') scores = scores.filter(s => s.isFriend);
-  if(search) scores = scores.filter(s => s.user.toLowerCase().includes(search));
-  let page = parseInt(document.getElementById('page-select')?.value) || 1;
-  let perPage = 10;
-  let start = (page - 1) * perPage;
-  let end = start + perPage;
-  let paginatedScores = scores.slice(start, end);
-  let list = paginatedScores.map((s,i) => {
-    let rank = start + i + 1;
-    let medal = rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':'#'+rank;
-    let rankColor = s.rankTier === 'Gold' ? 'gold' : s.rankTier === 'Silver' ? 'silver' : 'bronze';
-    let achievementsHTML = s.achievements.map(a => `<span class="badge">${a}</span>`).join('');
-    let progressBar = `<div class="progress-bar"><div class="progress" style="width: ${s.accuracy}%"></div></div>`;
-    let categoryScoresHTML = Object.entries(s.categoryScores).map(([cat, score]) => `<span>${cat}: ${score}</span>`).join(', ');
-    return `<div class="player-card" data-user="${s.user}">
-<img src="${s.avatar}" alt="${s.user}" class="avatar" loading="lazy">
-<div class="player-info">
-<h3>${medal} ${s.user}</h3>
-<span class="rank-tier" style="color: ${rankColor}">${s.rankTier}</span>
-<div class="stats">
-<p>Wins: ${s.wins} | Losses: ${s.losses} | Draws: ${s.draws}</p>
-<p>Accuracy: ${s.accuracy}% ${progressBar}</p>
-<p>Streak: ${s.streak} | Highest: ${s.highestStreak}</p>
-<p>Average Time: ${Math.round(s.averageTime)}s</p>
-<p>Level: ${s.level}</p>
-<p>Category Scores: ${categoryScoresHTML || 'None'}</p>
-</div>
-<div class="achievements">${achievementsHTML}</div>
-</div>
-<div class="actions">
-<button class="btn" onclick="viewProfile('${s.user}')">View Profile</button>
-<button class="btn" onclick="challengePlayer('${s.user}')">Challenge</button>
-</div>
-</div>`;
+  scores.sort((a,b) => b.totalScore - a.totalScore);
+  let topScores = scores.slice(0, 10);
+  let rows = topScores.map((s, i) => {
+    let rank = i + 1;
+    let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+    return `<tr class="leaderboard-row">
+<td class="rank-cell">${medal} ${rank}</td>
+<td class="username-cell">${s.user}</td>
+<td class="wins-cell">${s.wins}</td>
+<td class="losses-cell">${s.losses}</td>
+<td class="score-cell">${s.totalScore}</td>
+</tr>`;
   }).join("");
-  let totalPages = Math.ceil(scores.length / perPage);
-  let paginationHTML = '';
-  for(let i=1; i<=totalPages; i++){
-    paginationHTML += `<option value="${i}">${i}</option>`;
-  }
   document.getElementById('app').innerHTML = `<div class="leaderboard">
-<h2>Leaderboard</h2>
-<div class="controls">
-<select id="sort-select" onchange="renderLeaderboard()">
-<option value="wins">Sort by Wins</option>
-<option value="accuracy">Sort by Accuracy</option>
-<option value="streak">Sort by Streak</option>
-<option value="level">Sort by Level</option>
-</select>
-<select id="filter-select" onchange="renderLeaderboard()">
-<option value="all">All Players</option>
-<option value="friends">Friends Only</option>
-</select>
-<input type="text" id="search-input" placeholder="Search players..." onkeyup="renderLeaderboard()">
-<select id="page-select" onchange="renderLeaderboard()">
-${paginationHTML}
-</select>
-</div>
-<div class="leaderboard-list">${list}</div>
-<button class="btn" onclick="renderHome()">Back</button>
-<button class="btn" onclick="shareLeaderboard()">Share</button>
+<h2>🏆 Leaderboard</h2>
+<p class="leaderboard-description">The leaderboard highlights the top 10 players, ranked from first to tenth, with a stylish display of their username, victories, defeats, and total score.</p>
+<table class="leaderboard-table">
+<thead>
+<tr>
+<th>Rank</th>
+<th>Username</th>
+<th>Wins</th>
+<th>Losses</th>
+<th>Total Score</th>
+</tr>
+</thead>
+<tbody>
+${rows}
+</tbody>
+</table>
+<button class="btn back-btn" onclick="renderHome()">Back</button>
 </div>`;
-  addAnimations();
-  addHoverEffects();
-  // Removed real-time updates to prevent lag
+  addTableAnimations();
 }
 
 function addHoverEffects(){

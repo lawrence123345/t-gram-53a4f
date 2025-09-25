@@ -1,113 +1,123 @@
-const avatars = ["😀","😎","🤓","🧙‍♂️","🦸‍♀️","👨‍💻","👩‍🎓","🦄","🐱","🚀"];
+// Default avatars
+const defaultAvatars = [
+  "https://cdn-icons-png.flaticon.com/512/1077/1077114.png", // Unknown by Freepik
+  "https://cdn-icons-png.flaticon.com/512/4718/4718624.png", // Easter Bunny / Rabbit by Freepik
+  "https://cdn-icons-png.flaticon.com/512/616/616430.png", // Cat by justicon
+  "https://cdn-icons-png.flaticon.com/512/2995/2995624.png", // Penguin by Freepik (corrected from cat link)
+  "https://cdn-icons-png.flaticon.com/512/1998/1998610.png", // Alien by Freepik
+  "https://cdn-icons-png.flaticon.com/512/2924/2924763.png", // Dragon / Monster by Freepik
+  "https://cdn-icons-png.flaticon.com/512/2839/2839022.png", // Grandmaster / Chess by Freepik
+  "https://cdn-icons-png.flaticon.com/512/4306/4306979.png", // Peace / Kitty by hellosun
+  "https://cdn-icons-png.flaticon.com/512/1077/1077063.png", // Man / Bald by Freepik
+  "https://cdn-icons-png.flaticon.com/512/1144/1144766.png" // Gamer by Muhammad_Usman
+];
 
 // Make functions global so they can be called from HTML
 window.renderProfile = function(){
+  if (!window.currentUser) {
+    alert("Please log in to view your profile.");
+    renderLogin();
+    return;
+  }
+
+  // Calculate ranking position
   let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  let userScore = scores.find(s => s.user === currentUser.username)?.score || 0;
-  let totalGames = currentUser.totalGames || 0;
-  let averageScore = totalGames > 0 ? Math.round((currentUser.totalScore || 0) / totalGames) : 0;
-  let level = Math.floor((currentUser.totalScore || 0) / 100) + 1;
-  let accuracy = currentUser.totalQuestions > 0 ? Math.round((currentUser.totalCorrect || 0) / currentUser.totalQuestions * 100) : 0;
-  let avatarHTML = avatars.map(a => `<span class="avatar-option ${currentUser.avatar===a?'selected-avatar':''}" onclick="selectAvatar('${a}')">${a}</span>`).join("");
-  let achievementsHTML = getAchievementsHTML();
-  let progressHTML = getProgressHTML(level, accuracy);
+  scores.sort((a, b) => b.totalScore - a.totalScore);
+  let rank = scores.findIndex(s => s.user === currentUser.username) + 1;
+  if (rank === 0) rank = 'Not ranked yet';
+
+  // Avatar options
+  let avatarHTML = defaultAvatars.map(a => `<div class="avatar-option ${currentUser.avatar === a ? 'selected-avatar' : ''}" onclick="selectAvatar('${a}')"><img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>`).join("");
+
   document.getElementById('app').innerHTML = `<div class="profile-card">
-<h2>Profile</h2>
-<div class="profile-section">
-<h3>Extended User Info</h3>
-<p><strong>Username:</strong> <input id="edit-user" value="${currentUser.username}" /></p>
-<p><strong>Email:</strong> ${currentUser.email}</p>
-<p><strong>Age:</strong> <input id="edit-age" value="${currentUser.age || ''}" placeholder="Enter age" /></p>
-<p><strong>Level Reached:</strong> ${level}</p>
-<p><strong>Total Games Played:</strong> ${totalGames}</p>
-<p><strong>Average Score:</strong> ${averageScore}</p>
-<p><strong>Last Login:</strong> ${currentUser.lastLogin || 'Never'}</p>
+<h2>🎮 Your Profile</h2>
+
+<div class="profile-section avatar-section">
+<h3>Choose Your Avatar</h3>
+<p>Upload a custom photo or select from our fun collection:</p>
+<div class="upload-container">
+<input type="file" id="avatar-upload" accept="image/*" onchange="uploadAvatar()" style="display: none;">
+<label for="avatar-upload" class="upload-btn">📁 Upload Photo</label>
 </div>
-<div class="profile-section">
-<h3>Avatar & Customization</h3>
-<p><strong>Avatar:</strong> ${avatarHTML}</p>
+<div class="avatar-grid">${avatarHTML}</div>
 </div>
-<div class="profile-section">
-<h3>Statistics & Progress</h3>
-${progressHTML}
-<p><strong>Grammar Accuracy:</strong> ${accuracy}%</p>
-<p><strong>Win/Loss Ratio:</strong> ${userScore}/${totalGames - userScore}</p>
+
+<div class="profile-section details-section">
+<h3>Personal Information</h3>
+<div class="detail-grid">
+<div class="detail-item">
+<label for="edit-username">Username</label>
+<input id="edit-username" value="${currentUser.username}" />
 </div>
-<div class="profile-section">
-<h3>Achievements & Badges</h3>
-${achievementsHTML}
+<div class="detail-item">
+<label for="edit-bio">Bio / About Me</label>
+<textarea id="edit-bio" placeholder="Tell us about yourself">${currentUser.bio || ''}</textarea>
 </div>
-<div class="profile-section">
-<h3>Settings</h3>
-<button class="btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-<button class="btn" onclick="updatePassword()">Update Password</button>
+<div class="detail-item">
+<label>Email</label>
+<span>${currentUser.email}</span>
 </div>
-<div class="profile-section">
-<h3>Social & Sharing</h3>
-<button class="btn" onclick="shareAchievements()">Share Achievements</button>
+<div class="detail-item">
+<label for="edit-age">Age</label>
+<input id="edit-age" type="number" value="${currentUser.age || ''}" placeholder="Optional" />
 </div>
-<div class="profile-section">
-<h3>Interactive Feedback</h3>
-<p>${getMotivationalMessage()}</p>
+<div class="detail-item">
+<label>Leaderboard Rank</label>
+<span class="rank-display">${rank}</span>
 </div>
-<button class="btn" onclick="saveProfile()">Save Changes</button>
-<button class="btn" onclick="logout()">Log Out</button>
+</div>
+</div>
+
+<div class="profile-actions">
+<button class="btn save-btn" onclick="saveProfile()">💾 Save Changes</button>
+<button class="btn back-btn" onclick="renderHome()">🏠 Back to Home</button>
+</div>
 </div>`;
+
+  updateNavAvatar();
 }
 
 // Make functions global so they can be called from HTML
-window.selectAvatar = function(a){ 
-  currentUser.avatar = a; 
-  renderProfile(); 
+window.selectAvatar = function(avatar){
+  currentUser.avatar = avatar;
+  updateNavAvatar();
+  renderProfile();
+}
+
+// Make functions global so they can be called from HTML
+window.uploadAvatar = function(){
+  let file = document.getElementById('avatar-upload').files[0];
+  if (file) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      currentUser.avatar = e.target.result;
+      updateNavAvatar();
+      renderProfile();
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 // Make functions global so they can be called from HTML
 window.saveProfile = function(){
-  currentUser.username = document.getElementById('edit-user').value;
+  currentUser.username = document.getElementById('edit-username').value;
+  currentUser.bio = document.getElementById('edit-bio').value;
   currentUser.age = document.getElementById('edit-age').value;
   currentUser.lastLogin = new Date().toLocaleDateString();
   let idx = users.findIndex(u => u.email === currentUser.email);
-  if(idx !== -1) users[idx] = currentUser;
+  if (idx !== -1) users[idx] = currentUser;
   localStorage.setItem('users', JSON.stringify(users));
   alert("Profile updated!");
-  renderProfile();
+  updateNavAvatar();
 }
 
-function getAchievementsHTML(){
-  let achievements = currentUser.achievements || [];
-  if(achievements.length === 0) return '<p>No achievements yet. Keep playing!</p>';
-  return achievements.map(a => `<span class="badge">${a}</span>`).join('');
-}
-
-function getProgressHTML(level, accuracy){
-  return `<div class="progress-bar">
-<div class="progress-fill" style="width: ${Math.min(level * 10, 100)}%"></div>
-</div>
-<p>Level Progress: ${level}</p>
-<div class="progress-bar">
-<div class="progress-fill" style="width: ${accuracy}%"></div>
-</div>
-<p>Accuracy Progress: ${accuracy}%</p>`;
-}
-
-function getMotivationalMessage(){
-  let messages = ["Keep it up!", "New High Score!", "You're doing great!", "Almost there!"];
-  return messages[Math.floor(Math.random() * messages.length)];
-}
-
-// Make functions global so they can be called from HTML
-window.shareAchievements = function(){
-  alert('Sharing achievements feature coming soon!');
-}
-
-// Make functions global so they can be called from HTML
-window.updatePassword = function(){
-  let newPass = prompt('Enter new password:');
-  if(newPass) {
-    currentUser.password = newPass;
-    let idx = users.findIndex(u => u.email === currentUser.email);
-    if(idx !== -1) users[idx] = currentUser;
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Password updated!');
+// Function to update avatar in navigation bar
+window.updateNavAvatar = function(){
+  let navAvatar = document.getElementById('nav-avatar');
+  if (navAvatar && currentUser.avatar) {
+    navAvatar.src = currentUser.avatar;
+    navAvatar.style.display = 'block';
+  } else if (navAvatar) {
+    navAvatar.style.display = 'none';
   }
 }

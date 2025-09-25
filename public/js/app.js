@@ -44,6 +44,7 @@ window.renderHome = function(){
 </div>
 </main>`;
   updateNav(true);
+  updateNavAvatar();
 
   // Hero animation
   setTimeout(() => {

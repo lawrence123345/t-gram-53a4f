@@ -1,0 +1,74 @@
+{
+  "beginner": [
+    {
+      "type": "multiple_choice",
+      "question": "What part of speech is the word 'run' in 'I run every day'?",
+      "options": ["Noun", "Verb", "Adjective", "Adverb"],
+      "answer": "Verb"
+    },
+    {
+      "type": "fill_blank",
+      "question": "She ___ to school every day. (present simple)",
+      "answer": "goes"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He go to the store yesterday.",
+      "error": "go",
+      "correction": "went"
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete the sentence: The book is ___ the table.",
+      "answer": "on"
+    }
+  ],
+  "intermediate": [
+    {
+      "type": "multiple_choice",
+      "question": "Which word is a comparative adjective: bigger, big, biggest?",
+      "options": ["big", "bigger", "biggest"],
+      "answer": "bigger"
+    },
+    {
+      "type": "fill_blank",
+      "question": "She is ___ than her sister. (tall)",
+      "answer": "taller"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He don't like apples.",
+      "error": "don't",
+      "correction": "doesn't"
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: I have been waiting ___ an hour.",
+      "answer": "for"
+    }
+  ],
+  "advanced": [
+    {
+      "type": "multiple_choice",
+      "question": "Identify the clause: 'Although it was raining, we went out.'",
+      "options": ["Although it was raining", "we went out", "Both", "Neither"],
+      "answer": "Although it was raining"
+    },
+    {
+      "type": "fill_blank",
+      "question": "If I ___ you, I would study harder. (conditional)",
+      "answer": "were"
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She said me that she was tired.",
+      "error": "said me",
+      "correction": "told me"
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The man which car is red is my friend. ->",
+      "answer": "The man whose car is red is my friend."
+    }
+  ]
+}

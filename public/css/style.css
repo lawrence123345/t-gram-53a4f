@@ -1016,3 +1016,187 @@ body.dark .cell { background: rgba(255,255,255,0.15); color: #fff; }
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
+
+/* ===== About Page Styles ===== */
+.about-hero {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, #FF7F50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.about-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.about-section h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.15);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: fadeInUp 1s ease-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.25);
+}
+
+.feature-card i {
+  font-size: 3rem;
+  color: #FF7F50;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  color: #fff;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.benefits-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.benefits-list li:last-child {
+  border-bottom: none;
+}
+
+.motivational-quote {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease-out;
+  border-left: 5px solid #FF7F50;
+}
+
+.motivational-quote blockquote {
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #fff;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.quote-author {
+  font-size: 1rem;
+  color: #FF7F50;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode for about page */
+body.dark .about-hero,
+body.dark .about-section,
+body.dark .feature-card,
+body.dark .motivational-quote {
+  background: rgba(30,30,30,0.8);
+  color: #eee;
+}
+
+body.dark .feature-card i {
+  color: #FF7F50;
+}
+
+body.dark .benefits-list li {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+body.dark .motivational-quote blockquote {
+  color: #eee;
+  opacity: 0.9;
+}
+
+body.dark .quote-author {
+  color: #FF7F50;
+}

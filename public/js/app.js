@@ -1,7 +1,7 @@
 // ===== Global Variables =====
 window.selectedDifficulty = null;
 window.currentUser = null;
-window.users = JSON.parse(localStorage.getItem('users')) || [
+window.users = [
     {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
 ];
 window.auth = null; // This will be set when Firebase is initialized

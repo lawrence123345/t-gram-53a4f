@@ -1,5 +1,5 @@
 // Make variables global so they can be accessed from other files
-window.users = JSON.parse(localStorage.getItem('users')) || [
+window.users = [
     {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
 ];
 window.currentUser = null;

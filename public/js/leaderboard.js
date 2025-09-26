@@ -58,34 +58,30 @@ window.renderLeaderboard = function(){
   let rows = topScores.map((s, i) => {
     let rank = i + 1;
     let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-    return `<tr class="leaderboard-row">
-<td class="rank-cell">${medal} ${rank}</td>
-<td class="username-cell">${s.user}</td>
-<td class="wins-cell">${s.wins}</td>
-<td class="losses-cell">${s.losses}</td>
-<td class="score-cell">${s.totalScore}</td>
-</tr>`;
+    return `<div class="leaderboard-row">
+<div class="rank-item">${medal} ${rank}</div>
+<div class="username-item">${s.user}</div>
+<div class="stat-item">${s.wins}</div>
+<div class="stat-item">${s.losses}</div>
+<div class="stat-item">${s.totalScore}</div>
+</div>`;
   }).join("");
   document.getElementById('app').innerHTML = `<div class="leaderboard">
 <h2>🏆 Leaderboard</h2>
-<p class="leaderboard-description">The leaderboard highlights the top 10 players, ranked from first to tenth, with a stylish display of their username, victories, defeats, and total score.</p>
-<table class="leaderboard-table">
-<thead>
-<tr>
-<th>Rank</th>
-<th>Username</th>
-<th>Wins</th>
-<th>Losses</th>
-<th>Total Score</th>
-</tr>
-</thead>
-<tbody>
+<p class="leaderboard-description">The leaderboard highlights the top players, ranked from first to tenth, with a stylish display of their username, victories, defeats, and total score.</p>
+<div class="leaderboard-header">
+<div class="rank-item">Rank</div>
+<div class="username-item">Username</div>
+<div class="stat-item">Wins</div>
+<div class="stat-item">Losses</div>
+<div class="stat-item">Total Score</div>
+</div>
+<div class="leaderboard-rows">
 ${rows}
-</tbody>
-</table>
+</div>
 <button class="btn back-btn" onclick="renderHome()">Back</button>
 </div>`;
-  addTableAnimations();
+
 }
 
 function addHoverEffects(){
@@ -146,7 +142,8 @@ window.viewProfile = function(user){
 
 // Make functions global so they can be called from HTML
 window.challengePlayer = function(user){
-  alert(`Challenging ${user} to a PvP match! (Feature not implemented yet)`);
+  window.ModalManager.showAlert(`Challenging ${user} to a PvP match! (Feature not implemented yet)`, 'info');
+  window.messages.push({ type: 'info', content: `Challenging ${user} to a PvP match! (Feature not implemented yet)`, timestamp: Date.now() });
 }
 
 // Make functions global so they can be called from HTML
@@ -157,7 +154,10 @@ window.shareLeaderboard = function(){
       url: window.location.href
     });
   } else {
-    navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'));
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      window.ModalManager.showAlert('Link copied to clipboard!', 'success');
+      window.messages.push({ type: 'success', content: 'Link copied to clipboard!', timestamp: Date.now() });
+    });
   }
 }
 

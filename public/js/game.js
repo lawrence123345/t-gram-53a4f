@@ -1,6 +1,7 @@
-import { auth, db, rtdb } from './config.js';
-import { doc, setDoc, onSnapshot, updateDoc, collection, query, where, getDocs, addDoc, serverTimestamp } from 'firebase/firestore';
-import { ref, set, onValue, update, onDisconnect } from 'firebase/database';
+// Firebase disabled for offline mode
+// import { auth, db, rtdb } from './config.js';
+// import { doc, setDoc, onSnapshot, updateDoc, collection, query, where, getDocs, addDoc, serverTimestamp } from 'firebase/firestore';
+// import { ref, set, onValue, update, onDisconnect } from 'firebase/database';
 
 let difficulty = "Beginner";
 let board = [], currentPlayer = "X", selectedCellIndex = 0, timer, windowTimer;
@@ -65,181 +66,21 @@ const sampleQuestions = {
   ]
 };
 
-// Make functions global so they can be called from HTML
-window.startGame = function(diff){
-  if(selectedDifficulty) {
-    difficulty = selectedDifficulty; 
-    startOfflinePvP(); 
-  } else {
-    alert('Please select a difficulty first');
+window.sendChatMessage = function() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if(message){
+    chatMessages.push({ player: playerId, message: message, timestamp: Date.now() });
+    update(gameRef, { chat: chatMessages });
+    input.value = '';
   }
-}
-
-// Make functions global so they can be called from app.js
-window.startOfflinePvP = function(){
-  if(!window.selectedDifficulty) {
-    alert('Please select a difficulty first');
-    return;
-  }
-  difficulty = window.selectedDifficulty;
-  board = ["","","","","","","","",""];
-  currentPlayer = "X";
-  score = 0;
-  level = 1;
-  totalCorrect = 0;
-  totalQuestions = 0;
-  playerX.score = 0;
-  playerO.score = 0;
-  moveHistory = [];
-  document.getElementById('app').innerHTML = `<div class="board-container">
-<h2>Offline PvP - ${difficulty}</h2>
-<div class="player-avatars">
-  <div class="avatar-container ${currentPlayer === 'X' ? 'active' : ''}">
-    <img src="${playerX.avatar}" alt="Player X" class="avatar">
-    <p>${playerX.name}: ${playerX.score}</p>
-  </div>
-  <div class="avatar-container ${currentPlayer === 'O' ? 'active' : ''}">
-    <img src="${playerO.avatar}" alt="Player O" class="avatar">
-    <p>${playerO.name}: ${playerO.score}</p>
-  </div>
-</div>
-<div class="score-display">Score: <span id="score">0</span> | Level: <span id="level">1</span> | Accuracy: <span id="accuracy">0%</span></div>
-<div class="board" id="board"></div>
-<div class="timer-bar" id="timer-bar"></div>
-<div class="mini-leaderboard">
-  <h3>Session Stats</h3>
-  <p>Player X: Wins: ${playerX.wins}, Streak: ${playerX.streak}</p>
-  <p>Player O: Wins: ${playerO.wins}, Streak: ${playerO.streak}</p>
-</div>
-<div class="move-history">
-  <h3>Move History</h3>
-  <ul id="move-list"></ul>
-</div>
-<button class="btn" onclick="renderHome()">Exit</button>
-</div>`;
-  renderBoard();
-  updateScoreDisplay();
-  // Update user stats
-  if(window.currentUser){
-    window.currentUser.totalGames = (window.currentUser.totalGames || 0) + 1;
-    window.currentUser.totalScore = (window.currentUser.totalScore || 0) + score;
-    window.currentUser.totalQuestions = (window.currentUser.totalQuestions || 0) + totalQuestions;
-    window.currentUser.totalCorrect = (window.currentUser.totalCorrect || 0) + totalCorrect;
-    let idx = window.users.findIndex(u => u.email === window.currentUser.email);
-    if(idx !== -1) window.users[idx] = window.currentUser;
-    localStorage.setItem('users', JSON.stringify(window.users));
-  }
-}
-
-function renderBoard(){
-  const boardDiv = document.getElementById('board');
-  boardDiv.innerHTML = "";
-  for(let i=0;i<9;i++){
-    let cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.onclick = () => promptGrammar(i);
-    boardDiv.appendChild(cell);
-  }
-}
-
-function promptGrammar(i){
-  if(board[i] !== "") return;
-  selectedCellIndex = i;
-  const questions = sampleQuestions[difficulty];
-  const q = questions[Math.floor(Math.random() * questions.length)];
-  document.getElementById('questionText').innerText = q.q;
-  const container = document.getElementById('optionsContainer');
-  container.innerHTML = "";
-  q.options.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.innerText = opt;
-    btn.onclick = () => answerQuestion(opt,q.a);
-    container.appendChild(btn);
-  });
-  const hintBtn = document.createElement('button');
-  hintBtn.innerText = 'Hint';
-  hintBtn.onclick = () => showHint(q.a);
-  container.appendChild(hintBtn);
-  document.getElementById('timerDisplay').innerText = 30;
-  document.getElementById('timerModal').classList.add('show');
-  timer = 30;
-  clearInterval(windowTimer);
-  windowTimer = setInterval(()=>{
-    timer--;
-    document.getElementById('timerDisplay').innerText = timer;
-    if(timer <= 0) skipQuestion();
-  },1000);
-}
-
-function answerQuestion(answer,correct){
-  clearInterval(windowTimer);
-  document.getElementById('timerModal').classList.remove('show');
-  const cell = document.getElementById('board').children[selectedCellIndex];
-  totalQuestions++;
-  if(answer === correct){
-    board[selectedCellIndex] = currentPlayer;
-    cell.innerText = currentPlayer;
-    cell.classList.add(currentPlayer);
-    cell.style.backgroundColor='lightgreen';
-    setTimeout(()=>{cell.style.backgroundColor='';},500);
-    score += 10;
-    totalCorrect++;
-    if(currentPlayer === 'X') playerX.score += 10;
-    else playerO.score += 10;
-    moveHistory.push(`${currentPlayer} placed at ${selectedCellIndex + 1} - Correct`);
-    playSound('success');
-  } else {
-    cell.style.backgroundColor='salmon';
-    setTimeout(()=>{cell.style.backgroundColor='';},500);
-    alert("Incorrect! Turn skipped.");
-    moveHistory.push(`${currentPlayer} skipped at ${selectedCellIndex + 1} - Incorrect`);
-    playSound('fail');
-  }
-  updateScoreDisplay();
-  updateMiniLeaderboard();
-  updateMoveHistory();
-  if(isOnline){
-    update(gameRef, { board: board, currentPlayer: currentPlayer === "X" ? "O" : "X", timer: 30 });
-    if(checkWin()) {
-      update(gameRef, { winner: currentPlayer });
-      return;
-    }
-  } else {
-    if(checkWin()) return;
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    updateAvatarGlow();
-  }
-}
-
-function skipQuestion(){
-  clearInterval(windowTimer);
-  document.getElementById('timerModal').classList.remove('show');
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
-  alert("Time's up! Turn skipped.");
-  if(isOnline){
-    update(gameRef, { currentPlayer: currentPlayer, timer: 30 });
-  }
-}
-
-function checkWin(){
-  const combos=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  let winnerCombo = combos.find(([a,b,c]) => board[a] && board[a] === board[b] && board[a] === board[c]);
-  if(winnerCombo){
-    winnerCombo.forEach(i=>document.getElementById('board').children[i].classList.add('win'));
-    if(window.currentUser){
-      addScore(window.currentUser.username, totalCorrect, totalQuestions, totalTime, { [difficulty]: totalCorrect });
-    }
-    setTimeout(()=>renderHome(),1500);
-    return true;
-  }
-  if(board.every(c => c !== "")){ alert("Draw!"); renderHome(); return true; }
-  return false;
 }
 
 // Make functions global so they can be called from app.js
 window.startOnlinePvP = async function(){
   if(!window.selectedDifficulty) {
-    alert('Please select a difficulty first');
+    window.ModalManager.showAlert('Please select a difficulty first', 'error');
+    window.messages.push({ type: 'error', content: 'Please select a difficulty first', timestamp: Date.now() });
     return;
   }
   difficulty = window.selectedDifficulty;
@@ -349,9 +190,11 @@ function listenToGameUpdates(){
       }
       if(game.winner){
         if(game.winner === 'Draw'){
-          alert('Draw!');
+          window.ModalManager.showAlert('Draw!', 'info');
+          window.messages.push({ type: 'info', content: 'Draw!', timestamp: Date.now() });
         } else {
-          alert(`Winner: ${game.winner}`);
+          window.ModalManager.showAlert(`Winner: ${game.winner}`, 'success');
+          window.messages.push({ type: 'success', content: `Winner: ${game.winner}`, timestamp: Date.now() });
         }
         renderHome();
       }
@@ -375,16 +218,6 @@ function startTimer(){
   }, 30000);
 }
 
-// Make functions global so they can be called from HTML
-  const input = document.getElementById('chat-input');
-  const message = input.value.trim();
-  if(message){
-    chatMessages.push({ player: playerId, message: message, timestamp: Date.now() });
-    update(gameRef, { chat: chatMessages });
-    input.value = '';
-  }
-
-
 function updateChat(){
   const chatDiv = document.getElementById('chat-messages');
   if(chatDiv){
@@ -405,7 +238,8 @@ function listenToGame(gameId){
       updateBoard(data.board);
       currentPlayer = data.turn;
       if (data.winner) {
-        alert(`Winner: ${data.winner}`);
+        window.ModalManager.showAlert(`Winner: ${data.winner}`, 'success');
+        window.messages.push({ type: 'success', content: `Winner: ${data.winner}`, timestamp: Date.now() });
         renderHome();
       }
     }
@@ -437,18 +271,21 @@ function playSound(type){
 }
 
 function showHint(correct){
-  alert('Hint: The correct answer is ' + correct);
+  window.ModalManager.showAlert('Hint: The correct answer is ' + correct, 'info');
+  window.messages.push({ type: 'info', content: 'Hint: The correct answer is ' + correct, timestamp: Date.now() });
 }
 
 let achievements = [];
 function checkAchievements(){
   if(score >= 100 && !achievements.includes('First Century')) {
     achievements.push('First Century');
-    alert('Achievement Unlocked: First Century!');
+    window.ModalManager.showAlert('Achievement Unlocked: First Century!', 'success');
+    window.messages.push({ type: 'success', content: 'Achievement Unlocked: First Century!', timestamp: Date.now() });
   }
   if(totalCorrect >= 10 && !achievements.includes('Grammar Master')) {
     achievements.push('Grammar Master');
-    alert('Achievement Unlocked: Grammar Master!');
+    window.ModalManager.showAlert('Achievement Unlocked: Grammar Master!', 'success');
+    window.messages.push({ type: 'success', content: 'Achievement Unlocked: Grammar Master!', timestamp: Date.now() });
   }
 }
 
@@ -465,12 +302,15 @@ function updateMoveHistory(){
 }
 
 function updateAvatarGlow(){
-  document.querySelectorAll('.avatar-container').forEach(container => {
+  const containers = document.querySelectorAll('.avatar-container');
+  containers.forEach(container => {
     container.classList.remove('active');
   });
-  if(currentPlayer === 'X'){
-    document.getElementById('playerX-avatar').classList.add('active');
-  } else {
-    document.getElementById('playerO-avatar').classList.add('active');
+  if(containers.length >= 2){
+    if(currentPlayer === 'X'){
+      containers[0].classList.add('active');
+    } else {
+      containers[1].classList.add('active');
+    }
   }
 }

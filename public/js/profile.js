@@ -15,7 +15,8 @@ const defaultAvatars = [
 // Make functions global so they can be called from HTML
 window.renderProfile = function(){
   if (!window.currentUser) {
-    alert("Please log in to view your profile.");
+    window.ModalManager.showAlert('Please log in to view your profile.', 'error');
+    window.messages.push({ type: 'error', content: 'Please log in to view your profile.', timestamp: Date.now() });
     renderLogin();
     return;
   }
@@ -107,7 +108,8 @@ window.saveProfile = function(){
   let idx = users.findIndex(u => u.email === currentUser.email);
   if (idx !== -1) users[idx] = currentUser;
   localStorage.setItem('users', JSON.stringify(users));
-  alert("Profile updated!");
+  window.ModalManager.showAlert('Profile updated!', 'success');
+  window.messages.push({ type: 'success', content: 'Profile updated!', timestamp: Date.now() });
   updateNavAvatar();
 }
 

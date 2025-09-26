@@ -4,54 +4,439 @@
       "type": "multiple_choice",
       "question": "What part of speech is the word 'run' in 'I run every day'?",
       "options": ["Noun", "Verb", "Adjective", "Adverb"],
-      "answer": "Verb"
+      "answer": "Verb",
+      "explanation": "A verb shows action or state of being."
     },
     {
       "type": "fill_blank",
-      "question": "She ___ to school every day. (present simple)",
-      "answer": "goes"
+      "question": "She ____ to school every day. (present simple)",
+      "answer": "goes",
+      "explanation": "Third person singular adds -es to the verb 'go'."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: He go to the store yesterday.",
-      "answer": "go"
+      "answer": "go",
+      "explanation": "Use 'went' for past tense of 'go'."
     },
     {
       "type": "sentence_completion",
       "question": "Complete the sentence: The book is ___ the table.",
-      "answer": "on"
+      "answer": "on",
+      "explanation": "'On' indicates position above and touching."
     },
     {
       "type": "multiple_choice",
       "question": "What is a noun?",
       "options": ["Action word", "Naming word", "Describing word", "How word"],
-      "answer": "Naming word"
+      "answer": "Naming word",
+      "explanation": "A noun names a person, place, thing, or idea."
     },
     {
       "type": "fill_blank",
-      "question": "He ___ a book. (present simple)",
-      "answer": "reads"
+      "question": "He ____ a book. (present simple)",
+      "answer": "reads",
+      "explanation": "Third person singular adds -s to the verb 'read'."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: She like pizza.",
-      "answer": "like"
+      "answer": "like",
+      "explanation": "Use 'likes' for third person singular."
     },
     {
       "type": "sentence_completion",
       "question": "Complete: The cat is ___ the box.",
-      "answer": "in"
+      "answer": "in",
+      "explanation": "'In' indicates inside a container."
     },
     {
       "type": "multiple_choice",
       "question": "What is an adjective?",
       "options": ["Action word", "Naming word", "Describing word", "How word"],
-      "answer": "Describing word"
+      "answer": "Describing word",
+      "explanation": "An adjective describes or modifies a noun."
     },
     {
       "type": "fill_blank",
       "question": "They ___ playing. (present continuous)",
-      "answer": "are"
+      "answer": "are",
+      "explanation": "Plural subject uses 'are' with present participle."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is a verb?",
+      "options": ["Action word", "Naming word", "Describing word", "How word"],
+      "answer": "Action word",
+      "explanation": "A verb expresses an action or state."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I ___ happy. (present simple)",
+      "answer": "am",
+      "explanation": "First person singular uses 'am'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is eat an apple.",
+      "answer": "eat",
+      "explanation": "Use 'eating' for present continuous."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The dog is ___ the house.",
+      "answer": "outside",
+      "explanation": "'Outside' indicates exterior position."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is an adverb?",
+      "options": ["Action word", "Naming word", "Describing word", "How word"],
+      "answer": "How word",
+      "explanation": "An adverb describes how, when, or where."
+    },
+    {
+      "type": "fill_blank",
+      "question": "We ___ friends. (present simple)",
+      "answer": "are",
+      "explanation": "Plural subject uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She have two cats.",
+      "answer": "have",
+      "explanation": "Third person singular uses 'has'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The sun is ___ the sky.",
+      "answer": "in",
+      "explanation": "'In' indicates location within."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the plural of 'child'?",
+      "options": ["Childs", "Children", "Childes", "Childrens"],
+      "answer": "Children",
+      "explanation": "'Child' is irregular; plural is 'children'."
+    },
+    {
+      "type": "fill_blank",
+      "question": "You ___ tall. (present simple)",
+      "answer": "are",
+      "explanation": "Second person uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: I goed to the park.",
+      "answer": "goed",
+      "explanation": "Past tense of 'go' is 'went'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The bird is ___ the tree.",
+      "answer": "on",
+      "explanation": "'On' for surface position."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past tense of 'eat'?",
+      "options": ["Eated", "Ate", "Eaten", "Eating"],
+      "answer": "Ate",
+      "explanation": "Irregular verb: eat-ate-eaten."
+    },
+    {
+      "type": "fill_blank",
+      "question": "It ___ raining. (present continuous)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: They plays football.",
+      "answer": "plays",
+      "explanation": "Plural subject uses 'play'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The car is ___ the garage.",
+      "answer": "in",
+      "explanation": "'In' for enclosed space."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is a pronoun?",
+      "options": ["Action word", "Naming word", "Describing word", "Replacing word"],
+      "answer": "Replacing word",
+      "explanation": "A pronoun replaces a noun."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She ___ singing. (present continuous)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He do his homework.",
+      "answer": "do",
+      "explanation": "Third person singular uses 'does'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The fish is ___ the water.",
+      "answer": "in",
+      "explanation": "'In' for liquid or enclosed area."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the comparative of 'big'?",
+      "options": ["Bigger", "Biggest", "More big", "Bigly"],
+      "answer": "Bigger",
+      "explanation": "Add -er for one-syllable adjectives."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I ___ eating. (present continuous)",
+      "answer": "am",
+      "explanation": "First person singular uses 'am'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: We was happy.",
+      "answer": "was",
+      "explanation": "Plural subject uses 'were'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The plane is ___ the clouds.",
+      "answer": "above",
+      "explanation": "'Above' for higher position."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the superlative of 'small'?",
+      "options": ["Smaller", "Smallest", "More small", "Smally"],
+      "answer": "Smallest",
+      "explanation": "Add -est for one-syllable adjectives."
+    },
+    {
+      "type": "fill_blank",
+      "question": "They ___ running. (present continuous)",
+      "answer": "are",
+      "explanation": "Plural subject uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She goed home.",
+      "answer": "goed",
+      "explanation": "Past tense of 'go' is 'went'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The book is ___ the shelf.",
+      "answer": "on",
+      "explanation": "'On' for surface."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is a preposition?",
+      "options": ["Action word", "Naming word", "Describing word", "Position word"],
+      "answer": "Position word",
+      "explanation": "A preposition shows relationship of position."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He ___ sleeping. (present continuous)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: I has a dog.",
+      "answer": "has",
+      "explanation": "First person uses 'have'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The ball is ___ the floor.",
+      "answer": "on",
+      "explanation": "'On' for surface contact."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past tense of 'see'?",
+      "options": ["Seed", "Saw", "Seen", "Seeing"],
+      "answer": "Saw",
+      "explanation": "Irregular verb: see-saw-seen."
+    },
+    {
+      "type": "fill_blank",
+      "question": "We ___ dancing. (present continuous)",
+      "answer": "are",
+      "explanation": "Plural subject uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: You was here.",
+      "answer": "was",
+      "explanation": "Second person uses 'were'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The cat is ___ the mat.",
+      "answer": "on",
+      "explanation": "'On' for surface."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is a conjunction?",
+      "options": ["Action word", "Naming word", "Connecting word", "Describing word"],
+      "answer": "Connecting word",
+      "explanation": "A conjunction connects words or clauses."
+    },
+    {
+      "type": "fill_blank",
+      "question": "It ___ sunny. (present simple)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: They have go.",
+      "answer": "have",
+      "explanation": "After 'have', use past participle 'gone'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The pen is ___ the desk.",
+      "answer": "on",
+      "explanation": "'On' for surface."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the plural of 'man'?",
+      "options": ["Mans", "Men", "Menes", "Mens"],
+      "answer": "Men",
+      "explanation": "Irregular plural for 'man' is 'men'."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She ___ crying. (present continuous)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He like apples.",
+      "answer": "like",
+      "explanation": "Third person singular uses 'likes'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The boy is ___ the door.",
+      "answer": "at",
+      "explanation": "'At' for specific point."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past tense of 'drink'?",
+      "options": ["Drinked", "Drank", "Drunk", "Drinking"],
+      "answer": "Drank",
+      "explanation": "Irregular verb: drink-drank-drunk."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I ___ walking. (present continuous)",
+      "answer": "am",
+      "explanation": "First person singular uses 'am'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She has eat.",
+      "answer": "has",
+      "explanation": "After 'has', use past participle 'eaten'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The girl is ___ the park.",
+      "answer": "in",
+      "explanation": "'In' for enclosed area."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is an interjection?",
+      "options": ["Action word", "Naming word", "Emotion word", "Describing word"],
+      "answer": "Emotion word",
+      "explanation": "An interjection expresses emotion."
+    },
+    {
+      "type": "fill_blank",
+      "question": "You ___ smiling. (present continuous)",
+      "answer": "are",
+      "explanation": "Second person uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: We goed there.",
+      "answer": "goed",
+      "explanation": "Past tense of 'go' is 'went'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The teacher is ___ the classroom.",
+      "answer": "in",
+      "explanation": "'In' for room."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the comparative of 'good'?",
+      "options": ["Gooder", "Better", "Best", "More good"],
+      "answer": "Better",
+      "explanation": "Irregular comparative for 'good'."
+    },
+    {
+      "type": "fill_blank",
+      "question": "They ___ sitting. (present continuous)",
+      "answer": "are",
+      "explanation": "Plural subject uses 'are'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: I was goed.",
+      "answer": "goed",
+      "explanation": "Past participle of 'go' is 'gone'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The apple is ___ the tree.",
+      "answer": "on",
+      "explanation": "'On' for attached to."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the superlative of 'bad'?",
+      "options": ["Badder", "Worse", "Worst", "More bad"],
+      "answer": "Worst",
+      "explanation": "Irregular superlative for 'bad'."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He ___ reading. (present continuous)",
+      "answer": "is",
+      "explanation": "Third person singular uses 'is'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She do it.",
+      "answer": "do",
+      "explanation": "Third person singular uses 'does'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The dog is ___ the yard.",
+      "answer": "in",
+      "explanation": "'In' for enclosed area."
     }
   ],
   "intermediate": [
@@ -59,54 +444,589 @@
       "type": "multiple_choice",
       "question": "Which word is a comparative adjective: bigger, big, biggest?",
       "options": ["big", "bigger", "biggest"],
-      "answer": "bigger"
+      "answer": "bigger",
+      "explanation": "Comparative form compares two things."
     },
     {
       "type": "fill_blank",
-      "question": "She is ___ than her sister. (tall)",
-      "answer": "taller"
+      "question": "She is ____ than her sister. (tall)",
+      "answer": "taller",
+      "explanation": "Add -er to one-syllable adjectives."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: He don't like apples.",
-      "answer": "don't"
+      "answer": "don't",
+      "explanation": "Third person singular uses 'doesn't'."
     },
     {
       "type": "sentence_completion",
       "question": "Complete: I have been waiting ___ an hour.",
-      "answer": "for"
+      "answer": "for",
+      "explanation": "'For' with duration of time."
     },
     {
       "type": "multiple_choice",
       "question": "What is the past tense of 'go'?",
       "options": ["went", "gone", "going", "goes"],
-      "answer": "went"
+      "answer": "went",
+      "explanation": "Irregular past tense."
     },
     {
       "type": "fill_blank",
       "question": "If I ___ rich, I would travel. (conditional)",
-      "answer": "were"
+      "answer": "were",
+      "explanation": "Subjunctive 'were' for unreal conditions."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: She have a car.",
-      "answer": "have"
+      "answer": "have",
+      "explanation": "Third person singular uses 'has'."
     },
     {
       "type": "sentence_completion",
       "question": "Complete: He is good ___ math.",
-      "answer": "at"
+      "answer": "at",
+      "explanation": "'At' for skills or subjects."
     },
     {
       "type": "multiple_choice",
       "question": "Which is a superlative: faster, fast, fastest?",
       "options": ["fast", "faster", "fastest"],
-      "answer": "fastest"
+      "answer": "fastest",
+      "explanation": "Superlative compares three or more."
     },
     {
       "type": "fill_blank",
       "question": "They have ___ here for two hours.",
-      "answer": "been"
+      "answer": "been",
+      "explanation": "Present perfect continuous uses 'been'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past participle of 'write'?",
+      "options": ["Wrote", "Written", "Writing", "Writes"],
+      "answer": "Written",
+      "explanation": "Used in perfect tenses."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She has ___ the book. (read)",
+      "answer": "read",
+      "explanation": "Past participle of 'read' is 'read'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: I have saw the movie.",
+      "answer": "saw",
+      "explanation": "Use past participle 'seen'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: He is interested ___ music.",
+      "answer": "in",
+      "explanation": "'In' for interests."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the present perfect of 'eat'?",
+      "options": ["Ate", "Eaten", "Eating", "Eats"],
+      "answer": "Eaten",
+      "explanation": "Have/has + past participle."
+    },
+    {
+      "type": "fill_blank",
+      "question": "We have ___ dinner. (eat)",
+      "answer": "eaten",
+      "explanation": "Past participle of 'eat'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She has went home.",
+      "answer": "went",
+      "explanation": "Use past participle 'gone'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: They are afraid ___ spiders.",
+      "answer": "of",
+      "explanation": "'Of' after 'afraid'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the future tense of 'be'?",
+      "options": ["Was", "Were", "Will be", "Being"],
+      "answer": "Will be",
+      "explanation": "Will + base form for future."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I will ___ happy. (be)",
+      "answer": "be",
+      "explanation": "Base form after 'will'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He will goes tomorrow.",
+      "answer": "goes",
+      "explanation": "Base form after 'will'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She is famous ___ her singing.",
+      "answer": "for",
+      "explanation": "'For' with fame/reason."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the passive voice of 'They build houses'?",
+      "options": ["Houses are built", "Houses build", "They are building", "Houses were built"],
+      "answer": "Houses are built",
+      "explanation": "Be + past participle for passive."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The cake ___ baked by my mother. (is)",
+      "answer": "is",
+      "explanation": "Present passive uses 'is' + past participle."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The letter was wrote by him.",
+      "answer": "wrote",
+      "explanation": "Past participle of 'write' is 'written'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: He is responsible ___ the project.",
+      "answer": "for",
+      "explanation": "'For' after 'responsible'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the conditional of 'If I have money'?",
+      "options": ["If I had money", "If I have had money", "If I will have money", "If I having money"],
+      "answer": "If I had money",
+      "explanation": "Second conditional uses past tense for unreal present."
+    },
+    {
+      "type": "fill_blank",
+      "question": "If she ___ here, she would help. (be)",
+      "answer": "were",
+      "explanation": "Subjunctive 'were' for all subjects in unreal conditions."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: If he comes, I will go.",
+      "answer": "None",
+      "explanation": "First conditional is correct for real future."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: We are looking ___ the keys.",
+      "answer": "for",
+      "explanation": "'Look for' means search."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the gerund of 'run'?",
+      "options": ["Ran", "Running", "Runs", "Runned"],
+      "answer": "Running",
+      "explanation": "Verb + -ing as noun."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He enjoys ___ in the park. (run)",
+      "answer": "running",
+      "explanation": "Gerund after 'enjoys'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Swimming is fun.",
+      "answer": "None",
+      "explanation": "Gerund as subject is correct."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She is bad ___ cooking.",
+      "answer": "at",
+      "explanation": "'At' for abilities."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the infinitive of 'to go'?",
+      "options": ["Go", "Going", "Went", "Gone"],
+      "answer": "Go",
+      "explanation": "Base form; 'to' makes it full infinitive."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I want ___ home. (go)",
+      "answer": "to go",
+      "explanation": "Full infinitive after 'want'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He decided to study.",
+      "answer": "None",
+      "explanation": "Infinitive after 'decided' is correct."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: They agreed ___ the plan.",
+      "answer": "to",
+      "explanation": "'Agree to' means consent."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the past continuous of 'sing'?",
+      "options": ["Sang", "Sung", "Singing", "Was singing"],
+      "answer": "Was singing",
+      "explanation": "Was/were + -ing for ongoing past action."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She ___ singing when I arrived. (was)",
+      "answer": "was",
+      "explanation": "Third person singular uses 'was'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He was eat dinner.",
+      "answer": "eat",
+      "explanation": "Use 'eating' in past continuous."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: I am tired ___ working.",
+      "answer": "of",
+      "explanation": "'Tired of' means bored with."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the future perfect of 'finish'?",
+      "options": ["Will finish", "Will have finished", "Finishing", "Finished"],
+      "answer": "Will have finished",
+      "explanation": "Will have + past participle for completed future action."
+    },
+    {
+      "type": "fill_blank",
+      "question": "By next year, I ___ my degree. (will have finished)",
+      "answer": "will have finished",
+      "explanation": "Future perfect for action completed before another future time."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She will have finish by then.",
+      "answer": "finish",
+      "explanation": "Use past participle 'finished'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: He is capable ___ doing it.",
+      "answer": "of",
+      "explanation": "'Capable of' + gerund."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the subjunctive mood in 'I suggest that he go'?",
+      "options": ["Go", "Goes", "Going", "Went"],
+      "answer": "Go",
+      "explanation": "Base form in subjunctive for suggestions."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I insist that she ___ here. (be)",
+      "answer": "be",
+      "explanation": "Base form 'be' in subjunctive."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: It's important that he is here.",
+      "answer": "is",
+      "explanation": "Use base form 'be' in subjunctive."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She apologized ___ being late.",
+      "answer": "for",
+      "explanation": "'Apologize for' + gerund."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the reported speech of 'He said, \"I am happy.\"'?",
+      "options": ["He said that he was happy.", "He said that he is happy.", "He says that he was happy.", "He said that I am happy."],
+      "answer": "He said that he was happy.",
+      "explanation": "Backshift tense in reported speech."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She told me that she ___ happy. (was)",
+      "answer": "was",
+      "explanation": "Past tense backshifts to past."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He said that he is tired.",
+      "answer": "is",
+      "explanation": "Backshift to 'was'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: I am excited ___ the trip.",
+      "answer": "about",
+      "explanation": "'Excited about' something."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the causative form of 'have' in 'I had my car repaired'?",
+      "options": ["Had", "Have", "Having", "Repaired"],
+      "answer": "Had",
+      "explanation": "'Have' + object + past participle for causative."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I will ___ my hair cut. (have)",
+      "answer": "have",
+      "explanation": "Causative structure."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She got her car repair.",
+      "answer": "repair",
+      "explanation": "Use past participle 'repaired'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: He is addicted ___ coffee.",
+      "answer": "to",
+      "explanation": "'Addicted to' something."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the phrasal verb 'give up'?",
+      "options": ["Give", "Up", "Give up", "Giving"],
+      "answer": "Give up",
+      "explanation": "Means to stop or quit."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Don't ___ hope. (give up)",
+      "answer": "give up",
+      "explanation": "Phrasal verb meaning surrender."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He looked up the word.",
+      "answer": "None",
+      "explanation": "'Look up' means search in dictionary."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She takes ___ her mother.",
+      "answer": "after",
+      "explanation": "'Take after' means resemble."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the modal verb in 'You should study'?",
+      "options": ["You", "Should", "Study", "Studying"],
+      "answer": "Should",
+      "explanation": "Modal for advice."
+    },
+    {
+      "type": "fill_blank",
+      "question": "You ___ eat vegetables. (should)",
+      "answer": "should",
+      "explanation": "Modal for recommendation."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He can sings well.",
+      "answer": "sings",
+      "explanation": "Base form after modal 'can'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: It might ___ rain tomorrow.",
+      "answer": "rain",
+      "explanation": "Base form after 'might'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the relative pronoun in 'The man who lives here'?",
+      "options": ["The", "Man", "Who", "Here"],
+      "answer": "Who",
+      "explanation": "'Who' for people in relative clauses."
+    },
+    {
+      "type": "fill_blank",
+      "question": "This is the house ___ I grew up. (that)",
+      "answer": "that",
+      "explanation": "'That' for things in relative clauses."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The book which I read was good.",
+      "answer": "None",
+      "explanation": "'Which' for non-restrictive clauses."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She is the girl ___ I met yesterday.",
+      "answer": "whom",
+      "explanation": "'Whom' for object of relative clause."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the indirect object in 'Give me the book'?",
+      "options": ["Give", "Me", "The book", "Book"],
+      "answer": "Me",
+      "explanation": "Receiver of the direct object."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He gave ___ the money. (me)",
+      "answer": "me",
+      "explanation": "Indirect object before direct object."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She told I the story.",
+      "answer": "I",
+      "explanation": "Use object pronoun 'me'."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: I explained ___ the problem.",
+      "answer": "to him",
+      "explanation": "'Explain to' someone."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the participle in 'Having eaten, he left'?",
+      "options": ["Having", "Eaten", "He", "Left"],
+      "answer": "Having eaten",
+      "explanation": "Perfect participle for prior action."
+    },
+    {
+      "type": "fill_blank",
+      "question": "___ finished, she went home. (having)",
+      "answer": "Having",
+      "explanation": "Participle clause for sequence."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Eating dinner, he watched TV.",
+      "answer": "None",
+      "explanation": "Present participle for simultaneous action."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: ___ arrived, we started.",
+      "answer": "Having",
+      "explanation": "Perfect participle for completed action."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the appositive in 'My friend John is here'?",
+      "options": ["My", "Friend", "John", "Here"],
+      "answer": "John",
+      "explanation": "Renames or explains the noun."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Paris, ___ capital of France, is beautiful. (the)",
+      "answer": "the",
+      "explanation": "Appositive provides additional info."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is a teacher, which is interesting.",
+      "answer": "None",
+      "explanation": "Non-restrictive relative clause."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: She bought a car, ___ was expensive.",
+      "answer": "which",
+      "explanation": "'Which' for non-restrictive clause."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the idiom 'kick the bucket' mean?",
+      "options": ["Die", "Run", "Eat", "Sleep"],
+      "answer": "Die",
+      "explanation": "Idiom for passing away."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He ___ the bucket last year. (kicked)",
+      "answer": "kicked",
+      "explanation": "Idiomatic expression."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She spilled the beans.",
+      "answer": "None",
+      "explanation": "Idiom for revealing a secret."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: Don't ___ the boat.",
+      "answer": "rock",
+      "explanation": "Idiom meaning don't cause trouble."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the synonym of 'happy'?",
+      "options": ["Sad", "Joyful", "Angry", "Tired"],
+      "answer": "Joyful",
+      "explanation": "Words with similar meaning."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She is very ___. (joyful)",
+      "answer": "joyful",
+      "explanation": "Synonym for happy."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is very glad.",
+      "answer": "None",
+      "explanation": "Correct synonym usage."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: I am ___ to meet you.",
+      "answer": "pleased",
+      "explanation": "Synonym for happy in this context."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the antonym of 'big'?",
+      "options": ["Small", "Large", "Huge", "Giant"],
+      "answer": "Small",
+      "explanation": "Words with opposite meaning."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The room is ___. (small)",
+      "answer": "small",
+      "explanation": "Antonym for big."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: It is tiny.",
+      "answer": "None",
+      "explanation": "Correct antonym usage."
+    },
+    {
+      "type": "sentence_completion",
+      "question": "Complete: The elephant is ___ .",
+      "answer": "huge",
+      "explanation": "Antonym for small."
     }
   ],
   "advanced": [
@@ -114,54 +1034,639 @@
       "type": "multiple_choice",
       "question": "Identify the clause: 'Although it was raining, we went out.'",
       "options": ["Although it was raining", "we went out", "Both", "Neither"],
-      "answer": "Although it was raining"
+      "answer": "Although it was raining",
+      "explanation": "Subordinate clause introduced by conjunction."
     },
     {
       "type": "fill_blank",
       "question": "If I ___ you, I would study harder. (conditional)",
-      "answer": "were"
+      "answer": "were",
+      "explanation": "Subjunctive in third conditional."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: She said me that she was tired.",
-      "answer": "said me"
+      "answer": "said me",
+      "explanation": "Indirect object pronoun incorrect; use 'told me'."
     },
     {
       "type": "paragraph_correction",
       "question": "Correct: The man which car is red is my friend.",
-      "answer": "The man whose car is red is my friend."
+      "answer": "The man whose car is red is my friend.",
+      "explanation": "Possessive relative pronoun 'whose'."
     },
     {
       "type": "multiple_choice",
       "question": "What is reported speech for 'He said, \"I am tired.\"'?",
-      "options": ["He said that he was tired.", "He said that I am tired.", "He says that he is tired.", "He said that he is tired."],
-      "answer": "He said that he was tired."
+      "options": ["He said that he was tired.", "He said that he is tired.", "He says that he is tired.", "He said that he is tired."],
+      "answer": "He said that he was tired.",
+      "explanation": "Tense backshift in reported speech."
     },
     {
       "type": "fill_blank",
       "question": "By the time she arrives, we ___ dinner. (future perfect)",
-      "answer": "will have finished"
+      "answer": "will have finished",
+      "explanation": "Future perfect for completed action before future time."
     },
     {
       "type": "error_identification",
       "question": "Identify the error: I wish I can fly.",
-      "answer": "can"
+      "answer": "can",
+      "explanation": "Use past subjunctive 'could' in wishes."
     },
     {
       "type": "paragraph_correction",
       "question": "Correct: She don't know the answer, which is surprising.",
-      "answer": "She doesn't know the answer, which is surprising."
+      "answer": "She doesn't know the answer, which is surprising.",
+      "explanation": "Subject-verb agreement in relative clause."
     },
     {
       "type": "multiple_choice",
       "question": "Identify the idiom: 'Break a leg'",
-      "options": ["Good luck", "Injury", "Run fast", "Be careful"],
-      "answer": "Good luck"
+      "options": ["Good luck", "Injury", "Run", "Be careful"],
+      "answer": "Good luck",
+      "explanation": "Idiom meaning good luck, especially in performance."
     },
     {
       "type": "fill_blank",
       "question": "The meeting was postponed ___ the bad weather.",
-      "answer": "because of"
+      "answer": "because of",
+      "explanation": "Preposition phrase for reason."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the subjunctive in 'It is essential that she be here'?",
+      "options": ["Is", "Essential", "Be", "Here"],
+      "answer": "Be",
+      "explanation": "Base form in subjunctive for necessity."
+    },
+    {
+      "type": "fill_blank",
+      "question": "I recommend that he ___ the job. (take)",
+      "answer": "take",
+      "explanation": "Base form in subjunctive after 'recommend'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: It's necessary that he comes.",
+      "answer": "comes",
+      "explanation": "Use base form 'come' in subjunctive."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He insisted that I payed him.",
+      "answer": "He insisted that I paid him.",
+      "explanation": "Past tense 'paid' for regular verb."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the inversion in 'Never have I seen such beauty'?",
+      "options": ["Never", "Have I", "Seen", "Such beauty"],
+      "answer": "Have I",
+      "explanation": "Auxiliary before subject for emphasis."
+    },
+    {
+      "type": "fill_blank",
+      "question": "___ I ever forget this day. (never will)",
+      "answer": "Never will",
+      "explanation": "Inversion with negative adverb."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Seldom does he come here.",
+      "answer": "None",
+      "explanation": "Correct inversion with negative adverb."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: Not only did he come, but also he brought gifts.",
+      "answer": "Not only did he come, but he also brought gifts.",
+      "explanation": "Parallel structure in correlative conjunction."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the cleft sentence for 'She gave me the book'?",
+      "options": ["It was she who gave me the book.", "She gave the book to me.", "The book was given by her.", "She who gave me the book."],
+      "answer": "It was she who gave me the book.",
+      "explanation": "Cleft for emphasis on subject."
+    },
+    {
+      "type": "fill_blank",
+      "question": "It was ___ who solved the problem. (he)",
+      "answer": "he",
+      "explanation": "Cleft sentence structure."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: It was the dog that barked.",
+      "answer": "None",
+      "explanation": "Correct cleft sentence."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: What he did was surprising.",
+      "answer": "What he did was surprising.",
+      "explanation": "Pseudo-cleft sentence."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the ellipsis in 'He is taller than I'?",
+      "options": ["Than", "I", "Am", "Tall"],
+      "answer": "Am",
+      "explanation": "Omitted verb 'am' for conciseness."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She sings better than he ___. (does)",
+      "answer": "does",
+      "explanation": "Ellipsis of repeated verb."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is richer than me.",
+      "answer": "me",
+      "explanation": "Use subject pronoun 'I' in ellipsis."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He is taller than I.",
+      "answer": "He is taller than I am.",
+      "explanation": "Complete the ellipsis for formal English."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the fronting in 'Beautiful is the garden'?",
+      "options": ["Beautiful", "Is", "The garden", "Garden"],
+      "answer": "Beautiful",
+      "explanation": "Adjective moved to front for emphasis."
+    },
+    {
+      "type": "fill_blank",
+      "question": "___ are the stars tonight. (bright)",
+      "answer": "Bright",
+      "explanation": "Fronting for poetic effect."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Loud was the thunder.",
+      "answer": "None",
+      "explanation": "Correct fronting in inversion."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: Happy were the children.",
+      "answer": "Happy were the children.",
+      "explanation": "Fronting with subject-verb inversion."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the nominalization of 'decide'?",
+      "options": ["Decision", "Deciding", "Decided", "Decides"],
+      "answer": "Decision",
+      "explanation": "Verb turned into noun."
+    },
+    {
+      "type": "fill_blank",
+      "question": "His ___ surprised everyone. (decide)",
+      "answer": "decision",
+      "explanation": "Nominalization for formal writing."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The implementation was successful.",
+      "answer": "None",
+      "explanation": "Correct nominalization."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: They made a decide.",
+      "answer": "They made a decision.",
+      "explanation": "Use noun form 'decision'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the collocation 'heavy rain'?",
+      "options": ["Heavy", "Rain", "Heavy rain", "Raining"],
+      "answer": "Heavy rain",
+      "explanation": "Words that frequently go together."
+    },
+    {
+      "type": "fill_blank",
+      "question": "It was ___ last night. (heavy rain)",
+      "answer": "heavy rain",
+      "explanation": "Fixed collocation."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Strong coffee is good.",
+      "answer": "None",
+      "explanation": "Correct collocation."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He made a strong rain.",
+      "answer": "He made a strong effort.",
+      "explanation": "Correct collocation 'strong effort'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the phrasal verb 'look after' mean?",
+      "options": ["Care for", "See", "Find", "Appear"],
+      "answer": "Care for",
+      "explanation": "Multi-word verb meaning take care of."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Please ___ the children. (look after)",
+      "answer": "look after",
+      "explanation": "Phrasal verb for care."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She takes care of her sister.",
+      "answer": "None",
+      "explanation": "Synonym for 'looks after'."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He looks the house after.",
+      "answer": "He looks after the house.",
+      "explanation": "Correct word order for phrasal verb."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the metaphor in 'Time is a thief'?",
+      "options": ["Time", "Is", "A thief", "Thief"],
+      "answer": "A thief",
+      "explanation": "Figure of speech comparing unlike things."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Life is a ___. (journey)",
+      "answer": "journey",
+      "explanation": "Metaphorical comparison."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She is a shining star.",
+      "answer": "None",
+      "explanation": "Metaphor for excellence."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He is a busy bee.",
+      "answer": "He is a busy bee.",
+      "explanation": "Metaphor for hardworking person."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the simile in 'As brave as a lion'?",
+      "options": ["As", "Brave", "As a lion", "Lion"],
+      "answer": "As a lion",
+      "explanation": "Comparison using 'like' or 'as'."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She sings ___ an angel. (like)",
+      "answer": "like",
+      "explanation": "Simile with 'like'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is as strong as ox.",
+      "answer": "ox",
+      "explanation": "Use 'an ox' with article."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He is as strong as an ox.",
+      "answer": "He is as strong as an ox.",
+      "explanation": "Complete simile."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the alliteration in 'Peter Piper picked'?",
+      "options": ["Peter", "Piper", "Picked", "All"],
+      "answer": "P",
+      "explanation": "Repetition of initial consonant sound."
+    },
+    {
+      "type": "fill_blank",
+      "question": "___ and ___ went to sea. (Jack Jill)",
+      "answer": "Jack and Jill",
+      "explanation": "Alliterative nursery rhyme."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Sally sells seashells.",
+      "answer": "None",
+      "explanation": "Alliteration in tongue twister."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: She sells sea shells.",
+      "answer": "She sells sea shells.",
+      "explanation": "Alliterative phrase."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the oxymoron in 'deafening silence'?",
+      "options": ["Deafening", "Silence", "Deafening silence", "None"],
+      "answer": "Deafening silence",
+      "explanation": "Contradictory terms together."
+    },
+    {
+      "type": "fill_blank",
+      "question": "It was a ___ defeat. (bitter sweet)",
+      "answer": "bittersweet",
+      "explanation": "Oxymoron for mixed feelings."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Jumbo shrimp are small.",
+      "answer": "None",
+      "explanation": "Oxymoron for large small things."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The living dead walked.",
+      "answer": "The living dead walked.",
+      "explanation": "Oxymoron in horror context."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the hyperbole in 'I'm so hungry I could eat a horse'?",
+      "options": ["I'm so hungry", "I could eat", "A horse", "Horse"],
+      "answer": "A horse",
+      "explanation": "Exaggeration for emphasis."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He is ___ tall. (as tall as)",
+      "answer": "as tall as",
+      "explanation": "Hyperbole in comparison."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She cried a river.",
+      "answer": "None",
+      "explanation": "Hyperbole for crying a lot."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He is older than Methuselah.",
+      "answer": "He is older than Methuselah.",
+      "explanation": "Hyperbole for very old."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the personification in 'The wind whispered'?",
+      "options": ["The wind", "Whispered", "Wind whispered", "None"],
+      "answer": "Whispered",
+      "explanation": "Giving human qualities to non-human."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Time ___ all wounds. (heals)",
+      "answer": "heals",
+      "explanation": "Personification of time."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The flowers danced in the breeze.",
+      "answer": "None",
+      "explanation": "Personification of flowers."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: Opportunity knocked at the door.",
+      "answer": "Opportunity knocked at the door.",
+      "explanation": "Personification of opportunity."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the onomatopoeia in 'buzz'?",
+      "options": ["Buzz", "Sound", "Insect", "None"],
+      "answer": "Buzz",
+      "explanation": "Word that imitates sound."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The bee went ___. (buzz)",
+      "answer": "buzz",
+      "explanation": "Onomatopoeic word."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The clock ticked loudly.",
+      "answer": "None",
+      "explanation": "Onomatopoeia 'ticked'."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The door creaked open.",
+      "answer": "The door creaked open.",
+      "explanation": "Onomatopoeia 'creaked'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the irony in 'A fire station burns down'?",
+      "options": ["Fire", "Station", "Burns down", "Fire station"],
+      "answer": "Burns down",
+      "explanation": "Opposite of expected outcome."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The police station was ___. (robbed)",
+      "answer": "robbed",
+      "explanation": "Situational irony."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: A doctor smokes.",
+      "answer": "None",
+      "explanation": "Irony in unhealthy doctor."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The lifeguard drowned.",
+      "answer": "The lifeguard drowned.",
+      "explanation": "Situational irony."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the pun in 'Time flies like an arrow'?",
+      "options": ["Time", "Flies", "Like an arrow", "Arrow"],
+      "answer": "Flies",
+      "explanation": "Word with double meaning."
+    },
+    {
+      "type": "fill_blank",
+      "question": "She has a ___ personality. (magnetic)",
+      "answer": "magnetic",
+      "explanation": "Pun on 'attractive'."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He is a real character.",
+      "answer": "None",
+      "explanation": "Pun on 'person' and 'eccentric'."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: She broke his heart.",
+      "answer": "She broke his heart.",
+      "explanation": "Metaphor, not pun."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the euphemism for 'died'?",
+      "options": ["Passed away", "Gone", "Left", "Departed"],
+      "answer": "Passed away",
+      "explanation": "Milder term for unpleasant concept."
+    },
+    {
+      "type": "fill_blank",
+      "question": "He ___ peacefully. (passed away)",
+      "answer": "passed away",
+      "explanation": "Euphemism for died."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: He kicked the bucket.",
+      "answer": "None",
+      "explanation": "Slang euphemism for died."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: He is no longer with us.",
+      "answer": "He is no longer with us.",
+      "explanation": "Euphemism for died."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the understatement in 'It's a bit chilly' for freezing?",
+      "options": ["It's a bit", "Chilly", "Freezing", "Bit chilly"],
+      "answer": "Bit chilly",
+      "explanation": "Deliberate downplaying."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The disaster was ___ described. (under)",
+      "answer": "under",
+      "explanation": "Understatement for severity."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The storm was quite windy.",
+      "answer": "None",
+      "explanation": "Understatement for hurricane."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: It was a minor setback.",
+      "answer": "It was a minor setback.",
+      "explanation": "Understatement for major failure."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the synecdoche in 'All hands on deck'?",
+      "options": ["All", "Hands", "On deck", "Deck"],
+      "answer": "Hands",
+      "explanation": "Part represents whole."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The ___ are hungry. (company)",
+      "answer": "company",
+      "explanation": "Synecdoche for people."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: The White House issued a statement.",
+      "answer": "None",
+      "explanation": "Synecdoche for US government."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: Wheels are turning.",
+      "answer": "Wheels are turning.",
+      "explanation": "Synecdoche for progress."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the metonymy in 'The pen is mightier than the sword'?",
+      "options": ["Pen", "Mightier", "Sword", "Than"],
+      "answer": "Pen",
+      "explanation": "Associated concept represents thing."
+    },
+    {
+      "type": "fill_blank",
+      "question": "The ___ declared war. (crown)",
+      "answer": "crown",
+      "explanation": "Metonymy for monarchy."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: Hollywood produces movies.",
+      "answer": "None",
+      "explanation": "Metonymy for film industry."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The suits decided.",
+      "answer": "The suits decided.",
+      "explanation": "Metonymy for businessmen."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the anaphora in 'I have a dream...'?",
+      "options": ["I have", "A dream", "Dream", "Have"],
+      "answer": "I have",
+      "explanation": "Repetition at beginning of clauses."
+    },
+    {
+      "type": "fill_blank",
+      "question": "___ shall not perish. (we)",
+      "answer": "We",
+      "explanation": "Anaphora in famous speech."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: To be or not to be.",
+      "answer": "None",
+      "explanation": "Anaphora in Hamlet."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: Ask not what your country can do for you.",
+      "answer": "Ask not what your country can do for you.",
+      "explanation": "Anaphora in Kennedy speech."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the chiasmus in 'Ask not what your country can do for you, ask what you can do for your country'?",
+      "options": ["Ask not", "What your country", "Can do for you", "Ask what you"],
+      "answer": "Ask what you",
+      "explanation": "Reversal of structure in parallel clauses."
+    },
+    {
+      "type": "fill_blank",
+      "question": "Live simply so that others may ___. (simply live)",
+      "answer": "simply live",
+      "explanation": "Chiasmus for emphasis."
+    },
+    {
+      "type": "error_identification",
+      "question": "Identify the error: She sells seashells by the seashore.",
+      "answer": "None",
+      "explanation": "Alliteration, not chiasmus."
+    },
+    {
+      "type": "paragraph_correction",
+      "question": "Correct: The quick brown fox jumps over the lazy dog.",
+      "answer": "The quick brown fox jumps over the lazy dog.",
+      "explanation": "Pangram, not chiasmus."
     }
   ]
 }

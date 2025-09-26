@@ -67,6 +67,7 @@ window.selectDifficulty = function(diff){
 window.renderAbout = function(){
   document.getElementById('app').innerHTML = `<main>
 <div class="about-hero">
+  <img src="https://via.placeholder.com/800x300/008080/ffffff?text=T-Gram+Hero" alt="T-Gram Hero Image" class="img-fluid">
   <h1>About T-Gram</h1>
   <p class="hero-subtitle">Empowering Rural Education Through Gamified Learning</p>
 </div>
@@ -126,12 +127,61 @@ window.loadQuestions = async function() {
       window.questions = await response.json();
     } catch (error) {
       console.error('Failed to load questions:', error);
-      // Fallback questions
-      window.questions = {
-        beginner: [{type: "multiple_choice", question: "What is a verb?", options: ["Action word", "Naming word", "Describing word"], answer: "Action word"}],
-        intermediate: [{type: "multiple_choice", question: "Choose the correct tense: She ___ yesterday.", options: ["go", "goes", "went"], answer: "went"}],
-        advanced: [{type: "multiple_choice", question: "Identify the idiom: 'Break a leg'", options: ["Good luck", "Injury", "Run"], answer: "Good luck"}]
+      // Fallback questions from sample, mapped to lowercase keys and standard format
+      const sampleQuestions = {
+        beginner: [
+          {question:"She ___ to school every day.",answer:"goes",options:["go","goes","gone"], type: "multiple_choice"},
+          {question:"I ___ happy today.",answer:"am",options:["is","are","am"], type: "multiple_choice"},
+          {question:"They ___ eating lunch.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"He ___ a doctor.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"We ___ playing soccer.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"The cat ___ on the mat.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"You ___ my best friend.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"It ___ raining outside.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"My friends ___ coming over.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"The book ___ interesting.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"Dogs ___ loyal animals.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"She ___ singing a song.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"We ___ going to the park.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"The sun ___ shining brightly.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
+          {question:"Birds ___ flying in the sky.",answer:"are",options:["is","are","was"], type: "multiple_choice"}
+        ],
+        intermediate: [
+          {question:"They ___ playing outside.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
+          {question:"He has ___ a book.",answer:"read",options:["read","reads","reading"], type: "multiple_choice"},
+          {question:"She ___ to the store yesterday.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
+          {question:"I ___ finished my homework.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
+          {question:"They ___ watching TV.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
+          {question:"She ___ her homework already.",answer:"has done",options:["has done","have done","did"], type: "multiple_choice"},
+          {question:"We ___ to the beach last summer.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
+          {question:"He ___ playing the guitar.",answer:"is",options:["is","are","was"], type: "multiple_choice"},
+          {question:"They ___ eaten dinner yet.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
+          {question:"The movie ___ at 8 PM.",answer:"starts",options:["start","starts","started"], type: "multiple_choice"},
+          {question:"I ___ my keys at home.",answer:"left",options:["leave","left","leaved"], type: "multiple_choice"},
+          {question:"She ___ a new car.",answer:"has bought",options:["has bought","have bought","bought"], type: "multiple_choice"},
+          {question:"We ___ for the bus.",answer:"are waiting",options:["is waiting","are waiting","was waiting"], type: "multiple_choice"},
+          {question:"The teacher ___ the lesson.",answer:"is explaining",options:["is explaining","are explaining","was explaining"], type: "multiple_choice"},
+          {question:"They ___ to music.",answer:"are listening",options:["is listening","are listening","was listening"], type: "multiple_choice"}
+        ],
+        advanced: [
+          {question:"By the time she arrived, he ___ left.",answer:"had",options:["has","had","have"], type: "multiple_choice"},
+          {question:"Identify the error: 'If I was you, I would study.'",answer:"was",options:["was","were","is"], type: "multiple_choice"},
+          {question:"She would have ___ if she had known.",answer:"come",options:["come","came","comes"], type: "multiple_choice"},
+          {question:"He ___ the book before the movie.",answer:"had read",options:["has read","had read","read"], type: "multiple_choice"},
+          {question:"They ___ to the party if invited.",answer:"would go",options:["will go","would go","went"], type: "multiple_choice"},
+          {question:"If he ___ harder, he would have passed.",answer:"had studied",options:["has studied","had studied","studied"], type: "multiple_choice"},
+          {question:"She wishes she ___ the answer.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
+          {question:"By next year, I ___ here for ten years.",answer:"will have lived",options:["will have lived","will live","have lived"], type: "multiple_choice"},
+          {question:"He acted as if he ___ the boss.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
+          {question:"I would rather you ___ smoking.",answer:"stopped",options:["stop","stopped","stopping"], type: "multiple_choice"},
+          {question:"It's high time we ___ the meeting.",answer:"started",options:["start","started","starting"], type: "multiple_choice"},
+          {question:"She suggested that he ___ early.",answer:"leave",options:["leaves","leave","left"], type: "multiple_choice"},
+          {question:"If only I ___ what to do.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
+          {question:"They demanded that the rules ___ changed.",answer:"be",options:["is","are","be"], type: "multiple_choice"},
+          {question:"He talks as though he ___ everything.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"}
+        ]
       };
+      window.questions = sampleQuestions;
     }
   }
   const diffKey = window.selectedDifficulty.toLowerCase();
@@ -151,66 +201,86 @@ window.getTimerDuration = function() {
   }
 };
 
-// ===== Offline PvP =====
-window.opponentName = '';
+// ===== Offline PvP Implementation =====
 window.board = Array(9).fill(null);
 window.currentPlayer = 'X';
-window.currentQuestionIndex = 0;
+window.streak = 0;
+window.userScore = 0;
+window.opponentName = '';
 window.gameQuestions = [];
+window.currentQuestionIndex = 0;
 window.selectedAnswer = '';
+window.wrongAnswers = [];
+window.allAnswers = [];
+window.badges = JSON.parse(localStorage.getItem('badges')) || [];
+window.timerInterval = null;
 
 window.startOfflinePvP = async function() {
-  window.opponentName = prompt("Enter opponent name:", "Player 2");
-  if (!window.opponentName) window.opponentName = "Player 2";
+  if (!window.selectedDifficulty) {
+    window.ModalManager.showAlert("Please select a difficulty first!", 'error');
+    return;
+  }
 
+  // Reset game state
   window.board = Array(9).fill(null);
   window.currentPlayer = 'X';
+  window.streak = 0;
+  window.userScore = 0;
+  window.opponentScore = 0;
   window.currentQuestionIndex = 0;
+  window.wrongAnswers = [];
+  window.allAnswers = [];
   window.gameQuestions = [];
-  window.selectedAnswer = '';
 
-  await loadQuestionsForOffline();
-  renderOfflineInterface();
-  renderBoard();
-}
+  await window.loadQuestions();
 
-async function loadQuestionsForOffline() {
-  await loadQuestions();
-}
+  window.renderOfflineInterface();
+  window.renderBoard();
+  window.updateStreakDisplay();
+};
 
 window.renderOfflineInterface = function() {
   document.getElementById('app').innerHTML = `
-    <div class="board-container">
-      <div class="players">
-        <div class="player">${window.currentUser.username} = X</div>
-        <div class="player">${window.opponentName} = O</div>
-      </div>
-      <div class="board"></div>
-      <div id="question-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-          <h3 id="question-title"></h3>
-          <div id="question-content"></div>
-          <div id="question-options"></div>
-          <div class="timer">Time left: <span id="timer-display">30</span>s</div>
-          <button class="btn" id="submit-answer">Submit</button>
+    <main class="offline-page">
+      <div class="gradient-bg">
+        <h2 class="page-title">🎓 Grammar Grid</h2>
+        <div class="header-flex">
+          <div class="players-flex">
+            <div class="player-info player-x ${window.currentPlayer === 'X' ? 'active' : ''}">
+              <span>Unknown = X</span>
+              <span>Score: <span id="user-score">0</span></span>
+            </div>
+            <div class="player-info player-o ${window.currentPlayer === 'O' ? 'active' : ''}">
+              <span>Opponent = O</span>
+              <span>Score: <span id="opponent-score">0</span></span>
+            </div>
+          </div>
+          <div class="streak-info">Streak: <span id="streak-count">0</span> 🔥</div>
+        </div>
+        <div class="board-grid" id="board"></div>
+        <div class="bottom-buttons">
+          <button class="btn" onclick="window.renderHome()">Back to Home</button>
+          <button class="btn" onclick="window.showReview()" id="review-btn" style="display:none;">View Answers</button>
         </div>
       </div>
-      <button class="btn" onclick="renderHome()">Back</button>
-    </div>
+    </main>
   `;
-}
+  // Question modal will be handled dynamically by showQuestion
+};
 
 window.renderBoard = function() {
-  const boardEl = document.querySelector('.board');
+  const boardEl = document.querySelector('#board');
+  if (!boardEl) return;
   boardEl.innerHTML = '';
   for (let i = 0; i < 9; i++) {
     const cell = document.createElement('div');
-    cell.classList.add('cell');
+    cell.classList.add('board-cell');
+    cell.dataset.index = i;
     if (window.board[i]) {
       cell.textContent = window.board[i];
-      cell.classList.add(window.board[i]);
+      cell.classList.add(window.board[i].toLowerCase());
     } else {
-      cell.addEventListener('click', () => attemptMove(i));
+      cell.addEventListener('click', () => window.attemptMove(i));
     }
     boardEl.appendChild(cell);
   }
@@ -218,129 +288,371 @@ window.renderBoard = function() {
 
 window.attemptMove = function(index) {
   if (window.board[index] !== null) return;
-  showQuestion(index);
+  window.currentMoveIndex = index;
+  window.showQuestion();
 };
 
-window.showQuestion = function(index) {
+window.showQuestion = function() {
   if (window.currentQuestionIndex >= window.gameQuestions.length) {
-    alert("No more questions! Game over.");
+    window.ModalManager.showAlert("No more questions! Game continues without questions.", 'info');
+    window.placeMove(); // Allow move without question
     return;
   }
   window.currentQuestion = window.gameQuestions[window.currentQuestionIndex];
-  const modal = document.getElementById('question-modal');
-  const title = document.getElementById('question-title');
-  const content = document.getElementById('question-content');
-  const options = document.getElementById('question-options');
-  const submitBtn = document.getElementById('submit-answer');
 
-  title.textContent = `Question for ${window.currentPlayer}`;
-  content.textContent = window.currentQuestion.question;
+  // Build modal content dynamically
+  const title = `Question for ${window.currentPlayer === 'X' ? 'Unknown' : 'Opponent'}`;
+  const questionContent = window.currentQuestion.question;
+  let optionsHtml = '';
+  let inputHtml = '';
 
-  options.innerHTML = '';
-  if (window.currentQuestion.type === 'multiple_choice') {
-    window.currentQuestion.options.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.classList.add('btn');
-      btn.textContent = opt;
-      btn.onclick = () => selectAnswer(idx);
-      options.appendChild(btn);
-    });
-  } else {
-    // Add other types if needed
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = 'answer-input';
-    options.appendChild(input);
+  switch (window.currentQuestion.type) {
+    case 'multiple_choice':
+      optionsHtml = window.currentQuestion.options.map(opt => 
+        `<button class="btn option-btn" onclick="window.selectAnswer('${opt.replace(/'/g, "\\'")}')">${opt}</button>`
+      ).join('');
+      break;
+    case 'fill_blank':
+    case 'error_identification':
+    case 'sentence_completion':
+      inputHtml = `<input type="text" id="answer-input" placeholder="Enter your answer">`;
+      break;
+    case 'paragraph_correction':
+      inputHtml = `<textarea id="answer-input" placeholder="Correct the paragraph"></textarea>`;
+      break;
   }
 
-  submitBtn.onclick = () => submitAnswer(index);
-  modal.style.display = 'flex';
-  startTimer();
+  const content = `
+    <h3 id="question-title">${title}</h3>
+    <div id="question-content">${questionContent}</div>
+    <div id="question-options">${optionsHtml || inputHtml}</div>
+    <div id="question-feedback" style="display:none;"></div>
+    <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration() / 1000}</span>s</div>
+    <button class="btn" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
+    <button class="btn secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
+    <div id="tip" class="tip" style="display:none;"></div>
+  `;
+
+  window.ModalManager.showModal('question-modal', content, 'info');
+  window.startTimer();
 };
 
-window.selectAnswer = function(idx) {
-  window.selectedAnswer = window.currentQuestion.options[idx];
+window.selectAnswer = function(answer) {
+  window.selectedAnswer = answer;
 };
 
-window.submitAnswer = function(index) {
+window.submitAnswer = function() {
   let userAnswer = '';
+  const input = document.getElementById('answer-input');
   if (window.currentQuestion.type === 'multiple_choice') {
     userAnswer = window.selectedAnswer || '';
-  } else {
-    userAnswer = document.getElementById('answer-input').value.trim();
+  } else if (input) {
+    userAnswer = input.value.trim();
   }
+
   const correct = userAnswer.toLowerCase() === window.currentQuestion.answer.toLowerCase();
-  closeQuestion();
+
   if (correct) {
-    placeMove(index);
+    window.ModalManager.showAlert('Correct! +10 points', 'success');
+    window.messages.push({ type: 'success', content: `Correct: ${window.currentQuestion.answer}`, timestamp: Date.now() });
+    window.allAnswers.push({
+      question: window.currentQuestion.question,
+      userAnswer: userAnswer,
+      correctAnswer: window.currentQuestion.answer,
+      explanation: window.currentQuestion.explanation || 'Great job!',
+      isCorrect: true
+    });
+    window.ModalManager.hideModal('question-modal');
+    window.streak++;
+    if (window.currentPlayer === 'X') {
+      window.userScore += 10;
+    } else {
+      window.opponentScore += 10;
+    }
+    window.updateStreakDisplay();
+    window.awardBadgeIfEligible();
+    window.updateScores();
+    window.placeMove();
+    window.currentQuestionIndex++;
   } else {
-    window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
-    alert("Wrong answer! Turn lost.");
+    // Show feedback
+    const feedbackHtml = `
+      <p><strong>Wrong!</strong></p>
+      <p>Correct answer: <strong>${window.currentQuestion.answer}</strong></p>
+      <p>Tip: ${window.currentQuestion.explanation || 'Practice more!'}</p>
+    `;
+    const content = `
+      <div id="question-feedback">${feedbackHtml}</div>
+      <button class="btn" onclick="window.continueWrong()">Continue</button>
+    `;
+    window.ModalManager.showModal('question-modal', content, 'error');
+
+    // Stop timer
+    if (window.timerInterval) {
+      clearInterval(window.timerInterval);
+      window.timerInterval = null;
+    }
+
+    window.wrongAnswers.push({...window.currentQuestion, userAnswer});
+    window.allAnswers.push({
+      question: window.currentQuestion.question,
+      userAnswer: userAnswer,
+      correctAnswer: window.currentQuestion.answer,
+      explanation: window.currentQuestion.explanation || 'Practice more!',
+      isCorrect: false
+    });
+    window.messages.push({ type: 'error', content: `Wrong! Correct: ${window.currentQuestion.answer}. ${window.currentQuestion.explanation || 'Practice more!'}` , timestamp: Date.now() });
+    window.streak = 0;
+    window.updateStreakDisplay();
+  }
+};
+
+window.continueWrong = function() {
+  window.ModalManager.hideModal('question-modal');
+  window.switchPlayer();
+  if (window.currentPlayer === 'O') {
+    window.simulateOpponentTurn();
   }
   window.currentQuestionIndex++;
 };
 
-window.placeMove = function(index) {
-  window.board[index] = window.currentPlayer;
-  renderBoard();
-  const winner = checkWinner(window.board);
-  if (winner) {
-    if (winner === 'X') {
-      alert(`${window.currentUser.username} wins!`);
-      window.addScore(window.currentUser.username, 1, 1, 0, {});
-    } else {
-      alert(`${window.opponentName} wins!`);
-      window.addScore(window.currentUser.username, 0, 1, 0, {});
-    }
-    setTimeout(() => renderHome(), 2000);
-    return;
+window.skipQuestion = function() {
+  window.ModalManager.hideModal('question-modal');
+  window.ModalManager.showAlert("Skipped! Turn lost.", 'error');
+  window.messages.push({ type: 'error', content: 'Skipped question - turn lost.', timestamp: Date.now() });
+  window.allAnswers.push({
+    question: window.currentQuestion.question,
+    userAnswer: 'Skipped',
+    correctAnswer: window.currentQuestion.answer,
+    explanation: 'Question was skipped.',
+    isCorrect: false
+  });
+  window.wrongAnswers.push({...window.currentQuestion, userAnswer: 'Skipped'});
+  window.streak = 0;
+  window.updateStreakDisplay();
+  window.switchPlayer();
+  if (window.currentPlayer === 'O') {
+    window.simulateOpponentTurn();
   }
-  if (window.board.every(cell => cell !== null)) {
-    alert("It's a draw!");
-    setTimeout(() => renderHome(), 2000);
-    return;
-  }
-  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
+  window.currentQuestionIndex++;
 };
 
-function checkWinner(cells) {
+window.simulateOpponentTurn = function() {
+  // Simulate O (opponent) answer: 70% correct
+  const isCorrect = Math.random() < 0.7;
+  if (isCorrect) {
+    window.opponentScore += 10;
+    window.streak = 0; // Opponent correct resets user streak
+    window.updateStreakDisplay();
+    window.updateScores();
+    // Choose a random empty cell for opponent move
+    const emptyCells = window.board.map((cell, index) => cell === null ? index : null).filter(index => index !== null);
+    if (emptyCells.length > 0) {
+      window.currentMoveIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+      window.placeMove();
+    }
+    window.ModalManager.showAlert('Opponent got it correct! +10 points', 'info');
+  } else {
+    // Opponent wrong, switch back to X without move
+    window.switchPlayer();
+    window.ModalManager.showAlert('Opponent got it wrong. Your turn again!', 'info');
+  }
+};
+
+window.placeMove = function() {
+  const index = window.currentMoveIndex;
+  const boardEl = document.querySelector('#board');
+  if (!boardEl || boardEl.children.length < 9) {
+    console.error('Board not found or invalid state');
+    return;
+  }
+  const cell = boardEl.children[index];
+  cell.textContent = window.currentPlayer;
+  cell.classList.add(window.currentPlayer.toLowerCase());
+  cell.classList.add('placed');
+  // Remove click listener if present
+  cell.onclick = null;
+  cell.style.pointerEvents = 'none'; // Prevent further interaction
+
+  window.board[index] = window.currentPlayer;
+
+  const winner = window.checkWinner(window.board);
+  if (winner) {
+    window.endGame(winner);
+    return;
+  }
+
+  if (window.board.every(cell => cell !== null)) {
+    window.endGame('draw');
+    return;
+  }
+
+  window.switchPlayer();
+  window.updateScores();
+};
+
+window.switchPlayer = function() {
+  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
+  // Update active player highlight
+  document.querySelectorAll('.player-info').forEach(p => p.classList.remove('active'));
+  const activePlayer = document.querySelector(`.player-info:nth-child(${window.currentPlayer === 'X' ? 1 : 2})`);
+  if (activePlayer) activePlayer.classList.add('active');
+  window.updateScores();
+};
+
+window.updateScores = function() {
+  const userScoreEl = document.getElementById('user-score');
+  const opponentScoreEl = document.getElementById('opponent-score');
+  if (userScoreEl) userScoreEl.textContent = window.userScore;
+  if (opponentScoreEl) opponentScoreEl.textContent = window.opponentScore;
+};
+
+window.checkWinner = function(cells) {
   const combos = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
+    [0,1,2], [3,4,5], [6,7,8],
+    [0,3,6], [1,4,7], [2,5,8],
+    [0,4,8], [2,4,6]
   ];
-  for (const [a,b,c] of combos) {
-    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) return cells[a];
+  for (const combo of combos) {
+    const [a, b, c] = combo;
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      // Highlight winning line
+      combo.forEach(i => {
+        const cell = document.querySelector(`[data-index="${i}"]`);
+        if (cell) cell.classList.add('win');
+      });
+      return cells[a];
+    }
   }
   return null;
-}
-
-window.closeQuestion = function() {
-  document.getElementById('question-modal').style.display = 'none';
-  stopTimer();
 };
 
-let timerInterval;
-function startTimer() {
+window.endGame = function(result) {
+  let wins = 0, losses = 0, draws = 0;
+  let message = '';
+  if (result === 'X') {
+    wins = 1;
+    message = `Unknown wins! 🎉`;
+    window.awardBadge('victory');
+    window.messages.push({ type: 'success', content: message, timestamp: Date.now() });
+  } else if (result === 'O') {
+    losses = 1;
+    message = `Opponent wins!`;
+    window.awardBadge('defeat');
+    window.messages.push({ type: 'error', content: message, timestamp: Date.now() });
+  } else if (result === 'draw') {
+    draws = 1;
+    message = "It's a draw! 🤝";
+    window.awardBadge('draw');
+    window.messages.push({ type: 'info', content: message, timestamp: Date.now() });
+  }
+
+  window.ModalManager.showAlert(message, result === 'X' ? 'success' : result === 'O' ? 'error' : 'info');
+
+  // Re-render board to show final state
+  window.renderBoard();
+  window.updateStreakDisplay();
+  window.updateScores();
+
+  // Update local scores (user as X, opponent as O)
+  const scores = JSON.parse(localStorage.getItem('scores') || '[]');
+  const userScores = scores.find(s => s.user === 'Unknown') || {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0, totalCorrect: 0, totalQuestions: 0, totalTime: 0, averageTime: 0, accuracy: 0, streak: 0, highestStreak: 0, level: 1, categoryScores: {}, rankTier: 'Bronze', achievements: [], avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown'};
+  userScores.wins += (result === 'X' ? 1 : 0);
+  userScores.losses += (result === 'O' ? 1 : 0);
+  userScores.draws += (result === 'draw' ? 1 : 0);
+  userScores.totalGames += 1;
+  userScores.totalScore += window.userScore;
+  const idx = scores.findIndex(s => s.user === 'Unknown');
+  if (idx > -1) scores[idx] = userScores;
+  else scores.push(userScores);
+  localStorage.setItem('scores', JSON.stringify(scores));
+
+  // Show review button
+  const reviewBtn = document.getElementById('review-btn');
+  if (reviewBtn) reviewBtn.style.display = 'inline-block';
+};
+
+window.showReview = function() {
+  // Include incorrect and skipped answers
+  const wrongs = window.wrongAnswers;
+
+  if (wrongs.length === 0) {
+    window.ModalManager.showAlert('No mistakes or skipped questions to review!', 'info');
+    return;
+  }
+
+  // Build review content: list of wrongs with question, user answer, correct, explanation
+  let reviewHtml = '<div class="review-modal-content"><h3>Review Your Mistakes</h3><ul class="mistakes-list">';
+  wrongs.forEach((wrong, index) => {
+    reviewHtml += `
+      <li>
+        <strong>Question ${index + 1}:</strong> ${wrong.question}<br>
+        <strong>Your Answer:</strong> ${wrong.userAnswer || 'No answer'}<br>
+        <strong>Correct Answer:</strong> ${wrong.answer}<br>
+        <strong>Explanation:</strong> ${wrong.explanation || 'Review the concept for better understanding.'}
+      </li>
+    `;
+  });
+  reviewHtml += '</ul><button class="close-btn" onclick="window.ModalManager.hideModal(\'review-modal\')">Close</button></div>';
+
+  // Show custom modal content
+  window.ModalManager.showModal('review-modal', reviewHtml, 'info');
+};
+
+window.closeQuestion = function() {
+  window.ModalManager.hideModal('question-modal');
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
+};
+
+window.startTimer = function() {
   const display = document.getElementById('timer-display');
-  let time = 30;
+  let time = window.getTimerDuration() / 1000;
   display.textContent = time;
-  timerInterval = setInterval(() => {
+  window.timerInterval = setInterval(() => {
     time--;
     display.textContent = time;
     if (time <= 0) {
-      clearInterval(timerInterval);
-      alert("Time's up! Turn lost.");
-      closeQuestion();
-      window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
-      window.currentQuestionIndex++;
+      clearInterval(window.timerInterval);
+      window.timerInterval = null;
+      window.skipQuestion();
     }
   }, 1000);
-}
+};
 
-function stopTimer() {
-  clearInterval(timerInterval);
-}
+window.updateStreakDisplay = function() {
+  document.getElementById('streak-count').textContent = window.streak;
+  // Simple animation for streak
+  const streakEl = document.getElementById('streak-count');
+  if (streakEl) {
+    streakEl.style.transform = 'scale(1.2)';
+    setTimeout(() => streakEl.style.transform = 'scale(1)', 200);
+  }
+};
+
+window.awardBadgeIfEligible = function() {
+  const badgeTypes = {
+    'tense_master': window.streak >= 5 && window.selectedDifficulty === 'Beginner',
+    'clause_crusher': window.userScore >= 50 && window.selectedDifficulty === 'Advanced',
+    'grammar_veteran': (window.badges.filter(b => b.type === 'victory').length + 1) % 10 === 0
+  };
+  for (const [type, condition] of Object.entries(badgeTypes)) {
+    if (condition && !window.badges.some(b => b.type === type)) {
+      window.awardBadge(type);
+    }
+  }
+};
+
+window.awardBadge = function(type) {
+  const badge = { type, difficulty: window.selectedDifficulty, date: new Date().toISOString() };
+  window.badges.push(badge);
+  localStorage.setItem('badges', JSON.stringify(window.badges));
+  window.ModalManager.showAlert(`Badge awarded: ${type.replace('_', ' ').toUpperCase()}! 🏆`, 'success');
+  window.messages.push({ type: 'success', content: `Badge: ${type.replace('_', ' ').toUpperCase()}`, timestamp: Date.now() });
+};
+
 
 // ===== Initialize Dark Mode =====
 if(localStorage.getItem('dark') === "true") document.body.classList.add('dark');

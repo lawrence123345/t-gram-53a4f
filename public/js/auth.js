@@ -1,6 +1,6 @@
 // Make variables global so they can be accessed from other files
 window.users = [
-    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
+    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown"}
 ];
 window.currentUser = null;
 localStorage.setItem('users', JSON.stringify(window.users));
@@ -41,7 +41,10 @@ window.handleLogin = function(){
     currentUser = user;
     renderHome();
     updateNav(true);
-  } else alert("Invalid credentials");
+  } else {
+    window.ModalManager.showAlert('Invalid credentials', 'error');
+    window.messages.push({ type: 'error', content: 'Invalid credentials', timestamp: Date.now() });
+  }
 }
 
 // Make functions global so they can be called from HTML
@@ -49,8 +52,12 @@ window.handleSignup = function(){
   const username = document.getElementById('signup-user').value;
   const email = document.getElementById('signup-email').value;
   const pass = document.getElementById('signup-pass').value;
-  if(users.find(u => u.email === email)){ alert("Email exists"); return; }
-  const newUser = {username, email, password: pass, avatar: "😀"};
+  if(users.find(u => u.email === email)){
+    window.ModalManager.showAlert('Email exists', 'error');
+    window.messages.push({ type: 'error', content: 'Email exists', timestamp: Date.now() });
+    return;
+  }
+  const newUser = {username, email, password: pass, avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`};
   users.push(newUser);
   localStorage.setItem('users', JSON.stringify(users));
   currentUser = newUser;

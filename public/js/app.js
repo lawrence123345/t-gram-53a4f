@@ -342,6 +342,12 @@ window.selectAnswer = function(answer) {
 };
 
 window.submitAnswer = function() {
+  // Clear timer if running
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
+
   let userAnswer = '';
   const input = document.getElementById('answer-input');
   if (window.currentQuestion.type === 'multiple_choice') {
@@ -387,12 +393,6 @@ window.submitAnswer = function() {
     `;
     window.ModalManager.showModal('question-modal', content, 'error');
 
-    // Stop timer
-    if (window.timerInterval) {
-      clearInterval(window.timerInterval);
-      window.timerInterval = null;
-    }
-
     window.wrongAnswers.push({...window.currentQuestion, userAnswer});
     window.allAnswers.push({
       question: window.currentQuestion.question,
@@ -410,9 +410,6 @@ window.submitAnswer = function() {
 window.continueWrong = function() {
   window.ModalManager.hideModal('question-modal');
   window.switchPlayer();
-  if (window.currentPlayer === 'O') {
-    window.simulateOpponentTurn();
-  }
   window.currentQuestionIndex++;
 };
 
@@ -431,33 +428,10 @@ window.skipQuestion = function() {
   window.streak = 0;
   window.updateStreakDisplay();
   window.switchPlayer();
-  if (window.currentPlayer === 'O') {
-    window.simulateOpponentTurn();
-  }
   window.currentQuestionIndex++;
 };
 
-window.simulateOpponentTurn = function() {
-  // Simulate O (opponent) answer: 70% correct
-  const isCorrect = Math.random() < 0.7;
-  if (isCorrect) {
-    window.opponentScore += 10;
-    window.streak = 0; // Opponent correct resets user streak
-    window.updateStreakDisplay();
-    window.updateScores();
-    // Choose a random empty cell for opponent move
-    const emptyCells = window.board.map((cell, index) => cell === null ? index : null).filter(index => index !== null);
-    if (emptyCells.length > 0) {
-      window.currentMoveIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-      window.placeMove();
-    }
-    window.ModalManager.showAlert('Opponent got it correct! +10 points', 'info');
-  } else {
-    // Opponent wrong, switch back to X without move
-    window.switchPlayer();
-    window.ModalManager.showAlert('Opponent got it wrong. Your turn again!', 'info');
-  }
-};
+
 
 window.placeMove = function() {
   const index = window.currentMoveIndex;
@@ -573,23 +547,24 @@ window.endGame = function(result) {
 };
 
 window.showReview = function() {
-  // Include incorrect and skipped answers
-  const wrongs = window.wrongAnswers;
+  // Include all answers from the game
+  const allAnswers = window.allAnswers;
 
-  if (wrongs.length === 0) {
-    window.ModalManager.showAlert('No mistakes or skipped questions to review!', 'info');
+  if (allAnswers.length === 0) {
+    window.ModalManager.showAlert('No answers to review!', 'info');
     return;
   }
 
-  // Build review content: list of wrongs with question, user answer, correct, explanation
-  let reviewHtml = '<div class="review-modal-content"><h3>Review Your Mistakes</h3><ul class="mistakes-list">';
-  wrongs.forEach((wrong, index) => {
+  // Build review content: list of all answers with question, user answer, correct, explanation
+  let reviewHtml = '<div class="review-modal-content"><h3>Review All Answers</h3><ul class="mistakes-list">';
+  allAnswers.forEach((answer, index) => {
+    const status = answer.isCorrect ? '✅ Correct' : '❌ Wrong';
     reviewHtml += `
       <li>
-        <strong>Question ${index + 1}:</strong> ${wrong.question}<br>
-        <strong>Your Answer:</strong> ${wrong.userAnswer || 'No answer'}<br>
-        <strong>Correct Answer:</strong> ${wrong.answer}<br>
-        <strong>Explanation:</strong> ${wrong.explanation || 'Review the concept for better understanding.'}
+        <strong>Question ${index + 1} (${status}):</strong> ${answer.question}<br>
+        <strong>Your Answer:</strong> ${answer.userAnswer || 'No answer'}<br>
+        <strong>Correct Answer:</strong> ${answer.correctAnswer}<br>
+        <strong>Explanation:</strong> ${answer.explanation || 'Review the concept for better understanding.'}
       </li>
     `;
   });

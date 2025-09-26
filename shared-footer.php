@@ -1,17 +1,5 @@
 </main>
     
-    <!-- Timer Modal -->
-    <div id="timerModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 id="questionText" class="text-lg font-semibold mb-4 text-primary">Question</h3>
-            <div id="optionsContainer" class="space-y-2 mb-4"></div>
-            <div class="flex justify-between items-center">
-                <p class="text-gray-600">Time left: <span id="timerDisplay" class="font-bold text-error">30</span>s</p>
-                <button onclick="skipQuestion()" class="bg-gray-300 text-gray-700 px-3 py-1 rounded hover:bg-gray-400">Skip</button>
-            </div>
-        </div>
-    </div>
-    
     <!-- Notification Toast -->
     <div id="toast" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg z-50 hidden">
         <span id="toast-message">Notification</span>

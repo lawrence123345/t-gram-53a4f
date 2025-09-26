@@ -8,8 +8,6 @@ window.auth = null; // This will be set when Firebase is initialized
 window.questions = null;
 window.currentQuestion = null;
 window.gameQuestions = [];
-window.wrongAnswers = [];
-window.badges = JSON.parse(localStorage.getItem('badges')) || [];
 
 // ===== Navigation Update =====
 window.updateNav = function(auth){
@@ -154,67 +152,51 @@ window.getTimerDuration = function() {
 };
 
 // ===== Offline PvP =====
+window.opponentName = '';
 window.board = Array(9).fill(null);
 window.currentPlayer = 'X';
 window.currentQuestionIndex = 0;
 window.gameQuestions = [];
-window.wrongAnswers = [];
-window.streak = 0;
-window.score = 0;
-window.timerDuration = 0;
+window.selectedAnswer = '';
 
 window.startOfflinePvP = async function() {
-  if (!window.selectedDifficulty) {
-    alert("Please select a difficulty first!");
-    return;
-  }
+  window.opponentName = prompt("Enter opponent name:", "Player 2");
+  if (!window.opponentName) window.opponentName = "Player 2";
 
-  await loadQuestions();
-  setDifficultySettings();
+  window.board = Array(9).fill(null);
+  window.currentPlayer = 'X';
+  window.currentQuestionIndex = 0;
+  window.gameQuestions = [];
+  window.selectedAnswer = '';
+
+  await loadQuestionsForOffline();
   renderOfflineInterface();
   renderBoard();
 }
 
-window.setDifficultySettings = function() {
-  const diff = window.selectedDifficulty;
-  if (diff === 'Beginner') {
-    window.timerDuration = 30000;
-  } else if (diff === 'Intermediate') {
-    window.timerDuration = 22500;
-  } else {
-    window.timerDuration = 17500;
-  }
+async function loadQuestionsForOffline() {
+  await loadQuestions();
 }
 
 window.renderOfflineInterface = function() {
   document.getElementById('app').innerHTML = `
-  <div class="board-container">
-    <h2>Offline PvP - ${window.selectedDifficulty} Grammar Challenge</h2>
-    <div class="player-avatars">
-      <div class="avatar-container active">
-        <div class="avatar">😀</div>
-        <p>Player 1</p>
+    <div class="board-container">
+      <div class="players">
+        <div class="player">${window.currentUser.username} = X</div>
+        <div class="player">${window.opponentName} = O</div>
       </div>
-      <div class="avatar-container">
-        <div class="avatar">😎</div>
-        <p>Player 2</p>
+      <div class="board"></div>
+      <div id="question-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <h3 id="question-title"></h3>
+          <div id="question-content"></div>
+          <div id="question-options"></div>
+          <div class="timer">Time left: <span id="timer-display">30</span>s</div>
+          <button class="btn" id="submit-answer">Submit</button>
+        </div>
       </div>
+      <button class="btn" onclick="renderHome()">Back</button>
     </div>
-    <div class="timer-bar"><div class="progress" style="width:0%"></div></div>
-    <div class="streak">Streak: <span id="streak-count">0</span></div>
-    <div class="board"></div>
-    <div id="question-modal" class="modal" style="display:none;">
-      <div class="modal-content">
-        <h3 id="question-title"></h3>
-        <div id="question-content"></div>
-        <div id="question-options"></div>
-        <button class="btn" id="submit-answer">Submit</button>
-        <button class="btn" onclick="closeQuestion()">Skip (Penalty)</button>
-      </div>
-    </div>
-    <button class="btn" onclick="renderHome()">Back</button>
-    <button class="btn" onclick="showReview()" style="display:none;" id="review-btn">Review Mistakes</button>
-  </div>
   `;
 }
 
@@ -224,25 +206,22 @@ window.renderBoard = function() {
   for (let i = 0; i < 9; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
-    cell.tabIndex = 0;
     if (window.board[i]) {
       cell.textContent = window.board[i];
       cell.classList.add(window.board[i]);
+    } else {
+      cell.addEventListener('click', () => attemptMove(i));
     }
-    cell.addEventListener('click', () => attemptMove(i));
     boardEl.appendChild(cell);
   }
 };
 
 window.attemptMove = function(index) {
   if (window.board[index] !== null) return;
-
-  // Show question for this move
-  window.currentMoveIndex = index;
-  showNextQuestion();
+  showQuestion(index);
 };
 
-window.showNextQuestion = function() {
+window.showQuestion = function(index) {
   if (window.currentQuestionIndex >= window.gameQuestions.length) {
     alert("No more questions! Game over.");
     return;
@@ -254,7 +233,7 @@ window.showNextQuestion = function() {
   const options = document.getElementById('question-options');
   const submitBtn = document.getElementById('submit-answer');
 
-  title.textContent = `Question ${window.currentQuestionIndex + 1}`;
+  title.textContent = `Question for ${window.currentPlayer}`;
   content.textContent = window.currentQuestion.question;
 
   options.innerHTML = '';
@@ -263,117 +242,65 @@ window.showNextQuestion = function() {
       const btn = document.createElement('button');
       btn.classList.add('btn');
       btn.textContent = opt;
-      btn.onclick = () => selectOption(idx);
+      btn.onclick = () => selectAnswer(idx);
       options.appendChild(btn);
     });
-  } else if (window.currentQuestion.type === 'fill_blank') {
+  } else {
+    // Add other types if needed
     const input = document.createElement('input');
     input.type = 'text';
-    input.id = 'fill-input';
+    input.id = 'answer-input';
     options.appendChild(input);
-  } else if (window.currentQuestion.type === 'error_identification') {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = 'error-input';
-    input.placeholder = 'Enter the error word';
-    options.appendChild(input);
-  } else if (window.currentQuestion.type === 'sentence_completion') {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = 'completion-input';
-    options.appendChild(input);
-  } else if (window.currentQuestion.type === 'paragraph_correction') {
-    const textarea = document.createElement('textarea');
-    textarea.id = 'correction-input';
-    options.appendChild(textarea);
   }
 
-  submitBtn.onclick = submitAnswer;
+  submitBtn.onclick = () => submitAnswer(index);
   modal.style.display = 'flex';
   startTimer();
 };
 
-window.selectOption = function(idx) {
+window.selectAnswer = function(idx) {
   window.selectedAnswer = window.currentQuestion.options[idx];
 };
 
-window.submitAnswer = function() {
+window.submitAnswer = function(index) {
   let userAnswer = '';
   if (window.currentQuestion.type === 'multiple_choice') {
     userAnswer = window.selectedAnswer || '';
-  } else if (window.currentQuestion.type === 'fill_blank') {
-    userAnswer = document.getElementById('fill-input').value.trim();
-  } else if (window.currentQuestion.type === 'error_identification') {
-    userAnswer = document.getElementById('error-input').value.trim();
-  } else if (window.currentQuestion.type === 'sentence_completion') {
-    userAnswer = document.getElementById('completion-input').value.trim();
-  } else if (window.currentQuestion.type === 'paragraph_correction') {
-    userAnswer = document.getElementById('correction-input').value.trim();
-  }
-
-  const correct = userAnswer.toLowerCase() === window.currentQuestion.answer.toLowerCase();
-  if (!correct) {
-    window.wrongAnswers.push(window.currentQuestion);
-    window.streak = 0;
-    updateStreak();
-    // Penalty: skip turn
-    window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
-    updatePlayerAvatars();
-    alert("Wrong answer! Turn skipped.");
   } else {
-    window.streak++;
-    updateStreak();
-    placeMove();
+    userAnswer = document.getElementById('answer-input').value.trim();
   }
-
+  const correct = userAnswer.toLowerCase() === window.currentQuestion.answer.toLowerCase();
   closeQuestion();
+  if (correct) {
+    placeMove(index);
+  } else {
+    window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
+    alert("Wrong answer! Turn lost.");
+  }
+  window.currentQuestionIndex++;
 };
 
-window.closeQuestion = function() {
-  document.getElementById('question-modal').style.display = 'none';
-  stopTimer();
-  // Penalty for skipping: maybe skip turn or something, but for now just proceed
-};
-
-window.placeMove = function() {
-  const index = window.currentMoveIndex;
-  const player = window.currentPlayer;
-  window.board[index] = player;
-  const cells = document.querySelectorAll('.cell');
-  const cell = cells[index];
-  cell.textContent = player;
-  cell.classList.add(player);
-
-  // Switch player
-  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
-  updatePlayerAvatars();
-
-  // Check winner
+window.placeMove = function(index) {
+  window.board[index] = window.currentPlayer;
+  renderBoard();
   const winner = checkWinner(window.board);
   if (winner) {
-    highlightWinner(winner, window.board);
-    awardBadge('victory');
-    setTimeout(() => alert(`${winner} wins the game!`), 100);
-    saveOfflineProgress();
+    if (winner === 'X') {
+      alert(`${window.currentUser.username} wins!`);
+      window.addScore(window.currentUser.username, 1, 1, 0, {});
+    } else {
+      alert(`${window.opponentName} wins!`);
+      window.addScore(window.currentUser.username, 0, 1, 0, {});
+    }
+    setTimeout(() => renderHome(), 2000);
     return;
   }
-
-  // Check draw
   if (window.board.every(cell => cell !== null)) {
     alert("It's a draw!");
-    awardBadge('draw');
-    saveOfflineProgress();
+    setTimeout(() => renderHome(), 2000);
     return;
   }
-
-  // Prepare next question if more questions
-  window.currentQuestionIndex++;
-  if (window.currentQuestionIndex < window.gameQuestions.length) {
-    setTimeout(() => showNextQuestion(), 500); // Brief pause
-  } else {
-    // No more questions, but game can continue or end
-    alert("Questions exhausted! Game continues without questions.");
-  }
+  window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
 };
 
 function checkWinner(cells) {
@@ -388,69 +315,31 @@ function checkWinner(cells) {
   return null;
 }
 
-function highlightWinner(winner, cells) {
-  const boardCells = document.querySelectorAll('.cell');
-  const combos = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
-  ];
-  for (const [a,b,c] of combos) {
-    if (cells[a] === winner && cells[b] === winner && cells[c] === winner) {
-      boardCells[a].classList.add('win');
-      boardCells[b].classList.add('win');
-      boardCells[c].classList.add('win');
-      break;
-    }
-  }
-}
-
-window.showReview = function() {
-  if (window.wrongAnswers.length === 0) {
-    alert("Great! No mistakes.");
-    return;
-  }
-  let reviewHTML = '<h3>Review Your Mistakes</h3>';
-  window.wrongAnswers.forEach((q, idx) => {
-    reviewHTML += `<div class="review-item">
-      <p><strong>Q${idx+1}:</strong> ${q.question}</p>
-      <p><strong>Correct:</strong> ${q.answer}</p>
-    </div>`;
-  });
-  reviewHTML += '<button class="btn" onclick="renderHome()">Back to Home</button>';
-  document.getElementById('app').innerHTML = `<main>${reviewHTML}</main>`;
+window.closeQuestion = function() {
+  document.getElementById('question-modal').style.display = 'none';
+  stopTimer();
 };
 
 let timerInterval;
 function startTimer() {
-  const progress = document.querySelector('.progress');
-  const duration = window.timerDuration;
-  const interval = duration / 100; // Update every 1% of duration
-  let width = 0;
-  progress.style.width = '0%';
+  const display = document.getElementById('timer-display');
+  let time = 30;
+  display.textContent = time;
   timerInterval = setInterval(() => {
-    width += 1;
-    progress.style.width = width + '%';
-    if(width >= 100) {
+    time--;
+    display.textContent = time;
+    if (time <= 0) {
       clearInterval(timerInterval);
-      alert("Time's up! Question skipped.");
+      alert("Time's up! Turn lost.");
       closeQuestion();
+      window.currentPlayer = window.currentPlayer === 'X' ? 'O' : 'X';
       window.currentQuestionIndex++;
-      if (window.currentQuestionIndex < window.gameQuestions.length) {
-        showNextQuestion();
-      } else {
-        document.getElementById('review-btn').style.display = 'inline-block';
-      }
     }
-  }, interval);
+  }, 1000);
 }
 
 function stopTimer() {
   clearInterval(timerInterval);
-}
-
-window.updateStreak = function() {
-  document.getElementById('streak-count').textContent = window.streak;
 }
 
 // ===== Initialize Dark Mode =====
@@ -464,39 +353,6 @@ if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.p
     console.log('Background sync registration failed:', error);
   });
 }
-
-// ===== Update Player Avatars =====
-window.updatePlayerAvatars = function() {
-  const avatars = document.querySelectorAll('.avatar-container');
-  avatars.forEach((av, idx) => {
-    av.classList.remove('active');
-    if ((window.currentPlayer === 'X' && idx === 0) || (window.currentPlayer === 'O' && idx === 1)) {
-      av.classList.add('active');
-    }
-  });
-};
-
-// ===== Award Badge =====
-window.awardBadge = function(type) {
-  const badge = { type, difficulty: window.selectedDifficulty, date: new Date().toISOString() };
-  window.badges.push(badge);
-  localStorage.setItem('badges', JSON.stringify(window.badges));
-  alert(`Badge awarded: ${type} in ${window.selectedDifficulty}!`);
-};
-
-// ===== Save Offline Progress =====
-window.saveOfflineProgress = function() {
-  const progress = {
-    difficulty: window.selectedDifficulty,
-    wrongAnswers: window.wrongAnswers.length,
-    score: window.score,
-    streak: window.streak,
-    date: new Date().toISOString()
-  };
-  const offlineProgress = JSON.parse(localStorage.getItem('offlineProgress')) || [];
-  offlineProgress.push(progress);
-  localStorage.setItem('offlineProgress', JSON.stringify(offlineProgress));
-};
 
 // ===== Initial Render =====
 renderLogin();

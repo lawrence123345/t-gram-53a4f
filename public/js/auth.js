@@ -1,7 +1,6 @@
 // Make variables global so they can be accessed from other files
 window.users = JSON.parse(localStorage.getItem('users')) || [
-    {username:"Lawrence", email:"lawrence@gmail.com", password:"123456", avatar:"😀"},
-    {username:"Unknown", email:"unknown@gmail.com", password:"123456", avatar:"😎"}
+    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
 ];
 window.currentUser = null;
 localStorage.setItem('users', JSON.stringify(window.users));

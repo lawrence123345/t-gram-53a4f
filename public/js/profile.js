@@ -24,65 +24,120 @@ window.renderProfile = function(){
   // Calculate ranking position
   let scores = JSON.parse(localStorage.getItem('scores')) || [];
   scores.sort((a, b) => b.totalScore - a.totalScore);
-  let rank = scores.findIndex(s => s.user === currentUser.username) + 1;
+  let rank = scores.findIndex(s => s.user === window.currentUser.username) + 1;
   if (rank === 0) rank = 'Not ranked yet';
 
-  // Avatar options
-  let avatarHTML = defaultAvatars.map(a => `<div class="avatar-option ${currentUser.avatar === a ? 'selected-avatar' : ''}" onclick="selectAvatar('${a}')"><img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>`).join("");
+let leftAvatar = '';
+let hasAvatar = !!window.currentUser.avatar;
+if (hasAvatar) {
+  let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0; border: 4px solid #000; box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden;';
+  if (window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:')) {
+    avatarStyle += ' object-fit: cover; cursor: pointer;';
+    leftAvatar = `<img src="${window.currentUser.avatar}" alt="Profile Avatar" style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='#333'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='#000'">`;
+  } else {
+    avatarStyle += ' background: white; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer;';
+    leftAvatar = `<div style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='#333'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='#000'"></div>`;
+  }
+}
 
-  document.getElementById('app').innerHTML = `<div class="profile-card">
-<h2>🎮 Your Profile</h2>
+  let fieldsHTML = `
+    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.6s ease;">
+      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.6s ease;">👤</span> Username
+      </label>
+      <input id="edit-username" value="${window.currentUser.username}" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" />
+    </div>
+    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.7s ease;">
+      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.7s ease;">🏆</span> Leaderboard Rank
+      </label>
+      <span style="padding: 15px 18px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 12px; display: inline-block; color: white; font-weight: bold; box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s ease; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">${rank}</span>
+    </div>
+    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.8s ease;">
+      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.8s ease;">📝</span> Bio / About Me
+      </label>
+      <textarea id="edit-bio" placeholder="Tell us about yourself" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; min-height: 130px; resize: vertical; font-size: 16px; font-family: inherit; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05); line-height: 1.5;" onfocus="this.style.borderColor='%23667eea'; this.style.boxShadow='0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 15px rgba(102, 126, 234, 0.1)'" onblur="this.style.borderColor='%23e0e6ed'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">${window.currentUser.bio || ''}</textarea>
+    </div>
+    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.9s ease;">
+      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.9s ease;">🎂</span> Age (Optional)
+      </label>
+      <input id="edit-age" type="number" min="1" max="120" value="${window.currentUser.age || ''}" placeholder="Enter your age" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" />
+    </div>
+    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 1s ease;">
+      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 1s ease;">✉️</span> Email Address
+      </label>
+      <span style="padding: 15px 18px; background: linear-gradient(135deg, #3498db, #2980b9); border-radius: 12px; display: inline-block; color: white; font-weight: bold; box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s ease; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">${window.currentUser.email}</span>
+    </div>
+  `;
 
-<div class="profile-section avatar-section">
-<h3>Choose Your Avatar</h3>
-<p>Upload a custom photo or select from our fun collection:</p>
-<div class="upload-container">
-<input type="file" id="avatar-upload" accept="image/*" onchange="uploadAvatar()" style="display: none;">
-<label for="avatar-upload" class="upload-btn">📁 Upload Photo</label>
-</div>
-<div class="avatar-grid">${avatarHTML}</div>
-</div>
+let mainContent = '';
+if (hasAvatar) {
+  mainContent = `
+    <div style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease;">
+      ${leftAvatar}
+      <div style="flex: 1; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+        ${fieldsHTML}
+      </div>
+    </div>
+  `;
+} else {
+  mainContent = `
+    <div style="max-width: 550px; margin: 0 auto 35px; padding: 30px; background: linear-gradient(135deg, rgba(248,249,250,0.95) 0%, rgba(233,236,239,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); text-align: center; animation: fadeInUp 0.8s ease; border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+      <div style="margin-bottom: 25px; font-size: 22px; color: #495057; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">👋 Add an avatar to personalize your profile!</div>
+      <button class="btn" onclick="window.showAvatarSelection()" style="display: inline-block; margin: 0 auto 30px; padding: 16px 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(102, 126, 234, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'">Customize Avatar</button>
+      <div style="padding: 30px; background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(222,226,230,0.8);">
+        ${fieldsHTML}
+      </div>
+    </div>
+  `;
+}
 
-<div class="profile-section details-section">
-<h3>Personal Information</h3>
-<div class="detail-grid">
-<div class="detail-item">
-<label for="edit-username">Username</label>
-<input id="edit-username" value="${currentUser.username}" />
-</div>
-<div class="detail-item">
-<label for="edit-bio">Bio / About Me</label>
-<textarea id="edit-bio" placeholder="Tell us about yourself">${currentUser.bio || ''}</textarea>
-</div>
-<div class="detail-item">
-<label>Email</label>
-<span>${currentUser.email}</span>
-</div>
-<div class="detail-item">
-<label for="edit-age">Age</label>
-<input id="edit-age" type="number" value="${currentUser.age || ''}" placeholder="Optional" />
-</div>
-<div class="detail-item">
-<label>Leaderboard Rank</label>
-<span class="rank-display">${rank}</span>
-</div>
-</div>
-</div>
+  let profileHTML = `
+    <div style="padding: 35px; max-width: 950px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 25px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;" onmouseover="this.style.boxShadow='0 15px 50px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.boxShadow='0 10px 40px rgba(102, 126, 234, 0.3)'">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);"></div>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -2px 10px rgba(168, 237, 234, 0.3);"></div>
+      <h2 style="text-align: center; color: white; margin-bottom: 40px; font-size: 36px; text-shadow: 0 3px 10px rgba(0,0,0,0.4); animation: fadeInDown 0.8s ease; position: relative; z-index: 1;">Your Profile</h2>
+      ${mainContent}
+      <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); position: relative; z-index: 1;">
+        <button class="btn" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 16px 40px; border: none; border-radius: 35px; margin-right: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(78, 205, 196, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(78, 205, 196, 0.4)'">💾 Save Changes</button>
+        <button class="btn secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 16px 40px; border: 2px solid rgba(255,255,255,0.4); border-radius: 35px; cursor: pointer; font-weight: bold; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='translateY(-3px) scale(1.02)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'">🏠 Back to Home</button>
+      </div>
+    </div>
+    <style>
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes bounceIn {
+        0% { transform: scale(0); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+    </style>
+  `;
 
-<div class="profile-actions">
-<button class="btn save-btn" onclick="saveProfile()">💾 Save Changes</button>
-<button class="btn back-btn" onclick="renderHome()">🏠 Back to Home</button>
-</div>
-</div>`;
+  document.getElementById('app').innerHTML = profileHTML;
 
-  updateNavAvatar();
+  window.updateNavAvatar();
 }
 
 // Make functions global so they can be called from HTML
 window.selectAvatar = function(avatar){
-  currentUser.avatar = avatar;
-  updateNavAvatar();
-  renderProfile();
+  window.currentUser.avatar = avatar;
+  window.updateNavAvatar();
+  window.ModalManager.hideModal('avatar-modal');
+  window.renderProfile();
 }
 
 // Make functions global so they can be called from HTML
@@ -91,34 +146,97 @@ window.uploadAvatar = function(){
   if (file) {
     let reader = new FileReader();
     reader.onload = function(e) {
-      currentUser.avatar = e.target.result;
-      updateNavAvatar();
-      renderProfile();
+      window.currentUser.avatar = e.target.result;
+      window.updateNavAvatar();
+      window.ModalManager.hideModal('avatar-modal');
+      window.renderProfile();
     };
     reader.readAsDataURL(file);
   }
 }
 
+window.showAvatarSelection = function() {
+  let avatarHTML = defaultAvatars.map(a => {
+    const isSelected = window.currentUser.avatar === a;
+    const borderStyle = isSelected ? '4px solid #667eea' : '2px solid #e9ecef';
+    return `<div class="avatar-option" onclick="window.selectAvatar('${a}')" style="width: 90px; height: 90px; border-radius: 50%; cursor: pointer; border: ${borderStyle}; display: inline-block; margin: 8px; transition: all 0.3s ease; box-shadow: ${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}; position: relative; overflow: hidden;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.style.border='4px solid #667eea'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.3)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.border='${borderStyle}'; this.style.boxShadow='${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}'">
+      <img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='brightness(1)'">
+      ${isSelected ? '<div style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>' : ''}
+    </div>`;
+  }).join("");
+
+  // Preview section
+  let previewHTML = '';
+  if (window.currentUser.avatar) {
+    let previewAvatar = window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:') 
+      ? `<img src="${window.currentUser.avatar}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">`
+      : `<div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2c3e50, #1a252f); display: flex; align-items: center; justify-content: center; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"></div>`;
+    previewHTML = `
+      <div style="text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
+        ${previewAvatar}
+      </div>
+    `;
+  }
+
+  const content = `
+    <div style="text-align: center; padding: 25px; background: #000; border-radius: 20px; max-height: 85vh; overflow-y: auto; color: white; position: relative;">
+      <div style="position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 24px; opacity: 0.8;" onclick="window.ModalManager.hideModal('avatar-modal')">✕</div>
+      <h3 style="color: white; margin-bottom: 10px; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🎨 Customize Your Avatar</h3>
+      <p style="color: rgba(255,255,255,0.9); margin-bottom: 25px; font-size: 16px;">Choose an avatar or upload your photo to make your profile shine!</p>
+      ${previewHTML}
+      <div style="margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+        <input type="file" id="avatar-upload" accept="image/*" onchange="window.uploadAvatar()" style="display: none;">
+        <label for="avatar-upload" class="upload-btn" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 20px rgba(255,107,107,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 16px; margin-bottom: 15px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255,107,107,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.3)'">📁 Upload Your Photo</label>
+      </div>
+      <div style="margin-bottom: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+        <h4 style="color: white; margin-bottom: 20px; text-align: center; font-size: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Or Select from Our Gallery</h4>
+        <div class="avatar-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; max-width: 450px; margin: 0 auto; justify-items: center;">
+          ${avatarHTML}
+        </div>
+      </div>
+      <button class="btn" onclick="window.ModalManager.hideModal('avatar-modal')" style="padding: 12px 25px; background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.3); border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s ease, transform 0.3s ease; font-size: 16px;" onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">✕ Close</button>
+    </div>
+  `;
+
+  window.ModalManager.showModal('avatar-modal', content, 'info');
+};
+
 // Make functions global so they can be called from HTML
 window.saveProfile = function(){
-  currentUser.username = document.getElementById('edit-username').value;
-  currentUser.bio = document.getElementById('edit-bio').value;
-  currentUser.age = document.getElementById('edit-age').value;
-  currentUser.lastLogin = new Date().toLocaleDateString();
-  let idx = users.findIndex(u => u.email === currentUser.email);
-  if (idx !== -1) users[idx] = currentUser;
-  localStorage.setItem('users', JSON.stringify(users));
+  window.currentUser.username = document.getElementById('edit-username').value;
+  window.currentUser.bio = document.getElementById('edit-bio').value;
+  const ageInput = document.getElementById('edit-age');
+  if (ageInput.value) {
+    window.currentUser.age = parseInt(ageInput.value);
+  } else {
+    delete window.currentUser.age; // Remove if empty
+  }
+  window.currentUser.lastLogin = new Date().toLocaleDateString();
+  let idx = window.users.findIndex(u => u.email === window.currentUser.email);
+  if (idx !== -1) window.users[idx] = window.currentUser;
+  localStorage.setItem('users', JSON.stringify(window.users));
   window.ModalManager.showAlert('Profile updated!', 'success');
   window.messages.push({ type: 'success', content: 'Profile updated!', timestamp: Date.now() });
-  updateNavAvatar();
+  window.updateNavAvatar();
+  window.renderProfile();
 }
 
 // Function to update avatar in navigation bar
 window.updateNavAvatar = function(){
   let navAvatar = document.getElementById('nav-avatar');
-  if (navAvatar && currentUser.avatar) {
-    navAvatar.src = currentUser.avatar;
+  if (navAvatar && window.currentUser) {
+    if (window.currentUser.avatar && (window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:'))) {
+      navAvatar.src = window.currentUser.avatar;
+      navAvatar.alt = '';
+    } else {
+      // Black circle data URI for no avatar
+      navAvatar.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==';
+      navAvatar.alt = '';
+    }
     navAvatar.style.display = 'block';
+    navAvatar.onclick = () => window.renderProfile();
+    navAvatar.style.cursor = 'pointer';
   } else if (navAvatar) {
     navAvatar.style.display = 'none';
   }

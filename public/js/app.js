@@ -13,14 +13,13 @@ window.gameQuestions = [];
 window.updateNav = function(auth){
   const nav = document.getElementById('nav-links');
   if(auth){
-    nav.innerHTML = `<a onclick="renderHome()">Home</a>
-<a onclick="renderLeaderboard()">Leaderboard</a>
-<a onclick="renderProfile()">Profile</a>
-<a onclick="toggleDarkMode()">Dark Mode</a>
-<a onclick="logout()">Log Out</a>`;
-    updateToggleText();
+    nav.innerHTML = `<a onclick="window.renderHome()">Home</a>
+<a onclick="window.renderLeaderboard()">Leaderboard</a>
+<a onclick="window.toggleDarkMode()">Dark Mode</a>
+<a onclick="window.logout()">Log Out</a>`;
+    window.updateToggleText();
   } else {
-    nav.innerHTML = `<a onclick="renderAbout()">About</a>`;
+    nav.innerHTML = `<a onclick="window.renderAbout()">About</a>`;
   }
 }
 
@@ -194,17 +193,16 @@ window.loadQuestions = async function() {
 // ===== Set Timer Duration =====
 window.getTimerDuration = function() {
   switch (window.selectedDifficulty) {
-    case 'Beginner': return 30000; // 30s
-    case 'Intermediate': return 22500; // 22.5s avg
-    case 'Advanced': return 17500; // 17.5s avg
-    default: return 10000;
+    case 'Beginner': return 30; // 30s
+    case 'Intermediate': return 25; // 25s
+    case 'Advanced': return 20; // 20s
+    default: return 10;
   }
 };
 
 // ===== Offline PvP Implementation =====
 window.board = Array(9).fill(null);
 window.currentPlayer = 'X';
-window.streak = 0;
 window.userScore = 0;
 window.opponentName = '';
 window.gameQuestions = [];
@@ -214,6 +212,7 @@ window.wrongAnswers = [];
 window.allAnswers = [];
 window.badges = JSON.parse(localStorage.getItem('badges')) || [];
 window.timerInterval = null;
+window.streak = 0;
 
 window.startOfflinePvP = async function() {
   if (!window.selectedDifficulty) {
@@ -224,7 +223,6 @@ window.startOfflinePvP = async function() {
   // Reset game state
   window.board = Array(9).fill(null);
   window.currentPlayer = 'X';
-  window.streak = 0;
   window.userScore = 0;
   window.opponentScore = 0;
   window.currentQuestionIndex = 0;
@@ -236,7 +234,6 @@ window.startOfflinePvP = async function() {
 
   window.renderOfflineInterface();
   window.renderBoard();
-  window.updateStreakDisplay();
 };
 
 window.renderOfflineInterface = function() {
@@ -255,11 +252,10 @@ window.renderOfflineInterface = function() {
               <span>Score: <span id="opponent-score">0</span></span>
             </div>
           </div>
-          <div class="streak-info">Streak: <span id="streak-count">0</span> 🔥</div>
         </div>
         <div class="board-grid" id="board"></div>
         <div class="bottom-buttons">
-          <button class="btn" onclick="window.renderHome()">Back to Home</button>
+<button class="btn" onclick="renderHome()">Back to Home</button>
           <button class="btn" onclick="window.showReview()" id="review-btn" style="display:none;">View Answers</button>
         </div>
       </div>
@@ -299,6 +295,7 @@ window.showQuestion = function() {
     return;
   }
   window.currentQuestion = window.gameQuestions[window.currentQuestionIndex];
+  window.questionPending = true;
 
   // Build modal content dynamically
   const title = `Question for ${window.currentPlayer === 'X' ? 'Unknown' : 'Opponent'}`;
@@ -308,7 +305,7 @@ window.showQuestion = function() {
 
   switch (window.currentQuestion.type) {
     case 'multiple_choice':
-      optionsHtml = window.currentQuestion.options.map(opt => 
+      optionsHtml = window.currentQuestion.options.map(opt =>
         `<button class="btn option-btn" onclick="window.selectAnswer('${opt.replace(/'/g, "\\'")}')">${opt}</button>`
       ).join('');
       break;
@@ -327,7 +324,7 @@ window.showQuestion = function() {
     <div id="question-content">${questionContent}</div>
     <div id="question-options">${optionsHtml || inputHtml}</div>
     <div id="question-feedback" style="display:none;"></div>
-    <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration() / 1000}</span>s</div>
+    <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration()}</span>s</div>
     <button class="btn" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
     <button class="btn secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
     <div id="tip" class="tip" style="display:none;"></div>
@@ -342,11 +339,8 @@ window.selectAnswer = function(answer) {
 };
 
 window.submitAnswer = function() {
-  // Clear timer if running
-  if (window.timerInterval) {
-    clearInterval(window.timerInterval);
-    window.timerInterval = null;
-  }
+  if (!window.questionPending) return;
+  window.questionPending = false;
 
   let userAnswer = '';
   const input = document.getElementById('answer-input');
@@ -369,13 +363,16 @@ window.submitAnswer = function() {
       isCorrect: true
     });
     window.ModalManager.hideModal('question-modal');
-    window.streak++;
+    // Stop timer
+    if (window.timerInterval) {
+      clearInterval(window.timerInterval);
+      window.timerInterval = null;
+    }
     if (window.currentPlayer === 'X') {
       window.userScore += 10;
     } else {
       window.opponentScore += 10;
     }
-    window.updateStreakDisplay();
     window.awardBadgeIfEligible();
     window.updateScores();
     window.placeMove();
@@ -393,6 +390,12 @@ window.submitAnswer = function() {
     `;
     window.ModalManager.showModal('question-modal', content, 'error');
 
+    // Stop timer
+    if (window.timerInterval) {
+      clearInterval(window.timerInterval);
+      window.timerInterval = null;
+    }
+
     window.wrongAnswers.push({...window.currentQuestion, userAnswer});
     window.allAnswers.push({
       question: window.currentQuestion.question,
@@ -402,19 +405,30 @@ window.submitAnswer = function() {
       isCorrect: false
     });
     window.messages.push({ type: 'error', content: `Wrong! Correct: ${window.currentQuestion.answer}. ${window.currentQuestion.explanation || 'Practice more!'}` , timestamp: Date.now() });
-    window.streak = 0;
-    window.updateStreakDisplay();
   }
 };
 
 window.continueWrong = function() {
+  window.questionPending = false;
   window.ModalManager.hideModal('question-modal');
+  // Stop timer
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
   window.switchPlayer();
   window.currentQuestionIndex++;
 };
 
 window.skipQuestion = function() {
+  if (!window.questionPending) return;
+  window.questionPending = false;
   window.ModalManager.hideModal('question-modal');
+  // Stop timer
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
   window.ModalManager.showAlert("Skipped! Turn lost.", 'error');
   window.messages.push({ type: 'error', content: 'Skipped question - turn lost.', timestamp: Date.now() });
   window.allAnswers.push({
@@ -425,8 +439,6 @@ window.skipQuestion = function() {
     isCorrect: false
   });
   window.wrongAnswers.push({...window.currentQuestion, userAnswer: 'Skipped'});
-  window.streak = 0;
-  window.updateStreakDisplay();
   window.switchPlayer();
   window.currentQuestionIndex++;
 };
@@ -463,6 +475,7 @@ window.placeMove = function() {
 
   window.switchPlayer();
   window.updateScores();
+  // Removed simulation for PvP on same device
 };
 
 window.switchPlayer = function() {
@@ -547,7 +560,6 @@ window.endGame = function(result) {
 };
 
 window.showReview = function() {
-  // Include all answers from the game
   const allAnswers = window.allAnswers;
 
   if (allAnswers.length === 0) {
@@ -555,26 +567,56 @@ window.showReview = function() {
     return;
   }
 
-  // Build review content: list of all answers with question, user answer, correct, explanation
-  let reviewHtml = '<div class="review-modal-content"><h3>Review All Answers</h3><ul class="mistakes-list">';
-  allAnswers.forEach((answer, index) => {
-    const status = answer.isCorrect ? '✅ Correct' : '❌ Wrong';
-    reviewHtml += `
-      <li>
-        <strong>Question ${index + 1} (${status}):</strong> ${answer.question}<br>
-        <strong>Your Answer:</strong> ${answer.userAnswer || 'No answer'}<br>
-        <strong>Correct Answer:</strong> ${answer.correctAnswer}<br>
-        <strong>Explanation:</strong> ${answer.explanation || 'Review the concept for better understanding.'}
-      </li>
-    `;
-  });
-  reviewHtml += '</ul><button class="close-btn" onclick="window.ModalManager.hideModal(\'review-modal\')">Close</button></div>';
+  // Separate correct and incorrect
+  const correct = allAnswers.filter(a => a.isCorrect);
+  const incorrect = allAnswers.filter(a => !a.isCorrect);
+
+  let reviewHtml = `
+    <div class="review-modal-content" style="max-height: 500px; overflow-y: auto; padding: 20px;">
+      <h3 style="text-align: center; color: #333; margin-bottom: 20px;">📚 Review All Answers</h3>
+      
+      ${correct.length > 0 ? `
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">✅ Correct Answers (${correct.length})</h4>
+        <div style="max-height: 200px; overflow-y: auto;">
+          ${correct.map((ans, index) => `
+            <div style="background: #e8f5e8; border-left: 4px solid #4CAF50; padding: 12px; margin: 8px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <strong>Q${index + 1}:</strong> ${ans.question}<br>
+              <strong>Your Answer:</strong> <span style="color: #4CAF50; font-weight: bold;">${ans.userAnswer}</span><br>
+              <strong>Correct:</strong> ${ans.correctAnswer}<br>
+              <strong>Explanation:</strong> <em>${ans.explanation}</em>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+
+      ${incorrect.length > 0 ? `
+      <div>
+        <h4 style="color: #f44336; border-bottom: 2px solid #f44336; padding-bottom: 5px;">❌ Incorrect/Skipped (${incorrect.length})</h4>
+        <div style="max-height: 200px; overflow-y: auto;">
+          ${incorrect.map((ans, index) => `
+            <div style="background: #ffebee; border-left: 4px solid #f44336; padding: 12px; margin: 8px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <strong>Q${index + 1}:</strong> ${ans.question}<br>
+              <strong>Your Answer:</strong> <span style="color: #f44336; font-weight: bold;">${ans.userAnswer}</span><br>
+              <strong>Correct:</strong> ${ans.correctAnswer}<br>
+              <strong>Explanation:</strong> <em>${ans.explanation}</em>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+
+      <button class="btn" onclick="window.ModalManager.hideModal('review-modal')" style="margin-top: 20px; width: 100%; background: #008080; color: white; border: none; padding: 12px; border-radius: 5px; font-size: 16px;">Close Review</button>
+    </div>
+  `;
 
   // Show custom modal content
   window.ModalManager.showModal('review-modal', reviewHtml, 'info');
 };
 
 window.closeQuestion = function() {
+  window.questionPending = false;
   window.ModalManager.hideModal('question-modal');
   if (window.timerInterval) {
     clearInterval(window.timerInterval);
@@ -583,13 +625,17 @@ window.closeQuestion = function() {
 };
 
 window.startTimer = function() {
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
   const display = document.getElementById('timer-display');
-  let time = window.getTimerDuration() / 1000;
+  let time = window.getTimerDuration();
   display.textContent = time;
   window.timerInterval = setInterval(() => {
     time--;
     display.textContent = time;
-    if (time <= 0) {
+    if (time <= 0 && window.questionPending) {
       clearInterval(window.timerInterval);
       window.timerInterval = null;
       window.skipQuestion();
@@ -642,4 +688,6 @@ if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.p
 }
 
 // ===== Initial Render =====
-renderLogin();
+window.addEventListener('DOMContentLoaded', () => {
+  renderLogin();
+});

@@ -37,7 +37,7 @@ window.renderHome = function(){
 <div class="card" onclick="selectDifficulty('Advanced')">Advanced</div>
 </div>
 <div id="mode-selection" style="display: none;">
-<h3>Choose Mode</h3>
+<h3 style="margin-bottom: 20px;">Choose Mode</h3>
 <div class="cards">
 <div class="card" onclick="startOfflinePvP()">Offline PvP</div>
 <div class="card" onclick="startOnlinePvP()">Online PvP</div>

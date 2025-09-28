@@ -26,6 +26,10 @@ img {
 }
 
 /* ===== Critical CSS Above the Fold ===== */
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -36,6 +40,14 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+}
+
+#app {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 a {
@@ -58,6 +70,7 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 1000;
   color: white;
+  flex-shrink: 0;
 }
 
 .nav-left {
@@ -143,7 +156,7 @@ nav {
 /* ===== Auth Cards ===== */
 .auth-card, .login-card {
   max-width: 400px;
-  margin: 4rem auto;
+  margin: 0 auto;
   padding: 2.5rem;
   background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
   border-radius: 1.5rem;
@@ -349,13 +362,14 @@ nav {
 }
 
 .login-container {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   position: relative;
   background: linear-gradient(135deg, #008080 0%, #FF7F50 50%, #9370DB 100%);
+  width: 100%;
 }
 
 .login-bg {
@@ -511,7 +525,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 2rem;
+  max-width: 100%;
+  padding: 0 1rem;
+  width: 100%;
 }
 
 .board {
@@ -520,7 +538,13 @@ main {
   grid-template-rows: repeat(3, 100px);
   gap: 5px;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 4px solid #008080;
+  border-radius: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .cell {
@@ -988,15 +1012,19 @@ main {
 
 .header-flex {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 15px;
   margin-bottom: 20px;
-  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
 }
 
 .players-flex {
   display: flex;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .player-info {
@@ -1036,6 +1064,9 @@ main {
   border-radius: 8px;
   color: #333;
   font-weight: bold;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 .board-grid {
@@ -1043,8 +1074,10 @@ main {
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   gap: 0;
-  max-width: 300px;
-  margin: 20px auto;
+  width: 300px;
+  margin: 0 auto;
+  align-self: center;
+  max-width: 100%;
 }
 
 .board-cell {
@@ -1087,6 +1120,18 @@ main {
 
 .board-cell.placed {
   animation: place 0.4s ease-out;
+}
+
+.player-avatars {
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.chat-container, .mini-leaderboard, .move-history {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 @keyframes place {
@@ -2024,6 +2069,10 @@ main, .gradient-bg, .about-hero {
   }
   .review-section {
     padding: 15px;
+  }
+
+  .board-container {
+    flex-direction: column;
   }
 }
 

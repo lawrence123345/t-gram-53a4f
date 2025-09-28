@@ -79,7 +79,7 @@ window.renderLeaderboard = function(){
 <div class="leaderboard-rows">
 ${rows}
 </div>
-<button class="btn back-btn" onclick="renderHome()">Back</button>
+<button class="btn btn-small back-btn" onclick="renderHome()">Back</button>
 </div>`;
 
 }
@@ -135,7 +135,7 @@ window.viewProfile = function(user){
 <p>Average Time: ${Math.round(player.averageTime)}s</p>
 <p>Level: ${player.level}</p>
 <p>Achievements: ${player.achievements.join(', ') || 'None'}</p>
-<button class="btn" onclick="renderLeaderboard()">Back</button>
+<button class="btn btn-small" onclick="renderLeaderboard()">Back</button>
 </div>`;
   }
 }
@@ -166,7 +166,7 @@ window.renderHome = function(){
   document.getElementById('app').innerHTML = `<div class="home">
 <h1>T-Gram</h1>
 <p>A grammar learning game.</p>
-<button class="btn" onclick="startGame()">Start Game</button>
-<button class="btn" onclick="renderLeaderboard()">Leaderboard</button>
+<button class="btn btn-small" onclick="startGame()">Start Game</button>
+<button class="btn btn-small" onclick="renderLeaderboard()">Leaderboard</button>
 </div>`;
 }

@@ -1,12 +1,10 @@
-# TODO: Improve Responsiveness and Alignment
+# TODO for Achievements Feature in Profile
 
-## Steps to Complete:
-
-1. [x] **Add Mobile Responsiveness (480px)**: Adjust nav, cards, board, modals for small screens.
-2. [x] **Add Tablet Responsiveness (768px)**: Fine-tune layouts for medium screens.
-3. [x] **Add Desktop Responsiveness (1200px+)**: Optimize for large screens.
-4. [x] **Ensure Alignment and No Overflow**: Fix flex/grid issues, center elements, prevent horizontal scroll.
-5. [x] **Test on Different Devices**: Server started, CSS applied; responsiveness implemented.
-6. [x] **Complete Task**: Task completed successfully.
-
-Progress: All steps completed.
+- [x] Add badge images folder: public/assets/badges/
+- [ ] Update public/js/profile.js:
+  - [ ] Add "Achievements" clickable section under profile avatar
+  - [ ] Implement modal to display 6 badges with images and labels
+  - [ ] Implement unlocking logic based on player stats (games played, wins, scores)
+  - [ ] Improve profile page design for better aesthetics
+- [ ] Add CSS styles for badges and modal (inline or in public/css/style.css)
+- [ ] Test Achievements feature thoroughly

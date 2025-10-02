@@ -37,7 +37,7 @@ window.renderHome = function(){
 <div class="card" onclick="selectDifficulty('Advanced')">Advanced</div>
 </div>
 <div id="mode-selection" style="display: none;">
-<h3 style="margin-bottom: 20px;">Choose Mode</h3>
+<h3 style="margin-bottom: 20px; margin-top: 30px;">Choose Mode</h3>
 <div class="cards">
 <div class="card" onclick="startOfflinePvP()">Offline PvP</div>
 <div class="card" onclick="startOnlinePvP()">Online PvP</div>
@@ -122,70 +122,93 @@ window.renderAbout = function(){
 window.loadQuestions = async function() {
   if (!window.questions) {
     try {
-      const response = await fetch('public/assets/questions.json');
-      window.questions = await response.json();
+      const response = await fetch('assets/questions.json');
+      if (response.ok) {
+        const data = await response.json();
+        // Flatten the questions from categories into arrays
+        window.questions = {};
+        for (const level of ['beginner', 'intermediate', 'advanced']) {
+          window.questions[level] = [];
+          for (const category in data[level]) {
+            window.questions[level].push(...data[level][category]);
+          }
+        }
+      } else {
+        throw new Error('Failed to fetch questions.json');
+      }
     } catch (error) {
       console.error('Failed to load questions:', error);
       // Fallback questions from sample, mapped to lowercase keys and standard format
       const sampleQuestions = {
         beginner: [
-          {question:"She ___ to school every day.",answer:"goes",options:["go","goes","gone"], type: "multiple_choice"},
-          {question:"I ___ happy today.",answer:"am",options:["is","are","am"], type: "multiple_choice"},
-          {question:"They ___ eating lunch.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"He ___ a doctor.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"We ___ playing soccer.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The cat ___ on the mat.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"You ___ my best friend.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"It ___ raining outside.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"My friends ___ coming over.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The book ___ interesting.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"Dogs ___ loyal animals.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"She ___ singing a song.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"We ___ going to the park.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The sun ___ shining brightly.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"Birds ___ flying in the sky.",answer:"are",options:["is","are","was"], type: "multiple_choice"}
+          {id:"b1",question:"She ___ to school every day.",answer:"goes",options:["go","goes","gone"], type: "multiple_choice",explanation:"The verb 'go' in present simple third person singular is 'goes'."},
+          {id:"b2",question:"I ___ happy today.",answer:"am",options:["is","are","am"], type: "multiple_choice",explanation:"Use 'am' for first person singular in present continuous or simple present."},
+          {id:"b3",question:"They ___ eating lunch.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"'They' is plural, so use 'are' for present continuous."},
+          {id:"b4",question:"He ___ a doctor.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular uses 'is'."},
+          {id:"b5",question:"We ___ playing soccer.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"First person plural uses 'are'."},
+          {id:"b6",question:"The cat ___ on the mat.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b7",question:"You ___ my best friend.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Second person uses 'are'."},
+          {id:"b8",question:"It ___ raining outside.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b9",question:"My friends ___ coming over.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural subject uses 'are'."},
+          {id:"b10",question:"The book ___ interesting.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b11",question:"Dogs ___ loyal animals.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural 'dogs' uses 'are'."},
+          {id:"b12",question:"She ___ singing a song.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b13",question:"We ___ going to the park.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"First person plural 'are'."},
+          {id:"b14",question:"The sun ___ shining brightly.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b15",question:"Birds ___ flying in the sky.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural 'birds' uses 'are'."}
         ],
         intermediate: [
-          {question:"They ___ playing outside.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"He has ___ a book.",answer:"read",options:["read","reads","reading"], type: "multiple_choice"},
-          {question:"She ___ to the store yesterday.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
-          {question:"I ___ finished my homework.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
-          {question:"They ___ watching TV.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
-          {question:"She ___ her homework already.",answer:"has done",options:["has done","have done","did"], type: "multiple_choice"},
-          {question:"We ___ to the beach last summer.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
-          {question:"He ___ playing the guitar.",answer:"is",options:["is","are","was"], type: "multiple_choice"},
-          {question:"They ___ eaten dinner yet.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
-          {question:"The movie ___ at 8 PM.",answer:"starts",options:["start","starts","started"], type: "multiple_choice"},
-          {question:"I ___ my keys at home.",answer:"left",options:["leave","left","leaved"], type: "multiple_choice"},
-          {question:"She ___ a new car.",answer:"has bought",options:["has bought","have bought","bought"], type: "multiple_choice"},
-          {question:"We ___ for the bus.",answer:"are waiting",options:["is waiting","are waiting","was waiting"], type: "multiple_choice"},
-          {question:"The teacher ___ the lesson.",answer:"is explaining",options:["is explaining","are explaining","was explaining"], type: "multiple_choice"},
-          {question:"They ___ to music.",answer:"are listening",options:["is listening","are listening","was listening"], type: "multiple_choice"}
+          {id:"i1",question:"They ___ playing outside.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Present continuous for plural."},
+          {id:"i2",question:"He has ___ a book.",answer:"read",options:["read","reads","reading"], type: "multiple_choice",explanation:"Present perfect uses past participle 'read'."},
+          {id:"i3",question:"She ___ to the store yesterday.",answer:"went",options:["go","went","gone"], type: "multiple_choice",explanation:"Past simple 'went'."},
+          {id:"i4",question:"I ___ finished my homework.",answer:"have",options:["has","have","had"], type: "multiple_choice",explanation:"Present perfect 'have' for first person."},
+          {id:"i5",question:"They ___ watching TV.",answer:"were",options:["was","were","is"], type: "multiple_choice",explanation:"Past continuous 'were' for plural."},
+          {id:"i6",question:"She ___ her homework already.",answer:"has done",options:["has done","have done","did"], type: "multiple_choice",explanation:"Present perfect 'has done'."},
+          {id:"i7",question:"We ___ to the beach last summer.",answer:"went",options:["go","went","gone"], type: "multiple_choice",explanation:"Past simple 'went'."},
+          {id:"i8",question:"He ___ playing the guitar.",answer:"is",options:["is","are","was"], type: "multiple_choice",explanation:"Present continuous 'is'."},
+          {id:"i9",question:"They ___ eaten dinner yet.",answer:"have",options:["has","have","had"], type: "multiple_choice",explanation:"Present perfect 'have'."},
+          {id:"i10",question:"The movie ___ at 8 PM.",answer:"starts",options:["start","starts","started"], type: "multiple_choice",explanation:"Third person singular 'starts'."},
+          {id:"i11",question:"I ___ my keys at home.",answer:"left",options:["leave","left","leaved"], type: "multiple_choice",explanation:"Past simple 'left'."},
+          {id:"i12",question:"She ___ a new car.",answer:"has bought",options:["has bought","have bought","bought"], type: "multiple_choice",explanation:"Present perfect 'has bought'."},
+          {id:"i13",question:"We ___ for the bus.",answer:"are waiting",options:["is waiting","are waiting","was waiting"], type: "multiple_choice",explanation:"Present continuous 'are waiting'."},
+          {id:"i14",question:"The teacher ___ the lesson.",answer:"is explaining",options:["is explaining","are explaining","was explaining"], type: "multiple_choice",explanation:"Present continuous 'is explaining'."},
+          {id:"i15",question:"They ___ to music.",answer:"are listening",options:["is listening","are listening","was listening"], type: "multiple_choice",explanation:"Present continuous 'are listening'."}
         ],
         advanced: [
-          {question:"By the time she arrived, he ___ left.",answer:"had",options:["has","had","have"], type: "multiple_choice"},
-          {question:"Identify the error: 'If I was you, I would study.'",answer:"was",options:["was","were","is"], type: "multiple_choice"},
-          {question:"She would have ___ if she had known.",answer:"come",options:["come","came","comes"], type: "multiple_choice"},
-          {question:"He ___ the book before the movie.",answer:"had read",options:["has read","had read","read"], type: "multiple_choice"},
-          {question:"They ___ to the party if invited.",answer:"would go",options:["will go","would go","went"], type: "multiple_choice"},
-          {question:"If he ___ harder, he would have passed.",answer:"had studied",options:["has studied","had studied","studied"], type: "multiple_choice"},
-          {question:"She wishes she ___ the answer.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
-          {question:"By next year, I ___ here for ten years.",answer:"will have lived",options:["will have lived","will live","have lived"], type: "multiple_choice"},
-          {question:"He acted as if he ___ the boss.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
-          {question:"I would rather you ___ smoking.",answer:"stopped",options:["stop","stopped","stopping"], type: "multiple_choice"},
-          {question:"It's high time we ___ the meeting.",answer:"started",options:["start","started","starting"], type: "multiple_choice"},
-          {question:"She suggested that he ___ early.",answer:"leave",options:["leaves","leave","left"], type: "multiple_choice"},
-          {question:"If only I ___ what to do.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
-          {question:"They demanded that the rules ___ changed.",answer:"be",options:["is","are","be"], type: "multiple_choice"},
-          {question:"He talks as though he ___ everything.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"}
+          {id:"a1",question:"By the time she arrived, he ___ left.",answer:"had",options:["has","had","have"], type: "multiple_choice",explanation:"Past perfect 'had left'."},
+          {id:"a2",question:"Identify the error: 'If I was you, I would study.'",answer:"was",options:["was","were","is"], type: "multiple_choice",explanation:"Subjunctive 'were' instead of 'was'."},
+          {id:"a3",question:"She would have ___ if she had known.",answer:"come",options:["come","came","comes"], type: "multiple_choice",explanation:"Third conditional uses past participle 'come'."},
+          {id:"a4",question:"He ___ the book before the movie.",answer:"had read",options:["has read","had read","read"], type: "multiple_choice",explanation:"Past perfect 'had read'."},
+          {id:"a5",question:"They ___ to the party if invited.",answer:"would go",options:["will go","would go","went"], type: "multiple_choice",explanation:"Second conditional 'would go'."},
+          {id:"a6",question:"If he ___ harder, he would have passed.",answer:"had studied",options:["has studied","had studied","studied"], type: "multiple_choice",explanation:"Third conditional 'had studied'."},
+          {id:"a7",question:"She wishes she ___ the answer.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."},
+          {id:"a8",question:"By next year, I ___ here for ten years.",answer:"will have lived",options:["will have lived","will live","have lived"], type: "multiple_choice",explanation:"Future perfect 'will have lived'."},
+          {id:"a9",question:"He acted as if he ___ the boss.",answer:"were",options:["was","were","is"], type: "multiple_choice",explanation:"Subjunctive 'were'."},
+          {id:"a10",question:"I would rather you ___ smoking.",answer:"stopped",options:["stop","stopped","stopping"], type: "multiple_choice",explanation:"Past subjunctive 'stopped'."},
+          {id:"a11",question:"It's high time we ___ the meeting.",answer:"started",options:["start","started","starting"], type: "multiple_choice",explanation:"Subjunctive 'started'."},
+          {id:"a12",question:"She suggested that he ___ early.",answer:"leave",options:["leaves","leave","left"], type: "multiple_choice",explanation:"Subjunctive 'leave'."},
+          {id:"a13",question:"If only I ___ what to do.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."},
+          {id:"a14",question:"They demanded that the rules ___ changed.",answer:"be",options:["is","are","be"], type: "multiple_choice",explanation:"Subjunctive 'be'."},
+          {id:"a15",question:"He talks as though he ___ everything.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."}
         ]
       };
       window.questions = sampleQuestions;
     }
   }
   const diffKey = window.selectedDifficulty.toLowerCase();
-  window.gameQuestions = [...window.questions[diffKey]];
-  window.gameQuestions.sort(() => Math.random() - 0.5); // Shuffle
+  // Get used questions from localStorage
+  const usedQuestions = JSON.parse(localStorage.getItem('usedQuestions') || '{}');
+  if (!usedQuestions[diffKey]) usedQuestions[diffKey] = [];
+  // Filter out used questions
+  let availableQuestions = window.questions[diffKey].filter(q => !usedQuestions[diffKey].includes(q.id));
+  // If less than 5 available, reset used for this difficulty
+  if (availableQuestions.length < 5) {
+    usedQuestions[diffKey] = [];
+    availableQuestions = [...window.questions[diffKey]];
+  }
+  // Shuffle available
+  availableQuestions.sort(() => Math.random() - 0.5);
+  window.gameQuestions = availableQuestions;
   window.currentQuestionIndex = 0;
   window.wrongAnswers = [];
 };
@@ -255,8 +278,8 @@ window.renderOfflineInterface = function() {
         </div>
         <div class="board-grid" id="board"></div>
         <div class="post-game-buttons" id="post-game-buttons" style="display: none;">
-          <button class="btn" onclick="window.startOfflinePvP()">Play Again</button>
-          <button class="btn" onclick="window.showPostGameReview()">Review Answers</button>
+          <button class="btn" onclick="window.startOfflinePvP()"><i class="fas fa-redo"></i> Play Again</button>
+          <button class="btn" onclick="window.showPostGameReview()"><i class="fas fa-eye"></i> Review Answers</button>
         </div>
         <div class="bottom-buttons">
 <button class="btn btn-small primary" onclick="renderHome()">Back to Home</button>
@@ -617,6 +640,19 @@ window.endGame = function(result) {
     } catch (storageError) {
       console.error('localStorage update failed:', storageError);
       // Continue without breaking
+    }
+
+    // Update used questions
+    try {
+      const usedQuestions = JSON.parse(localStorage.getItem('usedQuestions') || '{}');
+      const diffKey = window.selectedDifficulty.toLowerCase();
+      if (!usedQuestions[diffKey]) usedQuestions[diffKey] = [];
+      const usedIds = window.gameQuestions.slice(0, window.currentQuestionIndex).map(q => q.id);
+      usedQuestions[diffKey].push(...usedIds);
+      localStorage.setItem('usedQuestions', JSON.stringify(usedQuestions));
+      console.log('Used questions updated in localStorage');
+    } catch (storageError) {
+      console.error('Used questions update failed:', storageError);
     }
   } catch (error) {
     console.error('Error in endGame:', error);

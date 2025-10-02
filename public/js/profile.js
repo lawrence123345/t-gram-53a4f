@@ -99,7 +99,7 @@ if (hasAvatar) {
     <div style="padding: 35px; max-width: 950px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 25px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;" onmouseover="this.style.boxShadow='0 15px 50px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.boxShadow='0 10px 40px rgba(102, 126, 234, 0.3)'">
       <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);"></div>
       <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -2px 10px rgba(168, 237, 234, 0.3);"></div>
-      <h2 style="text-align: center; color: white; margin-bottom: 40px; font-size: 36px; text-shadow: 0 3px 10px rgba(0,0,0,0.4); animation: fadeInDown 0.8s ease; position: relative; z-index: 1;">Your Profile</h2>
+      <h2 style="text-align: center; color: white; margin-bottom: 40px; font-size: 36px; text-shadow: 0 3px 10px rgba(0,0,0,0.4); animation: fadeInDown 0.8s ease; position: relative; z-index: 1;">My Game Profile</h2>
       ${mainContent}
       <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); position: relative; z-index: 1;">
         <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 16px 40px; border: none; border-radius: 35px; margin-right: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(78, 205, 196, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(78, 205, 196, 0.4)'">💾 Save Changes</button>
@@ -182,15 +182,15 @@ window.showAvatarSelection = function() {
   const content = `
     <div style="text-align: center; padding: 25px; background: #000; border-radius: 20px; max-height: 85vh; overflow-y: auto; color: white; position: relative;">
       <div style="position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 24px; opacity: 0.8;" onclick="window.ModalManager.hideModal('avatar-modal')">✕</div>
-      <h3 style="color: white; margin-bottom: 10px; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🎨 Personalize Your Profile</h3>
-      <p style="color: rgba(255,255,255,0.9); margin-bottom: 25px; font-size: 16px;">Select an avatar or upload your own photo to stand out!</p>
+      <h3 style="color: white; margin-bottom: 10px; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🎨 Personalize Your Avatar</h3>
+      <p style="color: rgba(255,255,255,0.9); margin-bottom: 25px; font-size: 16px;">Pick an avatar or upload your own photo to make your profile stand out!</p>
       ${previewHTML}
       <div style="margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
         <input type="file" id="avatar-upload" accept="image/*" onchange="window.uploadAvatar()" style="display: none;">
         <label for="avatar-upload" class="upload-btn" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 20px rgba(255,107,107,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 16px; margin-bottom: 15px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255,107,107,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.3)'">📁 Add Your Photo</label>
       </div>
       <div style="margin-bottom: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-        <h4 style="color: white; margin-bottom: 20px; text-align: center; font-size: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Select Avatar</h4>
+        <h4 style="color: white; margin-bottom: 20px; text-align: center; font-size: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Choose Your Avatar</h4>
         <div class="avatar-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; max-width: 450px; margin: 0 auto; justify-items: center;">
           ${avatarHTML}
         </div>

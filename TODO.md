@@ -1,13 +1,10 @@
-# Login Design Improvement Plan
+# TODO for Achievements Feature in Profile
 
-## Steps to Complete:
-
-1. **Add Font Awesome CDN**: Edit index.html to include the Font Awesome link in the <head> section for icon support.
-
-2. **Update HTML in auth.js**: Modify window.renderLogin() and window.showSignup() functions to include Font Awesome icons (e.g., fa-envelope for email, fa-lock for password) within input groups for better visual appeal.
-
-3. **Enhance CSS Styles**: Edit public/css/style.css to add/improve styles for .login-container, .login-card, input groups with icons, buttons with gradients/animations, links, and ensure responsiveness/dark mode compatibility.
-
-4. **Verify Changes**: Use browser_action to launch the page, test login render, input focus/hover effects, signup toggle, and confirm no errors in console/screenshot.
-
-5. **Complete Task**: Once tested successfully, mark as done and use attempt_completion.
+- [x] Add badge images folder: public/assets/badges/
+- [ ] Update public/js/profile.js:
+  - [ ] Add "Achievements" clickable section under profile avatar
+  - [ ] Implement modal to display 6 badges with images and labels
+  - [ ] Implement unlocking logic based on player stats (games played, wins, scores)
+  - [ ] Improve profile page design for better aesthetics
+- [ ] Add CSS styles for badges and modal (inline or in public/css/style.css)
+- [ ] Test Achievements feature thoroughly

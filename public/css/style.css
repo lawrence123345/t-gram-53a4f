@@ -1148,8 +1148,9 @@ main {
   font-size: 1.2rem;
 }
 
-.post-game-buttons .btn:nth-child(1)::before {
-  content: '\f01e'; /* redo icon for Play Again */
+/* Removed duplicate icons on Play Again and Review Answers buttons */
+/* .post-game-buttons .btn:nth-child(1)::before {
+  content: '\f01e'; 
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   margin-right: 8px;
@@ -1157,12 +1158,12 @@ main {
 }
 
 .post-game-buttons .btn:nth-child(2)::before {
-  content: '\f06e'; /* eye icon for Review Answers */
+  content: '\f06e'; 
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   margin-right: 8px;
   color: inherit;
-}
+} */
 
 .review-modal-content {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);

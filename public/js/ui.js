@@ -52,7 +52,7 @@ const ModalManager = {
         const content = `
             <div class="alert-content">
                 <p>${message}</p>
-                <button onclick="ModalManager.hideModal('alert-modal')" class="btn">Close</button>
+                <button onclick="ModalManager.hideModal('alert-modal')" class="btn btn-small">Close</button>
             </div>
         `;
         this.showModal(alertId, content, type);
@@ -62,15 +62,53 @@ const ModalManager = {
         window.messages.push({ type: type, content: message, timestamp: Date.now() });
     },
 
-    // Show review modal with only wrong answers for learning
-    showReview: function(wrongAnswers = [], stats = {}) {
-        const wrongHtml = wrongAnswers.map((wa, i) => `<li>${i+1}. ${wa.question} <br> Your Answer: ${wa.userAnswer} <br> Correct: ${wa.answer} <br> Explanation: ${wa.explanation}</li>`).join('');
+    // Show review modal with all answers: correct (green), incorrect/skipped (red), with stats
+    showReview: function(allAnswers = [], stats = {}) {
+        const correctAnswers = allAnswers.filter(a => a.isCorrect);
+        const incorrectAnswers = allAnswers.filter(a => !a.isCorrect);
+
+        const statsHtml = `
+            <div class="stats-section" style="margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h3 style="margin: 0 0 10px 0; font-size: 1.5em;">📊 Game Stats</h3>
+                <p style="margin: 5px 0;"><strong>Your Score:</strong> ${stats.userScore} | <strong>Opponent Score:</strong> ${stats.opponentScore}</p>
+                <p style="margin: 5px 0;"><strong>Total Questions:</strong> ${stats.totalQuestions} | <strong>Correct:</strong> ${stats.correctAnswers} | <strong>Accuracy:</strong> ${stats.accuracy}%</p>
+            </div>
+        `;
+
+        const correctHtml = correctAnswers.map((ca, i) => `
+            <li style="background: linear-gradient(135deg, #d4edda 0%, #a3d9a5 100%); color: #155724; padding: 15px; margin-bottom: 10px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <strong>Question ${i+1}:</strong> ${ca.question}<br>
+                <strong>Correct Answer:</strong> ${ca.correctAnswer}<br>
+                <em>Explanation:</em> ${ca.explanation}
+            </li>
+        `).join('');
+
+        const incorrectHtml = incorrectAnswers.map((ia, i) => `
+            <li style="background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); color: #721c24; padding: 15px; margin-bottom: 10px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <strong>Question ${stats.correctAnswers + i + 1}:</strong> ${ia.question}<br>
+                <strong>Your Answer:</strong> ${ia.userAnswer || 'Skipped'}<br>
+                <strong>Correct Answer:</strong> ${ia.correctAnswer}<br>
+                <em>Explanation:</em> ${ia.explanation}
+            </li>
+        `).join('');
+
         const content = `
-            <div class="review-content">
-                <h3>Review Your Mistakes</h3>
-                <h4>Incorrect Answers</h4>
-                <ul class="wrong-list">${wrongHtml}</ul>
-                <button onclick="window.ModalManager.hideModal('review-modal')" class="btn">Close</button>
+            <div class="review-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <button onclick="window.ModalManager.hideModal('review-modal')" class="btn btn-small back-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                    <i class="fas fa-arrow-left" style="margin-right: 5px;"></i> Back to Game
+                </button>
+                <h2 style="margin: 0; color: #333; font-size: 1.8em;">📝 Review Answers</h2>
+            </div>
+            <div class="review-content" style="max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                ${statsHtml}
+                <div class="correct-section" style="margin-bottom: 20px;">
+                    <h4 style="color: #28a745; font-size: 1.3em; margin-bottom: 10px;">✅ Correct Answers</h4>
+                    <ul style="list-style: none; padding: 0;">${correctHtml}</ul>
+                </div>
+                <div class="incorrect-section">
+                    <h4 style="color: #dc3545; font-size: 1.3em; margin-bottom: 10px;">❌ Incorrect/Skipped Answers</h4>
+                    <ul style="list-style: none; padding: 0;">${incorrectHtml}</ul>
+                </div>
             </div>
         `;
         this.showModal('review-modal', content, 'info');

@@ -262,6 +262,7 @@ function updateScoreDisplay(){
   document.getElementById('level').innerText = level;
   const accuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
   document.getElementById('accuracy').innerText = accuracy + '%';
+  updateGameStats();
   checkAchievements();
 }
 
@@ -275,19 +276,7 @@ function showHint(correct){
   window.messages.push({ type: 'info', content: 'Hint: The correct answer is ' + correct, timestamp: Date.now() });
 }
 
-let achievements = [];
-function checkAchievements(){
-  if(score >= 100 && !achievements.includes('First Century')) {
-    achievements.push('First Century');
-    window.ModalManager.showAlert('Achievement Unlocked: First Century!', 'success');
-    window.messages.push({ type: 'success', content: 'Achievement Unlocked: First Century!', timestamp: Date.now() });
-  }
-  if(totalCorrect >= 10 && !achievements.includes('Grammar Master')) {
-    achievements.push('Grammar Master');
-    window.ModalManager.showAlert('Achievement Unlocked: Grammar Master!', 'success');
-    window.messages.push({ type: 'success', content: 'Achievement Unlocked: Grammar Master!', timestamp: Date.now() });
-  }
-}
+
 
 function updateMiniLeaderboard(){
   const miniLeaderboard = document.querySelector('.mini-leaderboard');

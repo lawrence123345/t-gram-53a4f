@@ -1,15 +1,15 @@
 // Default avatars
 const defaultAvatars = [
-  "https://cdn-icons-png.flaticon.com/512/1077/1077114.png", // Unknown by Freepik
-  "https://cdn-icons-png.flaticon.com/512/4718/4718624.png", // Easter Bunny / Rabbit by Freepik
-  "https://cdn-icons-png.flaticon.com/512/616/616430.png", // Cat by justicon
-  "https://cdn-icons-png.flaticon.com/512/2995/2995624.png", // Penguin by Freepik (corrected from cat link)
-  "https://cdn-icons-png.flaticon.com/512/1998/1998610.png", // Alien by Freepik
-  "https://cdn-icons-png.flaticon.com/512/2924/2924763.png", // Dragon / Monster by Freepik
-  "https://cdn-icons-png.flaticon.com/512/2839/2839022.png", // Grandmaster / Chess by Freepik
-  "https://cdn-icons-png.flaticon.com/512/4306/4306979.png", // Peace / Kitty by hellosun
-  "https://cdn-icons-png.flaticon.com/512/1077/1077063.png", // Man / Bald by Freepik
-  "https://cdn-icons-png.flaticon.com/512/1144/1144766.png" // Gamer by Muhammad_Usman
+  "https://i.ibb.co/WpVG6h57/iconos-de-persona-de-avatar-negro-icono-de-perfil-de-usuario.jpg",
+  "https://i.ibb.co/cS1n3rYd/download.jpg",
+  "https://i.ibb.co/ynjMJMwP/Astronaut-with-Planet-Balloons-Sticker-Sticker-Mania.jpg",
+  "https://i.ibb.co/8nh2bR3w/Metal-Poster-Displate-Dabbing-Penguin.jpg",
+  "https://i.ibb.co/Jjx7bdWt/download-4.jpg",
+  "https://i.ibb.co/Q3st8z3w/game-icon.jpg",
+  "https://i.ibb.co/FbGy2TpZ/download-7.jpg",
+  "https://i.ibb.co/rR0bQv9G/V-voj-mobiln-ch-aplikac-na-m-ru-MEMOS-Software.jpg",
+  "https://i.ibb.co/FLtbzztr/download-6.jpg",
+  "https://i.ibb.co/ytjG9s8/download-5.jpg"
 ];
 
 // Make functions global so they can be called from HTML
@@ -73,56 +73,75 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
     </div>
   `;
 
-let mainContent = '';
-if (hasAvatar) {
-  mainContent = `
-    <div style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease;">
-      ${leftAvatar}
-      <div style="flex: 1; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
-        ${fieldsHTML}
+  let mainContent = '';
+  if (hasAvatar) {
+    // Add Achievements button below avatar
+    let achievementsButton = `<button class="btn btn-small" style="margin-top: 15px; background: linear-gradient(135deg, #FF7F50, #9370DB); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(147, 127, 219, 0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onclick="window.showAchievements()">🏅 Achievements</button>`;
+
+    let avatarWithButton = `
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        ${leftAvatar}
+        ${achievementsButton}
       </div>
-    </div>
-  `;
-} else {
-  mainContent = `
-    <div style="max-width: 550px; margin: 0 auto 35px; padding: 30px; background: linear-gradient(135deg, rgba(248,249,250,0.95) 0%, rgba(233,236,239,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); text-align: center; animation: fadeInUp 0.8s ease; border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
-      <div style="margin-bottom: 25px; font-size: 22px; color: #495057; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">👋 Add an avatar to personalize your profile!</div>
-      <button class="btn btn-small" onclick="window.showAvatarSelection()" style="display: inline-block; margin: 0 auto 30px; padding: 16px 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(102, 126, 234, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'">Customize Avatar</button>
-      <div style="padding: 30px; background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(222,226,230,0.8);">
-        ${fieldsHTML}
+    `;
+
+    mainContent = `
+      <div style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease;">
+        ${avatarWithButton}
+        <div style="flex: 1; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+          ${fieldsHTML}
+        </div>
       </div>
-    </div>
-  `;
-}
+    `;
+  } else {
+    mainContent = `
+      <div style="max-width: 550px; margin: 0 auto 35px; padding: 30px; background: linear-gradient(135deg, rgba(248,249,250,0.95) 0%, rgba(233,236,239,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); text-align: center; animation: fadeInUp 0.8s ease; border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+        <div style="margin-bottom: 25px; font-size: 22px; color: #495057; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">👋 Add an avatar to personalize your profile!</div>
+        <button class="btn btn-small" onclick="window.showAvatarSelection()" style="display: inline-block; margin: 0 auto 30px; padding: 16px 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(102, 126, 234, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'">Customize Avatar</button>
+        <div style="padding: 30px; background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(222,226,230,0.8);">
+          ${fieldsHTML}
+        </div>
+      </div>
+    `;
+  }
 
   let profileHTML = `
-    <div style="padding: 35px; max-width: 950px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 25px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;" onmouseover="this.style.boxShadow='0 15px 50px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.boxShadow='0 10px 40px rgba(102, 126, 234, 0.3)'">
-      <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);"></div>
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -2px 10px rgba(168, 237, 234, 0.3);"></div>
-      <h2 style="text-align: center; color: white; margin-bottom: 40px; font-size: 36px; text-shadow: 0 3px 10px rgba(0,0,0,0.4); animation: fadeInDown 0.8s ease; position: relative; z-index: 1;">My Game Profile</h2>
+    <div style="padding: 40px; max-width: 960px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 30px; box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 8px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 3px 15px rgba(255, 154, 158, 0.5); border-radius: 30px 30px 0 0;"></div>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -3px 15px rgba(168, 237, 234, 0.5); border-radius: 0 0 30px 30px;"></div>
+      <h2 style="text-align: center; color: white; margin-bottom: 50px; font-size: 40px; font-weight: 700; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeInDown 0.8s ease; position: relative; z-index: 1; letter-spacing: 1.2px;">My Game Profile</h2>
       ${mainContent}
-      <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); position: relative; z-index: 1;">
-        <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 16px 40px; border: none; border-radius: 35px; margin-right: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(78, 205, 196, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(78, 205, 196, 0.4)'">💾 Save Changes</button>
-        <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 16px 40px; border: 2px solid rgba(255,255,255,0.4); border-radius: 35px; cursor: pointer; font-weight: bold; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='translateY(-3px) scale(1.02)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'">🏠 Back to Home</button>
+      <div style="text-align: center; padding-top: 40px; border-top: 2px solid rgba(255,255,255,0.4); position: relative; z-index: 1;">
+        <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 18px 48px; border: none; border-radius: 40px; margin-right: 25px; cursor: pointer; font-weight: 700; box-shadow: 0 10px 30px rgba(78, 205, 196, 0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(78, 205, 196, 0.7)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 30px rgba(78, 205, 196, 0.6)'">💾 Save Changes</button>
+        <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.3); color: white; padding: 18px 48px; border: 2px solid rgba(255,255,255,0.5); border-radius: 40px; cursor: pointer; font-weight: 700; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.background='rgba(255,255,255,0.45)'; this.style.transform='translateY(-4px) scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(0) scale(1)'">🏠 Back to Home</button>
       </div>
     </div>
     <style>
       @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-40px); }
+        from { opacity: 0; transform: translateY(-50px); }
         to { opacity: 1; transform: translateY(0); }
       }
       @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(40px); }
+        from { opacity: 0; transform: translateY(50px); }
         to { opacity: 1; transform: translateY(0); }
       }
       @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-30px); }
+        from { opacity: 0; transform: translateX(-40px); }
         to { opacity: 1; transform: translateX(0); }
       }
       @keyframes bounceIn {
         0% { transform: scale(0); }
-        50% { transform: scale(1.1); }
+        50% { transform: scale(1.15); }
         100% { transform: scale(1); }
+      }
+      /* Button hover animations */
+      .btn-small {
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      }
+      .btn-small:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        transform: translateY(-3px) scale(1.05);
       }
     </style>
   `;
@@ -201,6 +220,24 @@ window.showAvatarSelection = function() {
 
   window.ModalManager.showModal('avatar-modal', content, 'info');
 };
+
+window.showAchievements = function() {
+  // Lazy load achievements.js if not loaded
+  if (!window.achievementsLoaded) {
+    const script = document.createElement('script');
+    script.src = 'js/achievements.js';
+    script.onload = () => {
+      window.achievementsLoaded = true;
+      window.showAchievements();
+    };
+    document.head.appendChild(script);
+    return;
+  }
+  // Call the showAchievements function from achievements.js
+  if (window.showAchievements) {
+    window.showAchievements();
+  }
+}
 
 // Make functions global so they can be called from HTML
 window.saveProfile = function(){

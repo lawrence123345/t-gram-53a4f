@@ -1,10 +1,17 @@
-# TODO for Achievements Feature in Profile
+# TODO: Enhance Question Display and Timer Design
 
-- [x] Add badge images folder: public/assets/badges/
-- [ ] Update public/js/profile.js:
-  - [ ] Add "Achievements" clickable section under profile avatar
-  - [ ] Implement modal to display 6 badges with images and labels
-  - [ ] Implement unlocking logic based on player stats (games played, wins, scores)
-  - [ ] Improve profile page design for better aesthetics
-- [ ] Add CSS styles for badges and modal (inline or in public/css/style.css)
-- [ ] Test Achievements feature thoroughly
+## Completed Tasks
+- [ ] Analyze current question modal and timer implementation
+- [ ] Plan enhancements for stylish and eye-catching design
+
+## Pending Tasks
+- [ ] Enhance question modal styling with animations and visual effects
+- [ ] Improve question text typography and layout
+- [ ] Style option buttons with hover effects and colors
+- [ ] Create stylish timer design (circular progress or animated bar)
+- [ ] Add color transitions for timer (green -> yellow -> red)
+- [ ] Implement pulsing animation for low time
+- [ ] Ensure dark mode compatibility
+- [ ] Add responsive design for mobile devices
+- [ ] Test enhancements in browser
+- [ ] Verify animations and performance

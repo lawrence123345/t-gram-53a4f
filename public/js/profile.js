@@ -9,7 +9,7 @@ const defaultAvatars = [
   "https://i.ibb.co/FbGy2TpZ/download-7.jpg",
   "https://i.ibb.co/rR0bQv9G/V-voj-mobiln-ch-aplikac-na-m-ru-MEMOS-Software.jpg",
   "https://i.ibb.co/FLtbzztr/download-6.jpg",
-  "https://i.ibb.co/ytjG9s8/download-5.jpg"
+  "https://i.ibb.co/ytjG9s8/download-5.jpg",  
 ];
 
 // Make functions global so they can be called from HTML
@@ -198,7 +198,7 @@ window.showAvatarSelection = function() {
     const isSelected = window.currentUser.avatar === a;
     const borderStyle = isSelected ? '4px solid #667eea' : '2px solid #e9ecef';
     return `<div class="avatar-option" onclick="window.selectAvatar('${a}')" style="width: 90px; height: 90px; border-radius: 50%; cursor: pointer; border: ${borderStyle}; display: inline-block; margin: 8px; transition: all 0.3s ease; box-shadow: ${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}; position: relative; overflow: hidden;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.style.border='4px solid #667eea'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.3)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.border='${borderStyle}'; this.style.boxShadow='${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}'">
-      <img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='brightness(1)'">
+      <img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center; transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='brightness(1)'">
       ${isSelected ? '<div style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>' : ''}
     </div>`;
   }).join("");

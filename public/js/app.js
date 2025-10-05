@@ -66,7 +66,7 @@ window.selectDifficulty = function(diff){
 window.renderAbout = function(){
   document.getElementById('app').innerHTML = `<main>
 <div class="about-hero">
-  <img src="https://via.placeholder.com/800x300/008080/ffffff?text=T-Gram+Hero" alt="T-Gram Hero Image" class="img-fluid">
+  <!-- Hero image removed as per user request -->
   <h1>About T-Gram</h1>
   <p class="hero-subtitle">Empowering Rural Education Through Gamified Learning</p>
 </div>
@@ -357,6 +357,7 @@ window.showQuestion = function() {
   const content = `
     <h3 id="question-title">${title}</h3>
     <div id="question-content">${questionContent}</div>
+    <div id="question-clue" style="margin-top: 10px; font-style: italic; color: black;">Clue: ${window.currentQuestion.clue || 'Think carefully!'}</div>
     <div id="question-options">${optionsHtml || inputHtml}</div>
     <div id="question-feedback" style="display:none;"></div>
     <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration()}</span>s</div>
@@ -637,6 +638,25 @@ window.endGame = function(result) {
       userScores.totalScore += window.userScore || 0;
       localStorage.setItem('scores', JSON.stringify(scores));
       console.log('Scores updated in localStorage');
+
+      // Update gameStats for achievements
+      let gameStats = JSON.parse(localStorage.getItem('gameStats') || '{}');
+      gameStats.gamesPlayed = userScores.totalGames;
+      gameStats.gamesWon = userScores.wins;
+      gameStats.pointsScored = userScores.totalScore;
+      localStorage.setItem('gameStats', JSON.stringify(gameStats));
+
+      // Trigger achievements update
+      if (!window.achievementsLoaded) {
+        const script = document.createElement('script');
+        script.src = 'js/achievements.js';
+        script.onload = () => {
+          window.updateAchievements();
+        };
+        document.head.appendChild(script);
+      } else {
+        window.updateAchievements();
+      }
     } catch (storageError) {
       console.error('localStorage update failed:', storageError);
       // Continue without breaking

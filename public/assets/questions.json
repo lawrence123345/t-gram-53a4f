@@ -554,14 +554,14 @@
       {
         "id": "i2",
         "type": "fill_blank",
-        "question": "She is ____ than her sister. (tall)",
+        "question": "She is ____ than her sister.",
         "answer": "taller",
         "explanation": "Add -er to one-syllable adjectives."
       },
       {
         "id": "i6",
         "type": "fill_blank",
-        "question": "If I ___ rich, I would travel. (conditional)",
+        "question": "If I ___ rich, I would travel.",
         "answer": "were",
         "explanation": "Subjunctive 'were' for unreal conditions."
       },
@@ -575,147 +575,147 @@
       {
         "id": "i12",
         "type": "fill_blank",
-        "question": "She has ___ the book. (read)",
+        "question": "She has ___ the book.",
         "answer": "read",
         "explanation": "Past participle of 'read' is 'read'."
       },
       {
         "id": "i16",
         "type": "fill_blank",
-        "question": "We have ___ dinner. (eat)",
+        "question": "We have ___ dinner.",
         "answer": "eaten",
         "explanation": "Past participle of 'eat'."
       },
       {
         "id": "i20",
         "type": "fill_blank",
-        "question": "I will ___ happy. (be)",
+        "question": "I will ___ happy.",
         "answer": "be",
         "explanation": "Base form after 'will'."
       },
       {
         "id": "i24",
         "type": "fill_blank",
-        "question": "The cake ___ baked by my mother. (is)",
+        "question": "The cake ___ baked by my mother.",
         "answer": "is",
         "explanation": "Present passive uses 'is' + past participle."
       },
       {
         "id": "i28",
         "type": "fill_blank",
-        "question": "If she ___ here, she would help. (be)",
+        "question": "If she ___ here, she would help.",
         "answer": "were",
         "explanation": "Subjunctive 'were' for all subjects in unreal conditions."
       },
       {
         "id": "i32",
         "type": "fill_blank",
-        "question": "He enjoys ___ in the park. (run)",
+        "question": "He enjoys ___ in the park.",
         "answer": "running",
         "explanation": "Gerund after 'enjoys'."
       },
       {
         "id": "i36",
         "type": "fill_blank",
-        "question": "I want ___ home. (go)",
+        "question": "I want ___ home.",
         "answer": "to go",
         "explanation": "Full infinitive after 'want'."
       },
       {
         "id": "i40",
         "type": "fill_blank",
-        "question": "She ___ singing when I arrived. (was)",
+        "question": "She ___ singing when I arrived.",
         "answer": "was",
         "explanation": "Third person singular uses 'was'."
       },
       {
         "id": "i44",
         "type": "fill_blank",
-        "question": "By next year, I ___ my degree. (will have finished)",
+        "question": "By next year, I ___ my degree.",
         "answer": "will have finished",
         "explanation": "Future perfect for action completed before another future time."
       },
       {
         "id": "i48",
         "type": "fill_blank",
-        "question": "I recommend that he ___ the job. (take)",
+        "question": "I recommend that he ___ the job.",
         "answer": "take",
         "explanation": "Base form in subjunctive after 'recommend'."
       },
       {
         "id": "i52",
         "type": "fill_blank",
-        "question": "She told me that she ___ happy. (was)",
+        "question": "She told me that she ___ happy.",
         "answer": "was",
         "explanation": "Past tense backshifts to past."
       },
       {
         "id": "i56",
         "type": "fill_blank",
-        "question": "I will ___ my hair cut. (have)",
+        "question": "I will ___ my hair cut.",
         "answer": "have",
         "explanation": "Causative structure."
       },
       {
         "id": "i60",
         "type": "fill_blank",
-        "question": "Don't ___ hope. (give up)",
+        "question": "Don't ___ hope.",
         "answer": "give up",
         "explanation": "Phrasal verb meaning surrender."
       },
       {
         "id": "i64",
         "type": "fill_blank",
-        "question": "You ___ eat vegetables. (should)",
+        "question": "You ___ eat vegetables.",
         "answer": "should",
         "explanation": "Modal for recommendation."
       },
       {
         "id": "i68",
         "type": "fill_blank",
-        "question": "This is the house ___ I grew up. (that)",
+        "question": "This is the house ___ I grew up.",
         "answer": "that",
         "explanation": "'That' for things in relative clauses."
       },
       {
         "id": "i72",
         "type": "fill_blank",
-        "question": "He gave ___ the money. (me)",
+        "question": "He gave ___ the money.",
         "answer": "me",
         "explanation": "Indirect object before direct object."
       },
       {
         "id": "i76",
         "type": "fill_blank",
-        "question": "___ finished, she went home. (having)",
+        "question": "___ finished, she went home.",
         "answer": "Having",
         "explanation": "Participle clause for sequence."
       },
       {
         "id": "i80",
         "type": "fill_blank",
-        "question": "Paris, ___ capital of France, is beautiful. (the)",
+        "question": "Paris, ___ capital of France, is beautiful.",
         "answer": "the",
         "explanation": "Appositive provides additional info."
       },
       {
         "id": "i84",
         "type": "fill_blank",
-        "question": "He ___ the bucket last year. (kicked)",
+        "question": "He ___ the bucket last year.",
         "answer": "kicked",
         "explanation": "Idiomatic expression."
       },
       {
         "id": "i88",
         "type": "fill_blank",
-        "question": "She is very ___. (joyful)",
+        "question": "She is very ___.",
         "answer": "joyful",
         "explanation": "Synonym for happy."
       },
       {
         "id": "i92",
         "type": "fill_blank",
-        "question": "The room is ___. (small)",
+        "question": "The room is ___.",
         "answer": "small",
         "explanation": "Antonym for big."
       },
@@ -729,7 +729,7 @@
       {
         "id": "i100",
         "type": "fill_blank",
-        "question": "Live simply so that others may ___. (simply live)",
+        "question": "Live simply so that others may ___.",
         "answer": "simply live",
         "explanation": "Chiasmus for emphasis."
       }

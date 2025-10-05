@@ -351,3 +351,6 @@ function showAchievementDetails(id) {
 
   window.ModalManager.showModal('achievement-detail-modal', content, 'info');
 }
+
+// Make updateAchievements global
+window.updateAchievements = updateAchievements;

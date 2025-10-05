@@ -7,7 +7,8 @@
         "answer": "goes",
         "options": ["go", "goes", "gone"],
         "type": "multiple_choice",
-        "explanation": "The verb 'go' in present simple third person singular is 'goes'."
+        "explanation": "The verb 'go' in present simple third person singular is 'goes'.",
+        "clue": "Think about the third person singular form."
       },
       {
         "id": "b2",
@@ -15,7 +16,8 @@
         "answer": "am",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Use 'am' for first person singular in present continuous or simple present."
+        "explanation": "Use 'am' for first person singular in present continuous or simple present.",
+        "clue": "First person singular uses 'am'."
       },
       {
         "id": "b3",
@@ -23,7 +25,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "'They' is plural, so use 'are' for present continuous."
+        "explanation": "'They' is plural, so use 'are' for present continuous.",
+        "clue": "Plural subjects use 'are'."
       },
       {
         "id": "b4",
@@ -31,7 +34,8 @@
         "answer": "is",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Third person singular uses 'is'."
+        "explanation": "Third person singular uses 'is'.",
+        "clue": "Third person singular uses 'is'."
       },
       {
         "id": "b5",
@@ -39,7 +43,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "First person plural uses 'are'."
+        "explanation": "First person plural uses 'are'.",
+        "clue": "First person plural uses 'are'."
       },
       {
         "id": "b6",
@@ -47,7 +52,8 @@
         "answer": "is",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'."
+        "explanation": "Third person singular 'is'.",
+        "clue": "Third person singular 'is'."
       },
       {
         "id": "b7",
@@ -55,7 +61,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "Second person uses 'are'."
+        "explanation": "Second person uses 'are'.",
+        "clue": "Second person uses 'are'."
       },
       {
         "id": "b8",
@@ -63,7 +70,8 @@
         "answer": "is",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'."
+        "explanation": "Third person singular 'is'.",
+        "clue": "Third person singular 'is'."
       },
       {
         "id": "b9",
@@ -71,7 +79,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "Plural subject uses 'are'."
+        "explanation": "Plural subject uses 'are'.",
+        "clue": "Plural subjects use 'are'."
       },
       {
         "id": "b10",
@@ -79,7 +88,8 @@
         "answer": "is",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'."
+        "explanation": "Third person singular 'is'.",
+        "clue": "Third person singular uses 'is'."
       },
       {
         "id": "b11",
@@ -87,7 +97,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "Plural 'dogs' uses 'are'."
+        "explanation": "Plural 'dogs' uses 'are'.",
+        "clue": "Plural nouns use 'are'."
       },
       {
         "id": "b12",
@@ -103,7 +114,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "First person plural 'are'."
+        "explanation": "First person plural 'are'.",
+        "clue": "First person plural uses 'are'."
       },
       {
         "id": "b14",
@@ -111,7 +123,8 @@
         "answer": "is",
         "options": ["is", "are", "am"],
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'."
+        "explanation": "Third person singular 'is'.",
+        "clue": "Third person singular uses 'is'."
       },
       {
         "id": "b15",
@@ -119,7 +132,8 @@
         "answer": "are",
         "options": ["is", "are", "was"],
         "type": "multiple_choice",
-        "explanation": "Plural 'birds' uses 'are'."
+        "explanation": "Plural 'birds' uses 'are'.",
+        "clue": "Plural subjects use 'are'."
       },
       {
         "id": "b18",

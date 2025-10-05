@@ -47,11 +47,11 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       </label>
       <input id="edit-username" value="${window.currentUser.username}" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" />
     </div>
-    <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.7s ease;">
-      <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
-        <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.7s ease;">🏆</span> Leaderboard Rank
+    <div style="margin-bottom: 25px; position: relative; animation: fadeIn 1s ease; display: flex; align-items: center; gap: 12px;">
+      <label style="display: flex; align-items: center; font-weight: 700; color: #2c3e50; font-size: 18px; text-shadow: 0 1px 3px rgba(0,0,0,0.15); user-select: none;">
+        <span style="margin-right: 12px; font-size: 24px; animation: bounceIn 1.2s ease infinite alternate; color: #f39c12;">🏆</span> Leaderboard Rank
       </label>
-      <span style="padding: 15px 18px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 12px; display: inline-block; color: white; font-weight: bold; box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.3s ease; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">${rank}</span>
+      <span style="padding: 12px 28px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 50px; display: inline-block; color: white; font-weight: 900; box-shadow: 0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3); transition: all 0.4s ease; font-size: 18px; text-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: default;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 12px 40px rgba(243, 156, 18, 0.8), inset 0 1px 0 rgba(255,255,255,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)'">${rank}</span>
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.8s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
@@ -106,42 +106,61 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
   }
 
   let profileHTML = `
-    <div style="padding: 40px; max-width: 960px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 30px; box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-      <div style="position: absolute; top: 0; left: 0; right: 0; height: 8px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 3px 15px rgba(255, 154, 158, 0.5); border-radius: 30px 30px 0 0;"></div>
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -3px 15px rgba(168, 237, 234, 0.5); border-radius: 0 0 30px 30px;"></div>
-      <h2 style="text-align: center; color: white; margin-bottom: 50px; font-size: 40px; font-weight: 700; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeInDown 0.8s ease; position: relative; z-index: 1; letter-spacing: 1.2px;">My Game Profile</h2>
+    <div style="padding: 50px; max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 35px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255,255,255,0.1); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <!-- Particle Background -->
+      <div class="particles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
+        <div class="particle" style="position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
+        <div class="particle" style="position: absolute; width: 6px; height: 6px; background: rgba(255,154,158,0.8); border-radius: 50%; top: 60%; left: 80%; animation: float 8s ease-in-out infinite reverse;"></div>
+        <div class="particle" style="position: absolute; width: 3px; height: 3px; background: rgba(168,237,234,0.7); border-radius: 50%; top: 40%; left: 60%; animation: float 7s ease-in-out infinite;"></div>
+        <div class="particle" style="position: absolute; width: 5px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 50%; top: 80%; left: 30%; animation: float 9s ease-in-out infinite reverse;"></div>
+        <div class="particle" style="position: absolute; width: 4px; height: 4px; background: rgba(240,147,251,0.6); border-radius: 50%; top: 10%; left: 70%; animation: float 5s ease-in-out infinite;"></div>
+      </div>
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 10px; background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fecfef 100%); box-shadow: 0 4px 20px rgba(255, 154, 158, 0.7); border-radius: 35px 35px 0 0;"></div>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 10px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -4px 20px rgba(168, 237, 234, 0.7); border-radius: 0 0 35px 35px;"></div>
+      <h2 style="text-align: center; color: white; margin-bottom: 60px; font-size: 45px; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.8); animation: fadeInDown 1s ease; position: relative; z-index: 2; letter-spacing: 1.5px; background: linear-gradient(45deg, #fff, #f0f8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">My Game Profile</h2>
       ${mainContent}
-      <div style="text-align: center; padding-top: 40px; border-top: 2px solid rgba(255,255,255,0.4); position: relative; z-index: 1;">
-        <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 18px 48px; border: none; border-radius: 40px; margin-right: 25px; cursor: pointer; font-weight: 700; box-shadow: 0 10px 30px rgba(78, 205, 196, 0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(78, 205, 196, 0.7)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 30px rgba(78, 205, 196, 0.6)'">💾 Save Changes</button>
-        <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.3); color: white; padding: 18px 48px; border: 2px solid rgba(255,255,255,0.5); border-radius: 40px; cursor: pointer; font-weight: 700; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.background='rgba(255,255,255,0.45)'; this.style.transform='translateY(-4px) scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(0) scale(1)'">🏠 Back to Home</button>
+      <div style="text-align: center; padding-top: 50px; border-top: 3px solid rgba(255,255,255,0.5); position: relative; z-index: 2;">
+        <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 12px 35px rgba(78, 205, 196, 0.8), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
+        <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 20px 55px; border: 3px solid rgba(255,255,255,0.6); border-radius: 45px; cursor: pointer; font-weight: 800; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.4)'; this.style.transform='translateY(-5px) scale(1.08)'; this.style.borderColor='rgba(255,255,255,0.8)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,255,255,0.6)'">🏠 Back to Home</button>
       </div>
     </div>
     <style>
       @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-50px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: translateY(-60px) scale(0.9); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
       }
       @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: translateY(60px) scale(0.9); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
       }
       @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-40px); }
-        to { opacity: 1; transform: translateX(0); }
+        from { opacity: 0; transform: translateX(-50px) scale(0.95); }
+        to { opacity: 1; transform: translateX(0) scale(1); }
       }
       @keyframes bounceIn {
-        0% { transform: scale(0); }
-        50% { transform: scale(1.15); }
-        100% { transform: scale(1); }
+        0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+        50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0deg); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+      }
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        50% { box-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6); }
       }
       /* Button hover animations */
       .btn-small {
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       }
       .btn-small:hover {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        transform: translateY(-4px) scale(1.05);
+      }
+      .particles .particle {
+        animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;
       }
     </style>
   `;
@@ -186,35 +205,35 @@ window.showAvatarSelection = function() {
 
   // Preview section
   let previewHTML = '';
-  if (window.currentUser.avatar) {
-    let previewAvatar = window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:') 
-      ? `<img src="${window.currentUser.avatar}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">`
-      : `<div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2c3e50, #1a252f); display: flex; align-items: center; justify-content: center; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"></div>`;
-    previewHTML = `
-      <div style="text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-        <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
-        ${previewAvatar}
-      </div>
-    `;
-  }
+      if (window.currentUser.avatar) {
+        let previewAvatar = window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:') 
+          ? `<img src="${window.currentUser.avatar}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">`
+          : `<div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2c3e50, #1a252f); display: flex; align-items: center; justify-content: center; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"></div>`;
+        previewHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); min-width: 180px; min-height: 180px;">
+            <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
+            ${previewAvatar}
+          </div>
+        `;
+      }
 
   const content = `
-    <div style="text-align: center; padding: 25px; background: #000; border-radius: 20px; max-height: 85vh; overflow-y: auto; color: white; position: relative;">
-      <div style="position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 24px; opacity: 0.8;" onclick="window.ModalManager.hideModal('avatar-modal')">✕</div>
-      <h3 style="color: white; margin-bottom: 10px; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🎨 Personalize Your Avatar</h3>
-      <p style="color: rgba(255,255,255,0.9); margin-bottom: 25px; font-size: 16px;">Pick an avatar or upload your own photo to make your profile stand out!</p>
+    <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, #1e1e2f, #2c2c44); border-radius: 25px; max-height: 85vh; overflow-y: auto; color: #f0f0f5; position: relative; box-shadow: 0 0 30px rgba(102, 126, 234, 0.7); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <div style="position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 28px; opacity: 0.85; color: #bbb;" onclick="window.ModalManager.hideModal('avatar-modal')" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#bbb'">✕</div>
+      <h3 style="color: #a3a3ff; margin-bottom: 15px; font-size: 32px; font-weight: 700; text-shadow: 0 0 10px #a3a3ff;">🎨 Personalize Your Avatar</h3>
+      <p style="color: #cfcfff; margin-bottom: 30px; font-size: 18px; font-weight: 500; letter-spacing: 0.5px;">Pick an avatar or upload your own photo to make your profile stand out!</p>
       ${previewHTML}
-      <div style="margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+      <div style="margin-bottom: 35px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 15px rgba(163, 163, 255, 0.3); transition: box-shadow 0.3s ease;">
         <input type="file" id="avatar-upload" accept="image/*" onchange="window.uploadAvatar()" style="display: none;">
-        <label for="avatar-upload" class="upload-btn" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 20px rgba(255,107,107,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 16px; margin-bottom: 15px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255,107,107,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.3)'">📁 Add Your Photo</label>
+        <label for="avatar-upload" class="upload-btn" style="display: inline-block; padding: 18px 40px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 40px; cursor: pointer; font-weight: 700; box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6); font-size: 18px; letter-spacing: 0.8px; user-select: none; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 12px 40px rgba(102, 126, 234, 0.8)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 30px rgba(102, 126, 234, 0.6)'">📁 Add Your Photo</label>
       </div>
-      <div style="margin-bottom: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-        <h4 style="color: white; margin-bottom: 20px; text-align: center; font-size: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Choose Your Avatar</h4>
-        <div class="avatar-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; max-width: 450px; margin: 0 auto; justify-items: center;">
+      <div style="margin-bottom: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 20px rgba(163, 163, 255, 0.3); transition: box-shadow 0.3s ease;">
+        <h4 style="color: #b0b0ff; margin-bottom: 25px; text-align: center; font-size: 22px; font-weight: 700; text-shadow: 0 0 8px #b0b0ff;">Choose Your Avatar</h4>
+        <div class="avatar-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 20px; max-width: 480px; margin: 0 auto; justify-items: center;">
           ${avatarHTML}
         </div>
       </div>
-      <button class="btn btn-small" onclick="window.ModalManager.hideModal('avatar-modal')" style="padding: 12px 25px; background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.3); border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s ease, transform 0.3s ease; font-size: 16px;" onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">✕ Close</button>
+      <button class="btn btn-small" onclick="window.ModalManager.hideModal('avatar-modal')" style="padding: 14px 30px; background: rgba(255,255,255,0.1); color: #bbb; border: 2px solid rgba(255,255,255,0.3); border-radius: 35px; cursor: pointer; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.3); font-size: 18px; letter-spacing: 0.6px; user-select: none; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.color='#eee'; this.style.transform='translateY(-3px) scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#bbb'; this.style.transform='translateY(0) scale(1)'">✕ Close</button>
     </div>
   `;
 

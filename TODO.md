@@ -1,17 +1,12 @@
-# TODO: Enhance Question Display and Timer Design
+# TODO List for Profile.js Enhancements
 
-## Completed Tasks
-- [ ] Analyze current question modal and timer implementation
-- [ ] Plan enhancements for stylish and eye-catching design
-
-## Pending Tasks
-- [ ] Enhance question modal styling with animations and visual effects
-- [ ] Improve question text typography and layout
-- [ ] Style option buttons with hover effects and colors
-- [ ] Create stylish timer design (circular progress or animated bar)
-- [ ] Add color transitions for timer (green -> yellow -> red)
-- [ ] Implement pulsing animation for low time
-- [ ] Ensure dark mode compatibility
-- [ ] Add responsive design for mobile devices
-- [ ] Test enhancements in browser
-- [ ] Verify animations and performance
+- [x] Update avatar display in navigation bar with fallback to black circle SVG.
+- [x] Add profile menu toggle and close functions for slide-out menu.
+- [x] Implement change detection for profile form to enable/disable save button.
+- [x] Add placeholder functions for menu items: leaderboard, settings, logout.
+- [ ] Test profile menu toggle and close functionality.
+- [ ] Test save button enable/disable on profile changes.
+- [ ] Implement actual leaderboard, settings, and logout functionality if not done.
+- [ ] Verify avatar upload and selection UI and functionality.
+- [ ] Ensure profile rendering updates avatar and user info correctly.
+- [ ] Cross-browser testing and UI polish.

@@ -3,6 +3,8 @@ window.users = [
     {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown"}
 ];
 window.currentUser = null;
+window.failedAttempts = parseInt(localStorage.getItem('failedAttempts')) || 0;
+window.cooldownUntil = parseInt(localStorage.getItem('cooldownUntil')) || 0;
 localStorage.setItem('users', JSON.stringify(window.users));
 
 if(!localStorage.getItem('scores')) localStorage.setItem('scores', JSON.stringify([]));
@@ -11,16 +13,31 @@ if(!localStorage.getItem('scores')) localStorage.setItem('scores', JSON.stringif
 
 // Make functions global so they can be called from HTML
 window.handleLogin = function(){
+  if (Date.now() < window.cooldownUntil) {
+    const remaining = Math.ceil((window.cooldownUntil - Date.now()) / 1000 / 60);
+    window.ModalManager.showAlert(`Too many failed attempts. Try again in ${remaining} minutes.`, 'error');
+    return;
+  }
   const email = document.getElementById('login-email').value;
   const pass = document.getElementById('login-pass').value;
   const user = window.users.find(u => u.email === email || u.username === email);
   if(user && user.password === pass){
     window.currentUser = user;
+    window.failedAttempts = 0;
+    localStorage.setItem('failedAttempts', 0);
     window.renderHome();
     window.updateNav(true);
     window.updateNavAvatar();
   } else {
-    window.ModalManager.showAlert('Invalid credentials', 'error');
+    window.failedAttempts++;
+    localStorage.setItem('failedAttempts', window.failedAttempts);
+    if (window.failedAttempts >= 3) {
+      window.cooldownUntil = Date.now() + 5 * 60 * 1000; // 5 minutes
+      localStorage.setItem('cooldownUntil', window.cooldownUntil);
+      window.ModalManager.showAlert('Too many failed attempts. Cooldown for 5 minutes.', 'error');
+    } else {
+      window.ModalManager.showAlert('Invalid credentials', 'error');
+    }
     window.messages.push({ type: 'error', content: 'Invalid credentials', timestamp: Date.now() });
   }
 }
@@ -45,10 +62,60 @@ window.handleSignup = function(){
 }
 
 // Make functions global so they can be called from HTML
+window.handleForgotPassword = function(){
+  const content = `
+    <h3><i class="fas fa-key"></i> Reset Your Password</h3>
+    <p>Enter your email address and we'll send you a link to reset your password.</p>
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="reset-email" placeholder="Email" required>
+    </div>
+    <button class="btn primary" onclick="window.sendReset()">Send Reset Link</button>
+  `;
+  window.ModalManager.showModal('forgot-modal', content, 'info');
+}
+
+// Send reset link
+window.sendReset = function(){
+  const email = document.getElementById('reset-email').value;
+  if(email){
+    // Placeholder: in real app, send reset email
+    window.ModalManager.showAlert('Password reset email sent to ' + email, 'success');
+    window.ModalManager.hideModal('forgot-modal');
+  }
+}
+
+// Make functions global so they can be called from HTML
 window.logout = function(){
-  window.currentUser = null;
-  window.renderLogin();
-  window.updateNav(false);
+  const confirmContent = `
+    <div class="confirm-content">
+      <p>Are you sure you want to log out? Your grammar progress will be saved.</p>
+      <button onclick="window.confirmLogout()" class="btn primary">Yes, Log Out</button>
+      <button onclick="ModalManager.hideModal('confirm-logout')" class="btn secondary">Cancel</button>
+    </div>
+  `;
+  window.ModalManager.showModal('confirm-logout', confirmContent, 'info');
+}
+
+// Confirm logout
+window.confirmLogout = function(){
+  // Save progress (assuming scores are already in localStorage)
+  // Fade out
+  const app = document.getElementById('app');
+  app.style.transition = 'opacity 0.5s';
+  app.style.opacity = '0';
+  setTimeout(() => {
+    window.currentUser = null;
+    window.renderLogin();
+    window.updateNav(false);
+    window.updateNavAvatar();
+    app.style.opacity = '1';
+    // Show message
+    setTimeout(() => {
+      const username = window.users.find(u => u.email === localStorage.getItem('lastUser') || u.username === localStorage.getItem('lastUser'))?.username || 'Player';
+      window.ModalManager.showAlert(`Great work today, ${username}! Keep improving your grammar skills.`, 'success');
+    }, 500);
+  }, 500);
 }
 
 // Render Login Page
@@ -71,7 +138,8 @@ window.renderLogin = function(){
             <i class="fas fa-arrow-right"></i> Log In
           </button>
         </form>
-        <p class="signup-link">Don't have an account? <a onclick="window.showSignup()">Sign up here</a></p>
+        <p class="signup-link"><a onclick="window.handleForgotPassword()">Forgot Password?</a></p>
+        <p class="signup-link">Don't have an account? <a onclick="window.showSignup()">Sign up</a></p>
       </div>
       <div class="login-bg"></div>
     </main>
@@ -103,7 +171,7 @@ window.showSignup = function(){
             <i class="fas fa-user-plus"></i> Sign Up
           </button>
         </form>
-        <p class="login-link">Already have an account? <a onclick="window.renderLogin()">Log in here</a></p>
+        <p class="login-link">Already have an account? <a onclick="window.renderLogin()">Log in</a></p>
       </div>
       <div class="login-bg"></div>
     </main>

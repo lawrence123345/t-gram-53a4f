@@ -23,10 +23,136 @@ window.updateNav = function(auth){
   }
 }
 
+// ===== Back to Home Handler =====
+window.handleBackToHome = function() {
+  // Check if game is in progress
+  const hasMoves = window.board.some(cell => cell !== null);
+  const hasPendingQuestion = window.questionPending;
+
+  if (hasMoves || hasPendingQuestion) {
+    // Show confirmation modal
+    const content = `
+      <div style="text-align: center; padding: 20px;">
+        <h3 style="margin-bottom: 15px; color: #333;">⚠️ Game in Progress</h3>
+        <p style="margin-bottom: 20px; color: #666; line-height: 1.5;">
+          Are you sure you want to return home?<br>
+          <strong>Your progress will be saved.</strong>
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button class="btn btn-small secondary" onclick="window.ModalManager.hideModal('back-home-confirm')" style="padding: 10px 20px;">Cancel</button>
+          <button class="btn btn-small primary" onclick="window.confirmBackToHome()" style="padding: 10px 20px;">Yes, Save & Go Home</button>
+        </div>
+      </div>
+    `;
+    window.ModalManager.showModal('back-home-confirm', content, 'warning');
+  } else {
+    // No game in progress, go directly home
+    window.confirmBackToHome();
+  }
+};
+
+window.confirmBackToHome = function() {
+  // Close any open modals
+  window.ModalManager.hideModal('back-home-confirm');
+  window.ModalManager.hideModal('question-modal');
+
+  // Stop any running timers
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
+
+  // Save current progress if game was in progress
+  const hasMoves = window.board.some(cell => cell !== null);
+  if (hasMoves) {
+    try {
+      // Save current game state
+      const gameState = {
+        board: window.board,
+        currentPlayer: window.currentPlayer,
+        userScore: window.userScore,
+        opponentScore: window.opponentScore,
+        currentQuestionIndex: window.currentQuestionIndex,
+        selectedDifficulty: window.selectedDifficulty,
+        gameQuestions: window.gameQuestions,
+        allAnswers: window.allAnswers,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('savedGameState', JSON.stringify(gameState));
+      console.log('Game progress saved');
+    } catch (error) {
+      console.error('Failed to save game progress:', error);
+    }
+  }
+
+  // Add transition effect
+  const app = document.getElementById('app');
+  app.style.transition = 'opacity 0.5s ease-out';
+  app.style.opacity = '0';
+
+  // Play click sound effect (if available)
+  try {
+    // Create a simple click sound using Web Audio API
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+
+    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+  } catch (error) {
+    // Silently fail if Web Audio API is not supported
+    console.log('Audio feedback not available');
+  }
+
+  // Navigate to home after transition
+  setTimeout(() => {
+    window.renderHome();
+    // Fade back in
+    setTimeout(() => {
+      app.style.opacity = '1';
+    }, 100);
+  }, 500);
+};
+
 // ===== Home Page =====
 window.renderHome = function(){
   window.selectedDifficulty = null;
+
+  // Check for saved game progress
+  const savedGameState = localStorage.getItem('savedGameState');
+  let resumeGameHtml = '';
+
+  if (savedGameState) {
+    try {
+      const gameState = JSON.parse(savedGameState);
+      const timeAgo = Math.floor((Date.now() - gameState.timestamp) / (1000 * 60)); // minutes ago
+      resumeGameHtml = `
+        <div class="resume-game-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="margin-bottom: 10px; color: white;">🎮 Game in Progress</h3>
+          <p style="margin-bottom: 15px; opacity: 0.9;">You have an unfinished ${gameState.selectedDifficulty} game from ${timeAgo} minutes ago</p>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-small" onclick="window.resumeSavedGame()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">Resume Game</button>
+            <button class="btn btn-small secondary" onclick="window.discardSavedGame()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">Start New</button>
+          </div>
+        </div>
+      `;
+    } catch (error) {
+      console.error('Failed to parse saved game state:', error);
+      localStorage.removeItem('savedGameState');
+    }
+  }
+
   document.getElementById('app').innerHTML = `<main>
+${resumeGameHtml}
 <div class="hero"><h1>Welcome to T-Gram</h1>
 <p>Your space for fun, learning, and growth. Discover interactive games, track your progress, and challenge yourself with every play.</p></div>
 <div class="spherocube"></div>
@@ -54,6 +180,59 @@ window.renderHome = function(){
     hero.style.animation = 'fadeIn 2s ease';
   }, 500);
 }
+
+// ===== Resume Saved Game =====
+window.resumeSavedGame = function() {
+  try {
+    const savedGameState = localStorage.getItem('savedGameState');
+    if (!savedGameState) {
+      window.ModalManager.showAlert('No saved game found!', 'error');
+      return;
+    }
+
+    const gameState = JSON.parse(savedGameState);
+
+    // Restore game state
+    window.board = gameState.board;
+    window.currentPlayer = gameState.currentPlayer;
+    window.userScore = gameState.userScore;
+    window.opponentScore = gameState.opponentScore;
+    window.currentQuestionIndex = gameState.currentQuestionIndex;
+    window.selectedDifficulty = gameState.selectedDifficulty;
+    window.gameQuestions = gameState.gameQuestions;
+    window.allAnswers = gameState.allAnswers;
+    window.wrongAnswers = [];
+
+    // Load questions if not already loaded
+    if (!window.questions) {
+      window.loadQuestions();
+    }
+
+    // Render the game interface
+    window.renderOfflineInterface();
+    window.renderBoard();
+
+    // Update scores display
+    window.updateScores();
+
+    // Clear saved game state
+    localStorage.removeItem('savedGameState');
+
+    window.ModalManager.showAlert('Game resumed successfully!', 'success');
+  } catch (error) {
+    console.error('Failed to resume game:', error);
+    window.ModalManager.showAlert('Failed to resume game. Starting new game instead.', 'error');
+    localStorage.removeItem('savedGameState');
+    window.renderHome();
+  }
+};
+
+// ===== Discard Saved Game =====
+window.discardSavedGame = function() {
+  localStorage.removeItem('savedGameState');
+  window.ModalManager.showAlert('Saved game discarded. Starting fresh!', 'info');
+  window.renderHome();
+};
 
 // ===== Difficulty Selection =====
 window.selectDifficulty = function(diff){
@@ -282,7 +461,7 @@ window.renderOfflineInterface = function() {
           <button class="btn" onclick="window.showPostGameReview()"><i class="fas fa-eye"></i> Review Answers</button>
         </div>
         <div class="bottom-buttons">
-<button class="btn btn-small primary" onclick="renderHome()">Back to Home</button>
+<button class="btn btn-small primary" onclick="window.handleBackToHome()">Back to Home</button>
         </div>
       </div>
     </main>
@@ -640,11 +819,12 @@ window.endGame = function(result) {
       console.log('Scores updated in localStorage');
 
       // Update gameStats for achievements
-      let gameStats = JSON.parse(localStorage.getItem('gameStats') || '{}');
+      const userId = window.currentUser ? window.currentUser.email : 'guest';
+      let gameStats = JSON.parse(localStorage.getItem(`gameStats_${userId}`) || '{}');
       gameStats.gamesPlayed = userScores.totalGames;
       gameStats.gamesWon = userScores.wins;
       gameStats.pointsScored = userScores.totalScore;
-      localStorage.setItem('gameStats', JSON.stringify(gameStats));
+      localStorage.setItem(`gameStats_${userId}`, JSON.stringify(gameStats));
 
       // Trigger achievements update
       if (!window.achievementsLoaded) {
@@ -753,9 +933,13 @@ window.awardBadge = function(type) {
   window.messages.push({ type: 'success', content: `Badge: ${type.replace('_', ' ').toUpperCase()}`, timestamp: Date.now() });
 };
 
-
 // ===== Initialize Dark Mode =====
 if(localStorage.getItem('dark') === "true") document.body.classList.add('dark');
+
+// Reset achievements on app start to locked state for testing
+if (window.resetAchievements) {
+  window.resetAchievements();
+}
 
 // ===== Background Sync for Offline =====
 if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {

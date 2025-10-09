@@ -53,18 +53,37 @@ const achievements = [
 
 // Load achievement progress from localStorage
 function loadAchievementProgress() {
-  const progress = localStorage.getItem('achievementProgress');
+  const userId = window.currentUser ? window.currentUser.email : 'guest';
+  const progress = localStorage.getItem(`achievementProgress_${userId}`);
   return progress ? JSON.parse(progress) : {};
 }
 
+// Reset all achievements to locked state
+function resetAchievements() {
+  const userId = window.currentUser ? window.currentUser.email : 'guest';
+  const resetProgress = {};
+  achievements.forEach(ach => {
+    resetProgress[ach.id] = { current: 0, unlocked: false };
+  });
+  localStorage.setItem(`achievementProgress_${userId}`, JSON.stringify(resetProgress));
+  if (typeof updateAchievements === 'function') {
+    updateAchievements();
+  }
+}
+
+// Make resetAchievements global
+window.resetAchievements = resetAchievements;
+
 // Save achievement progress to localStorage
 function saveAchievementProgress(progress) {
-  localStorage.setItem('achievementProgress', JSON.stringify(progress));
+  const userId = window.currentUser ? window.currentUser.email : 'guest';
+  localStorage.setItem(`achievementProgress_${userId}`, JSON.stringify(progress));
 }
 
 // Get user game stats from localStorage or default
 function getUserStats() {
-  const stats = localStorage.getItem('gameStats');
+  const userId = window.currentUser ? window.currentUser.email : 'guest';
+  const stats = localStorage.getItem(`gameStats_${userId}`);
   return stats ? JSON.parse(stats) : { gamesPlayed: 0, gamesWon: 0, pointsScored: 0 };
 }
 

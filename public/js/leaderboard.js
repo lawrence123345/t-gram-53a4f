@@ -84,6 +84,17 @@ ${rows}
 
 }
 
+// New function to reset leaderboard and game stats
+window.resetLeaderboardAndStats = function() {
+  const userId = window.currentUser ? window.currentUser.email : 'guest';
+  localStorage.setItem('scores', JSON.stringify([]));
+  localStorage.setItem(`gameStats_${userId}`, JSON.stringify({ gamesPlayed: 0, gamesWon: 0, pointsScored: 0 }));
+  if (typeof updateAchievements === 'function') {
+    updateAchievements();
+  }
+  alert('Leaderboard and game stats have been reset.');
+}
+
 function addHoverEffects(){
   document.querySelectorAll('.player-card').forEach(card => {
     card.addEventListener('mouseenter', () => {

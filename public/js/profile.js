@@ -27,6 +27,14 @@ window.renderProfile = function(){
   let rank = scores.findIndex(s => s.user === window.currentUser.username) + 1;
   if (rank === 0) rank = 'Not ranked yet';
 
+  // Track original values for change detection
+  window.originalProfile = {
+    username: window.currentUser.username,
+    bio: window.currentUser.bio || '',
+    age: window.currentUser.age || '',
+    avatar: window.currentUser.avatar
+  };
+
 let leftAvatar = '';
 let hasAvatar = !!window.currentUser.avatar;
 if (hasAvatar) {
@@ -45,7 +53,7 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.6s ease;">👤</span> Username
       </label>
-      <input id="edit-username" value="${window.currentUser.username}" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" />
+      <input id="edit-username" value="${window.currentUser.username}" oninput="window.checkProfileChanges()" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" />
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: fadeIn 1s ease; display: flex; align-items: center; gap: 12px;">
       <label style="display: flex; align-items: center; font-weight: 700; color: #2c3e50; font-size: 18px; text-shadow: 0 1px 3px rgba(0,0,0,0.15); user-select: none;">
@@ -57,13 +65,13 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.8s ease;">📝</span> Bio / About Me
       </label>
-      <textarea id="edit-bio" placeholder="Tell us about yourself" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; min-height: 130px; resize: vertical; font-size: 16px; font-family: inherit; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05); line-height: 1.5;" onfocus="this.style.borderColor='%23667eea'; this.style.boxShadow='0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 15px rgba(102, 126, 234, 0.1)'" onblur="this.style.borderColor='%23e0e6ed'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">${window.currentUser.bio || ''}</textarea>
+      <textarea id="edit-bio" placeholder="Tell us about yourself" oninput="window.checkProfileChanges()" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; min-height: 130px; resize: vertical; font-size: 16px; font-family: inherit; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05); line-height: 1.5;" onfocus="this.style.borderColor='%23667eea'; this.style.boxShadow='0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 15px rgba(102, 126, 234, 0.1)'" onblur="this.style.borderColor='%23e0e6ed'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">${window.currentUser.bio || ''}</textarea>
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.9s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.9s ease;">🎂</span> Age (Optional)
       </label>
-      <input id="edit-age" type="number" min="1" max="120" value="${window.currentUser.age || ''}" placeholder="Enter your age" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" />
+      <input id="edit-age" type="number" min="1" max="120" value="${window.currentUser.age || ''}" oninput="window.checkProfileChanges()" placeholder="Enter your age" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" />
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 1s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
@@ -107,6 +115,23 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
 
   let profileHTML = `
     <div style="padding: 50px; max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 35px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255,255,255,0.1); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <!-- Menu Icon -->
+      <div style="position: absolute; top: 30px; right: 30px; z-index: 3; cursor: pointer; font-size: 30px; color: white; transition: all 0.3s ease;" onclick="window.toggleProfileMenu()" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#f0f8ff'" onmouseout="this.style.transform='scale(1)'; this.style.color='white'">☰</div>
+      <!-- Slide-out Menu Panel -->
+      <div id="profile-menu-panel" style="position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95)); backdrop-filter: blur(20px); box-shadow: -10px 0 30px rgba(0,0,0,0.3); transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1000; padding: 50px 20px; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div style="text-align: right; margin-bottom: 40px;">
+          <span style="font-size: 28px; cursor: pointer; transition: all 0.3s ease;" onclick="window.closeProfileMenu()" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">✕</span>
+        </div>
+        <h3 style="color: #f0f8ff; margin-bottom: 30px; font-size: 24px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Navigation</h3>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <button class="menu-btn" onclick="window.renderLeaderboard(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">📊 My Stats</button>
+          <button class="menu-btn" onclick="window.showAchievements(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🏅 Achievements</button>
+          <button class="menu-btn" onclick="window.showSettings(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">⚙️ Settings</button>
+          <button class="menu-btn" onclick="window.logout(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🚪 Logout</button>
+        </div>
+      </div>
+      <!-- Overlay for closing menu -->
+      <div id="profile-menu-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 999;" onclick="window.closeProfileMenu()"></div>
       <!-- Particle Background -->
       <div class="particles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
         <div class="particle" style="position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
@@ -120,7 +145,7 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       <h2 style="text-align: center; color: white; margin-bottom: 60px; font-size: 45px; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.8); animation: fadeInDown 1s ease; position: relative; z-index: 2; letter-spacing: 1.5px; background: linear-gradient(45deg, #fff, #f0f8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">My Game Profile</h2>
       ${mainContent}
       <div style="text-align: center; padding-top: 50px; border-top: 3px solid rgba(255,255,255,0.5); position: relative; z-index: 2;">
-        <button class="btn btn-small" onclick="window.saveProfile()" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 12px 35px rgba(78, 205, 196, 0.8), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
+        <button id="save-changes-btn" class="btn btn-small" onclick="window.saveProfile()" disabled style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%); color: #bdc3c7; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: not-allowed; font-weight: 800; box-shadow: 0 8px 25px rgba(127, 140, 141, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); position: relative; overflow: hidden;" onmouseover="if(!this.disabled){this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'}" onmouseout="if(!this.disabled){this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'}">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
         <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 20px 55px; border: 3px solid rgba(255,255,255,0.6); border-radius: 45px; cursor: pointer; font-weight: 800; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.4)'; this.style.transform='translateY(-5px) scale(1.08)'; this.style.borderColor='rgba(255,255,255,0.8)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,255,255,0.6)'">🏠 Back to Home</button>
       </div>
     </div>
@@ -173,6 +198,7 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
 // Make functions global so they can be called from HTML
 window.selectAvatar = function(avatar){
   window.currentUser.avatar = avatar;
+  window.checkProfileChanges();
   window.updateNavAvatar();
   window.ModalManager.hideModal('avatar-modal');
   window.renderProfile();
@@ -185,6 +211,7 @@ window.uploadAvatar = function(){
     let reader = new FileReader();
     reader.onload = function(e) {
       window.currentUser.avatar = e.target.result;
+      window.checkProfileChanges();
       window.updateNavAvatar();
       window.ModalManager.hideModal('avatar-modal');
       window.renderProfile();
@@ -296,4 +323,83 @@ window.updateNavAvatar = function(){
   } else if (navAvatar) {
     navAvatar.style.display = 'none';
   }
+}
+
+// Profile menu functions
+window.toggleProfileMenu = function(){
+  const panel = document.getElementById('profile-menu-panel');
+  const overlay = document.getElementById('profile-menu-overlay');
+  if (panel.style.right === '0px') {
+    window.closeProfileMenu();
+  } else {
+    panel.style.right = '0px';
+    overlay.style.opacity = '1';
+    overlay.style.visibility = 'visible';
+  }
+}
+
+window.closeProfileMenu = function(){
+  const panel = document.getElementById('profile-menu-panel');
+  const overlay = document.getElementById('profile-menu-overlay');
+  panel.style.right = '-300px';
+  overlay.style.opacity = '0';
+  overlay.style.visibility = 'hidden';
+}
+
+// Change detection for save button
+window.checkProfileChanges = function(){
+  const username = document.getElementById('edit-username').value;
+  const bio = document.getElementById('edit-bio').value;
+  const age = document.getElementById('edit-age').value;
+  const avatar = window.currentUser.avatar;
+
+  const hasChanged = (
+    username !== window.originalProfile.username ||
+    bio !== window.originalProfile.bio ||
+    age !== window.originalProfile.age ||
+    avatar !== window.originalProfile.avatar
+  );
+
+  const saveBtn = document.getElementById('save-changes-btn');
+  if (hasChanged) {
+    saveBtn.disabled = false;
+    saveBtn.style.background = 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)';
+    saveBtn.style.color = 'white';
+    saveBtn.style.cursor = 'pointer';
+    saveBtn.style.boxShadow = '0 12px 35px rgba(78, 205, 196, 0.8), inset 0 1px 0 rgba(255,255,255,0.2)';
+  } else {
+    saveBtn.disabled = true;
+    saveBtn.style.background = 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)';
+    saveBtn.style.color = '#bdc3c7';
+    saveBtn.style.cursor = 'not-allowed';
+    saveBtn.style.boxShadow = '0 8px 25px rgba(127, 140, 141, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
+  }
+}
+
+// Placeholder functions for menu items (to be implemented)
+window.renderLeaderboard = function(){
+  // Lazy load leaderboard.js if not loaded
+  if (!window.leaderboardLoaded) {
+    const script = document.createElement('script');
+    script.src = 'js/leaderboard.js';
+    script.onload = () => {
+      window.leaderboardLoaded = true;
+      window.renderLeaderboard();
+    };
+    document.head.appendChild(script);
+    return;
+  }
+  if (window.renderLeaderboard) {
+    window.renderLeaderboard();
+  }
+}
+
+window.showSettings = function(){
+  window.ModalManager.showAlert('Settings feature coming soon!', 'info');
+}
+
+window.logout = function(){
+  window.currentUser = null;
+  localStorage.removeItem('currentUser');
+  window.renderLogin();
 }

@@ -116,3 +116,44 @@
 [info] i  hosting: ::1 - - [05/Oct/2025:21:10:07 +0000] "GET /js/app.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/Oct/2025:21:10:07 +0000] \"GET /js/app.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
 [info] i  hosting: ::1 - - [05/Oct/2025:21:10:07 +0000] "GET /js/profile.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/Oct/2025:21:10:07 +0000] \"GET /js/profile.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
 [info] i  hosting: ::1 - - [05/Oct/2025:21:10:09 +0000] "GET /favicon.ico HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/Oct/2025:21:10:09 +0000] \"GET /favicon.ico HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[debug] [2025-10-09T09:03:40.929Z] ----------------------------------------------------------------------
+[debug] [2025-10-09T09:03:40.936Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lawre\OneDrive\Desktop\T-Gram\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2025-10-09T09:03:40.937Z] CLI Version:   12.9.1
+[debug] [2025-10-09T09:03:40.938Z] Platform:      win32
+[debug] [2025-10-09T09:03:40.939Z] Node Version:  v22.19.0
+[debug] [2025-10-09T09:03:40.940Z] Time:          Thu Oct 09 2025 17:03:40 GMT+0800 (Standard na Oras sa China)
+[debug] [2025-10-09T09:03:40.940Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-09T09:03:40.950Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-10-09T09:03:41.242Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-09T09:03:41.243Z] > authorizing via signed-in user (lawrenceodtujan2@gmail.com)
+[debug] [2025-10-09T09:03:41.244Z] [iam] checking project t-gram-53a4f for permissions ["firebase.projects.get"]
+[debug] [2025-10-09T09:03:41.246Z] > refreshing access token with scopes: []
+[debug] [2025-10-09T09:03:41.250Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-09T09:03:41.251Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-09T09:03:42.342Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-10-09T09:03:42.342Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-10-09T09:03:42.374Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-09T09:03:42.375Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-09T09:03:42.406Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions [none]
+[debug] [2025-10-09T09:03:42.407Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions x-goog-quota-user=projects/t-gram-53a4f
+[debug] [2025-10-09T09:03:42.407Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-10-09T09:03:43.821Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions 200
+[debug] [2025-10-09T09:03:43.821Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-10-09T09:03:43.822Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
+[debug] [2025-10-09T09:03:44.196Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
+[debug] [2025-10-09T09:03:44.197Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
+[info] 
+[info] === Serving from 'C:\Users\lawre\OneDrive\Desktop\T-Gram'...
+[info] 
+[debug] [2025-10-09T09:03:44.205Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites 
+[debug] [2025-10-09T09:03:45.048Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites 200
+[debug] [2025-10-09T09:03:45.048Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites {"sites":[{"name":"projects/t-gram-53a4f/sites/t-gram-53a4f","defaultUrl":"https://t-gram-53a4f.web.app","appId":"1:1014219227882:web:d7920fa32ee32080280d93","type":"DEFAULT_SITE"}]}
+[debug] [2025-10-09T09:03:45.049Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config [none]
+[debug] [2025-10-09T09:03:45.823Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config 200
+[debug] [2025-10-09T09:03:45.823Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config {"projectId":"t-gram-53a4f","appId":"1:1014219227882:web:d7920fa32ee32080280d93","storageBucket":"t-gram-53a4f.firebasestorage.app","apiKey":"AIzaSyAcsUPTJHGsty4TysuoHRffPeBtHhCob90","authDomain":"t-gram-53a4f.firebaseapp.com","messagingSenderId":"1014219227882","projectNumber":"1014219227882","version":"2"}
+[debug] [2025-10-09T09:03:45.839Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
+[debug] [2025-10-09T09:03:46.087Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
+[debug] [2025-10-09T09:03:46.088Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
+[info] i  hosting[t-gram-53a4f]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[t-gram-53a4f]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}

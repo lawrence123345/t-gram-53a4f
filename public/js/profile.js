@@ -1,15 +1,12 @@
-// Default avatars
+// Default avatars - local paths
 const defaultAvatars = [
-  "https://i.ibb.co/WpVG6h57/iconos-de-persona-de-avatar-negro-icono-de-perfil-de-usuario.jpg",
-  "https://i.ibb.co/cS1n3rYd/download.jpg",
-  "https://i.ibb.co/ynjMJMwP/Astronaut-with-Planet-Balloons-Sticker-Sticker-Mania.jpg",
-  "https://i.ibb.co/8nh2bR3w/Metal-Poster-Displate-Dabbing-Penguin.jpg",
-  "https://i.ibb.co/Jjx7bdWt/download-4.jpg",
-  "https://i.ibb.co/Q3st8z3w/game-icon.jpg",
-  "https://i.ibb.co/FbGy2TpZ/download-7.jpg",
-  "https://i.ibb.co/rR0bQv9G/V-voj-mobiln-ch-aplikac-na-m-ru-MEMOS-Software.jpg",
-  "https://i.ibb.co/FLtbzztr/download-6.jpg",
-  "https://i.ibb.co/ytjG9s8/download-5.jpg",  
+  'assets/avatars/lion.jpg', // Lion
+  'assets/avatars/champion.jpg', // Champion
+  'assets/avatars/owl.jpg', // Owl
+  'assets/avatars/sun.jpg', // Sun
+  'assets/avatars/flower.jpg', // Flower
+  'assets/avatars/fox.jpg', // Fox
+  'assets/avatars/rabbit.jpg' // Rabbit
 ];
 
 // Make functions global so they can be called from HTML
@@ -27,33 +24,16 @@ window.renderProfile = function(){
   let rank = scores.findIndex(s => s.user === window.currentUser.username) + 1;
   if (rank === 0) rank = 'Not ranked yet';
 
-  // Track original values for change detection
-  window.originalProfile = {
-    username: window.currentUser.username,
-    bio: window.currentUser.bio || '',
-    age: window.currentUser.age || '',
-    avatar: window.currentUser.avatar
-  };
-
-let leftAvatar = '';
-let hasAvatar = !!window.currentUser.avatar;
-if (hasAvatar) {
-let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0; border: 3px solid white; box-shadow: 0 0 0 3px black, 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden;';
-  if (window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:')) {
-    avatarStyle += ' object-fit: cover; cursor: pointer;';
-    leftAvatar = `<img src="${window.currentUser.avatar}" alt="Profile Avatar" style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 0 0 3px black, 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='white'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 0 0 3px black, 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='white'">`;
-  } else {
-    avatarStyle += ' background: black; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer;';
-    leftAvatar = `<div style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 0 0 3px black, 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='white'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 0 0 3px black, 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='white'"></div>`;
-  }
-}
+let avatarSrc = window.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzUiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
+let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0; border: 3px solid white; box-shadow: 0 0 0 3px black, 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; object-fit: cover; cursor: pointer; background-color: black;';
+let leftAvatar = `<img src="${avatarSrc}" alt="Profile Avatar" style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 0 0 3px black, 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='white'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 0 0 3px black, 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='white'">`;
 
   let fieldsHTML = `
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.6s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.6s ease;">👤</span> Username
       </label>
-      <input id="edit-username" value="${window.currentUser.username}" oninput="window.checkProfileChanges()" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" />
+      <input id="edit-username" value="${window.currentUser.username}" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" type="text" oninput="window.updateSaveButton()" />
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: fadeIn 1s ease; display: flex; align-items: center; gap: 12px;">
       <label style="display: flex; align-items: center; font-weight: 700; color: #2c3e50; font-size: 18px; text-shadow: 0 1px 3px rgba(0,0,0,0.15); user-select: none;">
@@ -65,13 +45,13 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.8s ease;">📝</span> Bio / About Me
       </label>
-      <textarea id="edit-bio" placeholder="Tell us about yourself" oninput="window.checkProfileChanges()" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; min-height: 130px; resize: vertical; font-size: 16px; font-family: inherit; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05); line-height: 1.5;" onfocus="this.style.borderColor='%23667eea'; this.style.boxShadow='0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 15px rgba(102, 126, 234, 0.1)'" onblur="this.style.borderColor='%23e0e6ed'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">${window.currentUser.bio || ''}</textarea>
+      <textarea id="edit-bio" placeholder="Tell us about yourself" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; min-height: 130px; resize: vertical; font-size: 16px; font-family: inherit; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05); line-height: 1.5;" oninput="window.updateSaveButton()" onfocus="this.style.borderColor='%23667eea'; this.style.boxShadow='0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 15px rgba(102, 126, 234, 0.1)'" onblur="this.style.borderColor='%23e0e6ed'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">${window.currentUser.bio || ''}</textarea>
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.9s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
         <span style="margin-right: 10px; font-size: 20px; animation: bounceIn 0.9s ease;">🎂</span> Age (Optional)
       </label>
-      <input id="edit-age" type="number" min="1" max="120" value="${window.currentUser.age || ''}" oninput="window.checkProfileChanges()" placeholder="Enter your age" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" />
+      <input id="edit-age" type="number" min="1" max="120" value="${window.currentUser.age || ''}" placeholder="Enter your age" style="width: 100%; padding: 15px 18px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" oninput="window.updateSaveButton()" />
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 1s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
@@ -81,57 +61,41 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
     </div>
   `;
 
-  let mainContent = '';
-  if (hasAvatar) {
-    // Add Achievements button below avatar
-    let achievementsButton = `<button class="btn btn-small" style="margin-top: 15px; background: linear-gradient(135deg, #FF7F50, #9370DB); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(147, 127, 219, 0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onclick="window.showAchievements()">🏅 Achievements</button>`;
+  // Add Achievements button below avatar
+  let achievementsButton = `<button class="btn btn-small" style="margin-top: 15px; background: linear-gradient(135deg, #FF7F50, #9370DB); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(147, 127, 219, 0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onclick="window.showAchievements()">🏅 Achievements</button>`;
 
-    let avatarWithButton = `
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        ${leftAvatar}
-        ${achievementsButton}
-      </div>
-    `;
+  let avatarWithButton = `
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      ${leftAvatar}
+      ${achievementsButton}
+    </div>
+  `;
 
-    mainContent = `
-      <div style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease;">
-        ${avatarWithButton}
-        <div style="flex: 1; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
-          ${fieldsHTML}
-        </div>
+  let mainContent = `
+    <div style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease;">
+      ${avatarWithButton}
+      <div style="flex: 1; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+        ${fieldsHTML}
       </div>
-    `;
-  } else {
-    mainContent = `
-      <div style="max-width: 550px; margin: 0 auto 35px; padding: 30px; background: linear-gradient(135deg, rgba(248,249,250,0.95) 0%, rgba(233,236,239,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); text-align: center; animation: fadeInUp 0.8s ease; border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
-        <div style="margin-bottom: 25px; font-size: 22px; color: #495057; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">👋 Add an avatar to personalize your profile!</div>
-        <button class="btn btn-small" onclick="window.showAvatarSelection()" style="display: inline-block; margin: 0 auto 30px; padding: 16px 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: bold; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 12px 30px rgba(102, 126, 234, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'">Customize Avatar</button>
-        <div style="padding: 30px; background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(222,226,230,0.8);">
-          ${fieldsHTML}
-        </div>
-      </div>
-    `;
-  }
+    </div>
+  `;
 
-  let profileHTML = `
+let profileHTML = `
     <div style="padding: 50px; max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 35px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255,255,255,0.1); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-      <!-- Menu Icon -->
-      <div style="position: absolute; top: 30px; right: 30px; z-index: 3; cursor: pointer; font-size: 30px; color: white; transition: all 0.3s ease;" onclick="window.toggleProfileMenu()" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#f0f8ff'" onmouseout="this.style.transform='scale(1)'; this.style.color='white'">☰</div>
-      <!-- Slide-out Menu Panel -->
-      <div id="profile-menu-panel" style="position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95)); backdrop-filter: blur(20px); box-shadow: -10px 0 30px rgba(0,0,0,0.3); transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1000; padding: 50px 20px; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <div style="text-align: right; margin-bottom: 40px;">
-          <span style="font-size: 28px; cursor: pointer; transition: all 0.3s ease;" onclick="window.closeProfileMenu()" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">✕</span>
-        </div>
-        <h3 style="color: #f0f8ff; margin-bottom: 30px; font-size: 24px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Navigation</h3>
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <button class="menu-btn" onclick="window.renderLeaderboard(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">📊 My Stats</button>
-          <button class="menu-btn" onclick="window.showAchievements(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🏅 Achievements</button>
-          <button class="menu-btn" onclick="window.showSettings(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">⚙️ Settings</button>
-          <button class="menu-btn" onclick="window.logout(); window.closeProfileMenu()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 15px 20px; border-radius: 15px; cursor: pointer; font-size: 18px; font-weight: 600; transition: all 0.3s ease; text-align: left;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🚪 Logout</button>
-        </div>
+      <!-- Slide-out Navigation Panel -->
+      <div id="profile-nav-panel" style="position: fixed; top: 0; left: -300px; width: 300px; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; padding: 80px 20px 20px; box-shadow: 4px 0 20px rgba(0,0,0,0.3); overflow-y: auto; color: white; font-weight: 500;">
+        <h3 style="margin-bottom: 30px; text-align: center; font-size: 24px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Navigation</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 15px;"><button onclick="window.renderLeaderboard(); window.closeProfileNav();" class="nav-btn" style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-align: left; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">📊 My Stats</button></li>
+          <li style="margin-bottom: 15px;"><button onclick="window.showAchievements(); window.closeProfileNav();" class="nav-btn" style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-align: left; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🏅 Achievements</button></li>
+          <li style="margin-bottom: 15px;"><button onclick="window.closeProfileNav();" class="nav-btn" style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-align: left; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">⚙️ Settings</button></li>
+          <li style="margin-bottom: 15px;"><button onclick="window.logout(); window.closeProfileNav();" class="nav-btn" style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: all 0.3s ease; text-align: left; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)'">🚪 Logout</button></li>
+        </ul>
       </div>
-      <!-- Overlay for closing menu -->
-      <div id="profile-menu-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 999;" onclick="window.closeProfileMenu()"></div>
+      <!-- Overlay for closing panel -->
+      <div id="profile-nav-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; cursor: pointer;" onclick="window.closeProfileNav()"></div>
+      <!-- Menu Toggle -->
+      <div id="profile-menu-toggle" style="position: absolute; left: 20px; top: 20px; cursor: pointer; font-size: 30px; z-index: 3; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); transition: all 0.3s ease;" onclick="window.toggleProfileNav()">☰</div>
       <!-- Particle Background -->
       <div class="particles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
         <div class="particle" style="position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
@@ -145,7 +109,7 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
       <h2 style="text-align: center; color: white; margin-bottom: 60px; font-size: 45px; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.8); animation: fadeInDown 1s ease; position: relative; z-index: 2; letter-spacing: 1.5px; background: linear-gradient(45deg, #fff, #f0f8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">My Game Profile</h2>
       ${mainContent}
       <div style="text-align: center; padding-top: 50px; border-top: 3px solid rgba(255,255,255,0.5); position: relative; z-index: 2;">
-        <button id="save-changes-btn" class="btn btn-small" onclick="window.saveProfile()" disabled style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%); color: #bdc3c7; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: not-allowed; font-weight: 800; box-shadow: 0 8px 25px rgba(127, 140, 141, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); position: relative; overflow: hidden;" onmouseover="if(!this.disabled){this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'}" onmouseout="if(!this.disabled){this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'}">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
+        <button id="save-profile-btn" class="btn btn-small" onclick="window.handleSaveProfile()" style="background: linear-gradient(135deg, #bdc3c7, #95a5a6); color: #7f8c8d; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 4px 10px rgba(189, 195, 199, 0.4); transition: all 0.3s ease; font-size: 20px; text-shadow: none; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
         <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 20px 55px; border: 3px solid rgba(255,255,255,0.6); border-radius: 45px; cursor: pointer; font-weight: 800; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.4)'; this.style.transform='translateY(-5px) scale(1.08)'; this.style.borderColor='rgba(255,255,255,0.8)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,255,255,0.6)'">🏠 Back to Home</button>
       </div>
     </div>
@@ -180,41 +144,119 @@ let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink:
         transition: all 0.4s ease;
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       }
-      .btn-small:hover {
+      .btn-small:hover:not(:disabled) {
         box-shadow: 0 12px 35px rgba(0,0,0,0.3);
         transform: translateY(-4px) scale(1.05);
       }
       .particles .particle {
         animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;
       }
+      /* Profile Nav Styles */
+      #profile-menu-toggle:hover {
+        color: #f093fb;
+        transform: scale(1.1);
+      }
+      #profile-nav-panel ul li .nav-btn:hover {
+        box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+      }
+      #profile-nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
     </style>
   `;
 
   document.getElementById('app').innerHTML = profileHTML;
 
+  // Store original values for change detection
+  window.originalUsername = window.currentUser.username;
+  window.originalBio = window.currentUser.bio || '';
+  window.originalAge = String(window.currentUser.age || '');
+  window.originalAvatar = window.currentUser.avatar || null;
+
+  // Add event listeners for change detection
+  document.getElementById('edit-username').addEventListener('input', window.updateSaveButton);
+  document.getElementById('edit-bio').addEventListener('input', window.updateSaveButton);
+  document.getElementById('edit-age').addEventListener('input', window.updateSaveButton);
+
+  // Initial button state
+  window.updateSaveButton();
+
   window.updateNavAvatar();
 }
 
-// Make functions global so they can be called from HTML
-window.selectAvatar = function(avatar){
-  window.currentUser.avatar = avatar;
-  window.checkProfileChanges();
-  window.updateNavAvatar();
-  window.ModalManager.hideModal('avatar-modal');
-  window.renderProfile();
+window.previewAvatar = null;
+
+// Function to update the preview dynamically
+window.updatePreview = function() {
+  const modalContent = document.querySelector('#avatar-modal .modal-content');
+  if (!modalContent) return;
+
+  const previewSrc = window.previewAvatar || window.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNjAiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
+  let previewAvatar = `<img src="${previewSrc}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); background-color: black;">`;
+  let previewHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); min-width: 180px; min-height: 180px;">
+      <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
+      ${previewAvatar}
+    </div>
+  `;
+
+  // Find and update the preview section
+  let previewSection = modalContent.querySelector('.preview-section');
+  if (!previewSection) {
+    // If not exists, insert after the description p
+    const descP = modalContent.querySelector('p');
+    if (descP) {
+      const newPreviewDiv = document.createElement('div');
+      newPreviewDiv.className = 'preview-section';
+      newPreviewDiv.innerHTML = previewHTML;
+      descP.insertAdjacentElement('afterend', newPreviewDiv);
+    }
+  } else {
+    previewSection.innerHTML = previewHTML;
+  }
+
+  // Update Apply button visibility - show if there's a preview or current avatar
+  let applyBtn = modalContent.querySelector('.apply-btn');
+  const hasPreview = window.previewAvatar || window.currentUser.avatar;
+  if (hasPreview && !applyBtn) {
+    // Add Apply button if preview or current exists
+    const closeBtn = modalContent.querySelector('.btn');
+    if (closeBtn) {
+      const newApplyBtn = document.createElement('button');
+      newApplyBtn.className = 'btn apply-btn';
+      newApplyBtn.innerHTML = '✅ Apply Changes';
+      newApplyBtn.style = 'padding: 14px 30px; background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; border: none; border-radius: 35px; cursor: pointer; font-weight: 700; box-shadow: 0 4px 20px rgba(78, 205, 196, 0.3); font-size: 18px; margin-right: 10px; transition: all 0.3s ease;';
+      newApplyBtn.onclick = () => window.applyAvatarSelection();
+      closeBtn.insertAdjacentElement('beforebegin', newApplyBtn);
+    }
+  }
 }
 
 // Make functions global so they can be called from HTML
+window.selectAvatar = function(avatar) {
+  window.previewAvatar = avatar;
+  window.updatePreview();
+}
+
+window.applyAvatarSelection = function() {
+  if (window.previewAvatar) {
+    window.currentUser.avatar = window.previewAvatar;
+    window.previewAvatar = null;
+    window.updateNavAvatar();
+    window.ModalManager.hideModal('avatar-modal');
+    window.renderProfile();
+    window.updateSaveButton();
+  }
+}
+
 window.uploadAvatar = function(){
   let file = document.getElementById('avatar-upload').files[0];
   if (file) {
     let reader = new FileReader();
     reader.onload = function(e) {
-      window.currentUser.avatar = e.target.result;
-      window.checkProfileChanges();
-      window.updateNavAvatar();
-      window.ModalManager.hideModal('avatar-modal');
-      window.renderProfile();
+      window.previewAvatar = e.target.result;
+      window.updatePreview();
     };
     reader.readAsDataURL(file);
   }
@@ -223,26 +265,21 @@ window.uploadAvatar = function(){
 window.showAvatarSelection = function() {
   let avatarHTML = defaultAvatars.map(a => {
     const isSelected = window.currentUser.avatar === a;
-    const borderStyle = isSelected ? '4px solid #667eea' : '2px solid #e9ecef';
+    const borderStyle = isSelected ? '4px solid #667eea' : '2px solid rgba(255, 255, 255, 1)';
     return `<div class="avatar-option" onclick="window.selectAvatar('${a}')" style="width: 90px; height: 90px; border-radius: 50%; cursor: pointer; border: ${borderStyle}; display: inline-block; margin: 8px; transition: all 0.3s ease; box-shadow: ${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}; position: relative; overflow: hidden;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.style.border='4px solid #667eea'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.3)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.border='${borderStyle}'; this.style.boxShadow='${isSelected ? '0 0 0 4px rgba(102, 126, 234, 0.2)' : '0 2px 8px rgba(0,0,0,0.1)'}'">
       <img src="${a}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center; transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='brightness(1)'">
-      ${isSelected ? '<div style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>' : ''}
     </div>`;
   }).join("");
 
   // Preview section
-  let previewHTML = '';
-      if (window.currentUser.avatar) {
-        let previewAvatar = window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:') 
-          ? `<img src="${window.currentUser.avatar}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">`
-          : `<div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2c3e50, #1a252f); display: flex; align-items: center; justify-content: center; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"></div>`;
-        previewHTML = `
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); min-width: 180px; min-height: 180px;">
-            <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
-            ${previewAvatar}
-          </div>
-        `;
-      }
+  const previewSrc = window.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNjAiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
+  let previewAvatar = `<img src="${previewSrc}" alt="Preview" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); background-color: black;">`;
+  let previewHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); min-width: 180px; min-height: 180px;">
+      <h4 style="color: #495057; margin-bottom: 10px;">Current Preview</h4>
+      ${previewAvatar}
+    </div>
+  `;
 
   const content = `
     <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, #1e1e2f, #2c2c44); border-radius: 25px; max-height: 85vh; overflow-y: auto; color: #f0f0f5; position: relative; box-shadow: 0 0 30px rgba(102, 126, 234, 0.7); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -286,7 +323,29 @@ window.showAchievements = function() {
 }
 
 // Make functions global so they can be called from HTML
+window.handleSaveProfile = function() {
+  const username = document.getElementById('edit-username').value;
+  const bio = document.getElementById('edit-bio').value;
+  const age = document.getElementById('edit-age').value;
+  const avatar = window.currentUser.avatar;
+  console.log('Debug save:', { username, originalUsername: window.originalUsername, bio, originalBio: window.originalBio, age, originalAge: window.originalAge, avatar, originalAvatar: window.originalAvatar });
+  const hasChanges = username !== window.originalUsername || bio !== window.originalBio || age !== (window.originalAge || '') || avatar !== window.originalAvatar;
+  console.log('hasChanges:', hasChanges);
+  if (!hasChanges) {
+    window.ModalManager.showAlert('No changes to save.', 'info');
+    return;
+  }
+  window.saveProfile();
+};
+
 window.saveProfile = function(){
+  console.log('Entering saveProfile');
+  console.log('ModalManager exists:', typeof window.ModalManager !== 'undefined');
+  if (typeof window.ModalManager === 'undefined') {
+    console.error('ModalManager is not defined! ui.js may not be loaded.');
+    alert('Changes saved, but alert system unavailable. Check console for errors.');
+    return;
+  }
   window.currentUser.username = document.getElementById('edit-username').value;
   window.currentUser.bio = document.getElementById('edit-bio').value;
   const ageInput = document.getElementById('edit-age');
@@ -299,8 +358,20 @@ window.saveProfile = function(){
   let idx = window.users.findIndex(u => u.email === window.currentUser.email);
   if (idx !== -1) window.users[idx] = window.currentUser;
   localStorage.setItem('users', JSON.stringify(window.users));
-  window.ModalManager.showAlert('Profile updated!', 'success');
-  window.messages.push({ type: 'success', content: 'Profile updated!', timestamp: Date.now() });
+  console.log('About to show alert');
+  window.ModalManager.showAlert('Changes saved successfully!', 'success');
+  console.log('showAlert called');
+  // Additional debug: Check if modal was created and visible
+  setTimeout(() => {
+    const alertModal = document.getElementById('alert-modal');
+    console.log('Alert modal exists:', !!alertModal);
+    if (alertModal) {
+      console.log('Modal display:', alertModal.style.display);
+      console.log('Modal classes:', alertModal.className);
+      console.log('Modal visibility:', alertModal.offsetHeight > 0 ? 'visible' : 'hidden');
+    }
+  }, 100);
+  window.messages.push({ type: 'success', content: 'Changes saved successfully!', timestamp: Date.now() });
   window.updateNavAvatar();
   window.renderProfile();
 }
@@ -309,15 +380,20 @@ window.saveProfile = function(){
 window.updateNavAvatar = function(){
   let navAvatar = document.getElementById('nav-avatar');
   if (navAvatar && window.currentUser) {
-    if (window.currentUser.avatar && (window.currentUser.avatar.startsWith('http') || window.currentUser.avatar.startsWith('data:'))) {
+    if (window.currentUser.avatar) {
       navAvatar.src = window.currentUser.avatar;
-      navAvatar.alt = '';
+      navAvatar.alt = 'Profile Avatar';
     } else {
-      // Black circle data URI for no avatar
+      // Black circle when no avatar
       navAvatar.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==';
       navAvatar.alt = '';
     }
     navAvatar.style.display = 'block';
+    navAvatar.style.width = '40px';
+    navAvatar.style.height = '40px';
+    navAvatar.style.borderRadius = '50%';
+    navAvatar.style.objectFit = 'cover';
+    navAvatar.style.backgroundColor = 'black';
     navAvatar.onclick = () => window.renderProfile();
     navAvatar.style.cursor = 'pointer';
   } else if (navAvatar) {
@@ -325,81 +401,46 @@ window.updateNavAvatar = function(){
   }
 }
 
-// Profile menu functions
-window.toggleProfileMenu = function(){
-  const panel = document.getElementById('profile-menu-panel');
-  const overlay = document.getElementById('profile-menu-overlay');
-  if (panel.style.right === '0px') {
-    window.closeProfileMenu();
-  } else {
-    panel.style.right = '0px';
-    overlay.style.opacity = '1';
-    overlay.style.visibility = 'visible';
-  }
-}
-
-window.closeProfileMenu = function(){
-  const panel = document.getElementById('profile-menu-panel');
-  const overlay = document.getElementById('profile-menu-overlay');
-  panel.style.right = '-300px';
-  overlay.style.opacity = '0';
-  overlay.style.visibility = 'hidden';
-}
-
-// Change detection for save button
-window.checkProfileChanges = function(){
+window.updateSaveButton = function() {
   const username = document.getElementById('edit-username').value;
   const bio = document.getElementById('edit-bio').value;
   const age = document.getElementById('edit-age').value;
   const avatar = window.currentUser.avatar;
-
-  const hasChanged = (
-    username !== window.originalProfile.username ||
-    bio !== window.originalProfile.bio ||
-    age !== window.originalProfile.age ||
-    avatar !== window.originalProfile.avatar
-  );
-
-  const saveBtn = document.getElementById('save-changes-btn');
-  if (hasChanged) {
-    saveBtn.disabled = false;
-    saveBtn.style.background = 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)';
-    saveBtn.style.color = 'white';
-    saveBtn.style.cursor = 'pointer';
-    saveBtn.style.boxShadow = '0 12px 35px rgba(78, 205, 196, 0.8), inset 0 1px 0 rgba(255,255,255,0.2)';
+  const hasChanges = username !== window.originalUsername || bio !== window.originalBio || age !== (window.originalAge || '') || avatar !== window.originalAvatar;
+  const btn = document.getElementById('save-profile-btn');
+  if (hasChanges) {
+    btn.disabled = false;
+    btn.style.background = 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)';
+    btn.style.color = 'white';
+    btn.style.cursor = 'pointer';
+    btn.style.boxShadow = '0 12px 35px rgba(78, 205, 196, 0.8), inset 0 1px 0 rgba(255,255,255,0.2)';
   } else {
-    saveBtn.disabled = true;
-    saveBtn.style.background = 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)';
-    saveBtn.style.color = '#bdc3c7';
-    saveBtn.style.cursor = 'not-allowed';
-    saveBtn.style.boxShadow = '0 8px 25px rgba(127, 140, 141, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
+    btn.disabled = false; // Keep enabled so onclick works
+    btn.style.background = 'linear-gradient(135deg, #bdc3c7, #95a5a6)';
+    btn.style.color = '#7f8c8d';
+    btn.style.cursor = 'pointer'; // Change to pointer so it looks clickable but shows alert
+    btn.style.boxShadow = '0 4px 10px rgba(189, 195, 199, 0.4)';
   }
-}
+};
 
-// Placeholder functions for menu items (to be implemented)
-window.renderLeaderboard = function(){
-  // Lazy load leaderboard.js if not loaded
-  if (!window.leaderboardLoaded) {
-    const script = document.createElement('script');
-    script.src = 'js/leaderboard.js';
-    script.onload = () => {
-      window.leaderboardLoaded = true;
-      window.renderLeaderboard();
-    };
-    document.head.appendChild(script);
-    return;
+window.toggleProfileNav = function() {
+  const panel = document.getElementById('profile-nav-panel');
+  const overlay = document.getElementById('profile-nav-overlay');
+  if (panel.style.left === '0px') {
+    panel.style.left = '-300px';
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
+  } else {
+    panel.style.left = '0px';
+    overlay.style.opacity = '1';
+    overlay.style.visibility = 'visible';
   }
-  if (window.renderLeaderboard) {
-    window.renderLeaderboard();
-  }
-}
+};
 
-window.showSettings = function(){
-  window.ModalManager.showAlert('Settings feature coming soon!', 'info');
-}
-
-window.logout = function(){
-  window.currentUser = null;
-  localStorage.removeItem('currentUser');
-  window.renderLogin();
-}
+window.closeProfileNav = function() {
+  const panel = document.getElementById('profile-nav-panel');
+  const overlay = document.getElementById('profile-nav-overlay');
+  panel.style.left = '-300px';
+  overlay.style.opacity = '0';
+  overlay.style.visibility = 'hidden';
+};

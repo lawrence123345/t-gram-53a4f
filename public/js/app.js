@@ -1,9 +1,6 @@
 // ===== Global Variables =====
 window.selectedDifficulty = null;
 window.currentUser = null;
-window.users = [
-    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
-];
 window.auth = null; // This will be set when Firebase is initialized
 window.questions = null;
 window.currentQuestion = null;
@@ -12,14 +9,17 @@ window.gameQuestions = [];
 // ===== Navigation Update =====
 window.updateNav = function(auth){
   const nav = document.getElementById('nav-links');
+  const navAvatar = document.getElementById('nav-avatar');
   if(auth){
     nav.innerHTML = `<a onclick="window.renderHome()">Home</a>
 <a onclick="window.renderLeaderboard()">Leaderboard</a>
 <a onclick="window.toggleDarkMode()">Dark Mode</a>
 <a onclick="window.logout()">Log Out</a>`;
     window.updateToggleText();
+    navAvatar.style.display = 'block';
   } else {
     nav.innerHTML = `<a onclick="window.renderAbout()">About</a>`;
+    navAvatar.style.display = 'none';
   }
 }
 
@@ -446,7 +446,7 @@ window.renderOfflineInterface = function() {
         <div class="header-flex">
           <div class="players-flex">
             <div class="player-info player-x ${window.currentPlayer === 'X' ? 'active' : ''}">
-              <span>Unknown = X</span>
+              <span>${window.currentUser?.username || 'Player'} = X</span>
               <span>Score: <span id="user-score">0</span></span>
             </div>
             <div class="player-info player-o ${window.currentPlayer === 'O' ? 'active' : ''}">
@@ -745,7 +745,7 @@ window.endGame = function(result) {
     let message = '';
     if (result === 'X') {
       wins = 1;
-      message = `Unknown wins! 🎉`;
+      message = `${window.currentUser?.username || 'Player'} wins! 🎉`;
       if (window.awardBadge) window.awardBadge('victory');
       if (window.messages) window.messages.push({ type: 'success', content: message, timestamp: Date.now() });
     } else if (result === 'O') {

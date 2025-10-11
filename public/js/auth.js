@@ -1,64 +1,76 @@
 // Make variables global so they can be accessed from other files
-window.users = [
-    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown"}
-];
 window.currentUser = null;
-window.failedAttempts = parseInt(localStorage.getItem('failedAttempts')) || 0;
-window.cooldownUntil = parseInt(localStorage.getItem('cooldownUntil')) || 0;
-localStorage.setItem('users', JSON.stringify(window.users));
 
 if(!localStorage.getItem('scores')) localStorage.setItem('scores', JSON.stringify([]));
 
-
-
-// Make functions global so they can be called from HTML
-window.handleLogin = function(){
-  if (Date.now() < window.cooldownUntil) {
-    const remaining = Math.ceil((window.cooldownUntil - Date.now()) / 1000 / 60);
-    window.ModalManager.showAlert(`Too many failed attempts. Try again in ${remaining} minutes.`, 'error');
-    return;
-  }
-  const email = document.getElementById('login-email').value;
-  const pass = document.getElementById('login-pass').value;
-  const user = window.users.find(u => u.email === email || u.username === email);
-  if(user && user.password === pass){
-    window.currentUser = user;
-    window.failedAttempts = 0;
-    localStorage.setItem('failedAttempts', 0);
-    window.renderHome();
-    window.updateNav(true);
-    window.updateNavAvatar();
-  } else {
-    window.failedAttempts++;
-    localStorage.setItem('failedAttempts', window.failedAttempts);
-    if (window.failedAttempts >= 3) {
-      window.cooldownUntil = Date.now() + 5 * 60 * 1000; // 5 minutes
-      localStorage.setItem('cooldownUntil', window.cooldownUntil);
-      window.ModalManager.showAlert('Too many failed attempts. Cooldown for 5 minutes.', 'error');
-    } else {
-      window.ModalManager.showAlert('Invalid credentials', 'error');
-    }
-    window.messages.push({ type: 'error', content: 'Invalid credentials', timestamp: Date.now() });
-  }
+// Email validation function
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
 }
 
 // Make functions global so they can be called from HTML
-window.handleSignup = function(){
-  const username = document.getElementById('signup-user').value;
-  const email = document.getElementById('signup-email').value;
-  const pass = document.getElementById('signup-pass').value;
-  if(window.users.find(u => u.email === email)){
-    window.ModalManager.showAlert('Email exists', 'error');
-    window.messages.push({ type: 'error', content: 'Email exists', timestamp: Date.now() });
+window.handleLogin = async function(){
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+
+  if (!email || !pass) {
+    window.ModalManager.showAlert('Please enter email and password.', 'error');
     return;
   }
-  const newUser = {username, email, password: pass, avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`};
-  window.users.push(newUser);
-  localStorage.setItem('users', JSON.stringify(window.users));
-  window.currentUser = newUser;
+
+  // Check localStorage for user (simulating Firebase)
+  const userData = localStorage.getItem('user_' + email);
+  if (!userData) {
+    window.ModalManager.showAlert('Invalid email or password.', 'error');
+    return;
+  }
+
+  const user = JSON.parse(userData);
+  if (user.password !== pass) {
+    window.ModalManager.showAlert('Invalid email or password.', 'error');
+    return;
+  }
+
+  // Get username from localStorage
+  const username = localStorage.getItem('username_' + email) || 'Unknown';
+  window.currentUser = { email, username, avatar: null };
   window.renderHome();
   window.updateNav(true);
   window.updateNavAvatar();
+}
+
+// Make functions global so they can be called from HTML
+window.handleSignup = async function(){
+  const username = document.getElementById('signup-user').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const pass = document.getElementById('signup-pass').value;
+
+  if (!username || !email || !pass) {
+    window.ModalManager.showAlert('Please fill in all fields.', 'error');
+    return;
+  } else if (!isValidEmail(email)) {
+    window.ModalManager.showAlert('Invalid email format.', 'error');
+    return;
+  } else if (pass.length < 6) {
+    window.ModalManager.showAlert('Password must be at least 6 characters.', 'error');
+    return;
+  }
+
+  try {
+    await firebase.auth().createUserWithEmailAndPassword(email, pass);
+    // Store username in localStorage
+    localStorage.setItem('username_' + email, username);
+    await firebase.auth().signOut();
+    window.ModalManager.showAlert('Account created successfully! Please log in now.', 'success');
+    window.renderLogin();
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      window.ModalManager.showAlert('This email is already registered. Please log in instead.', 'error');
+    } else {
+      window.ModalManager.showAlert(error.message, 'error');
+    }
+  }
 }
 
 // Make functions global so they can be called from HTML
@@ -98,13 +110,14 @@ window.logout = function(){
 }
 
 // Confirm logout
-window.confirmLogout = function(){
+window.confirmLogout = async function(){
   // Save progress (assuming scores are already in localStorage)
   // Fade out
   const app = document.getElementById('app');
   app.style.transition = 'opacity 0.5s';
   app.style.opacity = '0';
-  setTimeout(() => {
+  setTimeout(async () => {
+    // Simulate sign out (not needed for localStorage)
     window.currentUser = null;
     window.renderLogin();
     window.updateNav(false);
@@ -112,7 +125,7 @@ window.confirmLogout = function(){
     app.style.opacity = '1';
     // Show message
     setTimeout(() => {
-      const username = window.users.find(u => u.email === localStorage.getItem('lastUser') || u.username === localStorage.getItem('lastUser'))?.username || 'Player';
+      const username = window.currentUser?.username || 'Player';
       window.ModalManager.showAlert(`Great work today, ${username}! Keep improving your grammar skills.`, 'success');
     }, 500);
   }, 500);
@@ -128,11 +141,11 @@ window.renderLogin = function(){
         <form id="login-form">
           <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" id="login-email" placeholder="Email or Username" required>
+            <input type="email" id="login-email" placeholder="Email" value="CoffeeRain@gmail.com" required>
           </div>
           <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" id="login-pass" placeholder="Password" required>
+            <input type="password" id="login-pass" placeholder="Password" value="MoonLight" required>
           </div>
           <button type="button" class="btn primary" onclick="window.handleLogin()">
             <i class="fas fa-arrow-right"></i> Log In
@@ -157,15 +170,15 @@ window.showSignup = function(){
         <form id="signup-form">
           <div class="input-group">
             <i class="fas fa-user"></i>
-            <input type="text" id="signup-user" placeholder="Username" required>
+            <input type="text" id="signup-user" placeholder="Username" value="Unknown" required>
           </div>
           <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="email" id="signup-email" placeholder="Email" value="CoffeeRain@gmail.com" required>
           </div>
           <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" id="signup-pass" placeholder="Password" required>
+            <input type="password" id="signup-pass" placeholder="Password" value="MoonLight" required>
           </div>
           <button type="button" class="btn primary" onclick="window.handleSignup()">
             <i class="fas fa-user-plus"></i> Sign Up

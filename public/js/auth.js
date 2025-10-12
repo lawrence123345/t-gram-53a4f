@@ -152,11 +152,11 @@ window.renderLogin = function(){
         <form id="login-form">
           <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" id="login-email" placeholder="Email" value="CoffeeRain@gmail.com" required>
+            <input type="email" id="login-email" placeholder="Email" required>
           </div>
           <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" id="login-pass" placeholder="Password" value="MoonLight" required>
+            <input type="password" id="login-pass" placeholder="Password" required>
           </div>
           <button type="button" class="btn primary" onclick="window.handleLogin()">
             <i class="fas fa-arrow-right"></i> Log In
@@ -181,15 +181,15 @@ window.showSignup = function(){
         <form id="signup-form">
           <div class="input-group">
             <i class="fas fa-user"></i>
-            <input type="text" id="signup-user" placeholder="Username" value="Unknown" required>
+            <input type="text" id="signup-user" placeholder="Username" required>
           </div>
           <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" id="signup-email" placeholder="Email" value="CoffeeRain@gmail.com" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
           </div>
           <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" id="signup-pass" placeholder="Password" value="MoonLight" required>
+            <input type="password" id="signup-pass" placeholder="Password" required>
           </div>
           <button type="button" class="btn primary" onclick="window.handleSignup()">
             <i class="fas fa-user-plus"></i> Sign Up

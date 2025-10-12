@@ -10,7 +10,7 @@ const defaultAvatars = [
 ];
 
 // Make functions global so they can be called from HTML
-window.renderProfile = function(){
+window.renderProfile = async function(){
   if (!window.currentUser) {
     window.ModalManager.showAlert('Please log in to view your profile.', 'error');
     window.messages.push({ type: 'error', content: 'Please log in to view your profile.', timestamp: Date.now() });
@@ -19,10 +19,22 @@ window.renderProfile = function(){
   }
 
   // Calculate ranking position
-  let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  scores.sort((a, b) => b.totalScore - a.totalScore);
-  let rank = scores.findIndex(s => s.user === window.currentUser.username) + 1;
-  if (rank === 0) rank = 'Not ranked yet';
+  let rank = 'Not ranked yet';
+  try {
+    const scoresSnapshot = await window.db.collection('scores').get();
+    let scores = [];
+    scoresSnapshot.forEach(doc => {
+      scores.push(doc.data());
+    });
+    scores.sort((a, b) => b.totalScore - a.totalScore);
+    const userScoreIndex = scores.findIndex(s => s.uid === window.currentUser.uid);
+    if (userScoreIndex !== -1) {
+      rank = userScoreIndex + 1;
+    }
+  } catch (error) {
+    console.error('Error fetching scores:', error);
+    rank = 'Error loading rank';
+  }
 
 let avatarSrc = window.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzUiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
 let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0; border: 3px solid white; box-shadow: 0 0 0 3px black, 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; object-fit: cover; cursor: pointer; background-color: black;';
@@ -338,7 +350,7 @@ window.handleSaveProfile = function() {
   window.saveProfile();
 };
 
-window.saveProfile = function(){
+window.saveProfile = async function(){
   console.log('Entering saveProfile');
   console.log('ModalManager exists:', typeof window.ModalManager !== 'undefined');
   if (typeof window.ModalManager === 'undefined') {
@@ -355,25 +367,30 @@ window.saveProfile = function(){
     delete window.currentUser.age; // Remove if empty
   }
   window.currentUser.lastLogin = new Date().toLocaleDateString();
-  let idx = window.users.findIndex(u => u.email === window.currentUser.email);
-  if (idx !== -1) window.users[idx] = window.currentUser;
-  localStorage.setItem('users', JSON.stringify(window.users));
-  console.log('About to show alert');
-  window.ModalManager.showAlert('Changes saved successfully!', 'success');
-  console.log('showAlert called');
-  // Additional debug: Check if modal was created and visible
-  setTimeout(() => {
-    const alertModal = document.getElementById('alert-modal');
-    console.log('Alert modal exists:', !!alertModal);
-    if (alertModal) {
-      console.log('Modal display:', alertModal.style.display);
-      console.log('Modal classes:', alertModal.className);
-      console.log('Modal visibility:', alertModal.offsetHeight > 0 ? 'visible' : 'hidden');
-    }
-  }, 100);
-  window.messages.push({ type: 'success', content: 'Changes saved successfully!', timestamp: Date.now() });
-  window.updateNavAvatar();
-  window.renderProfile();
+
+  // Save to Firestore
+  try {
+    await window.db.collection('users').doc(window.currentUser.uid).update(window.currentUser);
+    console.log('About to show alert');
+    window.ModalManager.showAlert('Changes saved successfully!', 'success');
+    console.log('showAlert called');
+    // Additional debug: Check if modal was created and visible
+    setTimeout(() => {
+      const alertModal = document.getElementById('alert-modal');
+      console.log('Alert modal exists:', !!alertModal);
+      if (alertModal) {
+        console.log('Modal display:', alertModal.style.display);
+        console.log('Modal classes:', alertModal.className);
+        console.log('Modal visibility:', alertModal.offsetHeight > 0 ? 'visible' : 'hidden');
+      }
+    }, 100);
+    window.messages.push({ type: 'success', content: 'Changes saved successfully!', timestamp: Date.now() });
+    window.updateNavAvatar();
+    window.renderProfile();
+  } catch (error) {
+    console.error('Error saving profile:', error);
+    window.ModalManager.showAlert('Error saving changes. Please try again.', 'error');
+  }
 }
 
 // Function to update avatar in navigation bar

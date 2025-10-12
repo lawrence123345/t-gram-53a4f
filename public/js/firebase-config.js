@@ -13,3 +13,6 @@ firebase.initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 window.auth = firebase.auth();
+
+// Initialize Cloud Firestore and get a reference to the service
+window.db = firebase.firestore();

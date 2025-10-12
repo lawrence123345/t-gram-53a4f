@@ -19,25 +19,26 @@ window.handleLogin = async function(){
     return;
   }
 
-  // Check localStorage for user (simulating Firebase)
-  const userData = localStorage.getItem('user_' + email);
-  if (!userData) {
-    window.ModalManager.showAlert('Invalid email or password.', 'error');
-    return;
-  }
+  try {
+    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, pass);
+    const user = userCredential.user;
 
-  const user = JSON.parse(userData);
-  if (user.password !== pass) {
-    window.ModalManager.showAlert('Invalid email or password.', 'error');
-    return;
-  }
+    // Get user data from Firestore
+    const userDoc = await window.db.collection('users').doc(user.uid).get();
+    if (userDoc.exists) {
+      window.currentUser = { uid: user.uid, email: user.email, ...userDoc.data() };
+    } else {
+      // If no data, create default
+      window.currentUser = { uid: user.uid, email: user.email, username: 'Unknown', avatar: null, bio: '', age: null };
+      await window.db.collection('users').doc(user.uid).set(window.currentUser);
+    }
 
-  // Get username from localStorage
-  const username = localStorage.getItem('username_' + email) || 'Unknown';
-  window.currentUser = { email, username, avatar: null };
-  window.renderHome();
-  window.updateNav(true);
-  window.updateNavAvatar();
+    window.renderHome();
+    window.updateNav(true);
+    window.updateNavAvatar();
+  } catch (error) {
+    window.ModalManager.showAlert(error.message, 'error');
+  }
 }
 
 // Make functions global so they can be called from HTML
@@ -58,9 +59,18 @@ window.handleSignup = async function(){
   }
 
   try {
-    await firebase.auth().createUserWithEmailAndPassword(email, pass);
-    // Store username in localStorage
-    localStorage.setItem('username_' + email, username);
+    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+    const user = userCredential.user;
+
+    // Store user data in Firestore
+    await window.db.collection('users').doc(user.uid).set({
+      username: username,
+      email: email,
+      avatar: null,
+      bio: '',
+      age: null
+    });
+
     await firebase.auth().signOut();
     window.ModalManager.showAlert('Account created successfully! Please log in now.', 'success');
     window.renderLogin();
@@ -99,10 +109,10 @@ window.sendReset = function(){
 
 // Make functions global so they can be called from HTML
 window.logout = function(){
-  const confirmContent = `
+    const confirmContent = `
     <div class="confirm-content">
       <p>Are you sure you want to log out? Your grammar progress will be saved.</p>
-      <button onclick="window.confirmLogout()" class="btn primary">Yes, Log Out</button>
+      <button onclick="window.confirmLogout()" class="btn primary">Log Out</button>
       <button onclick="ModalManager.hideModal('confirm-logout')" class="btn secondary">Cancel</button>
     </div>
   `;
@@ -111,13 +121,14 @@ window.logout = function(){
 
 // Confirm logout
 window.confirmLogout = async function(){
+  ModalManager.hideModal('confirm-logout');
   // Save progress (assuming scores are already in localStorage)
   // Fade out
   const app = document.getElementById('app');
   app.style.transition = 'opacity 0.5s';
   app.style.opacity = '0';
   setTimeout(async () => {
-    // Simulate sign out (not needed for localStorage)
+    await firebase.auth().signOut();
     window.currentUser = null;
     window.renderLogin();
     window.updateNav(false);

@@ -1,72 +1,84 @@
-function addScore(username, correct, total, time, categoryScores = {}){
-  let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  let player = scores.find(p => p.user === username);
-  if(player) {
-    player.wins = (player.wins || 0) + (correct === total ? 1 : 0);
-    player.losses = (player.losses || 0) + (correct === 0 ? 1 : 0);
-    player.draws = (player.draws || 0) + (correct > 0 && correct < total ? 1 : 0);
-    player.totalGames = (player.totalGames || 0) + 1;
-    player.totalCorrect = (player.totalCorrect || 0) + correct;
-    player.totalQuestions = (player.totalQuestions || 0) + total;
-    player.totalTime = (player.totalTime || 0) + time;
-    player.averageTime = player.totalTime / player.totalGames;
-    player.accuracy = player.totalQuestions > 0 ? Math.round(player.totalCorrect / player.totalQuestions * 100) : 0;
-    player.streak = correct === total ? (player.streak || 0) + 1 : 0;
-    player.highestStreak = Math.max(player.highestStreak || 0, player.streak);
-    player.level = Math.floor((player.totalScore || 0) / 100) + 1;
-    player.totalScore = (player.totalScore || 0) + correct;
-    player.categoryScores = player.categoryScores || {};
-    Object.keys(categoryScores).forEach(cat => {
-      player.categoryScores[cat] = (player.categoryScores[cat] || 0) + categoryScores[cat];
-    });
-    player.rankTier = player.wins >= 50 ? 'Gold' : player.wins >= 25 ? 'Silver' : 'Bronze';
-    player.achievements = player.achievements || [];
-    if(player.wins === 10 && !player.achievements.includes('10 Wins')) player.achievements.push('10 Wins');
-    if(player.streak === 5 && !player.achievements.includes('5 Streak')) player.achievements.push('5 Streak');
-    if(player.accuracy >= 90 && !player.achievements.includes('90% Accuracy')) player.achievements.push('90% Accuracy');
-    player.avatar = player.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
-  } else {
-    scores.push({
-      user: username,
-      wins: correct === total ? 1 : 0,
-      losses: correct === 0 ? 1 : 0,
-      draws: correct > 0 && correct < total ? 1 : 0,
-      totalGames: 1,
-      totalCorrect: correct,
-      totalQuestions: total,
-      totalTime: time,
-      averageTime: time,
-      accuracy: total > 0 ? Math.round(correct / total * 100) : 0,
-      streak: correct === total ? 1 : 0,
-      highestStreak: correct === total ? 1 : 0,
-      level: 1,
-      totalScore: correct,
-      categoryScores: categoryScores,
-      rankTier: 'Bronze',
-      achievements: [],
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`
-    });
+async function addScore(uid, username, correct, total, time, categoryScores = {}){
+  try {
+    const userDocRef = window.db.collection('scores').doc(uid);
+    const userDoc = await userDocRef.get();
+    let playerData;
+    if (userDoc.exists) {
+      playerData = userDoc.data();
+      playerData.wins = (playerData.wins || 0) + (correct === total ? 1 : 0);
+      playerData.losses = (playerData.losses || 0) + (correct === 0 ? 1 : 0);
+      playerData.draws = (playerData.draws || 0) + (correct > 0 && correct < total ? 1 : 0);
+      playerData.totalGames = (playerData.totalGames || 0) + 1;
+      playerData.totalCorrect = (playerData.totalCorrect || 0) + correct;
+      playerData.totalQuestions = (playerData.totalQuestions || 0) + total;
+      playerData.totalTime = (playerData.totalTime || 0) + time;
+      playerData.averageTime = playerData.totalTime / playerData.totalGames;
+      playerData.accuracy = playerData.totalQuestions > 0 ? Math.round(playerData.totalCorrect / playerData.totalQuestions * 100) : 0;
+      playerData.streak = correct === total ? (playerData.streak || 0) + 1 : 0;
+      playerData.highestStreak = Math.max(playerData.highestStreak || 0, playerData.streak);
+      playerData.level = Math.floor((playerData.totalScore || 0) / 100) + 1;
+      playerData.totalScore = (playerData.totalScore || 0) + correct;
+      playerData.categoryScores = playerData.categoryScores || {};
+      Object.keys(categoryScores).forEach(cat => {
+        playerData.categoryScores[cat] = (playerData.categoryScores[cat] || 0) + categoryScores[cat];
+      });
+      playerData.rankTier = playerData.wins >= 50 ? 'Gold' : playerData.wins >= 25 ? 'Silver' : 'Bronze';
+      playerData.achievements = playerData.achievements || [];
+      if(playerData.wins === 10 && !playerData.achievements.includes('10 Wins')) playerData.achievements.push('10 Wins');
+      if(playerData.streak === 5 && !playerData.achievements.includes('5 Streak')) playerData.achievements.push('5 Streak');
+      if(playerData.accuracy >= 90 && !playerData.achievements.includes('90% Accuracy')) playerData.achievements.push('90% Accuracy');
+      playerData.avatar = playerData.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
+    } else {
+      playerData = {
+        uid: uid,
+        user: username,
+        wins: correct === total ? 1 : 0,
+        losses: correct === 0 ? 1 : 0,
+        draws: correct > 0 && correct < total ? 1 : 0,
+        totalGames: 1,
+        totalCorrect: correct,
+        totalQuestions: total,
+        totalTime: time,
+        averageTime: time,
+        accuracy: total > 0 ? Math.round(correct / total * 100) : 0,
+        streak: correct === total ? 1 : 0,
+        highestStreak: correct === total ? 1 : 0,
+        level: 1,
+        totalScore: correct,
+        categoryScores: categoryScores,
+        rankTier: 'Bronze',
+        achievements: [],
+        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`
+      };
+    }
+    await userDocRef.set(playerData);
+  } catch (error) {
+    console.error('Error adding score:', error);
   }
-  localStorage.setItem('scores', JSON.stringify(scores));
 }
 
 // Make functions global so they can be called from HTML
-window.renderLeaderboard = function(){
-  let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  scores.sort((a,b) => b.totalScore - a.totalScore);
-  let topScores = scores.slice(0, 10);
-  let rows = topScores.map((s, i) => {
-    let rank = i + 1;
-    let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-    return `<div class="leaderboard-row">
+window.renderLeaderboard = async function(){
+  try {
+    const snapshot = await window.db.collection('scores').get();
+    let scores = [];
+    snapshot.forEach(doc => {
+      scores.push({ ...doc.data(), id: doc.id });
+    });
+    scores.sort((a,b) => b.totalScore - a.totalScore);
+    let topScores = scores.slice(0, 10);
+    let rows = topScores.map((s, i) => {
+      let rank = i + 1;
+      let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+      return `<div class="leaderboard-row">
 <div class="rank-item">${medal} ${rank}</div>
 <div class="username-item">${s.user}</div>
 <div class="stat-item">${s.wins}</div>
 <div class="stat-item">${s.losses}</div>
 <div class="stat-item">${s.totalScore}</div>
 </div>`;
-  }).join("");
-  document.getElementById('app').innerHTML = `<div class="leaderboard">
+    }).join("");
+    document.getElementById('app').innerHTML = `<div class="leaderboard">
 <h2>🏆 Leaderboard</h2>
 <p class="leaderboard-description">The leaderboard highlights the top players, ranked from first to tenth, with a stylish display of their username, victories, defeats, and total score.</p>
 <div class="leaderboard-header">
@@ -81,7 +93,14 @@ ${rows}
 </div>
 <button class="btn btn-small back-btn" onclick="renderHome()">Back</button>
 </div>`;
-
+  } catch (error) {
+    console.error('Error fetching leaderboard:', error);
+    document.getElementById('app').innerHTML = `<div class="leaderboard">
+<h2>🏆 Leaderboard</h2>
+<p>Error loading leaderboard. Please try again.</p>
+<button class="btn btn-small back-btn" onclick="renderHome()">Back</button>
+</div>`;
+  }
 }
 
 // New function to reset leaderboard and game stats
@@ -129,11 +148,12 @@ function addAnimations(){
 }
 
 // Make functions global so they can be called from HTML
-window.viewProfile = function(user){
-  let scores = JSON.parse(localStorage.getItem('scores')) || [];
-  let player = scores.find(p => p.user === user);
-  if(player) {
-    document.getElementById('app').innerHTML = `<div class="profile">
+window.viewProfile = async function(user){
+  try {
+    const snapshot = await window.db.collection('scores').where('user', '==', user).get();
+    if (!snapshot.empty) {
+      const player = snapshot.docs[0].data();
+      document.getElementById('app').innerHTML = `<div class="profile">
 <h2>${player.user}'s Profile</h2>
 <img src="${player.avatar}" alt="${player.user}" class="avatar">
 <p>Wins: ${player.wins}</p>
@@ -146,6 +166,20 @@ window.viewProfile = function(user){
 <p>Average Time: ${Math.round(player.averageTime)}s</p>
 <p>Level: ${player.level}</p>
 <p>Achievements: ${player.achievements.join(', ') || 'None'}</p>
+<button class="btn btn-small" onclick="renderLeaderboard()">Back</button>
+</div>`;
+    } else {
+      document.getElementById('app').innerHTML = `<div class="profile">
+<h2>Profile Not Found</h2>
+<p>User not found.</p>
+<button class="btn btn-small" onclick="renderLeaderboard()">Back</button>
+</div>`;
+    }
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+    document.getElementById('app').innerHTML = `<div class="profile">
+<h2>Error</h2>
+<p>Error loading profile.</p>
 <button class="btn btn-small" onclick="renderLeaderboard()">Back</button>
 </div>`;
   }

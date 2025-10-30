@@ -1,0 +1,22 @@
+[33m99052f8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mblackboxai/enhance-offline-pvp-review-modal[m[33m)[m Center Tic-Tac-Toe board vertically and horizontally for better alignment
+[33m23bc0dd[m[33m ([m[1;31morigin/blackboxai/enhance-offline-pvp-review-modal[m[33m)[m Improve responsiveness and alignment for all devices, center Tic-Tac-Toe board
+[33m4eb0338[m Improve offline mode design: enhance post-game buttons and review modal, adjust homepage spacing
+[33m7d53cc3[m Update profile texts: Personalize Profile, Add Your Photo, Select Avatar per feedback
+[33m85ac6a0[m Enhance offline PvP: Add post-game buttons (Play Again, Review Answers), full review modal with stats/correct-incorrect sections/explanations, improved modal design (gradients, animations, responsiveness). Fix endGame error by adding null check in updateStreakDisplay. Update scores to leaderboard.
+[33m0d1ba1d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Update T-Gram project with profile functionality and navigation improvements
+[33m142db8f[m Convert HTML files to PHP and use PHP includes for header and footer
+[33m978eaab[m Update T-Gram project files: fix player name in app.js, update questions.json, CSS, JS files for leaderboard and game functionality
+[33mb5144f7[m Remove old offline code and implement new offline system: Tic-Tac-Toe with grammar questions, opponent name prompt, leaderboard integration
+[33m640eda3[m Force update users array to override localStorage, ensuring only Unknown/CoffeeRain account
+[33m6236874[m Update auth.js to match user credentials: only Unknown/CoffeeRain account
+[33m2f12b7e[m Remove Lawrence account, keep only Unknown/CoffeeRain for login
+[33m12e83f2[m Update user credentials to fix password breach warning: set Unknown account to CoffeeRain@gmail.com / MoonLight, and change Lawrence password to SecurePass456!
+[33m767cb69[m Replace old offline PvP code with new implementation based on spec, add streak counter, update questions.json with more questions
+[33m169aa19[m Fix variable scoping issues by prefixing with window. and make startOfflinePvP async
+[33mc4845d8[m Update index.html and manifest.json for path fixes, remove duplicate public/js/index.html
+[33m0c55e26[m Fix file paths for GitHub Pages deployment: update JS paths in index.html, manifest start_url and shortcuts, sw.js cache URLs, and about.html asset paths
+[33mf9feb73[m Update index.html
+[33m6e196a1[m Add index.html and remove public/index.html to update project structure
+[33me612545[m Update T-Gram project files including modifications to TODO.md, CSS, HTML, and JS files
+[33mf378b3d[m Add full T-Gram project files
+[33mb592544[m Initial commit

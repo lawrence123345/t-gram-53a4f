@@ -59,28 +59,55 @@ async function addScore(uid, username, correct, total, time, categoryScores = {}
 
 // Make functions global so they can be called from HTML
 window.renderLeaderboard = async function(){
-  try {
-    const snapshot = await window.db.collection('scores').get();
-    let scores = [];
-    snapshot.forEach(doc => {
-      scores.push({ ...doc.data(), id: doc.id });
-    });
-    scores.sort((a,b) => b.totalScore - a.totalScore);
-    let topScores = scores.slice(0, 10);
-    let rows = topScores.map((s, i) => {
-      let rank = i + 1;
-      let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-      return `<div class="leaderboard-row">
+  if (window.isOnline) {
+    // Online: Fetch from Firebase Firestore or use dummy data for testing
+    try {
+      // For now, use dummy online data instead of real Firestore fetch
+      const dummyOnlineScores = [
+        { user: 'GrammarMaster', wins: 25, losses: 5, totalScore: 500, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=GrammarMaster' },
+        { user: 'TenseWizard', wins: 20, losses: 8, totalScore: 450, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TenseWizard' },
+        { user: 'ClauseCrusher', wins: 18, losses: 10, totalScore: 400, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ClauseCrusher' },
+        { user: 'SyntaxSage', wins: 15, losses: 12, totalScore: 350, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SyntaxSage' },
+        { user: 'VerbVirtuoso', wins: 12, losses: 15, totalScore: 300, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=VerbVirtuoso' },
+        { user: 'PunctuationPro', wins: 10, losses: 18, totalScore: 250, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=PunctuationPro' },
+        { user: 'GrammarGuru', wins: 8, losses: 20, totalScore: 200, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=GrammarGuru' },
+        { user: 'LanguageLord', wins: 5, losses: 22, totalScore: 150, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LanguageLord' },
+        { user: 'WordWizard', wins: 3, losses: 25, totalScore: 100, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=WordWizard' },
+        { user: 'SentenceSavior', wins: 1, losses: 28, totalScore: 50, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SentenceSavior' }
+      ];
+      
+      // Cache online scores locally for offline fallback
+      localStorage.setItem('cachedOnlineScores', JSON.stringify(dummyOnlineScores));
+      
+      renderOnlineLeaderboard(dummyOnlineScores);
+    } catch (error) {
+      console.error('Error loading online leaderboard:', error);
+      // Fallback to cached scores if available
+      renderOfflineLeaderboard();
+    }
+  } else {
+    // Offline: Use local scores
+    renderOfflineLeaderboard();
+  }
+}
+
+function renderOnlineLeaderboard(scores) {
+  scores.sort((a,b) => b.totalScore - a.totalScore);
+  let topScores = scores.slice(0, 10);
+  let rows = topScores.map((s, i) => {
+    let rank = i + 1;
+    let medal = rank === 1 ? '���' : rank === 2 ? '���' : rank === 3 ? '���' : rank;
+    return `<div class="leaderboard-row">
 <div class="rank-item">${medal} ${rank}</div>
 <div class="username-item">${s.user}</div>
 <div class="stat-item">${s.wins}</div>
 <div class="stat-item">${s.losses}</div>
 <div class="stat-item">${s.totalScore}</div>
 </div>`;
-    }).join("");
-    document.getElementById('app').innerHTML = `<div class="leaderboard">
-<h2>🏆 Leaderboard</h2>
-<p class="leaderboard-description">The leaderboard highlights the top players, ranked from first to tenth, with a stylish display of their username, victories, defeats, and total score.</p>
+  }).join("");
+  document.getElementById('app').innerHTML = `<div class="leaderboard">
+<h2>��� Online Leaderboard (Global)</h2>
+<p class="leaderboard-description">Global rankings from online players. Connect to see real-time updates.</p>
 <div class="leaderboard-header">
 <div class="rank-item">Rank</div>
 <div class="username-item">Username</div>
@@ -93,14 +120,39 @@ ${rows}
 </div>
 <button class="btn btn-small back-btn" onclick="renderHome()">Back</button>
 </div>`;
-  } catch (error) {
-    console.error('Error fetching leaderboard:', error);
-    document.getElementById('app').innerHTML = `<div class="leaderboard">
-<h2>🏆 Leaderboard</h2>
-<p>Error loading leaderboard. Please try again.</p>
+}
+
+function renderOfflineLeaderboard() {
+  // Get local scores from localStorage
+  const localScores = JSON.parse(localStorage.getItem('offlineScores') || '[]');
+  localScores.sort((a,b) => b.totalScore - a.totalScore);
+  let topScores = localScores.slice(0, 10);
+  let rows = topScores.map((s, i) => {
+    let rank = i + 1;
+    let medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+    return `<div class="leaderboard-row">
+<div class="rank-item">${medal} ${rank}</div>
+<div class="username-item">${s.user}</div>
+<div class="stat-item">${s.wins}</div>
+<div class="stat-item">${s.losses}</div>
+<div class="stat-item">${s.totalScore}</div>
+</div>`;
+  }).join("");
+  document.getElementById('app').innerHTML = `<div class="leaderboard">
+<h2>📴 Offline Leaderboard (Local)</h2>
+<p class="leaderboard-description">Your local match results and best scores. Scores persist offline.</p>
+<div class="leaderboard-header">
+<div class="rank-item">Rank</div>
+<div class="username-item">Username</div>
+<div class="stat-item">Wins</div>
+<div class="stat-item">Losses</div>
+<div class="stat-item">Total Score</div>
+</div>
+<div class="leaderboard-rows">
+${rows}
+</div>
 <button class="btn btn-small back-btn" onclick="renderHome()">Back</button>
 </div>`;
-  }
 }
 
 // New function to reset leaderboard and game stats

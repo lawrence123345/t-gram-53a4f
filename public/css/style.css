@@ -58,6 +58,27 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Responsive Base Styles ===== */
+@media (max-width: 1200px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;

@@ -5,6 +5,7 @@ window.auth = null; // This will be set when Firebase is initialized
 window.questions = null;
 window.currentQuestion = null;
 window.gameQuestions = [];
+window.isOnline = navigator.onLine;
 
 // ===== Navigation Update =====
 window.updateNav = function(auth){
@@ -638,14 +639,32 @@ window.continueWrong = function() {
 window.skipQuestion = function() {
   if (!window.questionPending) return;
   window.questionPending = false;
-  window.ModalManager.hideModal('question-modal');
+
   // Stop timer
   if (window.timerInterval) {
     clearInterval(window.timerInterval);
     window.timerInterval = null;
   }
-  window.ModalManager.showAlert("Skipped! Turn lost.", 'error');
-  window.messages.push({ type: 'error', content: 'Skipped question - turn lost.', timestamp: Date.now() });
+
+  // Deduct 5 points from current player's score
+  if (window.currentPlayer === 'X') {
+    window.userScore -= 5;
+  } else {
+    window.opponentScore -= 5;
+  }
+
+  // Update scores display
+  window.updateScores();
+
+  // Show red feedback message briefly
+  const feedbackDiv = document.getElementById('question-feedback');
+  if (feedbackDiv) {
+    feedbackDiv.innerHTML = '<p style="color: red; font-weight: bold;">-5 Points (Skipped)</p>';
+    feedbackDiv.style.display = 'block';
+  }
+
+  // Log the skip
+  window.messages.push({ type: 'error', content: 'Skipped question - -5 points.', timestamp: Date.now() });
   window.allAnswers.push({
     question: window.currentQuestion.question,
     userAnswer: 'Skipped',
@@ -654,8 +673,15 @@ window.skipQuestion = function() {
     isCorrect: false
   });
   window.wrongAnswers.push({...window.currentQuestion, userAnswer: 'Skipped'});
-  window.switchPlayer();
+
+  // Increment question index for next question
   window.currentQuestionIndex++;
+
+  // Briefly show message, then hide modal and place move
+  setTimeout(() => {
+    window.ModalManager.hideModal('question-modal');
+    window.placeMove();
+  }, 1500); // 1.5 seconds to show the message
 };
 
 
@@ -948,6 +974,31 @@ if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.p
   }).catch((error) => {
     console.log('Background sync registration failed:', error);
   });
+}
+
+// ===== Online/Offline Detection =====
+window.addEventListener('online', () => {
+  window.isOnline = true;
+  console.log('Switched to online mode');
+  // Re-render leaderboard if on that page
+  if (document.querySelector('.leaderboard')) {
+    window.renderLeaderboard();
+  }
+});
+
+window.addEventListener('offline', () => {
+  window.isOnline = false;
+  console.log('Switched to offline mode');
+  // Re-render leaderboard if on that page
+  if (document.querySelector('.leaderboard')) {
+    window.renderLeaderboard();
+  }
+});
+
+// ===== Initialize Cached Online Scores =====
+if (!localStorage.getItem('cachedOnlineScores')) {
+  // Initialize empty cache for offline fallback
+  localStorage.setItem('cachedOnlineScores', JSON.stringify([]));
 }
 
 // ===== Initial Render =====

@@ -1,12 +1,17 @@
-# TODO List for Profile.js Enhancements
+# Online PvP System Implementation
 
-- [x] Update avatar display in navigation bar with fallback to black circle SVG.
-- [x] Add profile menu toggle and close functions for slide-out menu.
-- [x] Implement change detection for profile form to enable/disable save button (refined: button always enabled, style changes based on changes).
-- [x] Add placeholder functions for menu items: leaderboard, settings, logout.
-- [ ] Test profile menu toggle and close functionality.
-- [x] Test save button enable/disable on profile changes (fixed type mismatch in age comparison).
-- [ ] Implement actual leaderboard, settings, and logout functionality if not done.
-- [ ] Verify avatar upload and selection UI and functionality.
-- [ ] Ensure profile rendering updates avatar and user info correctly.
-- [ ] Cross-browser testing and UI polish.
+## Completed Tasks
+- [x] Create firebase.js for reusable Firestore db export
+- [x] Create online-achievements.js for Firestore-based online achievements
+- [x] Create online-pvp.js for matchmaking, real-time sync, gameplay, and chat
+- [x] Modify app.js to add startOnlinePvP function with offline check and status UI
+- [x] Update index.html to ensure Online PvP button calls startOnlinePvP
+- [x] Update firestore.rules for rooms and scores permissions
+- [x] Add matchmaking timeout (30 seconds) to prevent indefinite waiting
+- [x] Load questions before matchmaking to ensure smooth gameplay
+- [x] Improve cleanup functions to clear timeouts and prevent memory leaks
+
+## Testing Tasks
+- [ ] Test Online PvP: Matchmaking, real-time sync, end match, achievements
+- [ ] Test Offline Prevention: Alert when offline
+- [ ] Verify Firebase integration: Rooms creation/joining, score uploads, achievement updates

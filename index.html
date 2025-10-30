@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T-Gram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img id="nav-avatar" src="" alt="Avatar" class="nav-avatar" />
+            <img
+                id="logo-light"
+                src="https://i.ibb.co/twP8tWYR/t-gram-logo.png"
+                alt="T-Gram Logo Light"
+                style="height: 40px; background: transparent;"
+            />
+            <img
+                id="logo-dark"
+                src="https://i.ibb.co/twP8tWYR/t-gram-logo.png"
+                alt="T-Gram Logo Dark"
+                style="height: 40px; display: none; background: transparent;"
+            />
+            <span>T-Gram</span>
+        </div>
+        <div class="nav-right" id="nav-links">
+            <a onclick="renderAbout()">About</a>
+        </div>
+    </nav>
+
+    <div id="app"></div>
+
+    <!-- Modal Timer -->
+    <div id="timerModal" class="modal">
+        <div class="modal-content">
+            <h3 id="questionText">Question</h3>
+            <div id="optionsContainer"></div>
+            <p>Time left: <span id="timerDisplay">30</span>s</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/online-achievements.js"></script>
+    <script src="js/online-pvp.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

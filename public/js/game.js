@@ -105,7 +105,7 @@ window.startOnlinePvP = async function(){
   <h3>Chat</h3>
   <div class="chat-messages" id="chat-messages"></div>
   <input type="text" id="chat-input" placeholder="Type a message...">
-  <button class="btn" onclick="sendChatMessage()">Send</button>
+  <button class="btn btn-small" onclick="sendChatMessage()">Send</button>
 </div>
 <div class="mini-leaderboard">
   <h3>Session Stats</h3>
@@ -115,7 +115,7 @@ window.startOnlinePvP = async function(){
   <h3>Move History</h3>
   <ul id="move-list"></ul>
 </div>
-<button class="btn" onclick="renderHome()">Exit</button>
+<button class="btn btn-small" onclick="renderHome()">Exit</button>
 </div>`;
   renderBoard();
   updateScoreDisplay();

@@ -37,12 +37,12 @@ window.renderHome = function(){
 <div class="card" onclick="selectDifficulty('Advanced')">Advanced</div>
 </div>
 <div id="mode-selection" style="display: none;">
-<h3>Choose Mode</h3>
+<h3 style="margin-bottom: 20px; margin-top: 30px;">Choose Mode</h3>
 <div class="cards">
 <div class="card" onclick="startOfflinePvP()">Offline PvP</div>
 <div class="card" onclick="startOnlinePvP()">Online PvP</div>
 </div>
-<button class="btn" onclick="renderHome()">Back</button>
+<button class="btn btn-small primary" onclick="renderHome()"><i class="fas fa-arrow-left"></i> Back</button>
 </div>
 </main>`;
   updateNav(true);
@@ -114,7 +114,7 @@ window.renderAbout = function(){
   <p class="quote-author">Start your journey with T-Gram today.</p>
 </div>
 
-<button class="btn" onclick="renderLogin()">Back to Login</button>
+<button class="btn btn-small primary" onclick="renderLogin()"><i class="fas fa-sign-in-alt"></i> Back to Login</button>
 </main>`;
 }
 
@@ -122,70 +122,93 @@ window.renderAbout = function(){
 window.loadQuestions = async function() {
   if (!window.questions) {
     try {
-      const response = await fetch('public/assets/questions.json');
-      window.questions = await response.json();
+      const response = await fetch('assets/questions.json');
+      if (response.ok) {
+        const data = await response.json();
+        // Flatten the questions from categories into arrays
+        window.questions = {};
+        for (const level of ['beginner', 'intermediate', 'advanced']) {
+          window.questions[level] = [];
+          for (const category in data[level]) {
+            window.questions[level].push(...data[level][category]);
+          }
+        }
+      } else {
+        throw new Error('Failed to fetch questions.json');
+      }
     } catch (error) {
       console.error('Failed to load questions:', error);
       // Fallback questions from sample, mapped to lowercase keys and standard format
       const sampleQuestions = {
         beginner: [
-          {question:"She ___ to school every day.",answer:"goes",options:["go","goes","gone"], type: "multiple_choice"},
-          {question:"I ___ happy today.",answer:"am",options:["is","are","am"], type: "multiple_choice"},
-          {question:"They ___ eating lunch.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"He ___ a doctor.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"We ___ playing soccer.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The cat ___ on the mat.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"You ___ my best friend.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"It ___ raining outside.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"My friends ___ coming over.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The book ___ interesting.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"Dogs ___ loyal animals.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"She ___ singing a song.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"We ___ going to the park.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"The sun ___ shining brightly.",answer:"is",options:["is","are","am"], type: "multiple_choice"},
-          {question:"Birds ___ flying in the sky.",answer:"are",options:["is","are","was"], type: "multiple_choice"}
+          {id:"b1",question:"She ___ to school every day.",answer:"goes",options:["go","goes","gone"], type: "multiple_choice",explanation:"The verb 'go' in present simple third person singular is 'goes'."},
+          {id:"b2",question:"I ___ happy today.",answer:"am",options:["is","are","am"], type: "multiple_choice",explanation:"Use 'am' for first person singular in present continuous or simple present."},
+          {id:"b3",question:"They ___ eating lunch.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"'They' is plural, so use 'are' for present continuous."},
+          {id:"b4",question:"He ___ a doctor.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular uses 'is'."},
+          {id:"b5",question:"We ___ playing soccer.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"First person plural uses 'are'."},
+          {id:"b6",question:"The cat ___ on the mat.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b7",question:"You ___ my best friend.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Second person uses 'are'."},
+          {id:"b8",question:"It ___ raining outside.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b9",question:"My friends ___ coming over.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural subject uses 'are'."},
+          {id:"b10",question:"The book ___ interesting.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b11",question:"Dogs ___ loyal animals.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural 'dogs' uses 'are'."},
+          {id:"b12",question:"She ___ singing a song.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b13",question:"We ___ going to the park.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"First person plural 'are'."},
+          {id:"b14",question:"The sun ___ shining brightly.",answer:"is",options:["is","are","am"], type: "multiple_choice",explanation:"Third person singular 'is'."},
+          {id:"b15",question:"Birds ___ flying in the sky.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Plural 'birds' uses 'are'."}
         ],
         intermediate: [
-          {question:"They ___ playing outside.",answer:"are",options:["is","are","was"], type: "multiple_choice"},
-          {question:"He has ___ a book.",answer:"read",options:["read","reads","reading"], type: "multiple_choice"},
-          {question:"She ___ to the store yesterday.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
-          {question:"I ___ finished my homework.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
-          {question:"They ___ watching TV.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
-          {question:"She ___ her homework already.",answer:"has done",options:["has done","have done","did"], type: "multiple_choice"},
-          {question:"We ___ to the beach last summer.",answer:"went",options:["go","went","gone"], type: "multiple_choice"},
-          {question:"He ___ playing the guitar.",answer:"is",options:["is","are","was"], type: "multiple_choice"},
-          {question:"They ___ eaten dinner yet.",answer:"have",options:["has","have","had"], type: "multiple_choice"},
-          {question:"The movie ___ at 8 PM.",answer:"starts",options:["start","starts","started"], type: "multiple_choice"},
-          {question:"I ___ my keys at home.",answer:"left",options:["leave","left","leaved"], type: "multiple_choice"},
-          {question:"She ___ a new car.",answer:"has bought",options:["has bought","have bought","bought"], type: "multiple_choice"},
-          {question:"We ___ for the bus.",answer:"are waiting",options:["is waiting","are waiting","was waiting"], type: "multiple_choice"},
-          {question:"The teacher ___ the lesson.",answer:"is explaining",options:["is explaining","are explaining","was explaining"], type: "multiple_choice"},
-          {question:"They ___ to music.",answer:"are listening",options:["is listening","are listening","was listening"], type: "multiple_choice"}
+          {id:"i1",question:"They ___ playing outside.",answer:"are",options:["is","are","was"], type: "multiple_choice",explanation:"Present continuous for plural."},
+          {id:"i2",question:"He has ___ a book.",answer:"read",options:["read","reads","reading"], type: "multiple_choice",explanation:"Present perfect uses past participle 'read'."},
+          {id:"i3",question:"She ___ to the store yesterday.",answer:"went",options:["go","went","gone"], type: "multiple_choice",explanation:"Past simple 'went'."},
+          {id:"i4",question:"I ___ finished my homework.",answer:"have",options:["has","have","had"], type: "multiple_choice",explanation:"Present perfect 'have' for first person."},
+          {id:"i5",question:"They ___ watching TV.",answer:"were",options:["was","were","is"], type: "multiple_choice",explanation:"Past continuous 'were' for plural."},
+          {id:"i6",question:"She ___ her homework already.",answer:"has done",options:["has done","have done","did"], type: "multiple_choice",explanation:"Present perfect 'has done'."},
+          {id:"i7",question:"We ___ to the beach last summer.",answer:"went",options:["go","went","gone"], type: "multiple_choice",explanation:"Past simple 'went'."},
+          {id:"i8",question:"He ___ playing the guitar.",answer:"is",options:["is","are","was"], type: "multiple_choice",explanation:"Present continuous 'is'."},
+          {id:"i9",question:"They ___ eaten dinner yet.",answer:"have",options:["has","have","had"], type: "multiple_choice",explanation:"Present perfect 'have'."},
+          {id:"i10",question:"The movie ___ at 8 PM.",answer:"starts",options:["start","starts","started"], type: "multiple_choice",explanation:"Third person singular 'starts'."},
+          {id:"i11",question:"I ___ my keys at home.",answer:"left",options:["leave","left","leaved"], type: "multiple_choice",explanation:"Past simple 'left'."},
+          {id:"i12",question:"She ___ a new car.",answer:"has bought",options:["has bought","have bought","bought"], type: "multiple_choice",explanation:"Present perfect 'has bought'."},
+          {id:"i13",question:"We ___ for the bus.",answer:"are waiting",options:["is waiting","are waiting","was waiting"], type: "multiple_choice",explanation:"Present continuous 'are waiting'."},
+          {id:"i14",question:"The teacher ___ the lesson.",answer:"is explaining",options:["is explaining","are explaining","was explaining"], type: "multiple_choice",explanation:"Present continuous 'is explaining'."},
+          {id:"i15",question:"They ___ to music.",answer:"are listening",options:["is listening","are listening","was listening"], type: "multiple_choice",explanation:"Present continuous 'are listening'."}
         ],
         advanced: [
-          {question:"By the time she arrived, he ___ left.",answer:"had",options:["has","had","have"], type: "multiple_choice"},
-          {question:"Identify the error: 'If I was you, I would study.'",answer:"was",options:["was","were","is"], type: "multiple_choice"},
-          {question:"She would have ___ if she had known.",answer:"come",options:["come","came","comes"], type: "multiple_choice"},
-          {question:"He ___ the book before the movie.",answer:"had read",options:["has read","had read","read"], type: "multiple_choice"},
-          {question:"They ___ to the party if invited.",answer:"would go",options:["will go","would go","went"], type: "multiple_choice"},
-          {question:"If he ___ harder, he would have passed.",answer:"had studied",options:["has studied","had studied","studied"], type: "multiple_choice"},
-          {question:"She wishes she ___ the answer.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
-          {question:"By next year, I ___ here for ten years.",answer:"will have lived",options:["will have lived","will live","have lived"], type: "multiple_choice"},
-          {question:"He acted as if he ___ the boss.",answer:"were",options:["was","were","is"], type: "multiple_choice"},
-          {question:"I would rather you ___ smoking.",answer:"stopped",options:["stop","stopped","stopping"], type: "multiple_choice"},
-          {question:"It's high time we ___ the meeting.",answer:"started",options:["start","started","starting"], type: "multiple_choice"},
-          {question:"She suggested that he ___ early.",answer:"leave",options:["leaves","leave","left"], type: "multiple_choice"},
-          {question:"If only I ___ what to do.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"},
-          {question:"They demanded that the rules ___ changed.",answer:"be",options:["is","are","be"], type: "multiple_choice"},
-          {question:"He talks as though he ___ everything.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice"}
+          {id:"a1",question:"By the time she arrived, he ___ left.",answer:"had",options:["has","had","have"], type: "multiple_choice",explanation:"Past perfect 'had left'."},
+          {id:"a2",question:"Identify the error: 'If I was you, I would study.'",answer:"was",options:["was","were","is"], type: "multiple_choice",explanation:"Subjunctive 'were' instead of 'was'."},
+          {id:"a3",question:"She would have ___ if she had known.",answer:"come",options:["come","came","comes"], type: "multiple_choice",explanation:"Third conditional uses past participle 'come'."},
+          {id:"a4",question:"He ___ the book before the movie.",answer:"had read",options:["has read","had read","read"], type: "multiple_choice",explanation:"Past perfect 'had read'."},
+          {id:"a5",question:"They ___ to the party if invited.",answer:"would go",options:["will go","would go","went"], type: "multiple_choice",explanation:"Second conditional 'would go'."},
+          {id:"a6",question:"If he ___ harder, he would have passed.",answer:"had studied",options:["has studied","had studied","studied"], type: "multiple_choice",explanation:"Third conditional 'had studied'."},
+          {id:"a7",question:"She wishes she ___ the answer.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."},
+          {id:"a8",question:"By next year, I ___ here for ten years.",answer:"will have lived",options:["will have lived","will live","have lived"], type: "multiple_choice",explanation:"Future perfect 'will have lived'."},
+          {id:"a9",question:"He acted as if he ___ the boss.",answer:"were",options:["was","were","is"], type: "multiple_choice",explanation:"Subjunctive 'were'."},
+          {id:"a10",question:"I would rather you ___ smoking.",answer:"stopped",options:["stop","stopped","stopping"], type: "multiple_choice",explanation:"Past subjunctive 'stopped'."},
+          {id:"a11",question:"It's high time we ___ the meeting.",answer:"started",options:["start","started","starting"], type: "multiple_choice",explanation:"Subjunctive 'started'."},
+          {id:"a12",question:"She suggested that he ___ early.",answer:"leave",options:["leaves","leave","left"], type: "multiple_choice",explanation:"Subjunctive 'leave'."},
+          {id:"a13",question:"If only I ___ what to do.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."},
+          {id:"a14",question:"They demanded that the rules ___ changed.",answer:"be",options:["is","are","be"], type: "multiple_choice",explanation:"Subjunctive 'be'."},
+          {id:"a15",question:"He talks as though he ___ everything.",answer:"knew",options:["know","knew","knows"], type: "multiple_choice",explanation:"Subjunctive 'knew'."}
         ]
       };
       window.questions = sampleQuestions;
     }
   }
   const diffKey = window.selectedDifficulty.toLowerCase();
-  window.gameQuestions = [...window.questions[diffKey]];
-  window.gameQuestions.sort(() => Math.random() - 0.5); // Shuffle
+  // Get used questions from localStorage
+  const usedQuestions = JSON.parse(localStorage.getItem('usedQuestions') || '{}');
+  if (!usedQuestions[diffKey]) usedQuestions[diffKey] = [];
+  // Filter out used questions
+  let availableQuestions = window.questions[diffKey].filter(q => !usedQuestions[diffKey].includes(q.id));
+  // If less than 5 available, reset used for this difficulty
+  if (availableQuestions.length < 5) {
+    usedQuestions[diffKey] = [];
+    availableQuestions = [...window.questions[diffKey]];
+  }
+  // Shuffle available
+  availableQuestions.sort(() => Math.random() - 0.5);
+  window.gameQuestions = availableQuestions;
   window.currentQuestionIndex = 0;
   window.wrongAnswers = [];
 };
@@ -254,9 +277,12 @@ window.renderOfflineInterface = function() {
           </div>
         </div>
         <div class="board-grid" id="board"></div>
+        <div class="post-game-buttons" id="post-game-buttons" style="display: none;">
+          <button class="btn" onclick="window.startOfflinePvP()"><i class="fas fa-redo"></i> Play Again</button>
+          <button class="btn" onclick="window.showPostGameReview()"><i class="fas fa-eye"></i> Review Answers</button>
+        </div>
         <div class="bottom-buttons">
-<button class="btn" onclick="renderHome()">Back to Home</button>
-          <button class="btn" onclick="window.showReview()" id="review-btn" style="display:none;">View Answers</button>
+<button class="btn btn-small primary" onclick="renderHome()">Back to Home</button>
         </div>
       </div>
     </main>
@@ -283,13 +309,16 @@ window.renderBoard = function() {
 };
 
 window.attemptMove = function(index) {
+  console.log('Attempting move at index:', index, 'Current board:', window.board);
   if (window.board[index] !== null) return;
   window.currentMoveIndex = index;
   window.showQuestion();
 };
 
 window.showQuestion = function() {
+  console.log('Showing question for index:', window.currentQuestionIndex, 'Current player:', window.currentPlayer);
   if (window.currentQuestionIndex >= window.gameQuestions.length) {
+    console.log('No more questions, placing move directly at index:', window.currentMoveIndex);
     window.ModalManager.showAlert("No more questions! Game continues without questions.", 'info');
     window.placeMove(); // Allow move without question
     return;
@@ -312,10 +341,16 @@ window.showQuestion = function() {
     case 'fill_blank':
     case 'error_identification':
     case 'sentence_completion':
-      inputHtml = `<input type="text" id="answer-input" placeholder="Enter your answer">`;
+      inputHtml = `
+        <label for="answer-input" class="answer-label">Enter your answer:</label>
+        <input type="text" id="answer-input" class="answer-input" placeholder="Type your response here..." style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s;">
+      `;
       break;
     case 'paragraph_correction':
-      inputHtml = `<textarea id="answer-input" placeholder="Correct the paragraph"></textarea>`;
+      inputHtml = `
+        <label for="answer-input" class="answer-label">Correct the paragraph:</label>
+        <textarea id="answer-input" class="answer-input" placeholder="Type your corrected version here..." rows="4" style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;"></textarea>
+      `;
       break;
   }
 
@@ -325,8 +360,8 @@ window.showQuestion = function() {
     <div id="question-options">${optionsHtml || inputHtml}</div>
     <div id="question-feedback" style="display:none;"></div>
     <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration()}</span>s</div>
-    <button class="btn" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
-    <button class="btn secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
+    <button class="btn btn-small" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
+    <button class="btn btn-small secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
     <div id="tip" class="tip" style="display:none;"></div>
   `;
 
@@ -386,7 +421,7 @@ window.submitAnswer = function() {
     `;
     const content = `
       <div id="question-feedback">${feedbackHtml}</div>
-      <button class="btn" onclick="window.continueWrong()">Continue</button>
+      <button class="btn btn-small" onclick="window.continueWrong()">Continue</button>
     `;
     window.ModalManager.showModal('question-modal', content, 'error');
 
@@ -446,6 +481,7 @@ window.skipQuestion = function() {
 
 
 window.placeMove = function() {
+  console.log('Placing move for player:', window.currentPlayer, 'at index:', window.currentMoveIndex, 'Board before:', window.board);
   const index = window.currentMoveIndex;
   const boardEl = document.querySelector('#board');
   if (!boardEl || boardEl.children.length < 9) {
@@ -461,18 +497,23 @@ window.placeMove = function() {
   cell.style.pointerEvents = 'none'; // Prevent further interaction
 
   window.board[index] = window.currentPlayer;
+  console.log('Board after place:', window.board);
 
   const winner = window.checkWinner(window.board);
+  console.log('Check winner result:', winner);
   if (winner) {
+    console.log('Winner detected:', winner, '- calling endGame');
     window.endGame(winner);
     return;
   }
 
   if (window.board.every(cell => cell !== null)) {
+    console.log('Board full - draw detected');
     window.endGame('draw');
     return;
   }
 
+  console.log('No end - switching player');
   window.switchPlayer();
   window.updateScores();
   // Removed simulation for PvP on same device
@@ -495,6 +536,7 @@ window.updateScores = function() {
 };
 
 window.checkWinner = function(cells) {
+  console.log('Checking winner for cells:', cells);
   const combos = [
     [0,1,2], [3,4,5], [6,7,8],
     [0,3,6], [1,4,7], [2,5,8],
@@ -503,6 +545,7 @@ window.checkWinner = function(cells) {
   for (const combo of combos) {
     const [a, b, c] = combo;
     if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      console.log('Win combo found:', combo, 'Winner:', cells[a]);
       // Highlight winning line
       combo.forEach(i => {
         const cell = document.querySelector(`[data-index="${i}"]`);
@@ -511,108 +554,124 @@ window.checkWinner = function(cells) {
       return cells[a];
     }
   }
+  console.log('No winner found');
   return null;
 };
 
 window.endGame = function(result) {
-  let wins = 0, losses = 0, draws = 0;
-  let message = '';
-  if (result === 'X') {
-    wins = 1;
-    message = `Unknown wins! 🎉`;
-    window.awardBadge('victory');
-    window.messages.push({ type: 'success', content: message, timestamp: Date.now() });
-  } else if (result === 'O') {
-    losses = 1;
-    message = `Opponent wins!`;
-    window.awardBadge('defeat');
-    window.messages.push({ type: 'error', content: message, timestamp: Date.now() });
-  } else if (result === 'draw') {
-    draws = 1;
-    message = "It's a draw! 🤝";
-    window.awardBadge('draw');
-    window.messages.push({ type: 'info', content: message, timestamp: Date.now() });
+  console.log('End game called with result:', result);
+  try {
+    let wins = 0, losses = 0, draws = 0;
+    let message = '';
+    if (result === 'X') {
+      wins = 1;
+      message = `Unknown wins! 🎉`;
+      if (window.awardBadge) window.awardBadge('victory');
+      if (window.messages) window.messages.push({ type: 'success', content: message, timestamp: Date.now() });
+    } else if (result === 'O') {
+      losses = 1;
+      message = `Opponent wins!`;
+      if (window.awardBadge) window.awardBadge('defeat');
+      if (window.messages) window.messages.push({ type: 'error', content: message, timestamp: Date.now() });
+    } else if (result === 'draw') {
+      draws = 1;
+      message = "It's a draw! 🤝";
+      if (window.awardBadge) window.awardBadge('draw');
+      if (window.messages) window.messages.push({ type: 'info', content: message, timestamp: Date.now() });
+    }
+
+    console.log('Showing alert:', message);
+    if (window.ModalManager && window.ModalManager.showAlert) {
+      window.ModalManager.showAlert(message, result === 'X' ? 'success' : result === 'O' ? 'error' : 'info');
+    } else {
+      alert(message); // Fallback
+      console.error('ModalManager.showAlert not available');
+    }
+
+    // Re-render board to show final state
+    if (window.renderBoard) window.renderBoard();
+    if (window.updateStreakDisplay) window.updateStreakDisplay();
+    if (window.updateScores) window.updateScores();
+
+    // Show post-game buttons
+    const postGameButtons = document.getElementById('post-game-buttons');
+    console.log('Post-game buttons element:', postGameButtons);
+    if (postGameButtons) {
+      postGameButtons.style.display = 'flex';
+      console.log('Buttons set to display: flex');
+    } else {
+      console.error('Post-game buttons element not found! Creating fallback.');
+      // Fallback: Create buttons if not found
+      const boardContainer = document.querySelector('.gradient-bg');
+      if (boardContainer) {
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.id = 'post-game-buttons';
+        buttonsDiv.style.display = 'flex';
+        buttonsDiv.innerHTML = `
+          <button class="btn" onclick="if (window.startOfflinePvP) window.startOfflinePvP()">Play Again</button>
+          <button class="btn" onclick="if (window.showPostGameReview) window.showPostGameReview()">Review Answers</button>
+        `;
+        boardContainer.appendChild(buttonsDiv);
+      }
+    }
+
+    // Update local scores safely
+    try {
+      console.log('Updating local scores...');
+      let scores = [];
+      try {
+        scores = JSON.parse(localStorage.getItem('scores') || '[]');
+      } catch (e) {
+        console.warn('localStorage parse failed, starting fresh:', e);
+        scores = [];
+      }
+      let userScores = scores.find(s => s.user === 'Unknown');
+      if (!userScores) {
+        userScores = {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0};
+        scores.push(userScores);
+      }
+      userScores.wins += (result === 'X' ? 1 : 0);
+      userScores.losses += (result === 'O' ? 1 : 0);
+      userScores.draws += (result === 'draw' ? 1 : 0);
+      userScores.totalGames += 1;
+      userScores.totalScore += window.userScore || 0;
+      localStorage.setItem('scores', JSON.stringify(scores));
+      console.log('Scores updated in localStorage');
+    } catch (storageError) {
+      console.error('localStorage update failed:', storageError);
+      // Continue without breaking
+    }
+
+    // Update used questions
+    try {
+      const usedQuestions = JSON.parse(localStorage.getItem('usedQuestions') || '{}');
+      const diffKey = window.selectedDifficulty.toLowerCase();
+      if (!usedQuestions[diffKey]) usedQuestions[diffKey] = [];
+      const usedIds = window.gameQuestions.slice(0, window.currentQuestionIndex).map(q => q.id);
+      usedQuestions[diffKey].push(...usedIds);
+      localStorage.setItem('usedQuestions', JSON.stringify(usedQuestions));
+      console.log('Used questions updated in localStorage');
+    } catch (storageError) {
+      console.error('Used questions update failed:', storageError);
+    }
+  } catch (error) {
+    console.error('Error in endGame:', error);
+    // Fallback: Force show buttons and alert
+    alert(`Game ended: ${result}. Error occurred, but buttons should appear. Check console.`);
+    const postGameButtons = document.getElementById('post-game-buttons');
+    if (postGameButtons) postGameButtons.style.display = 'flex';
   }
-
-  window.ModalManager.showAlert(message, result === 'X' ? 'success' : result === 'O' ? 'error' : 'info');
-
-  // Re-render board to show final state
-  window.renderBoard();
-  window.updateStreakDisplay();
-  window.updateScores();
-
-  // Update local scores (user as X, opponent as O)
-  const scores = JSON.parse(localStorage.getItem('scores') || '[]');
-  const userScores = scores.find(s => s.user === 'Unknown') || {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0, totalCorrect: 0, totalQuestions: 0, totalTime: 0, averageTime: 0, accuracy: 0, streak: 0, highestStreak: 0, level: 1, categoryScores: {}, rankTier: 'Bronze', achievements: [], avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown'};
-  userScores.wins += (result === 'X' ? 1 : 0);
-  userScores.losses += (result === 'O' ? 1 : 0);
-  userScores.draws += (result === 'draw' ? 1 : 0);
-  userScores.totalGames += 1;
-  userScores.totalScore += window.userScore;
-  const idx = scores.findIndex(s => s.user === 'Unknown');
-  if (idx > -1) scores[idx] = userScores;
-  else scores.push(userScores);
-  localStorage.setItem('scores', JSON.stringify(scores));
-
-  // Show review button
-  const reviewBtn = document.getElementById('review-btn');
-  if (reviewBtn) reviewBtn.style.display = 'inline-block';
 };
 
-window.showReview = function() {
-  const allAnswers = window.allAnswers;
-
-  if (allAnswers.length === 0) {
-    window.ModalManager.showAlert('No answers to review!', 'info');
-    return;
-  }
-
-  // Separate correct and incorrect
-  const correct = allAnswers.filter(a => a.isCorrect);
-  const incorrect = allAnswers.filter(a => !a.isCorrect);
-
-  let reviewHtml = `
-    <div class="review-modal-content" style="max-height: 500px; overflow-y: auto; padding: 20px;">
-      <h3 style="text-align: center; color: #333; margin-bottom: 20px;">📚 Review All Answers</h3>
-      
-      ${correct.length > 0 ? `
-      <div style="margin-bottom: 20px;">
-        <h4 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">✅ Correct Answers (${correct.length})</h4>
-        <div style="max-height: 200px; overflow-y: auto;">
-          ${correct.map((ans, index) => `
-            <div style="background: #e8f5e8; border-left: 4px solid #4CAF50; padding: 12px; margin: 8px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-              <strong>Q${index + 1}:</strong> ${ans.question}<br>
-              <strong>Your Answer:</strong> <span style="color: #4CAF50; font-weight: bold;">${ans.userAnswer}</span><br>
-              <strong>Correct:</strong> ${ans.correctAnswer}<br>
-              <strong>Explanation:</strong> <em>${ans.explanation}</em>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-      ` : ''}
-
-      ${incorrect.length > 0 ? `
-      <div>
-        <h4 style="color: #f44336; border-bottom: 2px solid #f44336; padding-bottom: 5px;">❌ Incorrect/Skipped (${incorrect.length})</h4>
-        <div style="max-height: 200px; overflow-y: auto;">
-          ${incorrect.map((ans, index) => `
-            <div style="background: #ffebee; border-left: 4px solid #f44336; padding: 12px; margin: 8px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-              <strong>Q${index + 1}:</strong> ${ans.question}<br>
-              <strong>Your Answer:</strong> <span style="color: #f44336; font-weight: bold;">${ans.userAnswer}</span><br>
-              <strong>Correct:</strong> ${ans.correctAnswer}<br>
-              <strong>Explanation:</strong> <em>${ans.explanation}</em>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-      ` : ''}
-
-      <button class="btn" onclick="window.ModalManager.hideModal('review-modal')" style="margin-top: 20px; width: 100%; background: #008080; color: white; border: none; padding: 12px; border-radius: 5px; font-size: 16px;">Close Review</button>
-    </div>
-  `;
-
-  // Show custom modal content
-  window.ModalManager.showModal('review-modal', reviewHtml, 'info');
+window.showPostGameReview = function() {
+  const stats = {
+    userScore: window.userScore,
+    opponentScore: window.opponentScore,
+    totalQuestions: window.allAnswers.length,
+    correctAnswers: window.allAnswers.filter(a => a.isCorrect).length,
+    accuracy: window.allAnswers.length > 0 ? Math.round((window.allAnswers.filter(a => a.isCorrect).length / window.allAnswers.length) * 100) : 0
+  };
+  window.ModalManager.showReview(window.allAnswers, stats);
 };
 
 window.closeQuestion = function() {
@@ -644,10 +703,10 @@ window.startTimer = function() {
 };
 
 window.updateStreakDisplay = function() {
-  document.getElementById('streak-count').textContent = window.streak;
-  // Simple animation for streak
   const streakEl = document.getElementById('streak-count');
   if (streakEl) {
+    streakEl.textContent = window.streak;
+    // Simple animation for streak
     streakEl.style.transform = 'scale(1.2)';
     setTimeout(() => streakEl.style.transform = 'scale(1)', 200);
   }

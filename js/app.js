@@ -439,6 +439,17 @@ window.startOfflinePvP = async function() {
   window.renderBoard();
 };
 
+// ===== Online PvP Implementation =====
+window.startOnlinePvP = function() {
+  if (!window.selectedDifficulty) {
+    window.ModalManager.showAlert("Please select a difficulty first!", 'error');
+    return;
+  }
+
+  // Redirect to the online PvP page
+  window.location.href = 'public/online-pvp.html';
+};
+
 window.renderOfflineInterface = function() {
   document.getElementById('app').innerHTML = `
     <main class="offline-page">
@@ -447,11 +458,11 @@ window.renderOfflineInterface = function() {
         <div class="header-flex">
           <div class="players-flex">
             <div class="player-info player-x ${window.currentPlayer === 'X' ? 'active' : ''}">
-              <span>${window.currentUser?.username || 'Player'} = X</span>
+              <span>Player 1 = X</span>
               <span>Score: <span id="user-score">0</span></span>
             </div>
             <div class="player-info player-o ${window.currentPlayer === 'O' ? 'active' : ''}">
-              <span>Opponent = O</span>
+              <span>Player 2 = O</span>
               <span>Score: <span id="opponent-score">0</span></span>
             </div>
           </div>
@@ -507,7 +518,7 @@ window.showQuestion = function() {
   window.questionPending = true;
 
   // Build modal content dynamically
-  const title = `Question for ${window.currentPlayer === 'X' ? 'Unknown' : 'Opponent'}`;
+  const title = `Question for ${window.currentPlayer === 'X' ? 'Player 1' : 'Player 2'}`;
   const questionContent = window.currentQuestion.question;
   let optionsHtml = '';
   let inputHtml = '';
@@ -821,51 +832,55 @@ window.endGame = function(result) {
       }
     }
 
-    // Update local scores safely
-    try {
-      console.log('Updating local scores...');
-      let scores = [];
+    // Update local scores safely - only if online
+    if (window.isOnline) {
       try {
-        scores = JSON.parse(localStorage.getItem('scores') || '[]');
-      } catch (e) {
-        console.warn('localStorage parse failed, starting fresh:', e);
-        scores = [];
-      }
-      let userScores = scores.find(s => s.user === 'Unknown');
-      if (!userScores) {
-        userScores = {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0};
-        scores.push(userScores);
-      }
-      userScores.wins += (result === 'X' ? 1 : 0);
-      userScores.losses += (result === 'O' ? 1 : 0);
-      userScores.draws += (result === 'draw' ? 1 : 0);
-      userScores.totalGames += 1;
-      userScores.totalScore += window.userScore || 0;
-      localStorage.setItem('scores', JSON.stringify(scores));
-      console.log('Scores updated in localStorage');
+        console.log('Updating local scores...');
+        let scores = [];
+        try {
+          scores = JSON.parse(localStorage.getItem('scores') || '[]');
+        } catch (e) {
+          console.warn('localStorage parse failed, starting fresh:', e);
+          scores = [];
+        }
+        let userScores = scores.find(s => s.user === 'Unknown');
+        if (!userScores) {
+          userScores = {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0};
+          scores.push(userScores);
+        }
+        userScores.wins += (result === 'X' ? 1 : 0);
+        userScores.losses += (result === 'O' ? 1 : 0);
+        userScores.draws += (result === 'draw' ? 1 : 0);
+        userScores.totalGames += 1;
+        userScores.totalScore += window.userScore || 0;
+        localStorage.setItem('scores', JSON.stringify(scores));
+        console.log('Scores updated in localStorage');
 
-      // Update gameStats for achievements
-      const userId = window.currentUser ? window.currentUser.email : 'guest';
-      let gameStats = JSON.parse(localStorage.getItem(`gameStats_${userId}`) || '{}');
-      gameStats.gamesPlayed = userScores.totalGames;
-      gameStats.gamesWon = userScores.wins;
-      gameStats.pointsScored = userScores.totalScore;
-      localStorage.setItem(`gameStats_${userId}`, JSON.stringify(gameStats));
+        // Update gameStats for achievements
+        const userId = window.currentUser ? window.currentUser.email : 'guest';
+        let gameStats = JSON.parse(localStorage.getItem(`gameStats_${userId}`) || '{}');
+        gameStats.gamesPlayed = userScores.totalGames;
+        gameStats.gamesWon = userScores.wins;
+        gameStats.pointsScored = userScores.totalScore;
+        localStorage.setItem(`gameStats_${userId}`, JSON.stringify(gameStats));
 
-      // Trigger achievements update
-      if (!window.achievementsLoaded) {
-        const script = document.createElement('script');
-        script.src = 'js/achievements.js';
-        script.onload = () => {
+        // Trigger achievements update
+        if (!window.achievementsLoaded) {
+          const script = document.createElement('script');
+          script.src = 'js/achievements.js';
+          script.onload = () => {
+            window.updateAchievements();
+          };
+          document.head.appendChild(script);
+        } else {
           window.updateAchievements();
-        };
-        document.head.appendChild(script);
-      } else {
-        window.updateAchievements();
+        }
+      } catch (storageError) {
+        console.error('localStorage update failed:', storageError);
+        // Continue without breaking
       }
-    } catch (storageError) {
-      console.error('localStorage update failed:', storageError);
-      // Continue without breaking
+    } else {
+      console.log('Offline mode - skipping score save to localStorage');
     }
 
     // Update used questions
@@ -1002,6 +1017,5 @@ if (!localStorage.getItem('cachedOnlineScores')) {
 }
 
 // ===== Initial Render =====
-window.addEventListener('DOMContentLoaded', () => {
-  renderLogin();
-});
+// Auth state listener in js/auth.js will handle rendering the appropriate page
+// Don't show loading - let auth.js handle showing login page

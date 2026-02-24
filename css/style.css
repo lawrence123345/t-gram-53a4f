@@ -18,7 +18,7 @@ body.dark #logo-light {
 
 body.dark #logo-dark {
   display: inline !important;
-  filter: none; /* Reset filter for dark logo in dark mode */
+  filter: brightness(0) invert(1); /* Invert to white for dark mode */
 }
 
 #logo-light {

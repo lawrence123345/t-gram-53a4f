@@ -33,9 +33,8 @@ window.renderProfile = async function(){
     }
   } catch (error) {
     console.error('Error fetching scores:', error);
-    rank = 'Error loading rank';
+    rank = 'not ranked yet';
   }
-
 let avatarSrc = window.currentUser.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzUiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
 let avatarStyle = 'width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0; border: 3px solid white; box-shadow: 0 0 0 3px black, 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; object-fit: cover; cursor: pointer; background-color: black;';
 let leftAvatar = `<img src="${avatarSrc}" alt="Profile Avatar" style="${avatarStyle}" onclick="window.showAvatarSelection()" onmouseover="this.style.transform='scale(1.08) rotate(2deg)'; this.style.boxShadow='0 0 0 3px black, 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)'; this.style.borderColor='white'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 0 0 3px black, 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.borderColor='white'">`;
@@ -51,7 +50,7 @@ let leftAvatar = `<img src="${avatarSrc}" alt="Profile Avatar" style="${avatarSt
       <label style="display: flex; align-items: center; font-weight: 700; color: #2c3e50; font-size: 18px; text-shadow: 0 1px 3px rgba(0,0,0,0.15); user-select: none;">
         <span style="margin-right: 12px; font-size: 24px; animation: bounceIn 1.2s ease infinite alternate; color: #f39c12;">🏆</span> Leaderboard Rank
       </label>
-      <span style="padding: 12px 28px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 50px; display: inline-block; color: white; font-weight: 900; box-shadow: 0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3); transition: all 0.4s ease; font-size: 18px; text-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: default;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 12px 40px rgba(243, 156, 18, 0.8), inset 0 1px 0 rgba(255,255,255,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)'">${rank}</span>
+      <span style="padding: ${rank === 'Not ranked yet' ? '0' : '12px 28px'}; background: ${rank === 'Not ranked yet' ? 'none' : 'linear-gradient(135deg, #f39c12, #e67e22)'}; border-radius: ${rank === 'Not ranked yet' ? '0' : '50px'}; display: inline-block; color: ${rank === 'Not ranked yet' ? '#7f8c8d' : 'white'}; font-weight: ${rank === 'Not ranked yet' ? 'normal' : '900'}; box-shadow: ${rank === 'Not ranked yet' ? 'none' : '0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)'}; transition: all 0.4s ease; font-size: 18px; text-shadow: ${rank === 'Not ranked yet' ? 'none' : '0 2px 6px rgba(0,0,0,0.3)'}; cursor: default;" ${rank === 'Not ranked yet' ? '' : 'onmouseover="this.style.transform=\'scale(1.1)\'; this.style.boxShadow=\'0 12px 40px rgba(243, 156, 18, 0.8), inset 0 1px 0 rgba(255,255,255,0.5)\'" onmouseout="this.style.transform=\'scale(1)\'; this.style.boxShadow=\'0 8px 30px rgba(243, 156, 18, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)\'"'}>${rank}</span>
     </div>
     <div style="margin-bottom: 25px; position: relative; animation: slideInLeft 0.8s ease;">
       <label style="display: flex; align-items: center; margin-bottom: 10px; font-weight: 600; color: #2c3e50; font-size: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">

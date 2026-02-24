@@ -262,8 +262,6 @@ function updateScoreDisplay(){
   document.getElementById('level').innerText = level;
   const accuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
   document.getElementById('accuracy').innerText = accuracy + '%';
-  updateGameStats();
-  checkAchievements();
 }
 
 function playSound(type){

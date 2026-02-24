@@ -1,291 +1,66 @@
-[debug] [2025-10-30T09:02:31.090Z] ----------------------------------------------------------------------
-[debug] [2025-10-30T09:02:31.104Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lawre\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --debug
-[debug] [2025-10-30T09:02:31.104Z] CLI Version:   14.17.0
-[debug] [2025-10-30T09:02:31.105Z] Platform:      win32
-[debug] [2025-10-30T09:02:31.105Z] Node Version:  v22.19.0
-[debug] [2025-10-30T09:02:31.105Z] Time:          Thu Oct 30 2025 17:02:31 GMT+0800 (Standard na Oras sa China)
-[debug] [2025-10-30T09:02:31.106Z] ----------------------------------------------------------------------
+[debug] [2025-12-20T05:22:46.728Z] ----------------------------------------------------------------------
+[debug] [2025-12-20T05:22:46.731Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lawre\OneDrive\Desktop\T-Gram\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2025-12-20T05:22:46.731Z] CLI Version:   12.9.1
+[debug] [2025-12-20T05:22:46.732Z] Platform:      win32
+[debug] [2025-12-20T05:22:46.732Z] Node Version:  v22.19.0
+[debug] [2025-12-20T05:22:46.733Z] Time:          Sat Dec 20 2025 13:22:46 GMT+0800 (Standard na Oras sa China)
+[debug] [2025-12-20T05:22:46.733Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-10-30T09:02:31.394Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-10-30T09:02:31.398Z] > authorizing via signed-in user (lawrenceodtujan2@gmail.com)
-[debug] [2025-10-30T09:02:31.399Z] [iam] checking project t-gram-53a4f for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2025-10-30T09:02:31.401Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:31.402Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:31.403Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions [none]
-[debug] [2025-10-30T09:02:31.404Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions x-goog-quota-user=projects/t-gram-53a4f
-[debug] [2025-10-30T09:02:31.405Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T09:02:32.505Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions 200
-[debug] [2025-10-30T09:02:32.506Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T09:02:32.508Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:32.509Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:32.511Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
-[debug] [2025-10-30T09:02:32.918Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
-[debug] [2025-10-30T09:02:32.919Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
+[debug] [2025-12-20T05:22:46.926Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-20T05:22:46.927Z] > authorizing via signed-in user (lawrenceodtujan2@gmail.com)
+[debug] [2025-12-20T05:22:46.927Z] [iam] checking project t-gram-53a4f for permissions ["firebase.projects.get"]
+[debug] [2025-12-20T05:22:46.929Z] > refreshing access token with scopes: []
+[debug] [2025-12-20T05:22:46.932Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-20T05:22:46.932Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-20T05:22:47.095Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-20T05:22:47.096Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-20T05:22:47.112Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions [none]
+[debug] [2025-12-20T05:22:47.112Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions x-goog-quota-user=projects/t-gram-53a4f
+[debug] [2025-12-20T05:22:47.112Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-12-20T05:22:48.137Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions 200
+[debug] [2025-12-20T05:22:48.137Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-12-20T05:22:48.138Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
+[debug] [2025-12-20T05:22:48.488Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
+[debug] [2025-12-20T05:22:48.489Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
 [info] 
-[info] === Deploying to 't-gram-53a4f'...
+[info] === Serving from 'C:\Users\lawre\OneDrive\Desktop\T-Gram'...
 [info] 
-[info] i  deploying hosting 
-[debug] [2025-10-30T09:02:32.940Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:32.940Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:32.941Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions [none]
-[debug] [2025-10-30T09:02:32.942Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-10-30T09:02:33.844Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions 200
-[debug] [2025-10-30T09:02:33.854Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
-[info] i  hosting[t-gram-53a4f]: beginning deploy... 
-[info] i  hosting[t-gram-53a4f]: found 30 files in public 
-[debug] [2025-10-30T09:02:33.917Z] [hosting] uploading with 200 concurrency
-[debug] [2025-10-30T09:02:33.978Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:33.979Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:33.989Z] [hosting] hash cache [cHVibGlj] stored for 30 files
-[debug] [2025-10-30T09:02:33.990Z] [hosting][hash queue][FINAL] {"max":50,"min":2,"avg":2,"active":0,"complete":30,"success":30,"errored":0,"retried":0,"total":30,"elapsed":64}
-[debug] [2025-10-30T09:02:33.992Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c:populateFiles [none]
-[debug] [2025-10-30T09:02:33.993Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c:populateFiles {"files":{"/README.md":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/index.html":"b2b57c8328cc7d27ebea07fe863ba96f8b86aef3925d662e4d6127d4a8d5a6aa","/js/ui.js":"6775e9f77fd9f2fca684667f7aeeb55f0082839446fc510f06ab3f769b312cad","/js/profile.js":"d898b702e822406668088932533fc282b47912aebc164f647537eb2b54c3d773","/js/online-pvp.js":"1ba3ce50600541302b9f3a6a30469149b19a3e2815aa604ad8ab271f84b2750a","/js/online-achievements.js":"57ff8d8d28d09e5f49774fea82199391809c5b1392a957a365fdede2f5a6aaf5","/js/leaderboard.js":"9a92e34a2680e0c1b94d5f82766016cdb198484a12d39e9122fb00d86dd4a6b1","/js/game.js":"d0bbd5fc6fee049c4fdae07c6a16930d75d59a9a87d90875c8d10a35b8b5a9be","/js/firebase.js":"83b999ac5aa9fa1549adb2836201866543fc2979ecd23a0501fb81610a071840","/js/firebase-config.js":"dde09ed7bfa04eda0b26529c222d8ef20d8c95627ddd89efc253116fe7944012","/js/config.js":"11283de2bb413594793a2d86a9f3da9b1e362f21a3c2a127a3dd1d32d9ee7b82","/js/auth.js":"66eb89b48ae591ed79b21bf8a595402137fbefef225bc8f4de0db25fbd86aa61","/js/app.js":"12da81676ec549af42255dda22a7df511f729740a164b122bf3cced9ac5167bd","/js/achievements.js":"9ca976157ce3b813c3c039e0f0d57b976946667224947f57c57ea25e70463cd1","/css/style.css":"f3592f1243888b7ece253d735afb93fe30138adcf3a74d381a839a50f5de7db4","/assets/questions.json":"0ad613e3f17fc8f70ab3379ab89c9ef9a58de23d0145390bba507c16322a47de","/assets/images":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/assets/badges/uncommon.png":"3481379bcfaf6a698304f6f1244fdacd91eb92b3d59cca926d997f0d5f94265b","/assets/badges/rare.png":"fbed76597f2039269930d69f0a2a9fd2ace17a20c6ec2b08b07b439c91c4542d","/assets/badges/mythical.png":"4bbaf3cec523847ad6b2dbec5e448cfa4eaaab7e2e16b8ad12980521a6457780","/assets/badges/legendary.png":"03db16b7880cba2691d59059e9a033bfb34ec86831e0c73bed7a301621763792","/assets/badges/epic.png":"9f992bd4e6e8cd7cdc8c8d9e068d8ef1d7b37aa884246d32dabba842266bfd9e","/assets/badges/common.png":"9423d24cc9e2f522f71e443fa6d0eb9800c2229f3a12dc7bfb14472254c3ce0f","/assets/avatars/sun.jpg":"b89f7830fec4617778dd67ddeec19d19dd7a5ead8c9f10906653fe697d879dd0","/assets/avatars/rabbit.jpg":"2b99d3bd31059efe959609fe4b2f09ecf66313ccda89f55169819ac7979ccf32","/assets/avatars/owl.jpg":"5d3ad511a896a9575b7014b24c6b63a2fb138effba85959ad65c58821721da90","/assets/avatars/lion.jpg":"bea8000c23b7ea68da69913abdbaaa8102b2936deef45a27675d2f86c29e1f3b","/assets/avatars/fox.jpg":"de65f823bff6e113fa8e3408fe261904a5df7dcd9ff5657504684e82eadcb3cd","/assets/avatars/flower.jpg":"129fc33f7e24e515de3c856d222cca72788606ed4e4b5d19ce743fad531c43d9","/assets/avatars/champion.jpg":"0e1048ccc31158a42e08c36130a50453b7680f308e82be2d6962c5ef75ca5c7c"}}
-[debug] [2025-10-30T09:02:35.063Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c:populateFiles 200
-[debug] [2025-10-30T09:02:35.063Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/8487f242b1fd0f5c/files"}
-[debug] [2025-10-30T09:02:35.064Z] [hosting][populate queue][FINAL] {"max":1086,"min":1086,"avg":1086,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1086}
-[debug] [2025-10-30T09:02:35.065Z] [hosting] uploads queued: 0
-[debug] [2025-10-30T09:02:35.066Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1761814955066}
-[info] i  hosting: upload complete 
-[info] +  hosting[t-gram-53a4f]: file upload complete 
-[debug] [2025-10-30T09:02:35.069Z] [hosting] deploy completed after 1209ms
-[debug] [2025-10-30T09:02:35.070Z] [
-  {
-    "config": {
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ],
-      "site": "t-gram-53a4f"
-    },
-    "version": "projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c"
-  }
-]
-[info] i  hosting[t-gram-53a4f]: finalizing version... 
-[debug] [2025-10-30T09:02:35.074Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:35.075Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:35.076Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/8487f242b1fd0f5c updateMask=status%2Cconfig
-[debug] [2025-10-30T09:02:35.077Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/8487f242b1fd0f5c {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
-[debug] [2025-10-30T09:02:35.499Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/8487f242b1fd0f5c 200
-[debug] [2025-10-30T09:02:35.500Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/8487f242b1fd0f5c {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T09:02:35.114173Z","createUser":{"email":"lawrenceodtujan2@gmail.com"},"finalizeTime":"2025-10-30T09:02:37.206761Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com"}}
-[debug] [2025-10-30T09:02:35.500Z] [hosting] finalized version for t-gram-53a4f:[object Object]
-[info] +  hosting[t-gram-53a4f]: version finalized 
-[info] i  hosting[t-gram-53a4f]: releasing new version... 
-[debug] [2025-10-30T09:02:35.501Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:35.502Z] Checked if tokens are valid: true, expires at: 1761817935176
-[debug] [2025-10-30T09:02:35.502Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases versionName=projects%2F1014219227882%2Fsites%2Ft-gram-53a4f%2Fversions%2F8487f242b1fd0f5c
-[debug] [2025-10-30T09:02:35.503Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {}
-[debug] [2025-10-30T09:02:35.898Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases 200
-[debug] [2025-10-30T09:02:35.899Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761814957029000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T09:02:35.114173Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T09:02:37.206761Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T09:02:37.029Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[debug] [2025-10-30T09:02:35.900Z] [hosting] release: {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761814957029000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/8487f242b1fd0f5c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T09:02:35.114173Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T09:02:37.206761Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T09:02:37.029Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[info] +  hosting[t-gram-53a4f]: release complete 
-[info] 
-[info] +  Deploy complete! 
-[info] 
-[info] Project Console: https://console.firebase.google.com/project/t-gram-53a4f/overview
-[info] Hosting URL: https://t-gram-53a4f.web.app
-[debug] [2025-10-30T10:29:33.876Z] ----------------------------------------------------------------------
-[debug] [2025-10-30T10:29:33.905Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lawre\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --debug
-[debug] [2025-10-30T10:29:33.906Z] CLI Version:   14.17.0
-[debug] [2025-10-30T10:29:33.906Z] Platform:      win32
-[debug] [2025-10-30T10:29:33.907Z] Node Version:  v22.19.0
-[debug] [2025-10-30T10:29:33.908Z] Time:          Thu Oct 30 2025 18:29:33 GMT+0800 (Standard na Oras sa China)
-[debug] [2025-10-30T10:29:33.908Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-10-30T10:29:34.491Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-10-30T10:29:34.499Z] > authorizing via signed-in user (lawrenceodtujan2@gmail.com)
-[debug] [2025-10-30T10:29:34.500Z] [iam] checking project t-gram-53a4f for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2025-10-30T10:29:34.505Z] Checked if tokens are valid: false, expires at: 1761817935176
-[debug] [2025-10-30T10:29:34.506Z] Checked if tokens are valid: false, expires at: 1761817935176
-[debug] [2025-10-30T10:29:34.507Z] > refreshing access token with scopes: []
-[debug] [2025-10-30T10:29:34.519Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2025-10-30T10:29:34.519Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-10-30T10:29:35.463Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2025-10-30T10:29:35.464Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-10-30T10:29:35.495Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions [none]
-[debug] [2025-10-30T10:29:35.496Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions x-goog-quota-user=projects/t-gram-53a4f
-[debug] [2025-10-30T10:29:35.497Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T10:29:36.914Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions 200
-[debug] [2025-10-30T10:29:36.915Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T10:29:36.917Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:36.917Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:36.919Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
-[debug] [2025-10-30T10:29:37.486Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
-[debug] [2025-10-30T10:29:37.490Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
-[info] 
-[info] === Deploying to 't-gram-53a4f'...
-[info] 
-[info] i  deploying hosting 
-[debug] [2025-10-30T10:29:37.521Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:37.531Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:37.534Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions [none]
-[debug] [2025-10-30T10:29:37.535Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-10-30T10:29:38.723Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions 200
-[debug] [2025-10-30T10:29:38.724Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
-[info] i  hosting[t-gram-53a4f]: beginning deploy... 
-[info] i  hosting[t-gram-53a4f]: found 30 files in public 
-[debug] [2025-10-30T10:29:38.782Z] [hosting] uploading with 200 concurrency
-[debug] [2025-10-30T10:29:38.828Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:38.828Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:38.833Z] [hosting] hash cache [cHVibGlj] stored for 30 files
-[debug] [2025-10-30T10:29:38.834Z] [hosting][hash queue][FINAL] {"max":27,"min":1,"avg":1.8666666666666667,"active":0,"complete":30,"success":30,"errored":0,"retried":0,"total":30,"elapsed":46}
-[debug] [2025-10-30T10:29:38.836Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf:populateFiles [none]
-[debug] [2025-10-30T10:29:38.836Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf:populateFiles {"files":{"/README.md":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/index.html":"b2b57c8328cc7d27ebea07fe863ba96f8b86aef3925d662e4d6127d4a8d5a6aa","/js/ui.js":"6775e9f77fd9f2fca684667f7aeeb55f0082839446fc510f06ab3f769b312cad","/js/profile.js":"d898b702e822406668088932533fc282b47912aebc164f647537eb2b54c3d773","/js/online-pvp.js":"1ba3ce50600541302b9f3a6a30469149b19a3e2815aa604ad8ab271f84b2750a","/js/online-achievements.js":"57ff8d8d28d09e5f49774fea82199391809c5b1392a957a365fdede2f5a6aaf5","/js/leaderboard.js":"9a92e34a2680e0c1b94d5f82766016cdb198484a12d39e9122fb00d86dd4a6b1","/js/game.js":"d0bbd5fc6fee049c4fdae07c6a16930d75d59a9a87d90875c8d10a35b8b5a9be","/js/firebase.js":"83b999ac5aa9fa1549adb2836201866543fc2979ecd23a0501fb81610a071840","/js/firebase-config.js":"dde09ed7bfa04eda0b26529c222d8ef20d8c95627ddd89efc253116fe7944012","/js/config.js":"11283de2bb413594793a2d86a9f3da9b1e362f21a3c2a127a3dd1d32d9ee7b82","/js/auth.js":"66eb89b48ae591ed79b21bf8a595402137fbefef225bc8f4de0db25fbd86aa61","/js/achievements.js":"9ca976157ce3b813c3c039e0f0d57b976946667224947f57c57ea25e70463cd1","/css/style.css":"f3592f1243888b7ece253d735afb93fe30138adcf3a74d381a839a50f5de7db4","/assets/questions.json":"0ad613e3f17fc8f70ab3379ab89c9ef9a58de23d0145390bba507c16322a47de","/assets/images":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/assets/badges/uncommon.png":"3481379bcfaf6a698304f6f1244fdacd91eb92b3d59cca926d997f0d5f94265b","/assets/badges/rare.png":"fbed76597f2039269930d69f0a2a9fd2ace17a20c6ec2b08b07b439c91c4542d","/assets/badges/mythical.png":"4bbaf3cec523847ad6b2dbec5e448cfa4eaaab7e2e16b8ad12980521a6457780","/assets/badges/legendary.png":"03db16b7880cba2691d59059e9a033bfb34ec86831e0c73bed7a301621763792","/assets/badges/epic.png":"9f992bd4e6e8cd7cdc8c8d9e068d8ef1d7b37aa884246d32dabba842266bfd9e","/assets/badges/common.png":"9423d24cc9e2f522f71e443fa6d0eb9800c2229f3a12dc7bfb14472254c3ce0f","/assets/avatars/sun.jpg":"b89f7830fec4617778dd67ddeec19d19dd7a5ead8c9f10906653fe697d879dd0","/assets/avatars/rabbit.jpg":"2b99d3bd31059efe959609fe4b2f09ecf66313ccda89f55169819ac7979ccf32","/assets/avatars/owl.jpg":"5d3ad511a896a9575b7014b24c6b63a2fb138effba85959ad65c58821721da90","/assets/avatars/lion.jpg":"bea8000c23b7ea68da69913abdbaaa8102b2936deef45a27675d2f86c29e1f3b","/assets/avatars/fox.jpg":"de65f823bff6e113fa8e3408fe261904a5df7dcd9ff5657504684e82eadcb3cd","/assets/avatars/flower.jpg":"129fc33f7e24e515de3c856d222cca72788606ed4e4b5d19ce743fad531c43d9","/assets/avatars/champion.jpg":"0e1048ccc31158a42e08c36130a50453b7680f308e82be2d6962c5ef75ca5c7c","/js/app.js":"12da81676ec549af42255dda22a7df511f729740a164b122bf3cced9ac5167bd"}}
-[debug] [2025-10-30T10:29:39.281Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf:populateFiles 200
-[debug] [2025-10-30T10:29:39.282Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/b214cd3c401899cf/files"}
-[debug] [2025-10-30T10:29:39.283Z] [hosting][populate queue][FINAL] {"max":456,"min":456,"avg":456,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":456}
-[debug] [2025-10-30T10:29:39.284Z] [hosting] uploads queued: 0
-[debug] [2025-10-30T10:29:39.285Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1761820179285}
-[info] i  hosting: upload complete 
-[info] +  hosting[t-gram-53a4f]: file upload complete 
-[debug] [2025-10-30T10:29:39.287Z] [hosting] deploy completed after 556ms
-[debug] [2025-10-30T10:29:39.288Z] [
-  {
-    "config": {
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ],
-      "site": "t-gram-53a4f"
-    },
-    "version": "projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf"
-  }
-]
-[info] i  hosting[t-gram-53a4f]: finalizing version... 
-[debug] [2025-10-30T10:29:39.296Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:39.296Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:39.297Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/b214cd3c401899cf updateMask=status%2Cconfig
-[debug] [2025-10-30T10:29:39.298Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/b214cd3c401899cf {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
-[debug] [2025-10-30T10:29:39.700Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/b214cd3c401899cf 200
-[debug] [2025-10-30T10:29:39.701Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/b214cd3c401899cf {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:29:39.809511Z","createUser":{"email":"lawrenceodtujan2@gmail.com"},"finalizeTime":"2025-10-30T10:29:41.380248Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com"}}
-[debug] [2025-10-30T10:29:39.701Z] [hosting] finalized version for t-gram-53a4f:[object Object]
-[info] +  hosting[t-gram-53a4f]: version finalized 
-[info] i  hosting[t-gram-53a4f]: releasing new version... 
-[debug] [2025-10-30T10:29:39.703Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:39.703Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:29:39.704Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases versionName=projects%2F1014219227882%2Fsites%2Ft-gram-53a4f%2Fversions%2Fb214cd3c401899cf
-[debug] [2025-10-30T10:29:39.705Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {}
-[debug] [2025-10-30T10:29:40.101Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases 200
-[debug] [2025-10-30T10:29:40.102Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761820181212000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:29:39.809511Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T10:29:41.380248Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T10:29:41.212Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[debug] [2025-10-30T10:29:40.103Z] [hosting] release: {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761820181212000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/b214cd3c401899cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:29:39.809511Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T10:29:41.380248Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T10:29:41.212Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[info] +  hosting[t-gram-53a4f]: release complete 
-[info] 
-[info] +  Deploy complete! 
-[info] 
-[info] Project Console: https://console.firebase.google.com/project/t-gram-53a4f/overview
-[info] Hosting URL: https://t-gram-53a4f.web.app
-[debug] [2025-10-30T10:32:16.066Z] ----------------------------------------------------------------------
-[debug] [2025-10-30T10:32:16.092Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lawre\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --debug
-[debug] [2025-10-30T10:32:16.094Z] CLI Version:   14.17.0
-[debug] [2025-10-30T10:32:16.094Z] Platform:      win32
-[debug] [2025-10-30T10:32:16.094Z] Node Version:  v22.19.0
-[debug] [2025-10-30T10:32:16.095Z] Time:          Thu Oct 30 2025 18:32:16 GMT+0800 (Standard na Oras sa China)
-[debug] [2025-10-30T10:32:16.096Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-10-30T10:32:16.866Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-10-30T10:32:16.873Z] > authorizing via signed-in user (lawrenceodtujan2@gmail.com)
-[debug] [2025-10-30T10:32:16.875Z] [iam] checking project t-gram-53a4f for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2025-10-30T10:32:16.882Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:16.883Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:16.887Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions [none]
-[debug] [2025-10-30T10:32:16.888Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions x-goog-quota-user=projects/t-gram-53a4f
-[debug] [2025-10-30T10:32:16.889Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T10:32:18.369Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions 200
-[debug] [2025-10-30T10:32:18.371Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/t-gram-53a4f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2025-10-30T10:32:18.374Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:18.374Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:18.376Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
-[debug] [2025-10-30T10:32:18.931Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
-[debug] [2025-10-30T10:32:18.932Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
-[info] 
-[info] === Deploying to 't-gram-53a4f'...
-[info] 
-[info] i  deploying hosting 
-[debug] [2025-10-30T10:32:18.955Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:18.955Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:18.957Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions [none]
-[debug] [2025-10-30T10:32:18.957Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-10-30T10:32:19.857Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions 200
-[debug] [2025-10-30T10:32:19.858Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
-[info] i  hosting[t-gram-53a4f]: beginning deploy... 
-[info] i  hosting[t-gram-53a4f]: found 30 files in public 
-[debug] [2025-10-30T10:32:19.931Z] [hosting] uploading with 200 concurrency
-[debug] [2025-10-30T10:32:19.997Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:19.997Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:20.003Z] [hosting] hash cache [cHVibGlj] stored for 30 files
-[debug] [2025-10-30T10:32:20.004Z] [hosting][hash queue][FINAL] {"max":45,"min":1,"avg":2.466666666666667,"active":0,"complete":30,"success":30,"errored":0,"retried":0,"total":30,"elapsed":63}
-[debug] [2025-10-30T10:32:20.006Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8:populateFiles [none]
-[debug] [2025-10-30T10:32:20.007Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8:populateFiles {"files":{"/README.md":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/index.html":"b2b57c8328cc7d27ebea07fe863ba96f8b86aef3925d662e4d6127d4a8d5a6aa","/js/ui.js":"6775e9f77fd9f2fca684667f7aeeb55f0082839446fc510f06ab3f769b312cad","/js/profile.js":"d898b702e822406668088932533fc282b47912aebc164f647537eb2b54c3d773","/js/online-pvp.js":"1ba3ce50600541302b9f3a6a30469149b19a3e2815aa604ad8ab271f84b2750a","/js/online-achievements.js":"57ff8d8d28d09e5f49774fea82199391809c5b1392a957a365fdede2f5a6aaf5","/js/game.js":"d0bbd5fc6fee049c4fdae07c6a16930d75d59a9a87d90875c8d10a35b8b5a9be","/js/firebase.js":"83b999ac5aa9fa1549adb2836201866543fc2979ecd23a0501fb81610a071840","/js/firebase-config.js":"dde09ed7bfa04eda0b26529c222d8ef20d8c95627ddd89efc253116fe7944012","/js/config.js":"11283de2bb413594793a2d86a9f3da9b1e362f21a3c2a127a3dd1d32d9ee7b82","/js/auth.js":"66eb89b48ae591ed79b21bf8a595402137fbefef225bc8f4de0db25fbd86aa61","/js/app.js":"12da81676ec549af42255dda22a7df511f729740a164b122bf3cced9ac5167bd","/js/achievements.js":"9ca976157ce3b813c3c039e0f0d57b976946667224947f57c57ea25e70463cd1","/css/style.css":"f3592f1243888b7ece253d735afb93fe30138adcf3a74d381a839a50f5de7db4","/assets/questions.json":"0ad613e3f17fc8f70ab3379ab89c9ef9a58de23d0145390bba507c16322a47de","/assets/images":"46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e","/assets/badges/uncommon.png":"3481379bcfaf6a698304f6f1244fdacd91eb92b3d59cca926d997f0d5f94265b","/assets/badges/rare.png":"fbed76597f2039269930d69f0a2a9fd2ace17a20c6ec2b08b07b439c91c4542d","/assets/badges/mythical.png":"4bbaf3cec523847ad6b2dbec5e448cfa4eaaab7e2e16b8ad12980521a6457780","/assets/badges/legendary.png":"03db16b7880cba2691d59059e9a033bfb34ec86831e0c73bed7a301621763792","/assets/badges/epic.png":"9f992bd4e6e8cd7cdc8c8d9e068d8ef1d7b37aa884246d32dabba842266bfd9e","/assets/badges/common.png":"9423d24cc9e2f522f71e443fa6d0eb9800c2229f3a12dc7bfb14472254c3ce0f","/assets/avatars/sun.jpg":"b89f7830fec4617778dd67ddeec19d19dd7a5ead8c9f10906653fe697d879dd0","/assets/avatars/rabbit.jpg":"2b99d3bd31059efe959609fe4b2f09ecf66313ccda89f55169819ac7979ccf32","/assets/avatars/owl.jpg":"5d3ad511a896a9575b7014b24c6b63a2fb138effba85959ad65c58821721da90","/assets/avatars/lion.jpg":"bea8000c23b7ea68da69913abdbaaa8102b2936deef45a27675d2f86c29e1f3b","/assets/avatars/fox.jpg":"de65f823bff6e113fa8e3408fe261904a5df7dcd9ff5657504684e82eadcb3cd","/assets/avatars/flower.jpg":"129fc33f7e24e515de3c856d222cca72788606ed4e4b5d19ce743fad531c43d9","/assets/avatars/champion.jpg":"0e1048ccc31158a42e08c36130a50453b7680f308e82be2d6962c5ef75ca5c7c","/js/leaderboard.js":"8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804"}}
-[debug] [2025-10-30T10:32:20.398Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8:populateFiles 200
-[debug] [2025-10-30T10:32:20.399Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8:populateFiles {"uploadRequiredHashes":["8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/988cacef144038e8/files"}
-[debug] [2025-10-30T10:32:20.401Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:20.402Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:20.403Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/988cacef144038e8/files/8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804 [none]
-[debug] [2025-10-30T10:32:20.404Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/988cacef144038e8/files/8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804 [stream]
-[debug] [2025-10-30T10:32:20.407Z] [hosting][populate queue][FINAL] {"max":407,"min":407,"avg":407,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":411}
-[debug] [2025-10-30T10:32:20.409Z] [hosting] uploads queued: 1
-[info] i  hosting: uploading new files [0/1] (0%) 
-[debug] [2025-10-30T10:32:23.125Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/988cacef144038e8/files/8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804 200
-[debug] [2025-10-30T10:32:23.127Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/t-gram-53a4f/versions/988cacef144038e8/files/8e83069fcc2cc6c8a68e13f07198b152a4b4e3f5505aede3619315c56effc804 [stream]
-[debug] [2025-10-30T10:32:23.128Z] [hosting][upload queue][FINAL] {"max":2728,"min":2728,"avg":2728,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2728}
-[info] i  hosting: upload complete 
-[info] +  hosting[t-gram-53a4f]: file upload complete 
-[debug] [2025-10-30T10:32:23.132Z] [hosting] deploy completed after 3265ms
-[debug] [2025-10-30T10:32:23.133Z] [
-  {
-    "config": {
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ],
-      "site": "t-gram-53a4f"
-    },
-    "version": "projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8"
-  }
-]
-[info] i  hosting[t-gram-53a4f]: finalizing version... 
-[debug] [2025-10-30T10:32:23.139Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:23.140Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:23.143Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/988cacef144038e8 updateMask=status%2Cconfig
-[debug] [2025-10-30T10:32:23.144Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/988cacef144038e8 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
-[debug] [2025-10-30T10:32:23.600Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/988cacef144038e8 200
-[debug] [2025-10-30T10:32:23.603Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/versions/988cacef144038e8 {"name":"projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:32:21.162539Z","createUser":{"email":"lawrenceodtujan2@gmail.com"},"finalizeTime":"2025-10-30T10:32:25.276558Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com"}}
-[debug] [2025-10-30T10:32:23.605Z] [hosting] finalized version for t-gram-53a4f:[object Object]
-[info] +  hosting[t-gram-53a4f]: version finalized 
-[info] i  hosting[t-gram-53a4f]: releasing new version... 
-[debug] [2025-10-30T10:32:23.615Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:23.623Z] Checked if tokens are valid: true, expires at: 1761823774465
-[debug] [2025-10-30T10:32:23.637Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases versionName=projects%2F1014219227882%2Fsites%2Ft-gram-53a4f%2Fversions%2F988cacef144038e8
-[debug] [2025-10-30T10:32:23.640Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {}
-[debug] [2025-10-30T10:32:24.252Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases 200
-[debug] [2025-10-30T10:32:24.254Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/t-gram-53a4f/channels/live/releases {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761820345361000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:32:21.162539Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T10:32:25.276558Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T10:32:25.361Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[debug] [2025-10-30T10:32:24.256Z] [hosting] release: {"name":"projects/1014219227882/sites/t-gram-53a4f/channels/live/releases/1761820345361000","version":{"name":"projects/1014219227882/sites/t-gram-53a4f/versions/988cacef144038e8","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-10-30T10:32:21.162539Z","createUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"},"finalizeTime":"2025-10-30T10:32:25.276558Z","finalizeUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}},"type":"DEPLOY","releaseTime":"2025-10-30T10:32:25.361Z","releaseUser":{"email":"lawrenceodtujan2@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocI2YhFcu20fNZHNErGc4Q5Yn4Nwb-wmzBFwr4nYYshXmR9m7rA"}}
-[info] +  hosting[t-gram-53a4f]: release complete 
-[info] 
-[info] +  Deploy complete! 
-[info] 
-[info] Project Console: https://console.firebase.google.com/project/t-gram-53a4f/overview
-[info] Hosting URL: https://t-gram-53a4f.web.app
+[debug] [2025-12-20T05:22:48.493Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites 
+[debug] [2025-12-20T05:22:49.867Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites 200
+[debug] [2025-12-20T05:22:49.867Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/t-gram-53a4f/sites {"sites":[{"name":"projects/t-gram-53a4f/sites/t-gram-53a4f","defaultUrl":"https://t-gram-53a4f.web.app","appId":"1:1014219227882:web:d7920fa32ee32080280d93","type":"DEFAULT_SITE"}]}
+[debug] [2025-12-20T05:22:49.867Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config [none]
+[debug] [2025-12-20T05:22:50.732Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config 200
+[debug] [2025-12-20T05:22:50.732Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f/webApps/1:1014219227882:web:d7920fa32ee32080280d93/config {"projectId":"t-gram-53a4f","appId":"1:1014219227882:web:d7920fa32ee32080280d93","storageBucket":"t-gram-53a4f.firebasestorage.app","apiKey":"AIzaSyAcsUPTJHGsty4TysuoHRffPeBtHhCob90","authDomain":"t-gram-53a4f.firebaseapp.com","messagingSenderId":"1014219227882","projectNumber":"1014219227882","version":"2"}
+[debug] [2025-12-20T05:22:50.743Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f [none]
+[debug] [2025-12-20T05:22:51.004Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f 200
+[debug] [2025-12-20T05:22:51.004Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/t-gram-53a4f {"projectId":"t-gram-53a4f","projectNumber":"1014219227882","displayName":"T-Gram","name":"projects/t-gram-53a4f","resources":{"hostingSite":"t-gram-53a4f"},"state":"ACTIVE","etag":"1_5dd3ee68-6d57-4f5e-84a3-aa09f3255951"}
+[info] i  hosting[t-gram-53a4f]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[t-gram-53a4f]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /css/style.css HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /css/style.css HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/ui.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/ui.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /assets/images/logo.png HTTP/1.1" 200 145604 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /assets/images/logo.png HTTP/1.1\" 200 145604 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/auth.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/auth.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/profile.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/profile.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/leaderboard.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/leaderboard.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/online-achievements.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/online-achievements.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/online-pvp.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/online-pvp.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /js/app.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /js/app.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:22:55 +0000] "GET /favicon.ico HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:22:55 +0000] \"GET /favicon.ico HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/lion.jpg HTTP/1.1" 200 24108 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/lion.jpg HTTP/1.1\" 200 24108 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/owl.jpg HTTP/1.1" 200 15159 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/owl.jpg HTTP/1.1\" 200 15159 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/sun.jpg HTTP/1.1" 200 11901 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/sun.jpg HTTP/1.1\" 200 11901 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/champion.jpg HTTP/1.1" 200 19413 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/champion.jpg HTTP/1.1\" 200 19413 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/fox.jpg HTTP/1.1" 200 14786 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/fox.jpg HTTP/1.1\" 200 14786 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/flower.jpg HTTP/1.1" 200 15838 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/flower.jpg HTTP/1.1\" 200 15838 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:36:56 +0000] "GET /assets/avatars/rabbit.jpg HTTP/1.1" 200 20474 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:36:56 +0000] \"GET /assets/avatars/rabbit.jpg HTTP/1.1\" 200 20474 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:37:22 +0000] "GET /assets/questions.json HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:37:22 +0000] \"GET /assets/questions.json HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:41:20 +0000] "GET /online-pvp.html HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:41:20 +0000] \"GET /online-pvp.html HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:41:35 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:41:35 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /js/achievements.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /js/achievements.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/common.png HTTP/1.1" 200 10125 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/common.png HTTP/1.1\" 200 10125 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/uncommon.png HTTP/1.1" 200 11480 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/uncommon.png HTTP/1.1\" 200 11480 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/epic.png HTTP/1.1" 200 11102 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/epic.png HTTP/1.1\" 200 11102 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/legendary.png HTTP/1.1" 200 12810 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/legendary.png HTTP/1.1\" 200 12810 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/rare.png HTTP/1.1" 200 11383 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/rare.png HTTP/1.1\" 200 11383 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [20/Dec/2025:05:49:02 +0000] "GET /assets/badges/mythical.png HTTP/1.1" 200 12044 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Dec/2025:05:49:02 +0000] \"GET /assets/badges/mythical.png HTTP/1.1\" 200 12044 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\""}}

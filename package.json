@@ -4,7 +4,7 @@
   "description": "T-Gram - A beautiful Tic-Tac-Toe game with Firebase integration",
   "main": "index.js",
   "scripts": {
-    "start": "firebase serve",
+    "start": "node server.js",
     "build": "echo 'No build step required'",
     "deploy": "firebase deploy"
   },

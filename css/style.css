@@ -5,24 +5,22 @@
   box-sizing: border-box;
 }
 
-/* Logo display for light and dark mode */
+/* Logo display - same in both light and dark mode */
 #logo-dark {
   display: none;
-  filter: brightness(0) invert(1); /* Make dark logo white for dark background */
 }
 
 body.dark #logo-light {
-  display: none !important;
-  filter: brightness(0) saturate(100%) invert(20%) sepia(70%) saturate(500%) hue-rotate(150deg) brightness(0.9) contrast(1.1); /* Teal tint for light logo in dark mode */
+  display: inline !important;
+  filter: none; /* Keep logo the same in dark mode */
 }
 
 body.dark #logo-dark {
-  display: inline !important;
-  filter: brightness(0) invert(1); /* Invert to white for dark mode */
+  display: none;
 }
 
 #logo-light {
-  filter: none; /* Reset filter for light logo in light mode */
+  filter: none;
 }
 
 /* ===== Performance Optimizations ===== */

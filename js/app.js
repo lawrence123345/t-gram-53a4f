@@ -416,6 +416,7 @@ window.allAnswers = [];
 window.badges = JSON.parse(localStorage.getItem('badges')) || [];
 window.timerInterval = null;
 window.streak = 0;
+window.hasSecondChance = false; // Track if player earned second chance (must answer 2 questions correctly to place)
 
 window.startOfflinePvP = async function() {
   if (!window.selectedDifficulty) {
@@ -432,6 +433,7 @@ window.startOfflinePvP = async function() {
   window.wrongAnswers = [];
   window.allAnswers = [];
   window.gameQuestions = [];
+  window.hasSecondChance = false; // Reset the second chance flag
 
   await window.loadQuestions();
 
@@ -602,7 +604,11 @@ window.submitAnswer = function() {
     }
     window.awardBadgeIfEligible();
     window.updateScores();
+    
+    // Place the move on the board (correct answer = place symbol)
     window.placeMove();
+    
+    // Move to next question after placing
     window.currentQuestionIndex++;
   } else {
     // Show feedback
@@ -657,7 +663,8 @@ window.skipQuestion = function() {
     window.timerInterval = null;
   }
 
-  // Deduct 5 points from current player's score
+  // Deduct 5 points from current player's score (penalty)
+  const playerName = window.currentPlayer === 'X' ? 'Player 1 (X)' : 'Player 2 (O)';
   if (window.currentPlayer === 'X') {
     window.userScore -= 5;
   } else {
@@ -667,15 +674,21 @@ window.skipQuestion = function() {
   // Update scores display
   window.updateScores();
 
-  // Show red feedback message briefly
-  const feedbackDiv = document.getElementById('question-feedback');
-  if (feedbackDiv) {
-    feedbackDiv.innerHTML = '<p style="color: red; font-weight: bold;">-5 Points (Skipped)</p>';
-    feedbackDiv.style.display = 'block';
-  }
+  // Show penalty message in a modal
+  const penaltyContent = `
+    <div style="text-align: center; padding: 20px;">
+      <h3 style="color: #dc3545; margin-bottom: 15px;">⚠️ Skipped!</h3>
+      <p style="font-size: 24px; color: #dc3545; font-weight: bold; margin: 20px 0;">-5 Points Penalty</p>
+      <p style="color: #666;">No move will be placed on the board.</p>
+      <p style="color: #888; font-size: 14px;">Turn passes to ${window.currentPlayer === 'X' ? 'Player 2 (O)' : 'Player 1 (X)'}</p>
+      <button class="btn btn-small primary" onclick="window.continueSkip()" style="margin-top: 20px;">Continue</button>
+    </div>
+  `;
+  
+  window.ModalManager.showModal('skip-penalty-modal', penaltyContent, 'error');
 
   // Log the skip
-  window.messages.push({ type: 'error', content: 'Skipped question - -5 points.', timestamp: Date.now() });
+  window.messages.push({ type: 'error', content: 'Skipped question - -5 points. No move placed on board.', timestamp: Date.now() });
   window.allAnswers.push({
     question: window.currentQuestion.question,
     userAnswer: 'Skipped',
@@ -687,12 +700,15 @@ window.skipQuestion = function() {
 
   // Increment question index for next question
   window.currentQuestionIndex++;
+};
 
-  // Briefly show message, then hide modal and place move
-  setTimeout(() => {
-    window.ModalManager.hideModal('question-modal');
-    window.placeMove();
-  }, 1500); // 1.5 seconds to show the message
+window.continueSkip = function() {
+  // Hide the penalty modal
+  window.ModalManager.hideModal('skip-penalty-modal');
+  window.ModalManager.hideModal('question-modal');
+  
+  // Switch player WITHOUT placing a move on the board
+  window.switchPlayer();
 };
 
 

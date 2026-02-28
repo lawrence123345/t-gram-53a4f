@@ -3,331 +3,338 @@
     "multiple_choice": [
       {
         "id": "b1",
-        "question": "She ___ to school every day.",
-        "answer": "goes",
+        "question": "She ___ to school every day because she wants to learn.",
         "options": ["go", "goes", "gone"],
+        "answer": "goes",
         "type": "multiple_choice",
-        "explanation": "The verb 'go' in present simple third person singular is 'goes'.",
-        "clue": "Think about the third person singular form."
+        "explanation": "Third person singular uses 'goes' in present simple.",
+        "clue": "Think about third person singular form."
       },
       {
         "id": "b2",
-        "question": "I ___ happy today.",
-        "answer": "am",
+        "question": "Right now, I ___ very happy about my test results.",
         "options": ["is", "are", "am"],
+        "answer": "am",
         "type": "multiple_choice",
-        "explanation": "Use 'am' for first person singular in present continuous or simple present.",
-        "clue": "First person singular uses 'am'."
+        "explanation": "First person singular uses 'am'.",
+        "clue": "I always takes 'am'."
       },
       {
         "id": "b3",
-        "question": "They ___ eating lunch.",
-        "answer": "are",
+        "question": "Look! They ___ eating lunch at the cafeteria.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "'They' is plural, so use 'are' for present continuous.",
-        "clue": "Plural subjects use 'are'."
+        "explanation": "Plural subject 'they' takes 'are'.",
+        "clue": "They/We/You take 'are'."
       },
       {
         "id": "b4",
-        "question": "He ___ a doctor.",
-        "answer": "is",
+        "question": "My uncle ___ a doctor who works at the city hospital.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
         "explanation": "Third person singular uses 'is'.",
-        "clue": "Third person singular uses 'is'."
+        "clue": "He/She/It takes 'is'."
       },
       {
         "id": "b5",
-        "question": "We ___ playing soccer.",
-        "answer": "are",
+        "question": "We ___ playing soccer in the park when it started raining.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "First person plural uses 'are'.",
-        "clue": "First person plural uses 'are'."
+        "explanation": "First person plural 'we' takes 'are'.",
+        "clue": "We take 'are'."
       },
       {
         "id": "b6",
-        "question": "The cat ___ on the mat.",
-        "answer": "is",
+        "question": "The cat ___ on the mat because it's tired after playing.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'.",
-        "clue": "Third person singular 'is'."
+        "explanation": "Singular subject takes 'is'.",
+        "clue": "The cat takes 'is'."
       },
       {
         "id": "b7",
-        "question": "You ___ my best friend.",
-        "answer": "are",
+        "question": "You ___ my best friend, and I trust you completely.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "Second person uses 'are'.",
-        "clue": "Second person uses 'are'."
+        "explanation": "Second person 'you' takes 'are'.",
+        "clue": "You always takes 'are'."
       },
       {
         "id": "b8",
-        "question": "It ___ raining outside.",
-        "answer": "is",
+        "question": "It ___ raining outside, so we should bring umbrellas.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'.",
-        "clue": "Third person singular 'is'."
+        "explanation": "Singular 'it' takes 'is'.",
+        "clue": "It takes 'is'."
       },
       {
         "id": "b9",
-        "question": "My friends ___ coming over.",
-        "answer": "are",
+        "question": "My friends ___ coming over to study for the exam tonight.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "Plural subject uses 'are'.",
-        "clue": "Plural subjects use 'are'."
+        "explanation": "Plural friends take 'are'.",
+        "clue": "Plural nouns take 'are'."
       },
       {
         "id": "b10",
-        "question": "The book ___ interesting.",
-        "answer": "is",
+        "question": "The book ___ interesting because it has many pictures.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'.",
-        "clue": "Third person singular uses 'is'."
+        "explanation": "Singular 'book' takes 'is'.",
+        "clue": "Singular nouns take 'is'."
       },
       {
         "id": "b11",
-        "question": "Dogs ___ loyal animals.",
-        "answer": "are",
+        "question": "Dogs ___ loyal animals that protect their owners.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "Plural 'dogs' uses 'are'.",
-        "clue": "Plural nouns use 'are'."
+        "explanation": "Plural 'dogs' takes 'are'.",
+        "clue": "Plural nouns take 'are'."
       },
       {
         "id": "b12",
-        "question": "She ___ singing a song.",
-        "answer": "is",
+        "question": "She ___ singing a song while she cooks dinner.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'."
+        "explanation": "Third person singular 'she' takes 'is'.",
+        "clue": "She takes 'is'."
       },
       {
         "id": "b13",
-        "question": "We ___ going to the park.",
-        "answer": "are",
+        "question": "We ___ going to the park after we finish our homework.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "First person plural 'are'.",
-        "clue": "First person plural uses 'are'."
+        "explanation": "First person plural 'we' takes 'are'.",
+        "clue": "We take 'are'."
       },
       {
         "id": "b14",
-        "question": "The sun ___ shining brightly.",
-        "answer": "is",
+        "question": "The sun ___ shining brightly in the summer sky.",
         "options": ["is", "are", "am"],
+        "answer": "is",
         "type": "multiple_choice",
-        "explanation": "Third person singular 'is'.",
-        "clue": "Third person singular uses 'is'."
+        "explanation": "Singular 'sun' takes 'is'.",
+        "clue": "The sun is singular."
       },
       {
         "id": "b15",
-        "question": "Birds ___ flying in the sky.",
-        "answer": "are",
+        "question": "The birds ___ flying in the sky looking for food.",
         "options": ["is", "are", "was"],
+        "answer": "are",
         "type": "multiple_choice",
-        "explanation": "Plural 'birds' uses 'are'.",
-        "clue": "Plural subjects use 'are'."
+        "explanation": "Plural 'birds' takes 'are'.",
+        "clue": "Birds is plural."
       },
       {
-        "id": "b18",
-        "question": "What is the plural of 'child'?",
+        "id": "b16",
+        "question": "There are many children in the playground. What is the plural of 'child'?",
         "options": ["Childs", "Children", "Childes", "Childrens"],
         "answer": "Children",
         "type": "multiple_choice",
-        "explanation": "'Child' is irregular; plural is 'children'."
+        "explanation": "'Child' is an irregular plural - 'children'.",
+        "clue": "Child → Children (irregular)"
       },
       {
-        "id": "b22",
-        "question": "What is the past tense of 'eat'?",
+        "id": "b17",
+        "question": "Yesterday, I ate a lot of food. What is the past tense of 'eat'?",
         "options": ["Eated", "Ate", "Eaten", "Eating"],
         "answer": "Ate",
         "type": "multiple_choice",
-        "explanation": "Irregular verb: eat-ate-eaten."
+        "explanation": "'Eat' is irregular - past tense is 'ate'.",
+        "clue": "Eat → Ate (irregular)"
       },
       {
-        "id": "b26",
-        "question": "What is a pronoun?",
+        "id": "b18",
+        "question": "When we talk about someone without using their name, we use a ___. For example: 'She is tall.'",
         "options": ["Action word", "Naming word", "Describing word", "Replacing word"],
         "answer": "Replacing word",
         "type": "multiple_choice",
-        "explanation": "A pronoun replaces a noun."
+        "explanation": "A pronoun replaces a noun.",
+        "clue": "Pronouns replace nouns."
       },
       {
-        "id": "b30",
-        "question": "What is the comparative of 'big'?",
+        "id": "b19",
+        "question": "Comparing two things, 'This apple is bigger than that one.' What is the comparative of 'big'?",
         "options": ["Bigger", "Biggest", "More big", "Bigly"],
         "answer": "Bigger",
         "type": "multiple_choice",
-        "explanation": "Add -er for one-syllable adjectives."
+        "explanation": "Add -er for comparative of one-syllable adjectives.",
+        "clue": "Big → Bigger (add -er)"
       },
       {
-        "id": "b34",
-        "question": "What is the superlative of 'small'?",
+        "id": "b20",
+        "question": "Among three or more things, 'This is the ___ apple of all.' What is the superlative of 'small'?",
         "options": ["Smaller", "Smallest", "More small", "Smally"],
         "answer": "Smallest",
         "type": "multiple_choice",
-        "explanation": "Add -est for one-syllable adjectives."
+        "explanation": "Add -est for superlative of one-syllable adjectives.",
+        "clue": "Small → Smallest (add -est)"
       },
       {
-        "id": "b38",
-        "question": "What is a preposition?",
+        "id": "b21",
+        "question": "In the sentence 'The book is on the table,' the word 'on' is a ___",
         "options": ["Action word", "Naming word", "Describing word", "Position word"],
         "answer": "Position word",
         "type": "multiple_choice",
-        "explanation": "A preposition shows relationship of position."
+        "explanation": "A preposition shows position or direction.",
+        "clue": "Prepositions show location."
       }
     ],
     "fill_blank": [
       {
-        "id": "b19",
-        "question": "You ___ tall. (present simple)",
+        "id": "b22",
+        "question": "You ___ tall just like your father. (present simple)",
         "answer": "are",
         "type": "fill_blank",
-        "explanation": "Second person uses 'are'."
+        "explanation": "Second person 'you' takes 'are'."
       },
       {
         "id": "b23",
-        "question": "It ___ raining. (present continuous)",
+        "question": "Right now, it ___ raining heavily outside. (present continuous)",
         "answer": "is",
         "type": "fill_blank",
-        "explanation": "Third person singular uses 'is'."
+        "explanation": "Third person singular 'it' takes 'is'."
+      },
+      {
+        "id": "b24",
+        "question": "Look at her! She ___ singing a beautiful song. (present continuous)",
+        "answer": "is",
+        "type": "fill_blank",
+        "explanation": "Third person singular 'she' takes 'is'."
+      },
+      {
+        "id": "b25",
+        "question": "Right now, I ___ eating dinner with my family. (present continuous)",
+        "answer": "am",
+        "type": "fill_blank",
+        "explanation": "First person singular 'I' takes 'am'."
+      },
+      {
+        "id": "b26",
+        "question": "They ___ running very fast in the race. (present continuous)",
+        "answer": "are",
+        "type": "fill_blank",
+        "explanation": "Plural 'they' takes 'are'."
       },
       {
         "id": "b27",
-        "question": "She ___ singing. (present continuous)",
+        "question": "He ___ sleeping in his room right now. (present continuous)",
         "answer": "is",
         "type": "fill_blank",
-        "explanation": "Third person singular uses 'is'."
-      },
-      {
-        "id": "b31",
-        "question": "I ___ eating. (present continuous)",
-        "answer": "am",
-        "type": "fill_blank",
-        "explanation": "First person singular uses 'am'."
-      },
-      {
-        "id": "b35",
-        "question": "They ___ running. (present continuous)",
-        "answer": "are",
-        "type": "fill_blank",
-        "explanation": "Plural subject uses 'are'."
-      },
-      {
-        "id": "b39",
-        "question": "He ___ sleeping. (present continuous)",
-        "answer": "is",
-        "type": "fill_blank",
-        "explanation": "Third person singular uses 'is'."
+        "explanation": "Third person singular 'he' takes 'is'."
       }
     ],
     "error_identification": [
       {
-        "id": "b16",
-        "type": "error_identification",
-        "question": "Identify the error: She have two cats.",
-        "answer": "have",
-        "explanation": "Third person singular uses 'has'."
-      },
-      {
-        "id": "b20",
-        "type": "error_identification",
-        "question": "Identify the error: I goed to the park.",
-        "answer": "goed",
-        "explanation": "Past tense of 'go' is 'went'."
-      },
-      {
-        "id": "b24",
-        "type": "error_identification",
-        "question": "Identify the error: They plays football.",
-        "answer": "plays",
-        "explanation": "Plural subject uses 'play'."
-      },
-      {
         "id": "b28",
-        "type": "error_identification",
-        "question": "Identify the error: He do his homework.",
+        "question": "Identify the error in: 'She have two cats at home.'",
+        "answer": "have",
+        "explanation": "Third person singular 'she' should use 'has'.",
+        "clue": "She has, not she have."
+      },
+      {
+        "id": "b29",
+        "question": "Identify the error in: 'I goed to the park yesterday.'",
+        "answer": "goed",
+        "explanation": "'Go' is irregular - past tense is 'went'.",
+        "clue": "Go → Went (irregular)"
+      },
+      {
+        "id": "b30",
+        "question": "Identify the error in: 'They plays football every weekend.'",
+        "answer": "plays",
+        "explanation": "Plural 'they' should use 'play'.",
+        "clue": "They play, not they plays."
+      },
+      {
+        "id": "b31",
+        "question": "Identify the error in: 'He do his homework every day.'",
         "answer": "do",
-        "explanation": "Third person singular uses 'does'."
+        "explanation": "Third person singular 'he' should use 'does'.",
+        "clue": "He does, not he do."
       },
       {
         "id": "b32",
-        "type": "error_identification",
-        "question": "Identify the error: We was happy.",
+        "question": "Identify the error in: 'We was very happy about the news.'",
         "answer": "was",
-        "explanation": "Plural subject uses 'were'."
+        "explanation": "Plural 'we' should use 'were'.",
+        "clue": "We were, not we was."
       },
       {
-        "id": "b36",
-        "type": "error_identification",
-        "question": "Identify the error: She goed home.",
+        "id": "b33",
+        "question": "Identify the error in: 'She goed home after school.'",
         "answer": "goed",
-        "explanation": "Past tense of 'go' is 'went'."
+        "explanation": "'Go' is irregular - past tense is 'went'.",
+        "clue": "Go → Went (irregular)"
       },
       {
-        "id": "b40",
-        "type": "error_identification",
-        "question": "Identify the error: I has a dog.",
+        "id": "b34",
+        "question": "Identify the error in: 'I has a beautiful new bike.'",
         "answer": "has",
-        "explanation": "First person uses 'have'."
+        "explanation": "First person 'I' should use 'have'.",
+        "clue": "I have, not I has."
       }
     ],
     "sentence_completion": [
       {
-        "id": "b17",
-        "type": "sentence_completion",
+        "id": "b35",
         "question": "Complete: The sun is ___ the sky.",
         "answer": "in",
-        "explanation": "'In' indicates location within."
+        "explanation": "'In' shows location inside something.",
+        "clue": "In the sky"
       },
       {
-        "id": "b21",
-        "type": "sentence_completion",
-        "question": "Complete: The bird is ___ the tree.",
+        "id": "b36",
+        "question": "Complete: The bird is perched ___ the tree outside our window.",
         "answer": "on",
-        "explanation": "'On' for surface position."
-      },
-      {
-        "id": "b25",
-        "type": "sentence_completion",
-        "question": "Complete: The car is ___ the garage.",
-        "answer": "in",
-        "explanation": "'In' for enclosed space."
-      },
-      {
-        "id": "b29",
-        "type": "sentence_completion",
-        "question": "Complete: The boy is ___ the door.",
-        "answer": "at",
-        "explanation": "'At' for specific point."
-      },
-      {
-        "id": "b33",
-        "type": "sentence_completion",
-        "question": "Complete: The girl is ___ the park.",
-        "answer": "in",
-        "explanation": "'In' for enclosed area."
+        "explanation": "'On' shows contact with a surface.",
+        "clue": "On the tree"
       },
       {
         "id": "b37",
-        "type": "sentence_completion",
-        "question": "Complete: The pen is ___ the desk.",
+        "question": "Complete: The car is parked ___ the garage right now.",
+        "answer": "in",
+        "explanation": "'In' shows location inside an enclosed space.",
+        "clue": "In the garage"
+      },
+      {
+        "id": "b38",
+        "question": "Complete: The boy is standing ___ the door, waiting for his friend.",
+        "answer": "at",
+        "explanation": "'At' shows a specific point or location.",
+        "clue": "At the door"
+      },
+      {
+        "id": "b39",
+        "question": "Complete: The girl is playing ___ the park near her house.",
+        "answer": "in",
+        "explanation": "'In' shows location in an area.",
+        "clue": "In the park"
+      },
+      {
+        "id": "b40",
+        "question": "Complete: The pen is lying ___ the desk where I left it.",
         "answer": "on",
-        "explanation": "'On' for surface."
+        "explanation": "'On' shows contact with a surface.",
+        "clue": "On the desk"
       },
       {
         "id": "b41",
-        "type": "sentence_completion",
-        "question": "Complete: The dog is ___ the yard.",
+        "question": "Complete: The dog is playing ___ the yard with its owner.",
         "answer": "in",
-        "explanation": "'In' for enclosed area."
+        "explanation": "'In' shows location in an enclosed area.",
+        "clue": "In the yard"
       }
     ]
   },
@@ -335,750 +342,752 @@
     "multiple_choice": [
       {
         "id": "i1",
+        "question": "Comparing two friends, 'My sister is ___ than me at math.'",
+        "options": ["good", "better", "best"],
+        "answer": "better",
         "type": "multiple_choice",
-        "question": "Which word is a comparative adjective: bigger, big, biggest?",
-        "options": ["big", "bigger", "biggest"],
-        "answer": "bigger",
-        "explanation": "Comparative form compares two things."
+        "explanation": "Comparative form compares two things.",
+        "clue": "Compare two things → use comparative (-er or 'more')"
+      },
+      {
+        "id": "i2",
+        "question": "Last summer, I ___ to the beach with my family.",
+        "options": ["go", "went", "gone", "going"],
+        "answer": "went",
+        "type": "multiple_choice",
+        "explanation": "'Go' is irregular - past tense is 'went'.",
+        "clue": "Go → Went (irregular)"
+      },
+      {
+        "id": "i3",
+        "question": "Among all the runners, John ran the ___ in the marathon.",
+        "options": ["fast", "faster", "fastest"],
+        "answer": "fastest",
+        "type": "multiple_choice",
+        "explanation": "Superlative form compares three or more things.",
+        "clue": "Most → use superlative (-est or 'most')"
+      },
+      {
+        "id": "i4",
+        "question": "I have ___ the book you recommended. (past participle)",
+        "options": ["read", "reads", "reading", "reader"],
+        "answer": "read",
+        "type": "multiple_choice",
+        "explanation": "Past participle is used with 'have/has'.",
+        "clue": "Have + past participle"
       },
       {
         "id": "i5",
+        "question": "By dinner time, they ___ already ___ dinner. (present perfect)",
+        "options": ["have...eat", "have...eaten", "has...eaten", "had...eaten"],
+        "answer": "have...eaten",
         "type": "multiple_choice",
-        "question": "What is the past tense of 'go'?",
-        "options": ["went", "gone", "going", "goes"],
-        "answer": "went",
-        "explanation": "Irregular past tense."
+        "explanation": "Present perfect uses 'have/has + past participle'.",
+        "clue": "They have eaten"
+      },
+      {
+        "id": "i6",
+        "question": "Tomorrow, I ___ at the office by 9 AM.",
+        "options": ["am", "was", "will be", "be"],
+        "answer": "will be",
+        "type": "multiple_choice",
+        "explanation": "'Will + base form' expresses future.",
+        "clue": "Future tense with 'will'"
+      },
+      {
+        "id": "i7",
+        "question": "The house ___ by the construction team last year. (passive voice)",
+        "options": ["built", "builds", "is built", "was built"],
+        "answer": "was built",
+        "type": "multiple_choice",
+        "explanation": "Passive voice uses 'be + past participle'.",
+        "clue": "Was + built = past passive"
+      },
+      {
+        "id": "i8",
+        "question": "___ rich, I would buy a big house. (second conditional)",
+        "options": ["If I am", "If I was", "If I were", "If I be"],
+        "answer": "If I were",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive 'were' for unreal conditions.",
+        "clue": "Second conditional uses 'were' for unreal present"
       },
       {
         "id": "i9",
+        "question": "I enjoy ___ in the morning because it clears my mind. (gerund)",
+        "options": ["run", "runs", "running", "ran"],
+        "answer": "running",
         "type": "multiple_choice",
-        "question": "Which is a superlative: faster, fast, fastest?",
-        "options": ["fast", "faster", "fastest"],
-        "answer": "fastest",
-        "explanation": "Superlative compares three or more."
+        "explanation": "Gerund is verb + -ing used as noun.",
+        "clue": "Enjoy + gerund (running)"
+      },
+      {
+        "id": "i10",
+        "question": "I want ___ to the concert tonight. (infinitive)",
+        "options": ["go", "going", "to go", "goes"],
+        "answer": "to go",
+        "type": "multiple_choice",
+        "explanation": "Infinitive is 'to + base form'.",
+        "clue": "Want to go"
       },
       {
         "id": "i11",
+        "question": "While I ___ TV, the phone rang. (past continuous)",
+        "options": ["watched", "watching", "was watching", "were watching"],
+        "answer": "was watching",
         "type": "multiple_choice",
-        "question": "What is the past participle of 'write'?",
-        "options": ["Wrote", "Written", "Writing", "Writes"],
-        "answer": "Written",
-        "explanation": "Used in perfect tenses."
+        "explanation": "Past continuous: was/were + -ing.",
+        "clue": "I was watching"
+      },
+      {
+        "id": "i12",
+        "question": "By next month, I ___ this project. (future perfect)",
+        "options": ["will finish", "will have finished", "finished", "finishing"],
+        "answer": "will have finished",
+        "type": "multiple_choice",
+        "explanation": "Future perfect: will have + past participle.",
+        "clue": "Will have finished"
+      },
+      {
+        "id": "i13",
+        "question": "The teacher suggested that he ___ more careful in his work. (subjunctive)",
+        "options": ["is", "be", "was", "are"],
+        "answer": "be",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive uses base form after suggestions.",
+        "clue": "Suggested that he be"
+      },
+      {
+        "id": "i14",
+        "question": "He said, 'I am tired.' In reported speech:",
+        "options": ["He said he is tired.", "He said that he was tired.", "He says he is tired.", "He said he was tired."],
+        "answer": "He said that he was tired.",
+        "type": "multiple_choice",
+        "explanation": "Tense backshift in reported speech.",
+        "clue": "Past tense shifts back"
       },
       {
         "id": "i15",
+        "question": "I had my car ___ at the mechanic yesterday. (causative)",
+        "options": ["repair", "repaired", "repairing", "repairs"],
+        "answer": "repaired",
         "type": "multiple_choice",
-        "question": "What is the present perfect of 'eat'?",
-        "options": ["Ate", "Eaten", "Eating", "Eats"],
-        "answer": "Eaten",
-        "explanation": "Have/has + past participle."
+        "explanation": "Causative: have + object + past participle.",
+        "clue": "Had my car repaired"
+      },
+      {
+        "id": "i16",
+        "question": "Don't ___ hope when things get difficult. (phrasal verb)",
+        "options": ["give up", "give in", "give away", "give out"],
+        "answer": "give up",
+        "type": "multiple_choice",
+        "explanation": "'Give up' means to quit or stop trying.",
+        "clue": "Don't give up"
+      },
+      {
+        "id": "i17",
+        "question": "You ___ study harder if you want to pass the exam. (modal verb)",
+        "options": ["should", "would", "could", "must"],
+        "answer": "should",
+        "type": "multiple_choice",
+        "explanation": "'Should' expresses advice or recommendation.",
+        "clue": "Should for advice"
+      },
+      {
+        "id": "i18",
+        "question": "The man ___ lives next door is very friendly. (relative pronoun)",
+        "options": ["who", "which", "where", "when"],
+        "answer": "who",
+        "type": "multiple_choice",
+        "explanation": "'Who' introduces clause about a person.",
+        "clue": "Who for people"
       },
       {
         "id": "i19",
+        "question": "She gave ___ the book she borrowed from the library. (indirect object)",
+        "options": ["I", "me", "my", "mine"],
+        "answer": "me",
         "type": "multiple_choice",
-        "question": "What is the future tense of 'be'?",
-        "options": ["Was", "Were", "Will be", "Being"],
-        "answer": "Will be",
-        "explanation": "Will + base form for future."
+        "explanation": "Indirect object receives the direct object.",
+        "clue": "Gave me the book"
+      },
+      {
+        "id": "i20",
+        "question": "___ the dinner, we watched a movie. (participle)",
+        "options": ["Eat", "Ate", "Eating", "Having eaten"],
+        "answer": "Having eaten",
+        "type": "multiple_choice",
+        "explanation": "Perfect participle shows completed action.",
+        "clue": "Having eaten = after eating"
+      },
+      {
+        "id": "i21",
+        "question": "My brother, ___ John, is a doctor. (appositive)",
+        "options": ["call", "called", "calling", "to call"],
+        "answer": "called",
+        "type": "multiple_choice",
+        "explanation": "Appositive renames or explains a noun.",
+        "clue": "John, called (renames brother)"
+      },
+      {
+        "id": "i22",
+        "question": "Unfortunately, my grandfather ___ last year. (idiom)",
+        "options": ["kicked the bucket", "broke the ice", "hit the sack", "caught the bus"],
+        "answer": "kicked the bucket",
+        "type": "multiple_choice",
+        "explanation": "'Kick the bucket' is an idiom meaning 'to die'.",
+        "clue": "Euphemism for dying"
       },
       {
         "id": "i23",
+        "question": "The opposite of 'big' is ___",
+        "options": ["small", "large", "huge", "giant"],
+        "answer": "small",
         "type": "multiple_choice",
-        "question": "What is the passive voice of 'They build houses'?",
-        "options": ["Houses are built", "Houses build", "They are building", "Houses were built"],
-        "answer": "Houses are built",
-        "explanation": "Be + past participle for passive."
+        "explanation": "Antonym means opposite in meaning.",
+        "clue": "Big → Small (opposite)"
+      },
+      {
+        "id": "i24",
+        "question": "Another word for 'happy' is ___",
+        "options": ["sad", "joyful", "angry", "tired"],
+        "answer": "joyful",
+        "type": "multiple_choice",
+        "explanation": "Synonym means similar in meaning.",
+        "clue": "Happy → Joyful (similar)"
+      },
+      {
+        "id": "i25",
+        "question": "A word similar in meaning to 'big' is ___",
+        "options": ["small", "large", "tiny", "short"],
+        "answer": "large",
+        "type": "multiple_choice",
+        "explanation": "Synonym means similar in meaning.",
+        "clue": "Big → Large (similar)"
+      },
+      {
+        "id": "i26",
+        "question": "The opposite of 'happy' is ___",
+        "options": ["sad", "joyful", "angry", "tired"],
+        "answer": "sad",
+        "type": "multiple_choice",
+        "explanation": "Antonym means opposite in meaning.",
+        "clue": "Happy → Sad (opposite)"
       },
       {
         "id": "i27",
+        "question": "Another word for 'small' is ___",
+        "options": ["tiny", "large", "big", "huge"],
+        "answer": "tiny",
         "type": "multiple_choice",
-        "question": "What is the conditional of 'If I have money'?",
-        "options": ["If I had money", "If I have had money", "If I will have money", "If I having money"],
-        "answer": "If I had money",
-        "explanation": "Second conditional uses past tense for unreal present."
-      },
-      {
-        "id": "i31",
-        "type": "multiple_choice",
-        "question": "What is the gerund of 'run'?",
-        "options": ["Ran", "Running", "Runs", "Runned"],
-        "answer": "Running",
-        "explanation": "Verb + -ing as noun."
-      },
-      {
-        "id": "i33",
-        "type": "multiple_choice",
-        "question": "What is the infinitive of 'to go'?",
-        "options": ["Go", "Going", "Went", "Gone"],
-        "answer": "Go",
-        "explanation": "Base form; 'to' makes it full infinitive."
-      },
-      {
-        "id": "i35",
-        "type": "multiple_choice",
-        "question": "What is the past continuous of 'sing'?",
-        "options": ["Sang", "Sung", "Singing", "Was singing"],
-        "answer": "Was singing",
-        "explanation": "Was/were + -ing for ongoing past action."
-      },
-      {
-        "id": "i39",
-        "type": "multiple_choice",
-        "question": "What is the future perfect of 'finish'?",
-        "options": ["Will finish", "Will have finished", "Finishing", "Finished"],
-        "answer": "Will have finished",
-        "explanation": "Will have + past participle for completed future action."
-      },
-      {
-        "id": "i43",
-        "type": "multiple_choice",
-        "question": "What is the subjunctive mood in 'I suggest that he go'?",
-        "options": ["Go", "Goes", "Going", "Went"],
-        "answer": "Go",
-        "explanation": "Base form in subjunctive for suggestions."
-      },
-      {
-        "id": "i47",
-        "type": "multiple_choice",
-        "question": "What is reported speech for 'He said, \"I am tired.\"'?",
-        "options": ["He said that he was tired.", "He said that he is tired.", "He says that he is tired.", "He said that he is tired."],
-        "answer": "He said that he was tired.",
-        "explanation": "Tense backshift in reported speech."
-      },
-      {
-        "id": "i51",
-        "type": "multiple_choice",
-        "question": "What is the causative form of 'have' in 'I had my car repaired'?",
-        "options": ["Had", "Have", "Having", "Repaired"],
-        "answer": "Had",
-        "explanation": "'Have' + object + past participle for causative."
-      },
-      {
-        "id": "i55",
-        "type": "multiple_choice",
-        "question": "What is the phrasal verb 'give up'?",
-        "options": ["Give", "Up", "Give up", "Giving"],
-        "answer": "Give up",
-        "explanation": "Means to stop or quit."
-      },
-      {
-        "id": "i59",
-        "type": "multiple_choice",
-        "question": "What is the modal verb in 'You should study'?",
-        "options": ["You", "Should", "Study", "Studying"],
-        "answer": "Should",
-        "explanation": "Modal for advice."
-      },
-      {
-        "id": "i63",
-        "type": "multiple_choice",
-        "question": "What is the relative pronoun in 'The man who lives here'?",
-        "options": ["The", "Man", "Who", "Here"],
-        "answer": "Who",
-        "explanation": "'Who' for people in relative clauses."
-      },
-      {
-        "id": "i67",
-        "type": "multiple_choice",
-        "question": "What is the indirect object in 'Give me the book'?",
-        "options": ["Give", "Me", "The book", "Book"],
-        "answer": "Me",
-        "explanation": "Receiver of the direct object."
-      },
-      {
-        "id": "i71",
-        "type": "multiple_choice",
-        "question": "What is the participle in 'Having eaten, he left'?",
-        "options": ["Having", "Eaten", "He", "Left"],
-        "answer": "Having eaten",
-        "explanation": "Perfect participle for prior action."
-      },
-      {
-        "id": "i75",
-        "type": "multiple_choice",
-        "question": "What is the appositive in 'My friend John is here'?",
-        "options": ["My", "Friend", "John", "Here"],
-        "answer": "John",
-        "explanation": "Renames or explains the noun."
-      },
-      {
-        "id": "i79",
-        "type": "multiple_choice",
-        "question": "What is the idiom 'kick the bucket' mean?",
-        "options": ["Die", "Run", "Eat", "Sleep"],
-        "answer": "Die",
-        "explanation": "Idiom for passing away."
-      },
-      {
-        "id": "i83",
-        "type": "multiple_choice",
-        "question": "What is the antonym of 'big'?",
-        "options": ["Small", "Large", "Huge", "Giant"],
-        "answer": "Small",
-        "explanation": "Words with opposite meaning."
-      },
-      {
-        "id": "i87",
-        "type": "multiple_choice",
-        "question": "What is the synonym of 'happy'?",
-        "options": ["Sad", "Joyful", "Angry", "Tired"],
-        "answer": "Joyful",
-        "explanation": "Words with similar meaning."
-      },
-      {
-        "id": "i91",
-        "type": "multiple_choice",
-        "question": "What is the synonym of 'big'?",
-        "options": ["Small", "Large", "Tiny", "Short"],
-        "answer": "Large",
-        "explanation": "Words with similar meaning."
-      },
-      {
-        "id": "i95",
-        "type": "multiple_choice",
-        "question": "What is the antonym of 'happy'?",
-        "options": ["Sad", "Joyful", "Angry", "Tired"],
-        "answer": "Sad",
-        "explanation": "Words with opposite meaning."
-      },
-      {
-        "id": "i99",
-        "type": "multiple_choice",
-        "question": "What is the synonym of 'small'?",
-        "options": ["Tiny", "Large", "Big", "Huge"],
-        "answer": "Tiny",
-        "explanation": "Words with similar meaning."
+        "explanation": "Synonym means similar in meaning.",
+        "clue": "Small → Tiny (similar)"
       }
     ],
     "fill_blank": [
       {
-        "id": "i2",
-        "type": "fill_blank",
-        "question": "She is ____ than her sister.",
-        "answer": "taller",
-        "explanation": "Add -er to one-syllable adjectives."
-      },
-      {
-        "id": "i6",
-        "type": "fill_blank",
-        "question": "If I ___ rich, I would travel.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were' for unreal conditions."
-      },
-      {
-        "id": "i10",
-        "type": "fill_blank",
-        "question": "They have ___ here for two hours.",
-        "answer": "been",
-        "explanation": "Present perfect continuous uses 'been'."
-      },
-      {
-        "id": "i12",
-        "type": "fill_blank",
-        "question": "She has ___ the book.",
-        "answer": "read",
-        "explanation": "Past participle of 'read' is 'read'."
-      },
-      {
-        "id": "i16",
-        "type": "fill_blank",
-        "question": "We have ___ dinner.",
-        "answer": "eaten",
-        "explanation": "Past participle of 'eat'."
-      },
-      {
-        "id": "i20",
-        "type": "fill_blank",
-        "question": "I will ___ happy.",
-        "answer": "be",
-        "explanation": "Base form after 'will'."
-      },
-      {
-        "id": "i24",
-        "type": "fill_blank",
-        "question": "The cake ___ baked by my mother.",
-        "answer": "is",
-        "explanation": "Present passive uses 'is' + past participle."
-      },
-      {
         "id": "i28",
+        "question": "She is much ___ than her sister at playing piano.",
+        "answer": "taller",
         "type": "fill_blank",
-        "question": "If she ___ here, she would help.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were' for all subjects in unreal conditions."
+        "explanation": "Comparative form: add -er to one-syllable adjectives."
+      },
+      {
+        "id": "i29",
+        "question": "___ I were you, I would apologize for being late.",
+        "answer": "If",
+        "type": "fill_blank",
+        "explanation": "Second conditional starts with 'If'."
+      },
+      {
+        "id": "i30",
+        "question": "They have been waiting here ___ two hours now.",
+        "answer": "for",
+        "type": "fill_blank",
+        "explanation": "'For' shows duration of time."
+      },
+      {
+        "id": "i31",
+        "question": "She has already ___ the book you lent her.",
+        "answer": "read",
+        "type": "fill_blank",
+        "explanation": "Past participle of 'read' is 'read' (pronounced 'red')."
       },
       {
         "id": "i32",
+        "question": "We have ___ dinner, so we're not hungry.",
+        "answer": "eaten",
         "type": "fill_blank",
-        "question": "He enjoys ___ in the park.",
-        "answer": "running",
-        "explanation": "Gerund after 'enjoys'."
+        "explanation": "Past participle of 'eat' is 'eaten'."
+      },
+      {
+        "id": "i33",
+        "question": "I will ___ happy when I hear the good news.",
+        "answer": "be",
+        "type": "fill_blank",
+        "explanation": "Infinitive after modal 'will'."
+      },
+      {
+        "id": "i34",
+        "question": "The cake ___ by my mother every birthday. (passive)",
+        "answer": "is",
+        "type": "fill_blank",
+        "explanation": "Present passive: is/are + past participle."
+      },
+      {
+        "id": "i35",
+        "question": "If she ___ here now, she would help us.",
+        "answer": "were",
+        "type": "fill_blank",
+        "explanation": "Subjunctive 'were' for unreal conditions."
       },
       {
         "id": "i36",
+        "question": "He enjoys ___ long walks in the morning.",
+        "answer": "running",
         "type": "fill_blank",
-        "question": "I want ___ home.",
+        "explanation": "Gerund after 'enjoys'."
+      },
+      {
+        "id": "i37",
+        "question": "I want ___ home early today, please.",
         "answer": "to go",
-        "explanation": "Full infinitive after 'want'."
+        "type": "fill_blank",
+        "explanation": "Infinitive after 'want'."
+      },
+      {
+        "id": "i38",
+        "question": "She ___ singing when I walked into the room.",
+        "answer": "was",
+        "type": "fill_blank",
+        "explanation": "Past continuous: was/were + -ing."
+      },
+      {
+        "id": "i39",
+        "question": "By next year, I ___ my university degree.",
+        "answer": "will have finished",
+        "type": "fill_blank",
+        "explanation": "Future perfect: will have + past participle."
       },
       {
         "id": "i40",
+        "question": "I recommend that he ___ the job opportunity.",
+        "answer": "take",
         "type": "fill_blank",
-        "question": "She ___ singing when I arrived.",
+        "explanation": "Subjunctive: base form after 'recommend'."
+      },
+      {
+        "id": "i41",
+        "question": "She told me that she ___ very happy about her results.",
         "answer": "was",
-        "explanation": "Third person singular uses 'was'."
+        "type": "fill_blank",
+        "explanation": "Tense backshift in reported speech."
+      },
+      {
+        "id": "i42",
+        "question": "I will ___ my hair cut next Saturday.",
+        "answer": "have",
+        "type": "fill_blank",
+        "explanation": "Causative: will have + object + past participle."
+      },
+      {
+        "id": "i43",
+        "question": "Don't ___ hope; things will get better.",
+        "answer": "give up",
+        "type": "fill_blank",
+        "explanation": "Phrasal verb 'give up' means to quit."
       },
       {
         "id": "i44",
-        "type": "fill_blank",
-        "question": "By next year, I ___ my degree.",
-        "answer": "will have finished",
-        "explanation": "Future perfect for action completed before another future time."
-      },
-      {
-        "id": "i48",
-        "type": "fill_blank",
-        "question": "I recommend that he ___ the job.",
-        "answer": "take",
-        "explanation": "Base form in subjunctive after 'recommend'."
-      },
-      {
-        "id": "i52",
-        "type": "fill_blank",
-        "question": "She told me that she ___ happy.",
-        "answer": "was",
-        "explanation": "Past tense backshifts to past."
-      },
-      {
-        "id": "i56",
-        "type": "fill_blank",
-        "question": "I will ___ my hair cut.",
-        "answer": "have",
-        "explanation": "Causative structure."
-      },
-      {
-        "id": "i60",
-        "type": "fill_blank",
-        "question": "Don't ___ hope.",
-        "answer": "give up",
-        "explanation": "Phrasal verb meaning surrender."
-      },
-      {
-        "id": "i64",
-        "type": "fill_blank",
-        "question": "You ___ eat vegetables.",
+        "question": "You ___ eat more vegetables for better health.",
         "answer": "should",
-        "explanation": "Modal for recommendation."
+        "type": "fill_blank",
+        "explanation": "Modal 'should' for advice."
       },
       {
-        "id": "i68",
+        "id": "i45",
+        "question": "This is the house ___ I grew up as a child.",
+        "answer": "where",
         "type": "fill_blank",
-        "question": "This is the house ___ I grew up.",
-        "answer": "that",
-        "explanation": "'That' for things in relative clauses."
+        "explanation": "Relative adverb 'where' for place."
       },
       {
-        "id": "i72",
-        "type": "fill_blank",
-        "question": "He gave ___ the money.",
+        "id": "i46",
+        "question": "He gave ___ the money for the gift.",
         "answer": "me",
+        "type": "fill_blank",
         "explanation": "Indirect object before direct object."
       },
       {
-        "id": "i76",
-        "type": "fill_blank",
-        "question": "___ finished, she went home.",
+        "id": "i47",
+        "question": "___ all the work finished, she went home.",
         "answer": "Having",
-        "explanation": "Participle clause for sequence."
+        "type": "fill_blank",
+        "explanation": "Perfect participle shows prior action."
       },
       {
-        "id": "i80",
-        "type": "fill_blank",
-        "question": "Paris, ___ capital of France, is beautiful.",
+        "id": "i48",
+        "question": "Paris, ___ capital of France, is called the City of Light.",
         "answer": "the",
-        "explanation": "Appositive provides additional info."
+        "type": "fill_blank",
+        "explanation": "Appositive phrase needs article."
       },
       {
-        "id": "i84",
-        "type": "fill_blank",
-        "question": "He ___ the bucket last year.",
+        "id": "i49",
+        "question": "The old man ___ the bucket last night. (idiom: died)",
         "answer": "kicked",
-        "explanation": "Idiomatic expression."
+        "type": "fill_blank",
+        "explanation": "'Kick the bucket' = to die."
       },
       {
-        "id": "i88",
+        "id": "i50",
+        "question": "She is very ___ about her upcoming birthday party.",
+        "answer": "happy",
         "type": "fill_blank",
-        "question": "She is very ___.",
-        "answer": "joyful",
-        "explanation": "Synonym for happy."
+        "explanation": "Synonym for excited/happy."
       },
       {
-        "id": "i92",
-        "type": "fill_blank",
-        "question": "The room is ___.",
+        "id": "i51",
+        "question": "The room is quite ___ compared to the main hall.",
         "answer": "small",
-        "explanation": "Antonym for big."
+        "type": "fill_blank",
+        "explanation": "Antonym for big/large."
       },
       {
-        "id": "i96",
-        "type": "fill_blank",
-        "question": "___ shall not perish.",
+        "id": "i52",
+        "question": "___ shall not perish from this world. (famous quote)",
         "answer": "We",
-        "explanation": "Anaphora in famous speech."
+        "type": "fill_blank",
+        "explanation": "From 'We shall not perish' (Gettysburg Address)."
       },
       {
-        "id": "i100",
+        "id": "i53",
+        "question": "Live simply so that others may ___ simply. (Gandhi quote)",
+        "answer": "live",
         "type": "fill_blank",
-        "question": "Live simply so that others may ___.",
-        "answer": "simply live",
-        "explanation": "Chiasmus for emphasis."
+        "explanation": "Chiasmus: live simply so others may live."
       }
     ],
     "error_identification": [
       {
-        "id": "i3",
-        "type": "error_identification",
-        "question": "Identify the error: He don't like apples.",
+        "id": "i54",
+        "question": "Identify the error in: 'He don't like apples because they're sour.'",
         "answer": "don't",
-        "explanation": "Third person singular uses 'doesn't'."
+        "explanation": "Third person singular 'he' should use 'doesn't'.",
+        "clue": "He doesn't, not he don't"
       },
       {
-        "id": "i7",
-        "type": "error_identification",
-        "question": "Identify the error: She have a car.",
+        "id": "i55",
+        "question": "Identify the error in: 'She have a new car that she bought yesterday.'",
         "answer": "have",
-        "explanation": "Third person singular uses 'has'."
+        "explanation": "Third person singular 'she' should use 'has'.",
+        "clue": "She has, not she have"
       },
       {
-        "id": "i13",
-        "type": "error_identification",
-        "question": "Identify the error: I have saw the movie.",
+        "id": "i56",
+        "question": "Identify the error in: 'I have saw that movie three times.'",
         "answer": "saw",
-        "explanation": "Use past participle 'seen'."
-      },
-      {
-        "id": "i17",
-        "type": "error_identification",
-        "question": "Identify the error: She has went home.",
-        "answer": "went",
-        "explanation": "Use past participle 'gone'."
-      },
-      {
-        "id": "i21",
-        "type": "error_identification",
-        "question": "Identify the error: He will goes tomorrow.",
-        "answer": "goes",
-        "explanation": "Base form after 'will'."
-      },
-      {
-        "id": "i25",
-        "type": "error_identification",
-        "question": "Identify the error: The letter was wrote by him.",
-        "answer": "wrote",
-        "explanation": "Past participle of 'write' is 'written'."
-      },
-      {
-        "id": "i29",
-        "type": "error_identification",
-        "question": "Identify the error: If he comes, I will go.",
-        "answer": "None",
-        "explanation": "First conditional is correct for real future."
-      },
-      {
-        "id": "i37",
-        "type": "error_identification",
-        "question": "Identify the error: He decided to study.",
-        "answer": "None",
-        "explanation": "Infinitive after 'decided' is correct."
-      },
-      {
-        "id": "i41",
-        "type": "error_identification",
-        "question": "Identify the error: He was eat dinner.",
-        "answer": "eat",
-        "explanation": "Use 'eating' in past continuous."
-      },
-      {
-        "id": "i45",
-        "type": "error_identification",
-        "question": "Identify the error: She will have finish by then.",
-        "answer": "finish",
-        "explanation": "Use past participle 'finished'."
-      },
-      {
-        "id": "i49",
-        "type": "error_identification",
-        "question": "Identify the error: It's necessary that he comes.",
-        "answer": "comes",
-        "explanation": "Use base form 'come' in subjunctive."
-      },
-      {
-        "id": "i53",
-        "type": "error_identification",
-        "question": "Identify the error: He said that he is tired.",
-        "answer": "is",
-        "explanation": "Backshift to 'was'."
+        "explanation": "Present perfect needs past participle 'seen'.",
+        "clue": "Have seen, not have saw"
       },
       {
         "id": "i57",
-        "type": "error_identification",
-        "question": "Identify the error: She got her car repair.",
-        "answer": "repair",
-        "explanation": "Use past participle 'repaired'."
+        "question": "Identify the error in: 'She has went to the market already.'",
+        "answer": "went",
+        "explanation": "Present perfect needs past participle 'gone'.",
+        "clue": "Has gone, not has went"
+      },
+      {
+        "id": "i58",
+        "question": "Identify the error in: 'He will goes to school tomorrow morning.'",
+        "answer": "goes",
+        "explanation": "After modal 'will', use base form 'go'.",
+        "clue": "Will go, not will goes"
+      },
+      {
+        "id": "i59",
+        "question": "Identify the error in: 'The letter was wrote by the famous author.'",
+        "answer": "wrote",
+        "explanation": "Passive voice needs past participle 'written'.",
+        "clue": "Was written, not was wrote"
+      },
+      {
+        "id": "i60",
+        "question": "Identify the error in: 'If he comes, I will go to the party.'",
+        "answer": "None",
+        "explanation": "First conditional is correct for real future.",
+        "clue": "This is correct!"
       },
       {
         "id": "i61",
-        "type": "error_identification",
-        "question": "Identify the error: He looked up the word.",
+        "question": "Identify the error in: 'He decided to study medicine at university.'",
         "answer": "None",
-        "explanation": "'Look up' means search in dictionary."
+        "explanation": "Infinitive after 'decided' is correct.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i62",
+        "question": "Identify the error in: 'He was eat dinner when the guests arrived.'",
+        "answer": "eat",
+        "explanation": "Past continuous needs 'eating'.",
+        "clue": "Was eating, not was eat"
+      },
+      {
+        "id": "i63",
+        "question": "Identify the error in: 'She will have finish the report by Friday.'",
+        "answer": "finish",
+        "explanation": "Future perfect needs past participle 'finished'.",
+        "clue": "Will have finished, not will have finish"
+      },
+      {
+        "id": "i64",
+        "question": "Identify the error in: 'It's necessary that he comes on time.'",
+        "answer": "comes",
+        "explanation": "Subjunctive needs base form 'come'.",
+        "clue": "That he come, not that he comes"
       },
       {
         "id": "i65",
-        "type": "error_identification",
-        "question": "Identify the error: He can sings well.",
+        "question": "Identify the error in: 'He said that he is very tired after work.'",
+        "answer": "is",
+        "explanation": "Reported speech needs tense backshift: 'was'.",
+        "clue": "Said he was, not said he is"
+      },
+      {
+        "id": "i66",
+        "question": "Identify the error in: 'She got her car repair at the garage.'",
+        "answer": "repair",
+        "explanation": "Causative needs past participle 'repaired'.",
+        "clue": "Got car repaired, not got car repair"
+      },
+      {
+        "id": "i67",
+        "question": "Identify the error in: 'He looked up the word in the dictionary.'",
+        "answer": "None",
+        "explanation": "'Look up' is correct phrasal verb.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i68",
+        "question": "Identify the error in: 'He can sings very well at the concert.'",
         "answer": "sings",
-        "explanation": "Base form after modal 'can'."
+        "explanation": "After modal 'can', use base form 'sing'.",
+        "clue": "Can sing, not can sings"
       },
       {
         "id": "i69",
-        "type": "error_identification",
-        "question": "Identify the error: The book which I read was good.",
+        "question": "Identify the error in: 'The book which I read was very interesting.'",
         "answer": "None",
-        "explanation": "'Which' for non-restrictive clauses."
+        "explanation": "This is correct grammar.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i70",
+        "question": "Identify the error in: 'She told I the story about her childhood.'",
+        "answer": "I",
+        "explanation": "Object pronoun 'me' instead of 'I'.",
+        "clue": "Told me, not told I"
+      },
+      {
+        "id": "i71",
+        "question": "Identify the error in: 'Eating dinner, he watched TV shows.'",
+        "answer": "None",
+        "explanation": "Participle phrase is correct.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i72",
+        "question": "Identify the error in: 'He is a teacher, which is a noble profession.'",
+        "answer": "None",
+        "explanation": "Non-restrictive clause is correct.",
+        "clue": "This is correct!"
       },
       {
         "id": "i73",
-        "type": "error_identification",
-        "question": "Identify the error: She told I the story.",
-        "answer": "I",
-        "explanation": "Use object pronoun 'me'."
+        "question": "Identify the error in: 'She spilled the beans about the surprise party.'",
+        "answer": "None",
+        "explanation": "'Spill the beans' is correct idiom.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i74",
+        "question": "Identify the error in: 'He is very glad about his achievement.'",
+        "answer": "None",
+        "explanation": "This is correct grammar.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i75",
+        "question": "Identify the error in: 'It is tiny compared to the elephant.'",
+        "answer": "None",
+        "explanation": "This is correct grammar.",
+        "clue": "This is correct!"
+      },
+      {
+        "id": "i76",
+        "question": "Identify the error in: 'To be or not to be, that is the question.'",
+        "answer": "None",
+        "explanation": "This is correct from Shakespeare's Hamlet.",
+        "clue": "This is correct!"
       },
       {
         "id": "i77",
-        "type": "error_identification",
-        "question": "Identify the error: Eating dinner, he watched TV.",
+        "question": "Identify the error in: 'She sells seashells by the seashore.'",
         "answer": "None",
-        "explanation": "Present participle for simultaneous action."
-      },
-      {
-        "id": "i81",
-        "type": "error_identification",
-        "question": "Identify the error: He is a teacher, which is interesting.",
-        "answer": "None",
-        "explanation": "Non-restrictive relative clause."
-      },
-      {
-        "id": "i85",
-        "type": "error_identification",
-        "question": "Identify the error: She spilled the beans.",
-        "answer": "None",
-        "explanation": "Idiom for revealing a secret."
-      },
-      {
-        "id": "i89",
-        "type": "error_identification",
-        "question": "Identify the error: He is very glad.",
-        "answer": "None",
-        "explanation": "Correct synonym usage."
-      },
-      {
-        "id": "i93",
-        "type": "error_identification",
-        "question": "Identify the error: It is tiny.",
-        "answer": "None",
-        "explanation": "Correct antonym usage."
-      },
-      {
-        "id": "i97",
-        "type": "error_identification",
-        "question": "Identify the error: To be or not to be.",
-        "answer": "None",
-        "explanation": "Anaphora in Hamlet."
-      },
-      {
-        "id": "i101",
-        "type": "error_identification",
-        "question": "Identify the error: She sells seashells by the seashore.",
-        "answer": "None",
-        "explanation": "Alliteration in tongue twister."
+        "explanation": "This is correct tongue twister.",
+        "clue": "This is correct!"
       }
     ],
     "sentence_completion": [
       {
-        "id": "i4",
-        "type": "sentence_completion",
-        "question": "Complete: I have been waiting ___ an hour.",
+        "id": "i78",
+        "question": "Complete: I have been waiting ___ an hour for the bus.",
         "answer": "for",
-        "explanation": "'For' with duration of time."
+        "explanation": "'For' shows duration of time."
       },
       {
-        "id": "i8",
-        "type": "sentence_completion",
-        "question": "Complete: He is good ___ math.",
+        "id": "i79",
+        "question": "Complete: He is very good ___ math and science.",
         "answer": "at",
-        "explanation": "'At' for skills or subjects."
+        "explanation": "'Good at' is the correct phrase."
       },
       {
-        "id": "i14",
-        "type": "sentence_completion",
-        "question": "Complete: He is interested ___ music.",
+        "id": "i80",
+        "question": "Complete: He is very interested ___ learning new languages.",
         "answer": "in",
-        "explanation": "'In' for interests."
+        "explanation": "'Interested in' is the correct phrase."
       },
       {
-        "id": "i18",
-        "type": "sentence_completion",
-        "question": "Complete: They are afraid ___ spiders.",
+        "id": "i81",
+        "question": "Complete: They are very afraid ___ spiders and snakes.",
         "answer": "of",
-        "explanation": "'Of' after 'afraid'."
+        "explanation": "'Afraid of' is the correct phrase."
       },
       {
-        "id": "i22",
-        "type": "sentence_completion",
-        "question": "Complete: She is famous ___ her singing.",
+        "id": "i82",
+        "question": "Complete: She is very famous ___ her beautiful paintings.",
         "answer": "for",
-        "explanation": "'For' with fame/reason."
+        "explanation": "'Famous for' is the correct phrase."
       },
       {
-        "id": "i26",
-        "type": "sentence_completion",
-        "question": "Complete: He is responsible ___ the project.",
+        "id": "i83",
+        "question": "Complete: He is very responsible ___ completing his assignments on time.",
         "answer": "for",
-        "explanation": "'For' after 'responsible'."
+        "explanation": "'Responsible for' is the correct phrase."
       },
       {
-        "id": "i30",
-        "type": "sentence_completion",
-        "question": "Complete: We are looking ___ the keys.",
+        "id": "i84",
+        "question": "Complete: We are looking ___ our keys everywhere.",
         "answer": "for",
         "explanation": "'Look for' means search."
       },
       {
-        "id": "i34",
-        "type": "sentence_completion",
-        "question": "Complete: She is bad ___ cooking.",
+        "id": "i85",
+        "question": "Complete: She is very bad ___ cooking, so she orders food.",
         "answer": "at",
-        "explanation": "'At' for abilities."
+        "explanation": "'Bad at' is the correct phrase."
       },
       {
-        "id": "i38",
-        "type": "sentence_completion",
-        "question": "Complete: They agreed ___ the plan.",
+        "id": "i86",
+        "question": "Complete: They agreed ___ the plan proposed by the manager.",
         "answer": "to",
         "explanation": "'Agree to' means consent."
       },
       {
-        "id": "i42",
-        "type": "sentence_completion",
-        "question": "Complete: I am tired ___ working.",
+        "id": "i87",
+        "question": "Complete: I am tired ___ working overtime every day.",
         "answer": "of",
         "explanation": "'Tired of' means bored with."
       },
       {
-        "id": "i46",
-        "type": "sentence_completion",
-        "question": "Complete: He is capable ___ doing it.",
+        "id": "i88",
+        "question": "Complete: He is very capable ___ handling difficult situations.",
         "answer": "of",
-        "explanation": "'Capable of' + gerund."
+        "explanation": "'Capable of' is the correct phrase."
       },
       {
-        "id": "i50",
-        "type": "sentence_completion",
-        "question": "Complete: She apologized ___ being late.",
+        "id": "i89",
+        "question": "Complete: She apologized ___ being late to the meeting.",
         "answer": "for",
-        "explanation": "'Apologize for' + gerund."
-      },
-      {
-        "id": "i54",
-        "type": "sentence_completion",
-        "question": "Complete: I am excited ___ the trip.",
-        "answer": "about",
-        "explanation": "'Excited about' something."
-      },
-      {
-        "id": "i58",
-        "type": "sentence_completion",
-        "question": "Complete: He succeeded ___ his efforts.",
-        "answer": "in",
-        "explanation": "'Succeed in' + gerund."
-      },
-      {
-        "id": "i62",
-        "type": "sentence_completion",
-        "question": "Complete: She is allergic ___ nuts.",
-        "answer": "to",
-        "explanation": "'Allergic to' something."
-      },
-      {
-        "id": "i66",
-        "type": "sentence_completion",
-        "question": "Complete: We are waiting ___ the bus.",
-        "answer": "for",
-        "explanation": "'Wait for' something."
-      },
-      {
-        "id": "i70",
-        "type": "sentence_completion",
-        "question": "Complete: He is addicted ___ coffee.",
-        "answer": "to",
-        "explanation": "'Addicted to' something."
-      },
-      {
-        "id": "i74",
-        "type": "sentence_completion",
-        "question": "Complete: She complained ___ the noise.",
-        "answer": "about",
-        "explanation": "'Complain about' something."
-      },
-      {
-        "id": "i78",
-        "type": "sentence_completion",
-        "question": "Complete: They arrived ___ the station.",
-        "answer": "at",
-        "explanation": "'Arrive at' a place."
-      },
-      {
-        "id": "i82",
-        "type": "sentence_completion",
-        "question": "Complete: He depends ___ his parents.",
-        "answer": "on",
-        "explanation": "'Depend on' someone."
-      },
-      {
-        "id": "i86",
-        "type": "sentence_completion",
-        "question": "Complete: She is famous ___ her art.",
-        "answer": "for",
-        "explanation": "'Famous for' something."
+        "explanation": "'Apologize for' is the correct phrase."
       },
       {
         "id": "i90",
-        "type": "sentence_completion",
-        "question": "Complete: We are looking ___ the future.",
+        "question": "Complete: I am very excited ___ the concert next week.",
+        "answer": "about",
+        "explanation": "'Excited about' is the correct phrase."
+      },
+      {
+        "id": "i91",
+        "question": "Complete: He succeeded ___ his efforts after many years of hard work.",
+        "answer": "in",
+        "explanation": "'Succeed in' is the correct phrase."
+      },
+      {
+        "id": "i92",
+        "question": "Complete: She is allergic ___ nuts and dairy products.",
         "answer": "to",
-        "explanation": "'Look to' the future."
+        "explanation": "'Allergic to' is the correct phrase."
+      },
+      {
+        "id": "i93",
+        "question": "Complete: We are waiting ___ the bus at the bus stop.",
+        "answer": "for",
+        "explanation": "'Wait for' is the correct phrase."
       },
       {
         "id": "i94",
-        "type": "sentence_completion",
-        "question": "Complete: He is married ___ his job.",
+        "question": "Complete: He is addicted ___ coffee and drinks it every day.",
         "answer": "to",
-        "explanation": "Idiom for dedicated."
+        "explanation": "'Addicted to' is the correct phrase."
+      },
+      {
+        "id": "i95",
+        "question": "Complete: She complained ___ the noise from the construction.",
+        "answer": "about",
+        "explanation": "'Complain about' is the correct phrase."
+      },
+      {
+        "id": "i96",
+        "question": "Complete: They arrived ___ the station just in time for the train.",
+        "answer": "at",
+        "explanation": "'Arrive at' for specific places."
+      },
+      {
+        "id": "i97",
+        "question": "Complete: He depends ___ his parents for financial support.",
+        "answer": "on",
+        "explanation": "'Depend on' is the correct phrase."
       },
       {
         "id": "i98",
-        "type": "sentence_completion",
-        "question": "Complete: She apologized ___ her mistake.",
+        "question": "Complete: She is famous ___ her contributions to science.",
         "answer": "for",
-        "explanation": "'Apologize for' something."
+        "explanation": "'Famous for' is the correct phrase."
+      },
+      {
+        "id": "i99",
+        "question": "Complete: We are looking forward ___ the weekend.",
+        "answer": "to",
+        "explanation": "'Look forward to' is the correct phrase."
+      },
+      {
+        "id": "i100",
+        "question": "Complete: He is married ___ his work and spends long hours at the office.",
+        "answer": "to",
+        "explanation": "'Married to' is the correct phrase."
+      },
+      {
+        "id": "i101",
+        "question": "Complete: She apologized ___ her mistake in the report.",
+        "answer": "for",
+        "explanation": "'Apologize for' is the correct phrase."
       },
       {
         "id": "i102",
-        "type": "sentence_completion",
-        "question": "Complete: They are responsible ___ the project.",
+        "question": "Complete: They are responsible ___ the success of the project.",
         "answer": "for",
-        "explanation": "'Responsible for' something."
+        "explanation": "'Responsible for' is the correct phrase."
       }
     ]
   },
@@ -1086,749 +1095,775 @@
     "multiple_choice": [
       {
         "id": "a1",
+        "question": "By the time she arrived at the party, he ___ already ___ home.",
+        "options": ["has...gone", "had...gone", "have...gone", "was...going"],
+        "answer": "had...gone",
         "type": "multiple_choice",
-        "question": "By the time she arrived, he ___ left.",
-        "options": ["has", "had", "have"],
-        "answer": "had",
-        "explanation": "Past perfect 'had left'."
+        "explanation": "Past perfect for action completed before another past action.",
+        "clue": "Had gone (before she arrived)"
+      },
+      {
+        "id": "a2",
+        "question": "Identify the error: 'If I was you, I would study harder for the exam.'",
+        "options": ["was", "were", "is", "am"],
+        "answer": "was",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive 'were' instead of 'was' for unreal conditions.",
+        "clue": "If I were you (subjunctive)"
+      },
+      {
+        "id": "a3",
+        "question": "She would have ___ the opportunity if she had known about it.",
+        "options": ["take", "took", "taken", "taking"],
+        "answer": "taken",
+        "type": "multiple_choice",
+        "explanation": "Third conditional uses past participle.",
+        "clue": "Would have taken"
+      },
+      {
+        "id": "a4",
+        "question": "He ___ the book before the movie adaptation came out.",
+        "options": ["has read", "had read", "have read", "reading"],
+        "answer": "had read",
+        "type": "multiple_choice",
+        "explanation": "Past perfect for action before another past action.",
+        "clue": "Had read (before movie)"
       },
       {
         "id": "a5",
+        "question": "They ___ to the party if they had received the invitation.",
+        "options": ["will go", "would go", "went", "going"],
+        "answer": "would go",
         "type": "multiple_choice",
-        "question": "Identify the error: 'If I was you, I would study.'",
-        "options": ["was", "were", "is"],
-        "answer": "was",
-        "explanation": "Subjunctive 'were' instead of 'was'."
+        "explanation": "Second conditional for unreal past.",
+        "clue": "Would go (if they had received)"
+      },
+      {
+        "id": "a6",
+        "question": "If he ___ harder, he would have passed the difficult exam.",
+        "options": ["has studied", "had studied", "studied", "study"],
+        "answer": "had studied",
+        "type": "multiple_choice",
+        "explanation": "Third conditional: had studied + would have passed.",
+        "clue": "Had studied (third conditional)"
+      },
+      {
+        "id": "a7",
+        "question": "She wishes she ___ the answer to that difficult question.",
+        "options": ["know", "knew", "knowing", "known"],
+        "answer": "knew",
+        "type": "multiple_choice",
+        "explanation": "Wish + past subjunctive for unreal present.",
+        "clue": "Wishes she knew (subjunctive)"
+      },
+      {
+        "id": "a8",
+        "question": "By next year, I ___ here for ten years.",
+        "options": ["will have lived", "will live", "have lived", "living"],
+        "answer": "will have lived",
+        "type": "multiple_choice",
+        "explanation": "Future perfect for action completed before future time.",
+        "clue": "Will have lived (by next year)"
       },
       {
         "id": "a9",
+        "question": "He acted as if he ___ the owner of the company.",
+        "options": ["is", "was", "were", "be"],
+        "answer": "were",
         "type": "multiple_choice",
-        "question": "She would have ___ if she had known.",
-        "options": ["come", "came", "comes"],
-        "answer": "come",
-        "explanation": "Third conditional uses past participle 'come'."
+        "explanation": "Subjunctive 'were' after 'as if'.",
+        "clue": "As if he were (subjunctive)"
+      },
+      {
+        "id": "a10",
+        "question": "I would rather you ___ smoking for your health.",
+        "options": ["stop", "stopped", "stopping", "stops"],
+        "answer": "stopped",
+        "type": "multiple_choice",
+        "explanation": "'Would rather' takes past subjunctive.",
+        "clue": "Would rather you stopped"
       },
       {
         "id": "a11",
+        "question": "It's high time we ___ the meeting and make a decision.",
+        "options": ["start", "started", "starting", "starts"],
+        "answer": "started",
         "type": "multiple_choice",
-        "question": "He ___ the book before the movie.",
-        "options": ["has read", "had read", "read"],
-        "answer": "had read",
-        "explanation": "Past perfect 'had read'."
+        "explanation": "'It's high time' takes past subjunctive.",
+        "clue": "It's high time we started"
+      },
+      {
+        "id": "a12",
+        "question": "She suggested that he ___ early to avoid traffic.",
+        "options": ["leaves", "leave", "left", "leaving"],
+        "answer": "leave",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive: base form after 'suggested that'.",
+        "clue": "Suggested that he leave"
+      },
+      {
+        "id": "a13",
+        "question": "If only I ___ what to do in this situation.",
+        "options": ["know", "knew", "knowing", "known"],
+        "answer": "knew",
+        "type": "multiple_choice",
+        "explanation": "'If only' takes past subjunctive.",
+        "clue": "If only I knew (subjunctive)"
+      },
+      {
+        "id": "a14",
+        "question": "They demanded that the rules ___ changed immediately.",
+        "options": ["is", "are", "be", "were"],
+        "answer": "be",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive: base form after 'demanded that'.",
+        "clue": "Demanded that rules be changed"
       },
       {
         "id": "a15",
+        "question": "He talks as though he ___ everything about science.",
+        "options": ["know", "knew", "knowing", "known"],
+        "answer": "knew",
         "type": "multiple_choice",
-        "question": "They ___ to the party if invited.",
-        "options": ["will go", "would go", "went"],
-        "answer": "would go",
-        "explanation": "Second conditional 'would go'."
+        "explanation": "'As if/as though' takes subjunctive.",
+        "clue": "As though he knew (subjunctive)"
+      },
+      {
+        "id": "a16",
+        "question": "___ I known about the problem, I would have helped you.",
+        "options": ["Have", "Had", "Has", "Having"],
+        "answer": "Had",
+        "type": "multiple_choice",
+        "explanation": "Inverted third conditional.",
+        "clue": "Had I known = If I had known"
+      },
+      {
+        "id": "a17",
+        "question": "She behaves as if she ___ the richest person in town.",
+        "options": ["is", "was", "were", "be"],
+        "answer": "were",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive 'were' after 'as if'.",
+        "clue": "As if she were (subjunctive)"
+      },
+      {
+        "id": "a18",
+        "question": "It's essential that she ___ on time for the important meeting.",
+        "options": ["is", "was", "be", "being"],
+        "answer": "be",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive: base form after 'essential that'.",
+        "clue": "Essential that she be"
       },
       {
         "id": "a19",
+        "question": "If I ___ you, I would apologize for my mistake.",
+        "options": ["am", "were", "was", "be"],
+        "answer": "were",
         "type": "multiple_choice",
-        "question": "If he ___ harder, he would have passed.",
-        "options": ["has studied", "had studied", "studied"],
-        "answer": "had studied",
-        "explanation": "Third conditional 'had studied'."
+        "explanation": "Subjunctive 'were' for unreal conditions.",
+        "clue": "If I were you (subjunctive)"
+      },
+      {
+        "id": "a20",
+        "question": "He spoke as if he ___ the president of the company.",
+        "options": ["is", "was", "were", "be"],
+        "answer": "were",
+        "type": "multiple_choice",
+        "explanation": "Subjunctive 'were' after 'as if'.",
+        "clue": "As if he were (subjunctive)"
+      },
+      {
+        "id": "a21",
+        "question": "I wish I ___ taller so I could play basketball.",
+        "options": ["am", "were", "was", "be"],
+        "answer": "were",
+        "type": "multiple_choice",
+        "explanation": "'Wish' takes past subjunctive for unreal present.",
+        "clue": "I wish I were (subjunctive)"
+      },
+      {
+        "id": "a22",
+        "question": "___ I rich, I would travel around the world.",
+        "options": ["Were", "Was", "Am", "Be"],
+        "answer": "Were",
+        "type": "multiple_choice",
+        "explanation": "Inverted second conditional.",
+        "clue": "Were I rich = If I were rich"
       },
       {
         "id": "a23",
+        "question": "She insisted that he ___ present at the ceremony.",
+        "options": ["is", "was", "be", "been"],
+        "answer": "be",
         "type": "multiple_choice",
-        "question": "She wishes she ___ the answer.",
-        "options": ["know", "knew", "knows"],
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
+        "explanation": "Subjunctive: base form after 'insisted that'.",
+        "clue": "Insisted that he be"
       },
       {
-        "id": "a27",
-        "type": "multiple_choice",
-        "question": "By next year, I ___ here for ten years.",
-        "options": ["will have lived", "will live", "have lived"],
-        "answer": "will have lived",
-        "explanation": "Future perfect 'will have lived'."
-      },
-      {
-        "id": "a31",
-        "type": "multiple_choice",
-        "question": "He acted as if he ___ the boss.",
-        "options": ["was", "were", "is"],
+        "id": "a24",
+        "question": "If only she ___ here now to help us with the problem.",
+        "options": ["is", "was", "were", "be"],
         "answer": "were",
-        "explanation": "Subjunctive 'were'."
+        "type": "multiple_choice",
+        "explanation": "'If only' takes subjunctive.",
+        "clue": "If only she were (subjunctive)"
       },
       {
-        "id": "a35",
-        "type": "multiple_choice",
-        "question": "I would rather you ___ smoking.",
-        "options": ["stop", "stopped", "stopping"],
-        "answer": "stopped",
-        "explanation": "Past subjunctive 'stopped'."
-      },
-      {
-        "id": "a39",
-        "type": "multiple_choice",
-        "question": "It's high time we ___ the meeting.",
-        "options": ["start", "started", "starting"],
-        "answer": "started",
-        "explanation": "Subjunctive 'started'."
-      },
-      {
-        "id": "a43",
-        "type": "multiple_choice",
-        "question": "She suggested that he ___ early.",
-        "options": ["leaves", "leave", "left"],
+        "id": "a25",
+        "question": "He recommended that we ___ early to catch the flight.",
+        "options": ["leave", "leaves", "left", "leaving"],
         "answer": "leave",
-        "explanation": "Subjunctive 'leave'."
+        "type": "multiple_choice",
+        "explanation": "Subjunctive: base form after 'recommended that'.",
+        "clue": "Recommended that we leave"
       },
       {
-        "id": "a47",
-        "type": "multiple_choice",
-        "question": "If only I ___ what to do.",
-        "options": ["know", "knew", "knows"],
+        "id": "a26",
+        "question": "He behaves as if he ___ the correct answer all along.",
+        "options": ["know", "knew", "knowing", "known"],
         "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a51",
         "type": "multiple_choice",
-        "question": "They demanded that the rules ___ changed.",
-        "options": ["is", "are", "be"],
-        "answer": "be",
-        "explanation": "Subjunctive 'be'."
-      },
-      {
-        "id": "a55",
-        "type": "multiple_choice",
-        "question": "He talks as though he ___ everything.",
-        "options": ["know", "knew", "knows"],
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a59",
-        "type": "multiple_choice",
-        "question": "Had I known, I ___ you.",
-        "options": ["will tell", "would tell", "would have told"],
-        "answer": "would have told",
-        "explanation": "Third conditional inverted."
-      },
-      {
-        "id": "a63",
-        "type": "multiple_choice",
-        "question": "She behaves as if she ___ rich.",
-        "options": ["is", "was", "were"],
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a67",
-        "type": "multiple_choice",
-        "question": "It's essential that she ___ on time.",
-        "options": ["be", "is", "was"],
-        "answer": "be",
-        "explanation": "Subjunctive 'be'."
-      },
-      {
-        "id": "a71",
-        "type": "multiple_choice",
-        "question": "If I ___ you, I would apologize.",
-        "options": ["am", "were", "was"],
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a75",
-        "type": "multiple_choice",
-        "question": "He spoke as if he ___ the president.",
-        "options": ["is", "was", "were"],
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a79",
-        "type": "multiple_choice",
-        "question": "I wish I ___ taller.",
-        "options": ["am", "were", "was"],
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a83",
-        "type": "multiple_choice",
-        "question": "Were I rich, I ___ travel.",
-        "options": ["will", "would", "would have"],
-        "answer": "would",
-        "explanation": "Second conditional inverted."
-      },
-      {
-        "id": "a87",
-        "type": "multiple_choice",
-        "question": "She insisted that he ___ present.",
-        "options": ["be", "is", "was"],
-        "answer": "be",
-        "explanation": "Subjunctive 'be'."
-      },
-      {
-        "id": "a91",
-        "type": "multiple_choice",
-        "question": "If only she ___ here now.",
-        "options": ["is", "was", "were"],
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a95",
-        "type": "multiple_choice",
-        "question": "He recommended that we ___ early.",
-        "options": ["leave", "leaves", "left"],
-        "answer": "leave",
-        "explanation": "Subjunctive 'leave'."
-      },
-      {
-        "id": "a99",
-        "type": "multiple_choice",
-        "question": "As if he ___ the answer.",
-        "options": ["know", "knew", "knows"],
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
+        "explanation": "Subjunctive after 'as if'.",
+        "clue": "As if he knew (subjunctive)"
       }
     ],
     "fill_blank": [
       {
-        "id": "a2",
-        "type": "fill_blank",
-        "question": "If I ___ you, I would study harder.",
+        "id": "a27",
+        "question": "If I ___ you, I would study much harder for exams.",
         "answer": "were",
-        "explanation": "Subjunctive 'were' for all subjects."
-      },
-      {
-        "id": "a6",
         "type": "fill_blank",
-        "question": "She wishes she ___ taller.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a10",
-        "type": "fill_blank",
-        "question": "If only I ___ the lottery.",
-        "answer": "won",
-        "explanation": "Past subjunctive 'won'."
-      },
-      {
-        "id": "a12",
-        "type": "fill_blank",
-        "question": "He acts as if he ___ everything.",
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a16",
-        "type": "fill_blank",
-        "question": "I would rather you ___ now.",
-        "answer": "left",
-        "explanation": "Past subjunctive 'left'."
-      },
-      {
-        "id": "a20",
-        "type": "fill_blank",
-        "question": "It's time we ___ the project.",
-        "answer": "started",
-        "explanation": "Subjunctive 'started'."
-      },
-      {
-        "id": "a24",
-        "type": "fill_blank",
-        "question": "She suggested that he ___ his job.",
-        "answer": "quit",
-        "explanation": "Subjunctive base form 'quit'."
+        "explanation": "Subjunctive 'were' for unreal conditions."
       },
       {
         "id": "a28",
+        "question": "She wishes she ___ taller to join the basketball team.",
+        "answer": "were",
         "type": "fill_blank",
-        "question": "If I had known, I ___ you.",
-        "answer": "would have told",
-        "explanation": "Third conditional."
+        "explanation": "'Wish' takes subjunctive."
+      },
+      {
+        "id": "a29",
+        "question": "If only I ___ the lottery jackpot last week.",
+        "answer": "won",
+        "type": "fill_blank",
+        "explanation": "Past subjunctive for unreal past."
+      },
+      {
+        "id": "a30",
+        "question": "He acts as if he ___ everything about this subject.",
+        "answer": "knew",
+        "type": "fill_blank",
+        "explanation": "'As if' takes subjunctive."
+      },
+      {
+        "id": "a31",
+        "question": "I would rather you ___ now instead of waiting.",
+        "answer": "left",
+        "type": "fill_blank",
+        "explanation": "'Would rather' takes past subjunctive."
       },
       {
         "id": "a32",
+        "question": "It's time we ___ this project and present our findings.",
+        "answer": "started",
         "type": "fill_blank",
-        "question": "He behaves as if he ___ the boss.",
+        "explanation": "'It's time' takes past subjunctive."
+      },
+      {
+        "id": "a33",
+        "question": "She suggested that he ___ his job and find a better one.",
+        "answer": "quit",
+        "type": "fill_blank",
+        "explanation": "Subjunctive: base form after 'suggested that'."
+      },
+      {
+        "id": "a34",
+        "question": "If I had known about the traffic, I ___ you earlier.",
+        "answer": "would have told",
+        "type": "fill_blank",
+        "explanation": "Third conditional: would have + past participle."
+      },
+      {
+        "id": "a35",
+        "question": "He behaves as if he ___ the boss of this company.",
         "answer": "were",
-        "explanation": "Subjunctive 'were'."
+        "type": "fill_blank",
+        "explanation": "'As if' takes subjunctive 'were'."
       },
       {
         "id": "a36",
-        "type": "fill_blank",
-        "question": "I wish I ___ younger.",
+        "question": "I wish I ___ young again to relive my childhood.",
         "answer": "were",
-        "explanation": "Subjunctive 'were'."
+        "type": "fill_blank",
+        "explanation": "'Wish' takes subjunctive."
+      },
+      {
+        "id": "a37",
+        "question": "___ I you, I would take this great opportunity.",
+        "answer": "Were",
+        "type": "fill_blank",
+        "explanation": "Inverted conditional."
+      },
+      {
+        "id": "a38",
+        "question": "She demanded that the report ___ submitted by Friday.",
+        "answer": "be",
+        "type": "fill_blank",
+        "explanation": "Subjunctive: base form after 'demanded that'."
+      },
+      {
+        "id": "a39",
+        "question": "If only he ___ on time for once in his life.",
+        "answer": "arrived",
+        "type": "fill_blank",
+        "explanation": "'If only' takes past subjunctive."
       },
       {
         "id": "a40",
+        "question": "He spoke as though he ___ the expert in this field.",
+        "answer": "were",
         "type": "fill_blank",
-        "question": "Were I you, I ___ study.",
-        "answer": "would",
-        "explanation": "Second conditional inverted."
+        "explanation": "'As though' takes subjunctive."
+      },
+      {
+        "id": "a41",
+        "question": "It's essential that she ___ the meeting tomorrow.",
+        "answer": "attend",
+        "type": "fill_blank",
+        "explanation": "Subjunctive: base form after 'essential that'."
+      },
+      {
+        "id": "a42",
+        "question": "I would have come to the party if I ___ invited properly.",
+        "answer": "had been",
+        "type": "fill_blank",
+        "explanation": "Third conditional: had + been."
+      },
+      {
+        "id": "a43",
+        "question": "She wishes she ___ the answer when she had the chance.",
+        "answer": "knew",
+        "type": "fill_blank",
+        "explanation": "'Wish' takes past subjunctive."
       },
       {
         "id": "a44",
+        "question": "If I ___ president, I would make many changes.",
+        "answer": "were",
         "type": "fill_blank",
-        "question": "She demanded that the report ___ submitted.",
+        "explanation": "Subjunctive 'were' for unreal condition."
+      },
+      {
+        "id": "a45",
+        "question": "He insisted that we ___ quiet during the examination.",
         "answer": "be",
-        "explanation": "Subjunctive 'be'."
+        "type": "fill_blank",
+        "explanation": "Subjunctive: base form after 'insisted that'."
+      },
+      {
+        "id": "a46",
+        "question": "I wish I ___ there to see the beautiful sunset.",
+        "answer": "were",
+        "type": "fill_blank",
+        "explanation": "'Wish' takes subjunctive."
+      },
+      {
+        "id": "a47",
+        "question": "___ she here, she would definitely help us solve this.",
+        "answer": "Were",
+        "type": "fill_blank",
+        "explanation": "Inverted conditional."
       },
       {
         "id": "a48",
+        "question": "They recommended that he ___ professional help immediately.",
+        "answer": "seek",
         "type": "fill_blank",
-        "question": "If only he ___ on time.",
-        "answer": "arrived",
-        "explanation": "Past subjunctive 'arrived'."
+        "explanation": "Subjunctive: base form after 'recommended that'."
+      },
+      {
+        "id": "a49",
+        "question": "If only I ___ what to say in this difficult moment.",
+        "answer": "knew",
+        "type": "fill_blank",
+        "explanation": "'If only' takes subjunctive."
+      },
+      {
+        "id": "a50",
+        "question": "He talks as if he ___ the secrets of the universe.",
+        "answer": "knew",
+        "type": "fill_blank",
+        "explanation": "'As if' takes subjunctive."
+      },
+      {
+        "id": "a51",
+        "question": "It's high time you ___ your room and organized your things.",
+        "answer": "cleaned",
+        "type": "fill_blank",
+        "explanation": "'It's high time' takes past subjunctive."
       },
       {
         "id": "a52",
+        "question": "If I had studied harder, I ___ the exam easily.",
+        "answer": "would have passed",
         "type": "fill_blank",
-        "question": "He spoke as though he ___ the expert.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a56",
-        "type": "fill_blank",
-        "question": "It's essential that she ___ the meeting.",
-        "answer": "attend",
-        "explanation": "Subjunctive base form 'attend'."
-      },
-      {
-        "id": "a60",
-        "type": "fill_blank",
-        "question": "I would have come if I ___ invited.",
-        "answer": "had been",
-        "explanation": "Third conditional."
-      },
-      {
-        "id": "a64",
-        "type": "fill_blank",
-        "question": "She wishes she ___ the answer.",
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a68",
-        "type": "fill_blank",
-        "question": "If I ___ president, I would change things.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a72",
-        "type": "fill_blank",
-        "question": "He insisted that we ___ quiet.",
-        "answer": "be",
-        "explanation": "Subjunctive 'be'."
-      },
-      {
-        "id": "a76",
-        "type": "fill_blank",
-        "question": "I wish I ___ there.",
-        "answer": "were",
-        "explanation": "Subjunctive 'were'."
-      },
-      {
-        "id": "a80",
-        "type": "fill_blank",
-        "question": "Were she here, she ___ help.",
-        "answer": "would",
-        "explanation": "Second conditional inverted."
-      },
-      {
-        "id": "a84",
-        "type": "fill_blank",
-        "question": "They recommended that he ___ therapy.",
-        "answer": "seek",
-        "explanation": "Subjunctive base form 'seek'."
-      },
-      {
-        "id": "a88",
-        "type": "fill_blank",
-        "question": "If only I ___ what to say.",
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a92",
-        "type": "fill_blank",
-        "question": "He talks as if he ___ everything.",
-        "answer": "knew",
-        "explanation": "Subjunctive 'knew'."
-      },
-      {
-        "id": "a96",
-        "type": "fill_blank",
-        "question": "It's high time you ___ your room.",
-        "answer": "cleaned",
-        "explanation": "Subjunctive 'cleaned'."
-      },
-      {
-        "id": "a100",
-        "type": "fill_blank",
-        "question": "If I had studied, I ___ passed.",
-        "answer": "would have",
-        "explanation": "Third conditional."
+        "explanation": "Third conditional: would have + past participle."
       }
     ],
     "error_identification": [
       {
-        "id": "a3",
-        "type": "error_identification",
-        "question": "Identify the error: If I was you, I would study.",
-        "answer": "was",
-        "explanation": "Use 'were' in subjunctive."
-      },
-      {
-        "id": "a7",
-        "type": "error_identification",
-        "question": "Identify the error: She wishes she can fly.",
-        "answer": "can",
-        "explanation": "Use 'could' in subjunctive."
-      },
-      {
-        "id": "a13",
-        "type": "error_identification",
-        "question": "Identify the error: He acts as if he is the boss.",
-        "answer": "is",
-        "explanation": "Use 'were' in subjunctive."
-      },
-      {
-        "id": "a17",
-        "type": "error_identification",
-        "question": "Identify the error: I would rather you go now.",
-        "answer": "go",
-        "explanation": "Use past form 'went'."
-      },
-      {
-        "id": "a21",
-        "type": "error_identification",
-        "question": "Identify the error: It's time we start the meeting.",
-        "answer": "start",
-        "explanation": "Use past form 'started'."
-      },
-      {
-        "id": "a25",
-        "type": "error_identification",
-        "question": "Identify the error: She suggested that he quits.",
-        "answer": "quits",
-        "explanation": "Use base form 'quit'."
-      },
-      {
-        "id": "a29",
-        "type": "error_identification",
-        "question": "Identify the error: If I had known, I would tell you.",
-        "answer": "would tell",
-        "explanation": "Use 'would have told'."
-      },
-      {
-        "id": "a33",
-        "type": "error_identification",
-        "question": "Identify the error: He behaves as if he was the boss.",
-        "answer": "was",
-        "explanation": "Use 'were' in subjunctive."
-      },
-      {
-        "id": "a37",
-        "type": "error_identification",
-        "question": "Identify the error: I wish I am taller.",
-        "answer": "am",
-        "explanation": "Use 'were' in subjunctive."
-      },
-      {
-        "id": "a41",
-        "type": "error_identification",
-        "question": "Identify the error: Were I you, I will study.",
-        "answer": "will study",
-        "explanation": "Use 'would study'."
-      },
-      {
-        "id": "a45",
-        "type": "error_identification",
-        "question": "Identify the error: She demanded that the report is submitted.",
-        "answer": "is",
-        "explanation": "Use 'be' in subjunctive."
-      },
-      {
-        "id": "a49",
-        "type": "error_identification",
-        "question": "Identify the error: If only he arrives on time.",
-        "answer": "arrives",
-        "explanation": "Use past form 'arrived'."
-      },
-      {
         "id": "a53",
-        "type": "error_identification",
-        "question": "Identify the error: He spoke as though he was the expert.",
+        "question": "Identify the error in: 'If I was you, I would study harder.'",
         "answer": "was",
-        "explanation": "Use 'were' in subjunctive."
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "If I were you"
+      },
+      {
+        "id": "a54",
+        "question": "Identify the error in: 'She wishes she can fly like a bird.'",
+        "answer": "can",
+        "explanation": "Should be 'could' (subjunctive).",
+        "clue": "Wishes she could"
+      },
+      {
+        "id": "a55",
+        "question": "Identify the error in: 'He acts as if he is the boss around here.'",
+        "answer": "is",
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "As if he were"
+      },
+      {
+        "id": "a56",
+        "question": "Identify the error in: 'I would rather you go home now.'",
+        "answer": "go",
+        "explanation": "Should be 'went' (past subjunctive).",
+        "clue": "Would rather you went"
       },
       {
         "id": "a57",
-        "type": "error_identification",
-        "question": "Identify the error: It's essential that she attends the meeting.",
-        "answer": "attends",
-        "explanation": "Use base form 'attend'."
+        "question": "Identify the error in: 'It's time we start the meeting immediately.'",
+        "answer": "start",
+        "explanation": "Should be 'started' (past subjunctive).",
+        "clue": "Time we started"
+      },
+      {
+        "id": "a58",
+        "question": "Identify the error in: 'She suggested that he quits his job.'",
+        "answer": "quits",
+        "explanation": "Should be 'quit' (subjunctive).",
+        "clue": "Suggested that he quit"
+      },
+      {
+        "id": "a59",
+        "question": "Identify the error in: 'If I had known, I would tell you the truth.'",
+        "answer": "would tell",
+        "explanation": "Should be 'would have told' (third conditional).",
+        "clue": "Would have told"
+      },
+      {
+        "id": "a60",
+        "question": "Identify the error in: 'He behaves as if he was the owner of this place.'",
+        "answer": "was",
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "As if he were"
       },
       {
         "id": "a61",
-        "type": "error_identification",
-        "question": "Identify the error: I would have come if I was invited.",
-        "answer": "was",
-        "explanation": "Use 'had been'."
+        "question": "Identify the error in: 'I wish I am taller and stronger.'",
+        "answer": "am",
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "Wish I were"
+      },
+      {
+        "id": "a62",
+        "question": "Identify the error in: 'Were I you, I will study more seriously.'",
+        "answer": "will study",
+        "explanation": "Should be 'would study' (second conditional).",
+        "clue": "Would study"
+      },
+      {
+        "id": "a63",
+        "question": "Identify the error in: 'She demanded that the report is submitted today.'",
+        "answer": "is",
+        "explanation": "Should be 'be' (subjunctive).",
+        "clue": "Report be submitted"
+      },
+      {
+        "id": "a64",
+        "question": "Identify the error in: 'If only he arrives on time for once.'",
+        "answer": "arrives",
+        "explanation": "Should be 'arrived' (past subjunctive).",
+        "clue": "If only he arrived"
       },
       {
         "id": "a65",
-        "type": "error_identification",
-        "question": "Identify the error: She wishes she knows the answer.",
+        "question": "Identify the error in: 'He spoke as though he was the expert here.'",
+        "answer": "was",
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "As though he were"
+      },
+      {
+        "id": "a66",
+        "question": "Identify the error in: 'It's essential that she attends the meeting.'",
+        "answer": "attends",
+        "explanation": "Should be 'attend' (subjunctive).",
+        "clue": "Essential that she attend"
+      },
+      {
+        "id": "a67",
+        "question": "Identify the error in: 'I would have come if I was invited.'",
+        "answer": "was",
+        "explanation": "Should be 'had been' (third conditional).",
+        "clue": "If I had been invited"
+      },
+      {
+        "id": "a68",
+        "question": "Identify the error in: 'She wishes she knows the answer.'",
         "answer": "knows",
-        "explanation": "Use 'knew' in subjunctive."
+        "explanation": "Should be 'knew' (subjunctive).",
+        "clue": "Wishes she knew"
       },
       {
         "id": "a69",
-        "type": "error_identification",
-        "question": "Identify the error: If I am president, I would change things.",
+        "question": "Identify the error in: 'If I am president, I would change many things.'",
         "answer": "am",
-        "explanation": "Use 'were' in subjunctive."
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "If I were president"
+      },
+      {
+        "id": "a70",
+        "question": "Identify the error in: 'He insisted that we are quiet during the test.'",
+        "answer": "are",
+        "explanation": "Should be 'be' (subjunctive).",
+        "clue": "Insisted that we be"
+      },
+      {
+        "id": "a71",
+        "question": "Identify the error in: 'I wish I was there to see it.'",
+        "answer": "was",
+        "explanation": "Should be 'were' (subjunctive).",
+        "clue": "Wish I were"
+      },
+      {
+        "id": "a72",
+        "question": "Identify the error in: 'Were she here, she will help us.'",
+        "answer": "will help",
+        "explanation": "Should be 'would help' (second conditional).",
+        "clue": "Would help"
       },
       {
         "id": "a73",
-        "type": "error_identification",
-        "question": "Identify the error: He insisted that we are quiet.",
-        "answer": "are",
-        "explanation": "Use 'be' in subjunctive."
+        "question": "Identify the error in: 'They recommended that he seeks therapy.'",
+        "answer": "seeks",
+        "explanation": "Should be 'seek' (subjunctive).",
+        "clue": "Recommended that he seek"
+      },
+      {
+        "id": "a74",
+        "question": "Identify the error in: 'If only I know what to say.'",
+        "answer": "know",
+        "explanation": "Should be 'knew' (subjunctive).",
+        "clue": "If only I knew"
+      },
+      {
+        "id": "a75",
+        "question": "Identify the error in: 'He talks as if he knows everything.'",
+        "answer": "knows",
+        "explanation": "Should be 'knew' (subjunctive).",
+        "clue": "As if he knew"
+      },
+      {
+        "id": "a76",
+        "question": "Identify the error in: 'It's high time you clean your room.'",
+        "answer": "clean",
+        "explanation": "Should be 'cleaned' (past subjunctive).",
+        "clue": "High time you cleaned"
       },
       {
         "id": "a77",
-        "type": "error_identification",
-        "question": "Identify the error: I wish I was there.",
-        "answer": "was",
-        "explanation": "Use 'were' in subjunctive."
-      },
-      {
-        "id": "a81",
-        "type": "error_identification",
-        "question": "Identify the error: Were she here, she will help.",
-        "answer": "will help",
-        "explanation": "Use 'would help'."
-      },
-      {
-        "id": "a85",
-        "type": "error_identification",
-        "question": "Identify the error: They recommended that he seeks therapy.",
-        "answer": "seeks",
-        "explanation": "Use base form 'seek'."
-      },
-      {
-        "id": "a89",
-        "type": "error_identification",
-        "question": "Identify the error: If only I know what to say.",
-        "answer": "know",
-        "explanation": "Use 'knew' in subjunctive."
-      },
-      {
-        "id": "a93",
-        "type": "error_identification",
-        "question": "Identify the error: He talks as if he knows everything.",
-        "answer": "knows",
-        "explanation": "Use 'knew' in subjunctive."
-      },
-      {
-        "id": "a97",
-        "type": "error_identification",
-        "question": "Identify the error: It's high time you clean your room.",
-        "answer": "clean",
-        "explanation": "Use past form 'cleaned'."
-      },
-      {
-        "id": "a101",
-        "type": "error_identification",
-        "question": "Identify the error: If I had studied, I would passed.",
+        "question": "Identify the error in: 'If I had studied, I would passed easily.'",
         "answer": "would passed",
-        "explanation": "Use 'would have passed'."
+        "explanation": "Should be 'would have passed' (third conditional).",
+        "clue": "Would have passed"
       }
     ],
     "sentence_completion": [
       {
-        "id": "a4",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She don't like apples. She has two cats.",
-        "answer": "She doesn't like apples. She has two cats.",
-        "explanation": "Correct 'don't' to 'doesn't'."
-      },
-      {
-        "id": "a8",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He go to school every day. He like math.",
-        "answer": "He goes to school every day. He likes math.",
-        "explanation": "Add 'es' to verbs."
-      },
-      {
-        "id": "a14",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: I have eat dinner. I am full now.",
-        "answer": "I have eaten dinner. I am full now.",
-        "explanation": "Use past participle 'eaten'."
-      },
-      {
-        "id": "a18",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She has went home. She is tired.",
-        "answer": "She has gone home. She is tired.",
-        "explanation": "Use past participle 'gone'."
-      },
-      {
-        "id": "a22",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He will goes tomorrow. He is excited.",
-        "answer": "He will go tomorrow. He is excited.",
-        "explanation": "Base form after 'will'."
-      },
-      {
-        "id": "a26",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: The letter was wrote by him. It was long.",
-        "answer": "The letter was written by him. It was long.",
-        "explanation": "Past participle 'written'."
-      },
-      {
-        "id": "a30",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: If he come, I go. We will have fun.",
-        "answer": "If he comes, I will go. We will have fun.",
-        "explanation": "Add 's' and 'will'."
-      },
-      {
-        "id": "a34",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He decided study. He is happy.",
-        "answer": "He decided to study. He is happy.",
-        "explanation": "Add 'to'."
-      },
-      {
-        "id": "a38",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He was eat dinner. He was hungry.",
-        "answer": "He was eating dinner. He was hungry.",
-        "explanation": "Use 'eating'."
-      },
-      {
-        "id": "a42",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She will have finish by then. She is fast.",
-        "answer": "She will have finished by then. She is fast.",
-        "explanation": "Past participle 'finished'."
-      },
-      {
-        "id": "a46",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: It's necessary he come. He is important.",
-        "answer": "It's necessary that he come. He is important.",
-        "explanation": "Add 'that'."
-      },
-      {
-        "id": "a50",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He said he is tired. He went to bed.",
-        "answer": "He said he was tired. He went to bed.",
-        "explanation": "Backshift to past."
-      },
-      {
-        "id": "a54",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She got her car repair. It cost money.",
-        "answer": "She got her car repaired. It cost money.",
-        "explanation": "Past participle 'repaired'."
-      },
-      {
-        "id": "a58",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He looked up the word. He found it.",
-        "answer": "He looked up the word. He found it.",
-        "explanation": "Correct as is."
-      },
-      {
-        "id": "a62",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He can sings well. He is talented.",
-        "answer": "He can sing well. He is talented.",
-        "explanation": "Base form 'sing'."
-      },
-      {
-        "id": "a66",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: The book I read was good. I liked it.",
-        "answer": "The book that I read was good. I liked it.",
-        "explanation": "Add 'that'."
-      },
-      {
-        "id": "a70",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She told I the story. I listened.",
-        "answer": "She told me the story. I listened.",
-        "explanation": "Object pronoun 'me'."
-      },
-      {
-        "id": "a74",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: Eating dinner, he watched TV. He was full.",
-        "answer": "Having eaten dinner, he watched TV. He was full.",
-        "explanation": "Perfect participle."
-      },
-      {
         "id": "a78",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He is a teacher, interesting. He teaches well.",
-        "answer": "He is a teacher, which is interesting. He teaches well.",
-        "explanation": "Add 'which is'."
+        "question": "Correct: 'She don't like apples because they're too sour.'",
+        "answer": "She doesn't like apples because they're too sour.",
+        "explanation": "Third person singular uses 'doesn't'.",
+        "clue": "She doesn't"
+      },
+      {
+        "id": "a79",
+        "question": "Correct: 'He go to school every day and he like math class.'",
+        "answer": "He goes to school every day and he likes math class.",
+        "explanation": "Third person singular verbs add 's'.",
+        "clue": "He goes, he likes"
+      },
+      {
+        "id": "a80",
+        "question": "Correct: 'I have eat dinner already so I'm not hungry.'",
+        "answer": "I have eaten dinner already so I'm not hungry.",
+        "explanation": "Present perfect uses past participle 'eaten'.",
+        "clue": "Have eaten"
+      },
+      {
+        "id": "a81",
+        "question": "Correct: 'She has went home because she felt sick.'",
+        "answer": "She has gone home because she felt sick.",
+        "explanation": "Present perfect uses past participle 'gone'.",
+        "clue": "Has gone"
       },
       {
         "id": "a82",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She spilled the beans. She told the secret.",
-        "answer": "She spilled the beans. She told the secret.",
-        "explanation": "Correct as is."
+        "question": "Correct: 'He will goes to the office tomorrow morning.'",
+        "answer": "He will go to the office tomorrow morning.",
+        "explanation": "Modal 'will' takes base form 'go'.",
+        "clue": "Will go"
+      },
+      {
+        "id": "a83",
+        "question": "Correct: 'The letter was wrote by my grandfather in 1950.'",
+        "answer": "The letter was written by my grandfather in 1950.",
+        "explanation": "Passive voice uses past participle 'written'.",
+        "clue": "Was written"
+      },
+      {
+        "id": "a84",
+        "question": "Correct: 'If he come to the party, I will be very happy.'",
+        "answer": "If he comes to the party, I will be very happy.",
+        "explanation": "First conditional: third person adds 's'.",
+        "clue": "If he comes"
+      },
+      {
+        "id": "a85",
+        "question": "Correct: 'He decided study medicine at the university.'",
+        "answer": "He decided to study medicine at the university.",
+        "explanation": "Infinitive 'to study' after 'decided'.",
+        "clue": "Decided to study"
       },
       {
         "id": "a86",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: He is very glad. He is happy.",
-        "answer": "He is very glad. He is happy.",
-        "explanation": "Correct as is."
+        "question": "Correct: 'He was eat dinner when the guests arrived unexpectedly.'",
+        "answer": "He was eating dinner when the guests arrived unexpectedly.",
+        "explanation": "Past continuous: was/were + -ing.",
+        "clue": "Was eating"
+      },
+      {
+        "id": "a87",
+        "question": "Correct: 'She will have finish the project by next week.'",
+        "answer": "She will have finished the project by next week.",
+        "explanation": "Future perfect: will have + past participle.",
+        "clue": "Will have finished"
+      },
+      {
+        "id": "a88",
+        "question": "Correct: 'It's necessary he come to the meeting on time.'",
+        "answer": "It's necessary that he come to the meeting on time.",
+        "explanation": "Subjunctive needs 'that' + base form.",
+        "clue": "That he come"
+      },
+      {
+        "id": "a89",
+        "question": "Correct: 'He said that he is very tired after the long journey.'",
+        "answer": "He said that he was very tired after the long journey.",
+        "explanation": "Reported speech: tense backshift.",
+        "clue": "Said he was"
       },
       {
         "id": "a90",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: It is tiny. It is small.",
-        "answer": "It is tiny. It is small.",
-        "explanation": "Correct as is."
+        "question": "Correct: 'She got her car repair at the expensive garage.'",
+        "answer": "She got her car repaired at the expensive garage.",
+        "explanation": "Causative: have + object + past participle.",
+        "clue": "Got car repaired"
+      },
+      {
+        "id": "a91",
+        "question": "Identify: 'He looked up the word in the dictionary.'",
+        "answer": "Correct as is",
+        "explanation": "'Look up' is correct phrasal verb meaning to search in dictionary.",
+        "clue": "This is correct"
+      },
+      {
+        "id": "a92",
+        "question": "Correct: 'He can sings beautifully at the karaoke bar.'",
+        "answer": "He can sing beautifully at the karaoke bar.",
+        "explanation": "Modal takes base form 'sing'.",
+        "clue": "Can sing"
+      },
+      {
+        "id": "a93",
+        "question": "Correct: 'The book I read last summer was very interesting.'",
+        "answer": "The book that I read last summer was very interesting.",
+        "explanation": "Relative clause needs 'that' or 'which'.",
+        "clue": "That I read"
       },
       {
         "id": "a94",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: To be or not to be. Hamlet said it.",
-        "answer": "To be or not to be. Hamlet said it.",
-        "explanation": "Correct as is."
+        "question": "Correct: 'She told I the most amazing story about her travels.'",
+        "answer": "She told me the most amazing story about her travels.",
+        "explanation": "Indirect object uses object pronoun 'me'.",
+        "clue": "Told me"
+      },
+      {
+        "id": "a95",
+        "question": "Correct: 'Eat dinner, he watched his favorite TV show.'",
+        "answer": "Having eaten dinner, he watched his favorite TV show.",
+        "explanation": "Perfect participle shows prior action.",
+        "clue": "Having eaten"
+      },
+      {
+        "id": "a96",
+        "question": "Correct: 'He is a teacher, interesting and very knowledgeable.'",
+        "answer": "He is a teacher, which is interesting and very knowledgeable.",
+        "explanation": "Non-restrictive clause needs 'which is'.",
+        "clue": "Which is"
+      },
+      {
+        "id": "a97",
+        "question": "Identify: 'She spilled the beans about the surprise party.'",
+        "answer": "Correct as is",
+        "explanation": "'Spill the beans' is idiom meaning to reveal a secret.",
+        "clue": "This is correct"
       },
       {
         "id": "a98",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: She sells seashells. She is good at it.",
-        "answer": "She sells seashells. She is good at it.",
-        "explanation": "Correct as is."
+        "question": "Identify: 'He is very glad about his achievement.'",
+        "answer": "Correct as is",
+        "explanation": "'Glad' means happy - correct usage.",
+        "clue": "This is correct"
+      },
+      {
+        "id": "a99",
+        "question": "Identify: 'It is tiny compared to the elephant.'",
+        "answer": "Correct as is",
+        "explanation": "'Tiny' means very small - correct usage.",
+        "clue": "This is correct"
+      },
+      {
+        "id": "a100",
+        "question": "Identify: 'To be or not to be, that is the question.'",
+        "answer": "Correct as is",
+        "explanation": "Famous quote from Shakespeare's Hamlet.",
+        "clue": "This is correct"
+      },
+      {
+        "id": "a101",
+        "question": "Identify: 'She sells seashells by the seashore.'",
+        "answer": "Correct as is",
+        "explanation": "This is a famous tongue twister with alliteration.",
+        "clue": "This is correct"
       },
       {
         "id": "a102",
-        "type": "sentence_completion",
-        "question": "Correct the paragraph: Live simply so others may. Gandhi said it.",
-        "answer": "Live simply so that others may simply live. Gandhi said it.",
-        "explanation": "Complete the quote."
+        "question": "Complete: 'Live simply so that others may ___ simply.' (Gandhi quote)",
+        "answer": "live",
+        "explanation": "Chiasmus: live simply so others may live simply.",
+        "clue": "May live"
       }
     ]
   }

@@ -1,0 +1,862 @@
+==========================================
+BEGINNER GRAMMAR QUESTIONS
+==========================================
+
+MULTIPLE CHOICE QUESTIONS:
+
+1. She ___ to school every day.
+   Options: go, goes, gone
+   Answer: goes
+
+2. I ___ happy today.
+   Options: is, are, am
+   Answer: am
+
+3. They ___ eating lunch.
+   Options: is, are, was
+   Answer: are
+
+4. He ___ a doctor.
+   Options: is, are, am
+   Answer: is
+
+5. We ___ playing soccer.
+   Options: is, are, was
+   Answer: are
+
+6. The cat ___ on the mat.
+   Options: is, are, am
+   Answer: is
+
+7. You ___ my best friend.
+   Options: is, are, was
+   Answer: are
+
+8. It ___ raining outside.
+   Options: is, are, am
+   Answer: is
+
+9. My friends ___ coming over.
+   Options: is, are, was
+   Answer: are
+
+10. The book ___ interesting.
+    Options: is, are, am
+    Answer: is
+
+11. Dogs ___ loyal animals.
+    Options: is, are, was
+    Answer: are
+
+12. She ___ singing a song.
+    Options: is, are, am
+    Answer: is
+
+13. We ___ going to the park.
+    Options: is, are, was
+    Answer: are
+
+14. The sun ___ shining brightly.
+    Options: is, are, am
+    Answer: is
+
+15. Birds ___ flying in the sky.
+    Options: is, are, was
+    Answer: are
+
+16. What is the plural of 'child'?
+    Options: Childs, Children, Childes, Childrens
+    Answer: Children
+
+17. What is the past tense of 'eat'?
+    Options: Eated, Ate, Eaten, Eating
+    Answer: Ate
+
+18. What is a pronoun?
+    Options: Action word, Naming word, Describing word, Replacing word
+    Answer: Replacing word
+
+19. What is the comparative of 'big'?
+    Options: Bigger, Biggest, More big, Bigly
+    Answer: Bigger
+
+20. What is the superlative of 'small'?
+    Options: Smaller, Smallest, More small, Smally
+    Answer: Smallest
+
+21. What is a preposition?
+    Options: Action word, Naming word, Describing word, Position word
+    Answer: Position word
+
+------------------------------------------
+FILL IN THE BLANK QUESTIONS:
+
+1. You ___ tall. (present simple)
+   Answer: are
+
+2. It ___ raining. (present continuous)
+   Answer: is
+
+3. She ___ singing. (present continuous)
+   Answer: is
+
+4. I ___ eating. (present continuous)
+   Answer: am
+
+5. They ___ running. (present continuous)
+   Answer: are
+
+6. He ___ sleeping. (present continuous)
+   Answer: is
+
+------------------------------------------
+ERROR IDENTIFICATION QUESTIONS:
+
+1. Identify the error: She have two cats.
+   Error: have (should be "has")
+
+2. Identify the error: I goed to the park.
+   Error: goed (should be "went")
+
+3. Identify the error: They plays football.
+   Error: plays (should be "play")
+
+4. Identify the error: He do his homework.
+   Error: do (should be "does")
+
+5. Identify the error: We was happy.
+   Error: was (should be "were")
+
+6. Identify the error: She goed home.
+   Error: goed (should be "went")
+
+7. Identify the error: I has a dog.
+   Error: has (should be "have")
+
+------------------------------------------
+SENTENCE COMPLETION QUESTIONS:
+
+1. Complete: The sun is ___ the sky.
+   Answer: in
+
+2. Complete: The bird is ___ the tree.
+   Answer: on
+
+3. Complete: The car is ___ the garage.
+   Answer: in
+
+4. Complete: The boy is ___ the door.
+   Answer: at
+
+5. Complete: The girl is ___ the park.
+   Answer: in
+
+6. Complete: The pen is ___ the desk.
+   Answer: on
+
+7. Complete: The dog is ___ the yard.
+   Answer: in
+
+
+==========================================
+INTERMEDIATE GRAMMAR QUESTIONS
+==========================================
+
+MULTIPLE CHOICE QUESTIONS:
+
+1. Which word is a comparative adjective: bigger, big, biggest?
+   Answer: bigger
+
+2. What is the past tense of 'go'?
+   Options: went, gone, going, goes
+   Answer: went
+
+3. Which is a superlative: faster, fast, fastest?
+   Answer: fastest
+
+4. What is the past participle of 'write'?
+   Options: Wrote, Written, Writing, Writes
+   Answer: Written
+
+5. What is the present perfect of 'eat'?
+   Options: Ate, Eaten, Eating, Eats
+   Answer: Eaten
+
+6. What is the future tense of 'be'?
+   Options: Was, Were, Will be, Being
+   Answer: Will be
+
+7. What is the passive voice of 'They build houses'?
+   Options: Houses are built, Houses build, They are building, Houses were built
+   Answer: Houses are built
+
+8. What is the conditional of 'If I have money'?
+   Options: If I had money, If I have had money, If I will have money, If I having money
+   Answer: If I had money
+
+9. What is the gerund of 'run'?
+   Options: Ran, Running, Runs, Runned
+   Answer: Running
+
+10. What is the infinitive of 'to go'?
+    Options: Go, Going, Went, Gone
+    Answer: Go
+
+11. What is the past continuous of 'sing'?
+    Options: Sang, Sung, Singing, Was singing
+    Answer: Was singing
+
+12. What is the future perfect of 'finish'?
+    Options: Will finish, Will have finished, Finishing, Finished
+    Answer: Will have finished
+
+13. What is the subjunctive mood in 'I suggest that he go'?
+    Options: Go, Goes, Going, Went
+    Answer: Go
+
+14. What is reported speech for 'He said, "I am tired."'?
+    Options: He said that he was tired., He said that he is tired., He says that he is tired., He said that he is tired.
+    Answer: He said that he was tired.
+
+15. What is the causative form of 'have' in 'I had my car repaired'?
+    Options: Had, Have, Having, Repaired
+    Answer: Had
+
+16. What is the phrasal verb 'give up'?
+    Options: Give, Up, Give up, Giving
+    Answer: Give up
+
+17. What is the modal verb in 'You should study'?
+    Options: You, Should, Study, Studying
+    Answer: Should
+
+18. What is the relative pronoun in 'The man who lives here'?
+    Options: The, Man, Who, Here
+    Answer: Who
+
+19. What is the indirect object in 'Give me the book'?
+    Options: Give, Me, The book, Book
+    Answer: Me
+
+20. What is the participle in 'Having eaten, he left'?
+    Options: Having, Eaten, He, Left
+    Answer: Having eaten
+
+21. What is the appositive in 'My friend John is here'?
+    Options: My, Friend, John, Here
+    Answer: John
+
+22. What is the idiom 'kick the bucket' mean?
+    Options: Die, Run, Eat, Sleep
+    Answer: Die
+
+23. What is the antonym of 'big'?
+    Options: Small, Large, Huge, Giant
+    Answer: Small
+
+24. What is the synonym of 'happy'?
+    Options: Sad, Joyful, Angry, Tired
+    Answer: Joyful
+
+25. What is the synonym of 'big'?
+    Options: Small, Large, Tiny, Short
+    Answer: Large
+
+26. What is the antonym of 'happy'?
+    Options: Sad, Joyful, Angry, Tired
+    Answer: Sad
+
+27. What is the synonym of 'small'?
+    Options: Tiny, Large, Big, Huge
+    Answer: Tiny
+
+------------------------------------------
+FILL IN THE BLANK QUESTIONS:
+
+1. She is ____ than her sister.
+   Answer: taller
+
+2. If I ___ rich, I would travel.
+   Answer: were
+
+3. They have ___ here for two hours.
+   Answer: been
+
+4. She has ___ the book.
+   Answer: read
+
+5. We have ___ dinner.
+   Answer: eaten
+
+6. I will ___ happy.
+   Answer: be
+
+7. The cake ___ baked by my mother.
+   Answer: is
+
+8. If she ___ here, she would help.
+   Answer: were
+
+9. He enjoys ___ in the park.
+   Answer: running
+
+10. I want ___ home.
+    Answer: to go
+
+11. She ___ singing when I arrived.
+    Answer: was
+
+12. By next year, I ___ my degree.
+    Answer: will have finished
+
+13. I recommend that he ___ the job.
+    Answer: take
+
+14. She told me that she ___ happy.
+    Answer: was
+
+15. I will ___ my hair cut.
+    Answer: have
+
+16. Don't ___ hope.
+    Answer: give up
+
+17. You ___ eat vegetables.
+    Answer: should
+
+18. This is the house ___ I grew up.
+    Answer: that
+
+19. He gave ___ the money.
+    Answer: me
+
+20. ___ finished, she went home.
+    Answer: Having
+
+21. Paris, ___ capital of France, is beautiful.
+    Answer: the
+
+22. He ___ the bucket last year.
+    Answer: kicked
+
+23. She is very ___.
+    Answer: joyful
+
+24. The room is ___.
+    Answer: small
+
+25. ___ shall not perish.
+    Answer: We
+
+26. Live simply so that others may ___.
+    Answer: simply live
+
+------------------------------------------
+ERROR IDENTIFICATION QUESTIONS:
+
+1. Identify the error: He don't like apples.
+   Error: don't (should be "doesn't")
+
+2. Identify the error: She have a car.
+   Error: have (should be "has")
+
+3. Identify the error: I have saw the movie.
+   Error: saw (should be "seen")
+
+4. Identify the error: She has went home.
+   Error: went (should be "gone")
+
+5. Identify the error: He will goes tomorrow.
+   Error: goes (should be "go")
+
+6. Identify the error: The letter was wrote by him.
+   Error: wrote (should be "written")
+
+7. Identify the error: If he comes, I will go.
+   Error: None (Correct!)
+
+8. Identify the error: He decided to study.
+   Error: None (Correct!)
+
+9. Identify the error: He was eat dinner.
+   Error: eat (should be "eating")
+
+10. Identify the error: She will have finish by then.
+    Error: finish (should be "finished")
+
+11. Identify the error: It's necessary that he comes.
+    Error: comes (should be "come")
+
+12. Identify the error: He said that he is tired.
+    Error: is (should be "was")
+
+13. Identify the error: She got her car repair.
+    Error: repair (should be "repaired")
+
+14. Identify the error: He looked up the word.
+    Error: None (Correct!)
+
+15. Identify the error: He can sings well.
+    Error: sings (should be "sing")
+
+16. Identify the error: The book which I read was good.
+    Error: None (Correct!)
+
+17. Identify the error: She told I the story.
+    Error: I (should be "me")
+
+18. Identify the error: Eating dinner, he watched TV.
+    Error: None (Correct!)
+
+19. Identify the error: He is a teacher, which is interesting.
+    Error: None (Correct!)
+
+20. Identify the error: She spilled the beans.
+    Error: None (Correct!)
+
+21. Identify the error: He is very glad.
+    Error: None (Correct!)
+
+22. Identify the error: It is tiny.
+    Error: None (Correct!)
+
+23. Identify the error: To be or not to be.
+    Error: None (Correct!)
+
+24. Identify the error: She sells seashells by the seashore.
+    Error: None (Correct!)
+
+------------------------------------------
+SENTENCE COMPLETION QUESTIONS:
+
+1. Complete: I have been waiting ___ an hour.
+   Answer: for
+
+2. Complete: He is good ___ math.
+   Answer: at
+
+3. Complete: He is interested ___ music.
+   Answer: in
+
+4. Complete: They are afraid ___ spiders.
+   Answer: of
+
+5. Complete: She is famous ___ her singing.
+   Answer: for
+
+6. Complete: He is responsible ___ the project.
+   Answer: for
+
+7. Complete: We are looking ___ the keys.
+   Answer: for
+
+8. Complete: She is bad ___ cooking.
+   Answer: at
+
+9. Complete: They agreed ___ the plan.
+   Answer: to
+
+10. Complete: I am tired ___ working.
+    Answer: of
+
+11. Complete: He is capable ___ doing it.
+    Answer: of
+
+12. Complete: She apologized ___ being late.
+    Answer: for
+
+13. Complete: I am excited ___ the trip.
+    Answer: about
+
+14. Complete: He succeeded ___ his efforts.
+    Answer: in
+
+15. Complete: She is allergic ___ nuts.
+    Answer: to
+
+16. Complete: We are waiting ___ the bus.
+    Answer: for
+
+17. Complete: He is addicted ___ coffee.
+    Answer: to
+
+18. Complete: She complained ___ the noise.
+    Answer: about
+
+19. Complete: They arrived ___ the station.
+    Answer: at
+
+20. Complete: He depends ___ his parents.
+    Answer: on
+
+21. Complete: She is famous ___ her art.
+    Answer: for
+
+22. Complete: We are looking ___ the future.
+    Answer: to
+
+23. Complete: He is married ___ his job.
+    Answer: to
+
+24. Complete: She apologized ___ her mistake.
+    Answer: for
+
+25. Complete: They are responsible ___ the project.
+    Answer: for
+
+
+==========================================
+ADVANCED GRAMMAR QUESTIONS
+==========================================
+
+MULTIPLE CHOICE QUESTIONS:
+
+1. By the time she arrived, he ___ left.
+   Options: has, had, have
+   Answer: had
+
+2. Identify the error: 'If I was you, I would study.'
+   Options: was, were, is
+   Answer: was (should be "were")
+
+3. She would have ___ if she had known.
+   Options: come, came, comes
+   Answer: come
+
+4. He ___ the book before the movie.
+   Options: has read, had read, read
+   Answer: had read
+
+5. They ___ to the party if invited.
+   Options: will go, would go, went
+   Answer: would go
+
+6. If he ___ harder, he would have passed.
+   Options: has studied, had studied, studied
+   Answer: had studied
+
+7. She wishes she ___ the answer.
+   Options: know, knew, knows
+   Answer: knew
+
+8. By next year, I ___ here for ten years.
+   Options: will have lived, will live, have lived
+   Answer: will have lived
+
+9. He acted as if he ___ the boss.
+   Options: was, were, is
+   Answer: were
+
+10. I would rather you ___ smoking.
+    Options: stop, stopped, stopping
+    Answer: stopped
+
+11. It's high time we ___ the meeting.
+    Options: start, started, starting
+    Answer: started
+
+12. She suggested that he ___ early.
+    Options: leaves, leave, left
+    Answer: leave
+
+13. If only I ___ what to do.
+    Options: know, knew, knows
+    Answer: knew
+
+14. They demanded that the rules ___ changed.
+    Options: is, are, be
+    Answer: be
+
+15. He talks as though he ___ everything.
+    Options: know, knew, knows
+    Answer: knew
+
+16. Had I known, I ___ you.
+    Options: will tell, would tell, would have told
+    Answer: would have told
+
+17. She behaves as if she ___ rich.
+    Options: is, was, were
+    Answer: were
+
+18. It's essential that she ___ on time.
+    Options: be, is, was
+    Answer: be
+
+19. If I ___ you, I would apologize.
+    Options: am, were, was
+    Answer: were
+
+20. He spoke as if he ___ the president.
+    Options: is, was, were
+    Answer: were
+
+21. I wish I ___ taller.
+    Options: am, were, was
+    Answer: were
+
+22. Were I rich, I ___ travel.
+    Options: will, would, would have
+    Answer: would
+
+23. She insisted that he ___ present.
+    Options: be, is, was
+    Answer: be
+
+24. If only she ___ here now.
+    Options: is, was, were
+    Answer: were
+
+25. He recommended that we ___ early.
+    Options: leave, leaves, left
+    Answer: leave
+
+26. As if he ___ the answer.
+    Options: know, knew, knows
+    Answer: knew
+
+------------------------------------------
+FILL IN THE BLANK QUESTIONS:
+
+1. If I ___ you, I would study harder.
+   Answer: were
+
+2. She wishes she ___ taller.
+   Answer: were
+
+3. If only I ___ the lottery.
+   Answer: won
+
+4. He acts as if he ___ everything.
+   Answer: knew
+
+5. I would rather you ___ now.
+   Answer: left
+
+6. It's time we ___ the project.
+   Answer: started
+
+7. She suggested that he ___ his job.
+   Answer: quit
+
+8. If I had known, I ___ you.
+   Answer: would have told
+
+9. He behaves as if he ___ the boss.
+   Answer: were
+
+10. I wish I ___ younger.
+    Answer: were
+
+11. Were I you, I ___ study.
+    Answer: would
+
+12. She demanded that the report ___ submitted.
+    Answer: be
+
+13. If only he ___ on time.
+    Answer: arrived
+
+14. He spoke as though he ___ the expert.
+    Answer: were
+
+15. It's essential that she ___ the meeting.
+    Answer: attend
+
+16. I would have come if I ___ invited.
+    Answer: had been
+
+17. She wishes she ___ the answer.
+    Answer: knew
+
+18. If I ___ president, I would change things.
+    Answer: were
+
+19. He insisted that we ___ quiet.
+    Answer: be
+
+20. I wish I ___ there.
+    Answer: were
+
+21. Were she here, she ___ help.
+    Answer: would
+
+22. They recommended that he ___ therapy.
+    Answer: seek
+
+23. If only I ___ what to say.
+    Answer: knew
+
+24. He talks as if he ___ everything.
+    Answer: knew
+
+25. It's high time you ___ your room.
+    Answer: cleaned
+
+26. If I had studied, I ___ passed.
+    Answer: would have
+
+------------------------------------------
+ERROR IDENTIFICATION QUESTIONS:
+
+1. Identify the error: If I was you, I would study.
+   Error: was (should be "were")
+
+2. Identify the error: She wishes she can fly.
+   Error: can (should be "could")
+
+3. Identify the error: He acts as if he is the boss.
+   Error: is (should be "were")
+
+4. Identify the error: I would rather you go now.
+   Error: go (should be "went")
+
+5. Identify the error: It's time we start the meeting.
+   Error: start (should be "started")
+
+6. Identify the error: She suggested that he quits.
+   Error: quits (should be "quit")
+
+7. Identify the error: If I had known, I would tell you.
+   Error: would tell (should be "would have told")
+
+8. Identify the error: He behaves as if he was the boss.
+   Error: was (should be "were")
+
+9. Identify the error: I wish I am taller.
+   Error: am (should be "were")
+
+10. Identify the error: Were I you, I will study.
+    Error: will study (should be "would study")
+
+11. Identify the error: She demanded that the report is submitted.
+    Error: is (should be "be")
+
+12. Identify the error: If only he arrives on time.
+    Error: arrives (should be "arrived")
+
+13. Identify the error: He spoke as though he was the expert.
+    Error: was (should be "were")
+
+14. Identify the error: It's essential that she attends the meeting.
+    Error: attends (should be "attend")
+
+15. Identify the error: I would have come if I was invited.
+    Error: was (should be "had been")
+
+16. Identify the error: She wishes she knows the answer.
+    Error: knows (should be "knew")
+
+17. Identify the error: If I am president, I would change things.
+    Error: am (should be "were")
+
+18. Identify the error: He insisted that we are quiet.
+    Error: are (should be "be")
+
+19. Identify the error: I wish I was there.
+    Error: was (should be "were")
+
+20. Identify the error: Were she here, she will help.
+    Error: will help (should be "would help")
+
+21. Identify the error: They recommended that he seeks therapy.
+    Error: seeks (should be "seek")
+
+22. Identify the error: If only I know what to say.
+    Error: know (should be "knew")
+
+23. Identify the error: He talks as if he knows everything.
+    Error: knows (should be "knew")
+
+24. Identify the error: It's high time you clean your room.
+    Error: clean (should be "cleaned")
+
+25. Identify the error: If I had studied, I would passed.
+    Error: would passed (should be "would have passed")
+
+------------------------------------------
+SENTENCE COMPLETION / PARAGRAPH CORRECTION:
+
+1. Correct: She don't like apples. She has two cats.
+   Answer: She doesn't like apples. She has two cats.
+
+2. Correct: He go to school every day. He like math.
+   Answer: He goes to school every day. He likes math.
+
+3. Correct: I have eat dinner. I am full now.
+   Answer: I have eaten dinner. I am full now.
+
+4. Correct: She has went home. She is tired.
+   Answer: She has gone home. She is tired.
+
+5. Correct: He will goes tomorrow. He is excited.
+   Answer: He will go tomorrow. He is excited.
+
+6. Correct: The letter was wrote by him. It was long.
+   Answer: The letter was written by him. It was long.
+
+7. Correct: If he come, I go. We will have fun.
+   Answer: If he comes, I will go. We will have fun.
+
+8. Correct: He decided study. He is happy.
+   Answer: He decided to study. He is happy.
+
+9. Correct: He was eat dinner. He was hungry.
+   Answer: He was eating dinner. He was hungry.
+
+10. Correct: She will have finish by then. She is fast.
+    Answer: She will have finished by then. She is fast.
+
+11. Correct: It's necessary he come. He is important.
+    Answer: It's necessary that he come. He is important.
+
+12. Correct: He said he is tired. He went to bed.
+    Answer: He said he was tired. He went to bed.
+
+13. Correct: She got her car repair. It cost money.
+    Answer: She got her car repaired. It cost money.
+
+14. Correct: He looked up the word. He found it.
+    Answer: Correct as is
+
+15. Correct: He can sings well. He is talented.
+    Answer: He can sing well. He is talented.
+
+16. Correct: The book I read was good. I liked it.
+    Answer: The book that I read was good. I liked it.
+
+17. Correct: She told I the story. I listened.
+    Answer: She told me the story. I listened.
+
+18. Correct: Eating dinner, he watched TV. He was full.
+    Answer: Having eaten dinner, he watched TV. He was full.
+
+19. Correct: He is a teacher, interesting. He teaches well.
+    Answer: He is a teacher, which is interesting. He teaches well.
+
+20. Correct: She spilled the beans. She told the secret.
+    Answer: Correct as is (Idiom for revealing secret)
+
+21. Correct: He is very glad. He is happy.
+    Answer: Correct as is
+
+22. Correct: It is tiny. It is small.
+    Answer: Correct as is
+
+23. Correct: To be or not to be. Hamlet said it.
+    Answer: Correct as is
+
+24. Correct: She sells seashells. She is good at it.
+    Answer: Correct as is
+
+25. Complete: Live simply so others may. Gandhi said it.
+    Answer: Live simply so that others may simply live.
+
+
+==========================================
+SUMMARY
+==========================================
+BEGINNER: 35 Questions
+INTERMEDIATE: 77 Questions
+ADVANCED: 73 Questions
+TOTAL: 185 Questions

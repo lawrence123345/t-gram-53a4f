@@ -30,6 +30,7 @@ const ModalManager = {
         contentDiv.innerHTML = content;
         modal.style.display = 'flex';
         modal.classList.add('show', type);
+        modal.style.opacity = '1';
         this.addCloseListeners(modal);
         // Push to messages if it's feedback
         if (type !== 'info') {
@@ -56,8 +57,6 @@ const ModalManager = {
             </div>
         `;
         this.showModal(alertId, content, type);
-        // Auto-hide after 3 seconds
-        setTimeout(() => this.hideModal(alertId), 3000);
         // Push to messages
         window.messages.push({ type: type, content: message, timestamp: Date.now() });
     },

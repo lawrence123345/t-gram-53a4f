@@ -1,32 +1,159 @@
 // ===== Global Variables =====
 window.selectedDifficulty = null;
 window.currentUser = null;
-window.users = [
-    {username:"Unknown", email:"CoffeeRain@gmail.com", password:"MoonLight", avatar:"😎"}
-];
 window.auth = null; // This will be set when Firebase is initialized
 window.questions = null;
 window.currentQuestion = null;
 window.gameQuestions = [];
+window.isOnline = navigator.onLine;
 
 // ===== Navigation Update =====
 window.updateNav = function(auth){
   const nav = document.getElementById('nav-links');
+  const navAvatar = document.getElementById('nav-avatar');
   if(auth){
     nav.innerHTML = `<a onclick="window.renderHome()">Home</a>
 <a onclick="window.renderLeaderboard()">Leaderboard</a>
 <a onclick="window.toggleDarkMode()">Dark Mode</a>
 <a onclick="window.logout()">Log Out</a>`;
     window.updateToggleText();
+    navAvatar.style.display = 'block';
   } else {
     nav.innerHTML = `<a onclick="window.renderAbout()">About</a>`;
+    navAvatar.style.display = 'none';
   }
 }
+
+// ===== Back to Home Handler =====
+window.handleBackToHome = function() {
+  // Check if game is in progress
+  const hasMoves = window.board.some(cell => cell !== null);
+  const hasPendingQuestion = window.questionPending;
+
+  if (hasMoves || hasPendingQuestion) {
+    // Show confirmation modal
+    const content = `
+      <div style="text-align: center; padding: 20px;">
+        <h3 style="margin-bottom: 15px; color: #333;">⚠️ Game in Progress</h3>
+        <p style="margin-bottom: 20px; color: #666; line-height: 1.5;">
+          Are you sure you want to return home?<br>
+          <strong>Your progress will be saved.</strong>
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button class="btn btn-small secondary" onclick="window.ModalManager.hideModal('back-home-confirm')" style="padding: 10px 20px;">Cancel</button>
+          <button class="btn btn-small primary" onclick="window.confirmBackToHome()" style="padding: 10px 20px;">Yes, Save & Go Home</button>
+        </div>
+      </div>
+    `;
+    window.ModalManager.showModal('back-home-confirm', content, 'warning');
+  } else {
+    // No game in progress, go directly home
+    window.confirmBackToHome();
+  }
+};
+
+window.confirmBackToHome = function() {
+  // Close any open modals
+  window.ModalManager.hideModal('back-home-confirm');
+  window.ModalManager.hideModal('question-modal');
+
+  // Stop any running timers
+  if (window.timerInterval) {
+    clearInterval(window.timerInterval);
+    window.timerInterval = null;
+  }
+
+  // Save current progress if game was in progress
+  const hasMoves = window.board.some(cell => cell !== null);
+  if (hasMoves) {
+    try {
+      // Save current game state
+      const gameState = {
+        board: window.board,
+        currentPlayer: window.currentPlayer,
+        userScore: window.userScore,
+        opponentScore: window.opponentScore,
+        currentQuestionIndex: window.currentQuestionIndex,
+        selectedDifficulty: window.selectedDifficulty,
+        gameQuestions: window.gameQuestions,
+        allAnswers: window.allAnswers,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('savedGameState', JSON.stringify(gameState));
+      console.log('Game progress saved');
+    } catch (error) {
+      console.error('Failed to save game progress:', error);
+    }
+  }
+
+  // Add transition effect
+  const app = document.getElementById('app');
+  app.style.transition = 'opacity 0.5s ease-out';
+  app.style.opacity = '0';
+
+  // Play click sound effect (if available)
+  try {
+    // Create a simple click sound using Web Audio API
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+
+    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+  } catch (error) {
+    // Silently fail if Web Audio API is not supported
+    console.log('Audio feedback not available');
+  }
+
+  // Navigate to home after transition
+  setTimeout(() => {
+    window.renderHome();
+    // Fade back in
+    setTimeout(() => {
+      app.style.opacity = '1';
+    }, 100);
+  }, 500);
+};
 
 // ===== Home Page =====
 window.renderHome = function(){
   window.selectedDifficulty = null;
+
+  // Check for saved game progress
+  const savedGameState = localStorage.getItem('savedGameState');
+  let resumeGameHtml = '';
+
+  if (savedGameState) {
+    try {
+      const gameState = JSON.parse(savedGameState);
+      const timeAgo = Math.floor((Date.now() - gameState.timestamp) / (1000 * 60)); // minutes ago
+      resumeGameHtml = `
+        <div class="resume-game-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="margin-bottom: 10px; color: white;">🎮 Game in Progress</h3>
+          <p style="margin-bottom: 15px; opacity: 0.9;">You have an unfinished ${gameState.selectedDifficulty} game from ${timeAgo} minutes ago</p>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-small" onclick="window.resumeSavedGame()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">Resume Game</button>
+            <button class="btn btn-small secondary" onclick="window.discardSavedGame()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">Start New</button>
+          </div>
+        </div>
+      `;
+    } catch (error) {
+      console.error('Failed to parse saved game state:', error);
+      localStorage.removeItem('savedGameState');
+    }
+  }
+
   document.getElementById('app').innerHTML = `<main>
+${resumeGameHtml}
 <div class="hero"><h1>Welcome to T-Gram</h1>
 <p>Your space for fun, learning, and growth. Discover interactive games, track your progress, and challenge yourself with every play.</p></div>
 <div class="spherocube"></div>
@@ -55,6 +182,59 @@ window.renderHome = function(){
   }, 500);
 }
 
+// ===== Resume Saved Game =====
+window.resumeSavedGame = function() {
+  try {
+    const savedGameState = localStorage.getItem('savedGameState');
+    if (!savedGameState) {
+      window.ModalManager.showAlert('No saved game found!', 'error');
+      return;
+    }
+
+    const gameState = JSON.parse(savedGameState);
+
+    // Restore game state
+    window.board = gameState.board;
+    window.currentPlayer = gameState.currentPlayer;
+    window.userScore = gameState.userScore;
+    window.opponentScore = gameState.opponentScore;
+    window.currentQuestionIndex = gameState.currentQuestionIndex;
+    window.selectedDifficulty = gameState.selectedDifficulty;
+    window.gameQuestions = gameState.gameQuestions;
+    window.allAnswers = gameState.allAnswers;
+    window.wrongAnswers = [];
+
+    // Load questions if not already loaded
+    if (!window.questions) {
+      window.loadQuestions();
+    }
+
+    // Render the game interface
+    window.renderOfflineInterface();
+    window.renderBoard();
+
+    // Update scores display
+    window.updateScores();
+
+    // Clear saved game state
+    localStorage.removeItem('savedGameState');
+
+    window.ModalManager.showAlert('Game resumed successfully!', 'success');
+  } catch (error) {
+    console.error('Failed to resume game:', error);
+    window.ModalManager.showAlert('Failed to resume game. Starting new game instead.', 'error');
+    localStorage.removeItem('savedGameState');
+    window.renderHome();
+  }
+};
+
+// ===== Discard Saved Game =====
+window.discardSavedGame = function() {
+  localStorage.removeItem('savedGameState');
+  window.ModalManager.showAlert('Saved game discarded. Starting fresh!', 'info');
+  window.renderHome();
+};
+
 // ===== Difficulty Selection =====
 window.selectDifficulty = function(diff){
   window.selectedDifficulty = diff;
@@ -66,7 +246,7 @@ window.selectDifficulty = function(diff){
 window.renderAbout = function(){
   document.getElementById('app').innerHTML = `<main>
 <div class="about-hero">
-  <img src="https://via.placeholder.com/800x300/008080/ffffff?text=T-Gram+Hero" alt="T-Gram Hero Image" class="img-fluid">
+  <!-- Hero image removed as per user request -->
   <h1>About T-Gram</h1>
   <p class="hero-subtitle">Empowering Rural Education Through Gamified Learning</p>
 </div>
@@ -236,6 +416,7 @@ window.allAnswers = [];
 window.badges = JSON.parse(localStorage.getItem('badges')) || [];
 window.timerInterval = null;
 window.streak = 0;
+window.hasSecondChance = false; // Track if player earned second chance (must answer 2 questions correctly to place)
 
 window.startOfflinePvP = async function() {
   if (!window.selectedDifficulty) {
@@ -252,11 +433,23 @@ window.startOfflinePvP = async function() {
   window.wrongAnswers = [];
   window.allAnswers = [];
   window.gameQuestions = [];
+  window.hasSecondChance = false; // Reset the second chance flag
 
   await window.loadQuestions();
 
   window.renderOfflineInterface();
   window.renderBoard();
+};
+
+// ===== Online PvP Implementation =====
+window.startOnlinePvP = function() {
+  if (!window.selectedDifficulty) {
+    window.ModalManager.showAlert("Please select a difficulty first!", 'error');
+    return;
+  }
+
+  // Redirect to the online PvP page
+  window.location.href = 'public/online-pvp.html';
 };
 
 window.renderOfflineInterface = function() {
@@ -267,11 +460,11 @@ window.renderOfflineInterface = function() {
         <div class="header-flex">
           <div class="players-flex">
             <div class="player-info player-x ${window.currentPlayer === 'X' ? 'active' : ''}">
-              <span>Unknown = X</span>
+              <span>Player 1 = X</span>
               <span>Score: <span id="user-score">0</span></span>
             </div>
             <div class="player-info player-o ${window.currentPlayer === 'O' ? 'active' : ''}">
-              <span>Opponent = O</span>
+              <span>Player 2 = O</span>
               <span>Score: <span id="opponent-score">0</span></span>
             </div>
           </div>
@@ -282,7 +475,7 @@ window.renderOfflineInterface = function() {
           <button class="btn" onclick="window.showPostGameReview()"><i class="fas fa-eye"></i> Review Answers</button>
         </div>
         <div class="bottom-buttons">
-<button class="btn btn-small primary" onclick="renderHome()">Back to Home</button>
+<button class="btn btn-small primary" onclick="window.handleBackToHome()">Back to Home</button>
         </div>
       </div>
     </main>
@@ -327,7 +520,7 @@ window.showQuestion = function() {
   window.questionPending = true;
 
   // Build modal content dynamically
-  const title = `Question for ${window.currentPlayer === 'X' ? 'Unknown' : 'Opponent'}`;
+  const title = `Question for ${window.currentPlayer === 'X' ? 'Player 1' : 'Player 2'}`;
   const questionContent = window.currentQuestion.question;
   let optionsHtml = '';
   let inputHtml = '';
@@ -343,13 +536,13 @@ window.showQuestion = function() {
     case 'sentence_completion':
       inputHtml = `
         <label for="answer-input" class="answer-label">Enter your answer:</label>
-        <input type="text" id="answer-input" class="answer-input" placeholder="Type your response here..." style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s;">
+<input type="text" id="answer-input" class="answer-input" placeholder="Type your response here..." style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: rgba(0,0,0,0.3); color: white; transition: border-color 0.3s, box-shadow 0.3s;">
       `;
       break;
     case 'paragraph_correction':
       inputHtml = `
         <label for="answer-input" class="answer-label">Correct the paragraph:</label>
-        <textarea id="answer-input" class="answer-input" placeholder="Type your corrected version here..." rows="4" style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;"></textarea>
+<textarea id="answer-input" class="answer-input" placeholder="Type your corrected version here..." rows="4" style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: rgba(0,0,0,0.3); color: white; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;"></textarea>
       `;
       break;
   }
@@ -361,7 +554,7 @@ window.showQuestion = function() {
     <div id="question-feedback" style="display:none;"></div>
     <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration()}</span>s</div>
     <button class="btn btn-small" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
-    <button class="btn btn-small secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
+    <button class="btn btn-small secondary" onclick="window.skipQuestion()">Skip</button>
     <div id="tip" class="tip" style="display:none;"></div>
   `;
 
@@ -410,7 +603,11 @@ window.submitAnswer = function() {
     }
     window.awardBadgeIfEligible();
     window.updateScores();
+    
+    // Place the move on the board (correct answer = place symbol)
     window.placeMove();
+    
+    // Move to next question after placing
     window.currentQuestionIndex++;
   } else {
     // Show feedback
@@ -458,14 +655,42 @@ window.continueWrong = function() {
 window.skipQuestion = function() {
   if (!window.questionPending) return;
   window.questionPending = false;
-  window.ModalManager.hideModal('question-modal');
+
   // Stop timer
   if (window.timerInterval) {
     clearInterval(window.timerInterval);
     window.timerInterval = null;
   }
-  window.ModalManager.showAlert("Skipped! Turn lost.", 'error');
-  window.messages.push({ type: 'error', content: 'Skipped question - turn lost.', timestamp: Date.now() });
+
+  // Deduct 5 points from current player's score (penalty)
+  const playerName = window.currentPlayer === 'X' ? 'Player 1 (X)' : 'Player 2 (O)';
+  if (window.currentPlayer === 'X') {
+    window.userScore -= 5;
+  } else {
+    window.opponentScore -= 5;
+  }
+
+  // Update scores display
+  window.updateScores();
+
+  // Show penalty message in a modal
+  const penaltyContent = `
+    <div style="text-align: center; padding: 20px;">
+      <h3 style="color: #dc3545; margin-bottom: 15px;">⚠️ Skipped!</h3>
+      <p style="font-size: 24px; color: #dc3545; font-weight: bold; margin: 20px 0;">-5 Points Penalty</p>
+      <p style="color: #666;">No move will be placed on the board.</p>
+      <p style="color: #888; font-size: 14px;">Turn passes to ${window.currentPlayer === 'X' ? 'Player 2 (O)' : 'Player 1 (X)'}</p>
+      <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+        <button class="btn btn-small secondary" onclick="window.cancelSkip()">Cancel</button>
+        <button class="btn btn-small primary" onclick="window.continueSkip()">Continue</button>
+      </div>
+    </div>
+  `;
+  
+  window.ModalManager.showModal('skip-penalty-modal', penaltyContent, 'error');
+
+  // Log the skip
+  window.messages.push({ type: 'error', content: 'Skipped question - -5 points. No move placed on board.', timestamp: Date.now() });
   window.allAnswers.push({
     question: window.currentQuestion.question,
     userAnswer: 'Skipped',
@@ -474,8 +699,46 @@ window.skipQuestion = function() {
     isCorrect: false
   });
   window.wrongAnswers.push({...window.currentQuestion, userAnswer: 'Skipped'});
-  window.switchPlayer();
+
+  // Increment question index for next question
   window.currentQuestionIndex++;
+};
+
+window.continueSkip = function() {
+  // Hide the penalty modal
+  window.ModalManager.hideModal('skip-penalty-modal');
+  window.ModalManager.hideModal('question-modal');
+  
+  // Switch player WITHOUT placing a move on the board
+  window.switchPlayer();
+};
+
+window.cancelSkip = function() {
+  // Hide the penalty modal
+  window.ModalManager.hideModal('skip-penalty-modal');
+  
+  // Restore the score that was deducted
+  if (window.currentPlayer === 'X') {
+    window.userScore += 5;
+  } else {
+    window.opponentScore += 5;
+  }
+  
+  // Update scores display
+  window.updateScores();
+  
+  // Remove the skip from the answers log
+  window.allAnswers.pop();
+  window.wrongAnswers.pop();
+  
+  // Decrement question index to go back to this question
+  window.currentQuestionIndex--;
+  
+  // Re-enable question pending
+  window.questionPending = true;
+  
+  // Show the question again
+  window.showQuestion();
 };
 
 
@@ -565,7 +828,7 @@ window.endGame = function(result) {
     let message = '';
     if (result === 'X') {
       wins = 1;
-      message = `Unknown wins! 🎉`;
+      message = `${window.currentUser?.username || 'Player'} wins! 🎉`;
       if (window.awardBadge) window.awardBadge('victory');
       if (window.messages) window.messages.push({ type: 'success', content: message, timestamp: Date.now() });
     } else if (result === 'O') {
@@ -615,31 +878,55 @@ window.endGame = function(result) {
       }
     }
 
-    // Update local scores safely
-    try {
-      console.log('Updating local scores...');
-      let scores = [];
+    // Update local scores safely - only if online
+    if (window.isOnline) {
       try {
-        scores = JSON.parse(localStorage.getItem('scores') || '[]');
-      } catch (e) {
-        console.warn('localStorage parse failed, starting fresh:', e);
-        scores = [];
+        console.log('Updating local scores...');
+        let scores = [];
+        try {
+          scores = JSON.parse(localStorage.getItem('scores') || '[]');
+        } catch (e) {
+          console.warn('localStorage parse failed, starting fresh:', e);
+          scores = [];
+        }
+        let userScores = scores.find(s => s.user === 'Unknown');
+        if (!userScores) {
+          userScores = {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0};
+          scores.push(userScores);
+        }
+        userScores.wins += (result === 'X' ? 1 : 0);
+        userScores.losses += (result === 'O' ? 1 : 0);
+        userScores.draws += (result === 'draw' ? 1 : 0);
+        userScores.totalGames += 1;
+        userScores.totalScore += window.userScore || 0;
+        localStorage.setItem('scores', JSON.stringify(scores));
+        console.log('Scores updated in localStorage');
+
+        // Update gameStats for achievements
+        const userId = window.currentUser ? window.currentUser.email : 'guest';
+        let gameStats = JSON.parse(localStorage.getItem(`gameStats_${userId}`) || '{}');
+        gameStats.gamesPlayed = userScores.totalGames;
+        gameStats.gamesWon = userScores.wins;
+        gameStats.pointsScored = userScores.totalScore;
+        localStorage.setItem(`gameStats_${userId}`, JSON.stringify(gameStats));
+
+        // Trigger achievements update
+        if (!window.achievementsLoaded) {
+          const script = document.createElement('script');
+          script.src = 'js/achievements.js';
+          script.onload = () => {
+            window.updateAchievements();
+          };
+          document.head.appendChild(script);
+        } else {
+          window.updateAchievements();
+        }
+      } catch (storageError) {
+        console.error('localStorage update failed:', storageError);
+        // Continue without breaking
       }
-      let userScores = scores.find(s => s.user === 'Unknown');
-      if (!userScores) {
-        userScores = {user: 'Unknown', wins: 0, losses: 0, draws: 0, totalScore: 0, totalGames: 0};
-        scores.push(userScores);
-      }
-      userScores.wins += (result === 'X' ? 1 : 0);
-      userScores.losses += (result === 'O' ? 1 : 0);
-      userScores.draws += (result === 'draw' ? 1 : 0);
-      userScores.totalGames += 1;
-      userScores.totalScore += window.userScore || 0;
-      localStorage.setItem('scores', JSON.stringify(scores));
-      console.log('Scores updated in localStorage');
-    } catch (storageError) {
-      console.error('localStorage update failed:', storageError);
-      // Continue without breaking
+    } else {
+      console.log('Offline mode - skipping score save to localStorage');
     }
 
     // Update used questions
@@ -733,9 +1020,13 @@ window.awardBadge = function(type) {
   window.messages.push({ type: 'success', content: `Badge: ${type.replace('_', ' ').toUpperCase()}`, timestamp: Date.now() });
 };
 
-
 // ===== Initialize Dark Mode =====
 if(localStorage.getItem('dark') === "true") document.body.classList.add('dark');
+
+// Reset achievements on app start to locked state for testing
+if (window.resetAchievements) {
+  window.resetAchievements();
+}
 
 // ===== Background Sync for Offline =====
 if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
@@ -746,7 +1037,31 @@ if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.p
   });
 }
 
-// ===== Initial Render =====
-window.addEventListener('DOMContentLoaded', () => {
-  renderLogin();
+// ===== Online/Offline Detection =====
+window.addEventListener('online', () => {
+  window.isOnline = true;
+  console.log('Switched to online mode');
+  // Re-render leaderboard if on that page
+  if (document.querySelector('.leaderboard')) {
+    window.renderLeaderboard();
+  }
 });
+
+window.addEventListener('offline', () => {
+  window.isOnline = false;
+  console.log('Switched to offline mode');
+  // Re-render leaderboard if on that page
+  if (document.querySelector('.leaderboard')) {
+    window.renderLeaderboard();
+  }
+});
+
+// ===== Initialize Cached Online Scores =====
+if (!localStorage.getItem('cachedOnlineScores')) {
+  // Initialize empty cache for offline fallback
+  localStorage.setItem('cachedOnlineScores', JSON.stringify([]));
+}
+
+// ===== Initial Render =====
+// Auth state listener in js/auth.js will handle rendering the appropriate page
+// Don't show loading - let auth.js handle showing login page

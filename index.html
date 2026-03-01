@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T-Gram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Load Firebase from CDN as module -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+        import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAcsUPTJHGsty4TysuoHRffPeBtHhCob90",
+            authDomain: "t-gram-53a4f.firebaseapp.com",
+            projectId: "t-gram-53a4f",
+            storageBucket: "t-gram-53a4f.firebasestorage.app",
+            messagingSenderId: "1014219227882",
+            appId: "1:1014219227882:web:d7920fa32ee32080280d93"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        window.auth = getAuth(app);
+        window.db = getFirestore(app);
+
+        // Make auth functions global
+        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+        window.signOut = signOut;
+        window.onAuthStateChanged = onAuthStateChanged;
+
+        // Make Firestore functions global
+        window.doc = doc;
+        window.getDoc = getDoc;
+        window.setDoc = setDoc;
+
+        console.log('Firebase initialized via ES modules');
+        window.firebaseReady = true;
+        
+        // Dispatch event
+        window.dispatchEvent(new Event('firebaseReady'));
+    </script>
+    <script src="js/ui.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/online-achievements.js"></script>
+    <script src="js/online-pvp.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img id="nav-avatar" src="" alt="Avatar" class="nav-avatar" />
+            <img
+                id="logo-light"
+                src="https://image2url.com/r2/default/images/1771922452915-ccf0a5d9-ede8-4611-9d85-602de3f09cfb.png"
+                alt="T-Gram Logo Light"
+                style="height: 40px; background: transparent;"
+            />
+            <img
+                id="logo-dark"
+                src="https://image2url.com/r2/default/images/1771922452915-ccf0a5d9-ede8-4611-9d85-602de3f09cfb.png"
+                alt="T-Gram Logo Dark"
+                style="height: 40px; display: none; background: transparent;"
+            />
+            <span>T-Gram</span>
+        </div>
+        <div class="nav-right" id="nav-links">
+            <a onclick="renderAbout()">About</a>
+        </div>
+    </nav>
+
+    <div id="app">
+        <main class="login-container">
+            <div class="login-card">
+                <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
+                <p>Sign in to continue your learning journey</p>
+                <form id="login-form">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-pass" placeholder="Password" required>
+                    </div>
+                    <button type="button" class="btn primary" id="login-btn">
+                        <i class="fas fa-arrow-right"></i> Log In
+                    </button>
+                </form>
+                <p class="signup-link"><a id="forgot-link">Forgot Password?</a></p>
+                <p class="signup-link">Don't have an account? <a id="signup-link">Sign up</a></p>
+            </div>
+            <div class="login-bg"></div>
+        </main>
+    </div>
+
+    <!-- Modal Timer -->
+    <div id="timerModal" class="modal">
+        <div class="modal-content">
+            <h3 id="questionText">Question</h3>
+            <div id="optionsContainer"></div>
+            <p>Time left: <span id="timerDisplay">30</span>s</p>
+        </div>
+    </div>
+
+    <script>
+        // Show Signup Form - works immediately
+        function showSignup() {
+            document.getElementById('app').innerHTML = `
+                <main class="login-container">
+                    <div class="login-card">
+                        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+                        <p>Join T-Gram and start learning today</p>
+                        <form id="signup-form">
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="signup-user" placeholder="Username" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signup-email" placeholder="Email" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signup-pass" placeholder="Password" required>
+                            </div>
+                            <button type="button" class="btn primary" id="signup-submit-btn">
+                                <i class="fas fa-user-plus"></i> Sign Up
+                            </button>
+                        </form>
+                        <p class="login-link">Already have an account? <a id="login-link">Log in</a></p>
+                    </div>
+                    <div class="login-bg"></div>
+                </main>
+            `;
+            
+            // Add event listener for signup button
+            document.getElementById('signup-submit-btn').addEventListener('click', function() {
+                if (typeof window.handleSignup === 'function') {
+                    window.handleSignup();
+                } else {
+                    alert('Signup is loading... please try again in a moment');
+                }
+            });
+            
+            // Add event listener for login link
+            document.getElementById('login-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                showLogin();
+            });
+        }
+        
+        // Show Login Form
+        function showLogin() {
+            document.getElementById('app').innerHTML = `
+                <main class="login-container">
+                    <div class="login-card">
+                        <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
+                        <p>Sign in to continue your learning journey</p>
+                        <form id="login-form">
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="login-email" placeholder="Email" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="login-pass" placeholder="Password" required>
+                            </div>
+                            <button type="button" class="btn primary" id="login-submit-btn">
+                                <i class="fas fa-arrow-right"></i> Log In
+                            </button>
+                        </form>
+                        <p class="signup-link"><a id="forgot-link">Forgot Password?</a></p>
+                        <p class="signup-link">Don't have an account? <a id="signup-link">Sign up</a></p>
+                    </div>
+                    <div class="login-bg"></div>
+                </main>
+            `;
+            
+            // Add event listener for login button
+            document.getElementById('login-submit-btn').addEventListener('click', function() {
+                if (typeof window.handleLogin === 'function') {
+                    window.handleLogin();
+                } else {
+                    alert('Login is loading... please try again in a moment');
+                }
+            });
+            
+            // Add event listener for signup link
+            document.getElementById('signup-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSignup();
+            });
+            
+            // Add event listener for forgot password
+            document.getElementById('forgot-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (typeof window.handleForgotPassword === 'function') {
+                    window.handleForgotPassword();
+                }
+            });
+        }
+        
+        // Add event listeners when page loads
+        document.getElementById('signup-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSignup();
+        });
+        
+        document.getElementById('login-btn').addEventListener('click', function() {
+            if (typeof window.handleLogin === 'function') {
+                window.handleLogin();
+            } else {
+                alert('Login is loading... please try again in a moment');
+            }
+        });
+        
+        document.getElementById('forgot-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (typeof window.handleForgotPassword === 'function') {
+                window.handleForgotPassword();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,10 +1,21 @@
-# TODO for Achievements Feature in Profile
+# Tic-Tac-Toe Game Logic Updates
 
-- [x] Add badge images folder: public/assets/badges/
-- [ ] Update public/js/profile.js:
-  - [ ] Add "Achievements" clickable section under profile avatar
-  - [ ] Implement modal to display 6 badges with images and labels
-  - [ ] Implement unlocking logic based on player stats (games played, wins, scores)
-  - [ ] Improve profile page design for better aesthetics
-- [ ] Add CSS styles for badges and modal (inline or in public/css/style.css)
-- [ ] Test Achievements feature thoroughly
+## Task: Modify game rules for question-answer flow
+
+### Changes Required:
+
+1. [x] Add state variable `hasEarnedRightToPlace` to track if player earned right to place after first correct answer
+2. [ ] Modify `skipQuestion()` - Apply penalty (-5 points), switch player, NO symbol placed
+3. [ ] Modify `submitAnswer()` - On correct: +10 points, set state "earned right to place", ask another question instead of placing
+4. [ ] Modify `continueWrong()` - On wrong answer: no symbol placed, just switch player
+5. [ ] Add logic to place symbol only when player has earned the right
+
+### Implementation Details:
+
+- **Skip**: Apply penalty, increment question index, switch player, NO move placed
+- **First Correct Answer**: +10 points, `hasEarnedRightToPlace = true`, show next question
+- **Second Correct Answer**: Place symbol on board, reset `hasEarnedRightToPlace = false`
+- **First Wrong Answer**: No symbol placed, switch player
+
+### Files to Edit:
+- js/app.js

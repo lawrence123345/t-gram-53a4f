@@ -14,55 +14,55 @@ let matchmakingQueue = null, gameRef = null, playerRef = null;
 
 const sampleQuestions = {
   Beginner: [
-    {q:"She ___ to school every day.",a:"goes",options:["go","goes","gone"]},
-    {q:"I ___ happy today.",a:"am",options:["is","are","am"]},
-    {q:"They ___ eating lunch.",a:"are",options:["is","are","was"]},
-    {q:"He ___ a doctor.",a:"is",options:["is","are","am"]},
-    {q:"We ___ playing soccer.",a:"are",options:["is","are","was"]},
-    {q:"The cat ___ on the mat.",a:"is",options:["is","are","am"]},
-    {q:"You ___ my best friend.",a:"are",options:["is","are","was"]},
-    {q:"It ___ raining outside.",a:"is",options:["is","are","am"]},
-    {q:"My friends ___ coming over.",a:"are",options:["is","are","was"]},
-    {q:"The book ___ interesting.",a:"is",options:["is","are","am"]},
-    {q:"Dogs ___ loyal animals.",a:"are",options:["is","are","was"]},
-    {q:"She ___ singing a song.",a:"is",options:["is","are","am"]},
-    {q:"We ___ going to the park.",a:"are",options:["is","are","was"]},
-    {q:"The sun ___ shining brightly.",a:"is",options:["is","are","am"]},
-    {q:"Birds ___ flying in the sky.",a:"are",options:["is","are","was"]}
+    {q:"She ___ to school every day.",a:"goes",options:["go","goes","gone"]"},
+    {q:"I ___ happy today.",a:"am",options:["is","are","am"]"},
+    {q:"They ___ eating lunch.",a:"are",options:["is","are","was"]"},
+    {q:"He ___ a doctor.",a:"is",options:["is","are","am"]"},
+    {q:"We ___ playing soccer.",a:"are",options:["is","are","was"]"},
+    {q:"The cat ___ on the mat.",a:"is",options:["is","are","am"]"},
+    {q:"You ___ my best friend.",a:"are",options:["is","are","was"]"},
+    {q:"It ___ raining outside.",a:"is",options:["is","are","am"]"},
+    {q:"My friends ___ coming over.",a:"are",options:["is","are","was"]"},
+    {q:"The book ___ interesting.",a:"is",options:["is","are","am"]"},
+    {q:"Dogs ___ loyal animals.",a:"are",options:["is","are","was"]"},
+    {q:"She ___ singing a song.",a:"is",options:["is","are","am"]"},
+    {q:"We ___ going to the park.",a:"are",options:["is","are","was"]"},
+    {q:"The sun ___ shining brightly.",a:"is",options:["is","are","am"]"},
+    {q:"Birds ___ flying in the sky.",a:"are",options:["is","are","was"]"}
   ],
   Intermediate: [
-    {q:"They ___ playing outside.",a:"are",options:["is","are","was"]},
-    {q:"He has ___ a book.",a:"read",options:["read","reads","reading"]},
-    {q:"She ___ to the store yesterday.",a:"went",options:["go","went","gone"]},
-    {q:"I ___ finished my homework.",a:"have",options:["has","have","had"]},
-    {q:"They ___ watching TV.",a:"were",options:["was","were","is"]},
-    {q:"She ___ her homework already.",a:"has done",options:["has done","have done","did"]},
-    {q:"We ___ to the beach last summer.",a:"went",options:["go","went","gone"]},
-    {q:"He ___ playing the guitar.",a:"is",options:["is","are","was"]},
-    {q:"They ___ eaten dinner yet.",a:"have",options:["has","have","had"]},
-    {q:"The movie ___ at 8 PM.",a:"starts",options:["start","starts","started"]},
-    {q:"I ___ my keys at home.",a:"left",options:["leave","left","leaved"]},
-    {q:"She ___ a new car.",a:"has bought",options:["has bought","have bought","bought"]},
-    {q:"We ___ for the bus.",a:"are waiting",options:["is waiting","are waiting","was waiting"]},
-    {q:"The teacher ___ the lesson.",a:"is explaining",options:["is explaining","are explaining","was explaining"]},
-    {q:"They ___ to music.",a:"are listening",options:["is listening","are listening","was listening"]}
+    {q:"They ___ playing outside.",a:"are",options:["is","are","was"]"},
+    {q:"He has ___ a book.",a:"read",options:["read","reads","reading"]"},
+    {q:"She ___ to the store yesterday.",a:"went",options:["go","went","gone"]"},
+    {q:"I ___ finished my homework.",a:"have",options:["has","have","had"]"},
+    {q:"They ___ watching TV.",a:"were",options:["was","were","is"]"},
+    {q:"She ___ her homework already.",a:"has done",options:["has done","have done","did"]"},
+    {q:"We ___ to the beach last summer.",a:"went",options:["go","went","gone"]"},
+    {q:"He ___ playing the guitar.",a:"is",options:["is","are","was"]"},
+    {q:"They ___ eaten dinner yet.",a:"have",options:["has","have","had"]"},
+    {q:"The movie ___ at 8 PM.",a:"starts",options:["start","starts","started"]"},
+    {q:"I ___ my keys at home.",a:"left",options:["leave","left","leaved"]"},
+    {q:"She ___ a new car.",a:"has bought",options:["has bought","have bought","bought"]"},
+    {q:"We ___ for the bus.",a:"are waiting",options:["is waiting","are waiting","was waiting"]"},
+    {q:"The teacher ___ the lesson.",a:"is explaining",options:["is explaining","are explaining","was explaining"]"},
+    {q:"They ___ to music.",a:"are listening",options:["is listening","are listening","was listening"]"}
   ],
   Advanced: [
-    {q:"By the time she arrived, he ___ left.",a:"had",options:["has","had","have"]},
-    {q:"Identify the error: 'If I was you, I would study.'",a:"was",options:["was","were","is"]},
-    {q:"She would have ___ if she had known.",a:"come",options:["come","came","comes"]},
-    {q:"He ___ the book before the movie.",a:"had read",options:["has read","had read","read"]},
-    {q:"They ___ to the party if invited.",a:"would go",options:["will go","would go","went"]},
-    {q:"If he ___ harder, he would have passed.",a:"had studied",options:["has studied","had studied","studied"]},
-    {q:"She wishes she ___ the answer.",a:"knew",options:["know","knew","knows"]},
-    {q:"By next year, I ___ here for ten years.",a:"will have lived",options:["will have lived","will live","have lived"]},
-    {q:"He acted as if he ___ the boss.",a:"were",options:["was","were","is"]},
-    {q:"I would rather you ___ smoking.",a:"stopped",options:["stop","stopped","stopping"]},
-    {q:"It's high time we ___ the meeting.",a:"started",options:["start","started","starting"]},
-    {q:"She suggested that he ___ early.",a:"leave",options:["leaves","leave","left"]},
-    {q:"If only I ___ what to do.",a:"knew",options:["know","knew","knows"]},
-    {q:"They demanded that the rules ___ changed.",a:"be",options:["is","are","be"]},
-    {q:"He talks as though he ___ everything.",a:"knew",options:["know","knew","knows"]}
+    {q:"By the time she arrived, he ___ left.",a:"had",options:["has","had","have"]"},
+    {q:"Identify the error: 'If I was you, I would study.'",a:"was",options:["was","were","is"]"},
+    {q:"She would have ___ if she had known.",a:"come",options:["come","came","comes"]"},
+    {q:"He ___ the book before the movie.",a:"had read",options:["has read","had read","read"]"},
+    {q:"They ___ to the party if invited.",a:"would go",options:["will go","would go","went"]"},
+    {q:"If he ___ harder, he would have passed.",a:"had studied",options:["has studied","had studied","studied"]"},
+    {q:"She wishes she ___ the answer.",a:"knew",options:["know","knew","knows"]"},
+    {q:"By next year, I ___ here for ten years.",a:"will have lived",options:["will have lived","will live","have lived"]"},
+    {q:"He acted as if he ___ the boss.",a:"were",options:["was","were","is"]"},
+    {q:"I would rather you ___ smoking.",a:"stopped",options:["stop","stopped","stopping"]"},
+    {q:"It's high time we ___ the meeting.",a:"started",options:["start","started","starting"]"},
+    {q:"She suggested that he ___ early.",a:"leave",options:["leaves","leave","left"]"},
+    {q:"If only I ___ what to do.",a:"knew",options:["know","knew","knows"]"},
+    {q:"They demanded that the rules ___ changed.",a:"be",options:["is","are","be"]"},
+    {q:"He talks as though he ___ everything.",a:"knew",options:["know","knew","knows"]"}
   ]
 };
 
@@ -262,7 +262,6 @@ function updateScoreDisplay(){
   document.getElementById('level').innerText = level;
   const accuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
   document.getElementById('accuracy').innerText = accuracy + '%';
-  checkAchievements();
 }
 
 function playSound(type){
@@ -270,24 +269,13 @@ function playSound(type){
   console.log(type + ' sound played');
 }
 
-function showHint(correct){
+function showHint(){
+  // Hints disabled
   window.ModalManager.showAlert('Hint: The correct answer is ' + correct, 'info');
   window.messages.push({ type: 'info', content: 'Hint: The correct answer is ' + correct, timestamp: Date.now() });
 }
 
-let achievements = [];
-function checkAchievements(){
-  if(score >= 100 && !achievements.includes('First Century')) {
-    achievements.push('First Century');
-    window.ModalManager.showAlert('Achievement Unlocked: First Century!', 'success');
-    window.messages.push({ type: 'success', content: 'Achievement Unlocked: First Century!', timestamp: Date.now() });
-  }
-  if(totalCorrect >= 10 && !achievements.includes('Grammar Master')) {
-    achievements.push('Grammar Master');
-    window.ModalManager.showAlert('Achievement Unlocked: Grammar Master!', 'success');
-    window.messages.push({ type: 'success', content: 'Achievement Unlocked: Grammar Master!', timestamp: Date.now() });
-  }
-}
+
 
 function updateMiniLeaderboard(){
   const miniLeaderboard = document.querySelector('.mini-leaderboard');

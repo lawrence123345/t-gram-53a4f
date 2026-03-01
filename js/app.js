@@ -536,13 +536,13 @@ window.showQuestion = function() {
     case 'sentence_completion':
       inputHtml = `
         <label for="answer-input" class="answer-label">Enter your answer:</label>
-        <input type="text" id="answer-input" class="answer-input" placeholder="Type your response here..." style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s;">
+<input type="text" id="answer-input" class="answer-input" placeholder="Type your response here..." style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: rgba(0,0,0,0.3); color: white; transition: border-color 0.3s, box-shadow 0.3s;">
       `;
       break;
     case 'paragraph_correction':
       inputHtml = `
         <label for="answer-input" class="answer-label">Correct the paragraph:</label>
-        <textarea id="answer-input" class="answer-input" placeholder="Type your corrected version here..." rows="4" style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: #f9f9f9; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;"></textarea>
+<textarea id="answer-input" class="answer-input" placeholder="Type your corrected version here..." rows="4" style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; box-sizing: border-box; margin-top: 5px; background-color: rgba(0,0,0,0.3); color: white; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;"></textarea>
       `;
       break;
   }
@@ -550,12 +550,11 @@ window.showQuestion = function() {
   const content = `
     <h3 id="question-title">${title}</h3>
     <div id="question-content">${questionContent}</div>
-    <div id="question-clue" style="margin-top: 10px; font-style: italic; color: black;">Clue: ${window.currentQuestion.clue || 'Think carefully!'}</div>
     <div id="question-options">${optionsHtml || inputHtml}</div>
     <div id="question-feedback" style="display:none;"></div>
     <div class="timer">Time left: <span id="timer-display">${window.getTimerDuration()}</span>s</div>
     <button class="btn btn-small" id="submit-answer" onclick="window.submitAnswer()">Submit</button>
-    <button class="btn btn-small secondary" onclick="window.skipQuestion()">Skip (Penalty)</button>
+    <button class="btn btn-small secondary" onclick="window.skipQuestion()">Skip</button>
     <div id="tip" class="tip" style="display:none;"></div>
   `;
 
@@ -681,7 +680,10 @@ window.skipQuestion = function() {
       <p style="font-size: 24px; color: #dc3545; font-weight: bold; margin: 20px 0;">-5 Points Penalty</p>
       <p style="color: #666;">No move will be placed on the board.</p>
       <p style="color: #888; font-size: 14px;">Turn passes to ${window.currentPlayer === 'X' ? 'Player 2 (O)' : 'Player 1 (X)'}</p>
-      <button class="btn btn-small primary" onclick="window.continueSkip()" style="margin-top: 20px;">Continue</button>
+      <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+        <button class="btn btn-small secondary" onclick="window.cancelSkip()">Cancel</button>
+        <button class="btn btn-small primary" onclick="window.continueSkip()">Continue</button>
+      </div>
     </div>
   `;
   
@@ -709,6 +711,34 @@ window.continueSkip = function() {
   
   // Switch player WITHOUT placing a move on the board
   window.switchPlayer();
+};
+
+window.cancelSkip = function() {
+  // Hide the penalty modal
+  window.ModalManager.hideModal('skip-penalty-modal');
+  
+  // Restore the score that was deducted
+  if (window.currentPlayer === 'X') {
+    window.userScore += 5;
+  } else {
+    window.opponentScore += 5;
+  }
+  
+  // Update scores display
+  window.updateScores();
+  
+  // Remove the skip from the answers log
+  window.allAnswers.pop();
+  window.wrongAnswers.pop();
+  
+  // Decrement question index to go back to this question
+  window.currentQuestionIndex--;
+  
+  // Re-enable question pending
+  window.questionPending = true;
+  
+  // Show the question again
+  window.showQuestion();
 };
 
 

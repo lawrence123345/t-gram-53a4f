@@ -1110,8 +1110,8 @@ main {
   padding: 1rem;
   border: 2px solid rgba(255,255,255,0.3);
   border-radius: 0.75rem;
-  background: rgba(255,255,255,0.1);
-  color: black;
+  background: rgba(255,255,255,0.15);
+  color: white;
   font-size: 1.1rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -2625,58 +2625,67 @@ body.dark .quote-author {
 /* ===== Profile Page Responsive Styles ===== */
 @media (max-width: 768px) {
   /* Profile container responsive */
-  #app > div[style*="padding: 50px"] {
+  .profile-container {
     padding: 20px !important;
     max-width: 100% !important;
     border-radius: 20px !important;
+    margin: 10px !important;
   }
   
   /* Profile title */
-  #app > div[style*="padding: 50px"] h2 {
+  .profile-container h2 {
     font-size: 28px !important;
     margin-bottom: 30px !important;
   }
   
   /* Flex layout for profile content - stack on mobile */
-  #app > div[style*="display: flex"] {
+  .profile-content {
     flex-direction: column !important;
     gap: 20px !important;
     align-items: center !important;
   }
   
   /* Avatar section */
-  #app > div[style*="display: flex"] > div:first-child {
+  .avatar-section {
+    min-width: 100% !important;
+    width: 100% !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
   }
   
   /* Avatar image */
-  #app > div[style*="display: flex"] img[onclick*="showAvatarSelection"] {
+  .avatar-section img {
     width: 100px !important;
     height: 100px !important;
   }
   
   /* Profile form container */
-  #app > div[style*="display: flex"] > div:last-child {
+  .form-section {
     padding: 20px !important;
     width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   /* Form fields */
-  #app input[id*="edit-"],
-  #app textarea[id*="edit-"] {
+  .form-section input,
+  .form-section textarea {
     padding: 12px !important;
     font-size: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   /* Buttons */
-  #app button[id*="save-profile-btn"],
-  #app button[onclick*="renderHome"] {
+  .profile-container button[id*="save-profile-btn"],
+  .profile-container button[onclick*="renderHome"] {
     padding: 15px 30px !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
     margin: 10px 5px !important;
     display: block !important;
     width: 100% !important;
+    max-width: 250px !important;
   }
   
   /* Hide profile nav panel by default on mobile */
@@ -2694,31 +2703,62 @@ body.dark .quote-author {
   }
   
   /* Achievement button */
-  #app button[onclick*="showAchievements"] {
+  .avatar-section button[onclick*="showAchievements"] {
     width: 100% !important;
     margin-top: 10px !important;
+    max-width: 200px !important;
   }
 }
 
 @media (max-width: 480px) {
   /* Even smaller screens */
-  #app > div[style*="padding: 50px"] {
+  .profile-container {
     padding: 15px !important;
+    margin: 5px !important;
   }
   
-  #app > div[style*="padding: 50px"] h2 {
+  .profile-container h2 {
     font-size: 22px !important;
     margin-bottom: 20px !important;
   }
   
-  #app > div[style*="display: flex"] > div:last-child {
+  .form-section {
     padding: 15px !important;
   }
   
   /* Stack buttons vertically */
-  #app button[id*="save-profile-btn"],
-  #app button[onclick*="renderHome"] {
+  .profile-container button[id*="save-profile-btn"],
+  .profile-container button[onclick*="renderHome"] {
     padding: 12px 20px !important;
     font-size: 14px !important;
+    width: 100% !important;
+    max-width: 200px !important;
+  }
+  
+  /* Make form fields smaller on very small screens */
+  .form-section input,
+  .form-section textarea {
+    padding: 10px !important;
+    font-size: 13px !important;
+  }
+  
+  /* Labels smaller */
+  .form-section label {
+    font-size: 14px !important;
+  }
+  
+  /* Profile buttons - stack vertically on mobile */
+  .profile-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding-top: 30px !important;
+  }
+  
+  .profile-buttons button {
+    width: 100% !important;
+    max-width: 250px !important;
+    margin: 5px 0 !important;
   }
 }

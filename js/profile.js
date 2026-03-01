@@ -83,18 +83,18 @@ let leftAvatar = `<img src="${avatarSrc}" alt="Profile Avatar" style="${avatarSt
   `;
 
   let mainContent = `
-    <div class="profile-content" style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease; flex-wrap: wrap; justify-content: center;">
-      <div class="avatar-section" style="display: flex; flex-direction: column; align-items: center; min-width: 200px;">
+    <div class="profile-content" class="profile-content" style="display: flex; gap: 35px; align-items: flex-start; margin-bottom: 35px; animation: fadeInUp 0.8s ease; flex-wrap: wrap; justify-content: center;">
+      <div class="avatar-section" class="avatar-section" style="display: flex; flex-direction: column; align-items: center; min-width: 200px;">
         ${avatarWithButton}
       </div>
-      <div class="form-section" style="flex: 1; min-width: 300px; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
+      <div class="form-section" class="form-section" style="flex: 1; min-width: 300px; padding: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%); border-radius: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid rgba(233,236,239,0.8); backdrop-filter: blur(10px);">
         ${fieldsHTML}
       </div>
     </div>
   `;
 
 let profileHTML = `
-    <div class="profile-container" style="padding: 30px; max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 35px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255,255,255,0.1); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="profile-container" style=" max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 35px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255,255,255,0.1); position: relative; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
       <!-- Slide-out Navigation Panel -->
       <div id="profile-nav-panel" style="position: fixed; top: 0; left: -300px; width: 300px; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; padding: 80px 20px 20px; box-shadow: 4px 0 20px rgba(0,0,0,0.3); overflow-y: auto; color: white; font-weight: 500;">
         <h3 style="margin-bottom: 30px; text-align: center; font-size: 24px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Navigation</h3>
@@ -108,7 +108,7 @@ let profileHTML = `
       <!-- Overlay for closing panel -->
       <div id="profile-nav-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; cursor: pointer;" onclick="window.closeProfileNav()"></div>
       <!-- Menu Toggle -->
-      <div id="profile-menu-toggle" style="position: absolute; left: 20px; top: 20px; cursor: pointer; font-size: 30px; z-index: 3; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); transition: all 0.3s ease;" onclick="window.toggleProfileNav()">☰</div>
+      <div id="profile-menu-toggle" style=" left: 20px; top: 20px; cursor: pointer; font-size: 30px; z-index: 3; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); transition: all 0.3s ease;" onclick="window.toggleProfileNav()">☰</div>
       <!-- Particle Background -->
       <div class="particles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
         <div class="particle" style="position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
@@ -121,7 +121,7 @@ let profileHTML = `
       <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 10px; background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); box-shadow: 0 -4px 20px rgba(168, 237, 234, 0.7); border-radius: 0 0 35px 35px;"></div>
       <h2 style="text-align: center; color: white; margin-bottom: 60px; font-size: 45px; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.8); animation: fadeInDown 1s ease; position: relative; z-index: 2; letter-spacing: 1.5px; background: linear-gradient(45deg, #fff, #f0f8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">My Game Profile</h2>
       ${mainContent}
-      <div class="profile-buttons" style="text-align: center; padding-top: 50px; border-top: 3px solid rgba(255,255,255,0.5); position: relative; z-index: 2;">
+      <div class="profile-buttons" class="profile-buttons" style="text-align: center; padding-top: 50px; border-top: 3px solid rgba(255,255,255,0.5); position: relative; z-index: 2;">
         <button id="save-profile-btn" class="btn btn-small" onclick="window.handleSaveProfile()" style="background: linear-gradient(135deg, #bdc3c7, #95a5a6); color: #7f8c8d; padding: 20px 55px; border: none; border-radius: 45px; margin-right: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 4px 10px rgba(189, 195, 199, 0.4); transition: all 0.3s ease; font-size: 20px; text-shadow: none; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px) scale(1.08)'; this.style.boxShadow='0 18px 45px rgba(78, 205, 196, 0.9)'; this.querySelector('.btn-glow').style.opacity='1'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(78, 205, 196, 0.8)'; this.querySelector('.btn-glow').style.opacity='0'">💾 Save Changes <div class="btn-glow" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: opacity 0.5s; opacity: 0;"></div></button>
         <button class="btn btn-small secondary" onclick="window.renderHome()" style="background: rgba(255,255,255,0.25); color: white; padding: 20px 55px; border: 3px solid rgba(255,255,255,0.6); border-radius: 45px; cursor: pointer; font-weight: 800; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 20px; text-shadow: 0 2px 6px rgba(0,0,0,0.4); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.4)'; this.style.transform='translateY(-5px) scale(1.08)'; this.style.borderColor='rgba(255,255,255,0.8)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(255,255,255,0.6)'">🏠 Back to Home</button>
       </div>
